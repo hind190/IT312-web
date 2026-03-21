@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل الوصفة | باستا | رشة</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/recipe-details.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="../images/logo.jpeg" alt="logo" width="60">
+            <h2>رشة</h2>
+        </div>
+        <div class="user">
+            <p class="welcome">مرحباً بك مجدداً</p>
+            <div class="user-box">
+                <img src="../images/user.png" alt="user">
+                <select>
+                    <option>لوحة الطالب</option>
+                    <option>المعلومات الشخصية</option>
+                    <option>الوصفات المفضلة</option>
+                    <option>دوراتي</option>
+                    <option>ملاحظاتي</option>
+                    <option>التقييمات</option>
+                    <option>التواصل مع المعلمين</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <input type="text" placeholder="بحث">
+        <ul>
+            <li><a href="../index.html">الرئيسية</a></li>
+            <li><a href="courses.html">الدورات</a></li>
+            <li><a href="recipes.html">الوصفات</a></li>
+            <li><a href="about.html">عن الموقع</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+    </nav>
+
+    <div class="breadcrumbs">
+        <a href="../index.html">الرئيسية</a>
+        <a href="../pages/recipes.html">الوصفات</a>
+        <span>باستا   </span>
+    </div>
+
+    <main class="recipe-detail">
+
+        <h1 class="recipe-title">باستا   </h1>
+
+        <div class="detail-image-container">
+            <div class="detail-image">
+                <img src="../images/pasta.jpeg" alt="باستا">
+                <div class="action-buttons">
+                    <div class="fav-icon">❤</div>
+                    <div class="share-icon"><i class="fas fa-share-alt"></i></div>
+                </div>
+                <div class="difficulty-badge">سهل</div>
+            </div>
+        </div>
+
+        <div class="recipe-description">
+            <p>وصفة باستا سهلة ولذيذة يمكن تحضيرها بسرعة</p>
+        </div>
+
+        <!-- معلومات سريعة -->
+<div class="recipe-quick-info">
+    <div class="info-item">
+        <i class="fas fa-utensils"></i>
+        <span>الحصص:</span> 4 أشخاص
+    </div>
+    <div class="info-item">
+        <i class="fas fa-clock"></i>
+        <span>التحضير:</span> 10 دقائق
+    </div>
+    <div class="info-item">
+        <i class="fas fa-fire"></i>
+        <span>الطبخ:</span> 20 دقيقة
+    </div>
+</div>
+
+        <div class="two-columns">
+
+            <!-- المقادير -->
+            <div class="ingredients-section">
+                <h3><i class="fas fa-list-ul"></i> المقادير</h3>
+                <ul class="ingredients-list">
+                    <li>
+                        <input type="checkbox" id="pasta1">
+                        <label for="pasta1">
+                            <span class="name">مكرونة فوتشيني (أعشاش)</span>
+                            <span class="qty">5 حبة</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="pasta2">
+                        <label for="pasta2">
+                            <span class="name">صلصة باستا بالريحان</span>
+                            <span class="qty">½ كوب</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="pasta3">
+                        <label for="pasta3">
+                            <span class="name">طماطم كرزية</span>
+                            <span class="details">مقطعة أنصاف</span>
+                            <span class="qty">1 كوب</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="pasta4">
+                        <label for="pasta4">
+                            <span class="name">سبانخ</span>
+                            <span class="details">أوراق طازجة</span>
+                            <span class="qty">½ كوب</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="pasta5">
+                        <label for="pasta5">
+                            <span class="name">بصل أحمر</span>
+                            <span class="details">شرائح</span>
+                            <span class="qty">½ حبة</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="pasta6">
+                        <label for="pasta6">
+                            <span class="name">ملح</span>
+                            <span class="qty">رشة</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="pasta7">
+                        <label for="pasta7">
+                            <span class="name">فلفل أسود</span>
+                            <span class="qty">رشة</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="pasta8">
+                        <label for="pasta8">
+                            <span class="name">أوريقانو</span>
+                            <span class="qty">رشة</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="pasta9">
+                        <label for="pasta9">
+                            <span class="name">زيت زيتون</span>
+                            <span class="qty">2 ملعقة كبيرة</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="pasta10">
+                        <label for="pasta10">
+                            <span class="name">كريمة طبخ</span>
+                            <span class="qty">1 كوب</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="pasta11">
+                        <label for="pasta11">
+                            <span class="name">مرقة دجاج</span>
+                            <span class="qty">1 كوب</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- الطريقة -->
+            <div class="method-section">
+                <h3><i class="fas fa-utensils"></i> الطريقة</h3>
+                <ol class="method-steps">
+                    <li>ضعي أعشاش المكرونة الفوتشيني في مقلاة كبيرة مسطحة.</li>
+                    <li>أضيفي ملعقة من صلصة الباستا بالريحان فوق كل عش مكرونة.</li>
+                    <li>أضيفي أنصاف الطماطم الكرزية والسبانخ الطازجة وشرائح البصل الأحمر إلى المقلاة حول المكرونة.</li>
+                    <li>تبلي المكونات برشة ملح وفلفل أسود وأوريقانو.</li>
+                    <li>وزعي زيت الزيتون فوق كل شيء في المقلاة.</li>
+                    <li>صبي كريمة الطبخ ومرقة الدجاج.</li>
+                    <li>ارفعي النار حتى يبدأ السائل في الغليان.</li>
+                    <li>عندما تبدأ أعشاش المكرونة بالتفكك واللين، حركي المزيج بلطف لدمج جميع المكونات.</li>
+                    <li>غطي المقلاة وخففي النار إلى هادئة. اتركيها تطهى لمدة 15 دقيقة تقريباً حتى تنضج المكرونة تماماً وتتكاثف الصلصة، ثم قدميها مباشرة.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- القيم الغذائية -->
+        <div class="nutrition-section">
+            <h3><i class="fas fa-chart-line"></i> القيم الغذائية</h3>
+            <p class="nutrition-note">المعلومات تقديرية للحصة الواحدة</p>
+            <div class="nutrition-cards">
+                <div class="nutrient-card">
+                    <i class="fas fa-fire"></i>
+                    <div class="nutrient-value">690</div>
+                    <div class="nutrient-label">سعرات</div>
+                    <div class="nutrient-unit">kcal</div>
+                </div>
+                <div class="nutrient-card">
+                    <i class="fas fa-bread-slice"></i>
+                    <div class="nutrient-value">60</div>
+                    <div class="nutrient-label">كربوهيدرات</div>
+                    <div class="nutrient-unit">g</div>
+                </div>
+                <div class="nutrient-card">
+                    <i class="fas fa-tint"></i>
+                    <div class="nutrient-value">40</div>
+                    <div class="nutrient-label">دهون</div>
+                    <div class="nutrient-unit">g</div>
+                </div>
+                <div class="nutrient-card">
+                    <i class="fas fa-dumbbell"></i>
+                    <div class="nutrient-value">15</div>
+                    <div class="nutrient-label">بروتين</div>
+                    <div class="nutrient-unit">g</div>
+                </div>
+            </div>
+        </div>
+
+       
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <p>تواصل معنا</p>
+                <p>+966000000</p>
+                <p>Rasha@gmail.com</p>
+                <div class="social-icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-right">
+                <p>الشروط والأحكام</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© رشة</p>
+        </div>
+    </footer>
+
+</body>
+</html>

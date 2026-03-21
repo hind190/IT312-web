@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل الوصفة | ساندويتش تونة | رشة</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/recipe-details.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="../images/logo.jpeg" alt="logo" width="60">
+            <h2>رشة</h2>
+        </div>
+        <div class="user">
+            <p class="welcome">مرحباً بك مجدداً</p>
+            <div class="user-box">
+                <img src="../images/user.png" alt="user">
+                <select>
+                    <option>لوحة الطالب</option>
+                    <option>المعلومات الشخصية</option>
+                    <option>الوصفات المفضلة</option>
+                    <option>دوراتي</option>
+                    <option>ملاحظاتي</option>
+                    <option>التقييمات</option>
+                    <option>التواصل مع المعلمين</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <input type="text" placeholder="بحث">
+        <ul>
+            <li><a href="../index.html">الرئيسية</a></li>
+            <li><a href="courses.html">الدورات</a></li>
+            <li><a href="recipes.html">الوصفات</a></li>
+            <li><a href="about.html">عن الموقع</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+    </nav>
+
+    <div class="breadcrumbs">
+        <a href="../index.html">الرئيسية</a>
+        <a href="../pages/recipes.html">الوصفات</a>
+        <span>ساندويتش تونة</span>
+    </div>
+
+    <main class="recipe-detail">
+
+        <h1 class="recipe-title">ساندويتش تونة</h1>
+
+        <div class="detail-image-container">
+            <div class="detail-image">
+                <img src="../images/tuna sandwich.jpeg" alt="ساندويتش تونة">
+                <div class="action-buttons">
+                    <div class="fav-icon">❤</div>
+                    <div class="share-icon"><i class="fas fa-share-alt"></i></div>
+                </div>
+                <div class="difficulty-badge">سهل</div>
+            </div>
+        </div>
+
+        <div class="recipe-description">
+            <p>ساندويتش سريع من التونة مع الخس والخبز المحمص.</p>
+        </div>
+
+        <!-- معلومات سريعة -->
+        <div class="recipe-quick-info">
+            <div class="info-item">
+                <i class="fas fa-utensils"></i>
+                <span>الحصص:</span> 1 شخص
+            </div>
+            <div class="info-item">
+                <i class="fas fa-clock"></i>
+                <span>التحضير:</span> 10 دقائق
+            </div>
+            <div class="info-item">
+                <i class="fas fa-fire"></i>
+                <span>الطبخ:</span> 5 دقائق
+            </div>
+        </div>
+
+        <div class="two-columns">
+
+            <!-- المقادير -->
+            <div class="ingredients-section">
+                <h3><i class="fas fa-list-ul"></i> المقادير</h3>
+                <ul class="ingredients-list">
+                    <li>
+                        <input type="checkbox" id="tuna1">
+                        <label for="tuna1">
+                            <span class="name">تونة معلبة</span>
+                            <span class="qty">1 علبة</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="tuna2">
+                        <label for="tuna2">
+                            <span class="name">مايونيز</span>
+                            <span class="qty">1 ملعقة كبيرة</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="tuna3">
+                        <label for="tuna3">
+                            <span class="name">عصير ليمون</span>
+                            <span class="qty">1 ملعقة صغيرة</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="tuna4">
+                        <label for="tuna4">
+                            <span class="name">ملح</span>
+                            <span class="qty">¼ ملعقة صغيرة</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="tuna5">
+                        <label for="tuna5">
+                            <span class="name">فلفل أسود</span>
+                            <span class="qty">¼ ملعقة صغيرة</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="tuna6">
+                        <label for="tuna6">
+                            <span class="name">خبز توست</span>
+                            <span class="qty">2 شريحة</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="tuna7">
+                        <label for="tuna7">
+                            <span class="name">خس</span>
+                            <span class="qty">2 ورقة</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- الطريقة -->
+            <div class="method-section">
+                <h3><i class="fas fa-utensils"></i> الطريقة</h3>
+                <ol class="method-steps">
+                    <li>في وعاء اخلطي التونة مع المايونيز وعصير الليمون.</li>
+                    <li>أضيفي الملح والفلفل وقلبي جيدًا.</li>
+                    <li>حمصي شرائح التوست قليلًا في المقلاة أو المحمصة.</li>
+                    <li>ضعي الخس فوق الخبز ثم خليط التونة.</li>
+                    <li>أغلقي الساندويتش وقطعيه إلى نصفين وقدميه.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- القيم الغذائية -->
+        <div class="nutrition-section">
+            <h3><i class="fas fa-chart-line"></i> القيم الغذائية</h3>
+            <p class="nutrition-note">لكل حصة (تقديرية)</p>
+            <div class="nutrition-cards">
+                <div class="nutrient-card">
+                    <i class="fas fa-fire"></i>
+                    <div class="nutrient-value">300</div>
+                    <div class="nutrient-label">سعرات</div>
+                    <div class="nutrient-unit">kcal</div>
+                </div>
+                <div class="nutrient-card">
+                    <i class="fas fa-bread-slice"></i>
+                    <div class="nutrient-value">26</div>
+                    <div class="nutrient-label">كربوهيدرات</div>
+                    <div class="nutrient-unit">g</div>
+                </div>
+                <div class="nutrient-card">
+                    <i class="fas fa-tint"></i>
+                    <div class="nutrient-value">12</div>
+                    <div class="nutrient-label">دهون</div>
+                    <div class="nutrient-unit">g</div>
+                </div>
+                <div class="nutrient-card">
+                    <i class="fas fa-dumbbell"></i>
+                    <div class="nutrient-value">22</div>
+                    <div class="nutrient-label">بروتين</div>
+                    <div class="nutrient-unit">g</div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <p>تواصل معنا</p>
+                <p>+966000000</p>
+                <p>Rasha@gmail.com</p>
+                <div class="social-icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-right">
+                <p>الشروط والأحكام</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© رشة</p>
+        </div>
+    </footer>
+
+</body>
+</html>
