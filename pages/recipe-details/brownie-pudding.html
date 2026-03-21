@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل الوصفة | رشة</title>
+    <!-- ربط ملفات CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/recipe-details.css">
+    <!-- أيقونات Font Awesome 6 (مجانية) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ========== الهيدر ========== -->
+    <header>
+        <div class="logo">
+            <img src="../images/logo.jpeg" alt="logo" width="60">
+            <h2>رشة</h2>
+        </div>
+        <div class="user">
+            <p class="welcome">مرحباً بك مجدداً</p>
+            <div class="user-box">
+                <img src="../images/user.png" alt="user">
+                <select>
+                    <option>لوحة الطالب</option>
+                    <option>المعلومات الشخصية</option>
+                    <option>الوصفات المفضلة</option>
+                    <option>دوراتي</option>
+                    <option>ملاحظاتي</option>
+                    <option>التقييمات</option>
+                    <option>التواصل مع المعلمين</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== الناف بار ========== -->
+    <nav>
+        <input type="text" placeholder="بحث">
+        <ul>
+            <li><a href="../index.html">الرئيسية</a></li>
+            <li><a href="courses.html">الدورات</a></li>
+            <li><a href="recipes.html">الوصفات</a></li>
+            <li><a href="about.html">عن الموقع</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+    </nav>
+
+    <!-- ========== مسار الصفحة ========== -->
+    <div class="breadcrumbs">
+        <a href="../index.html">الرئيسية</a>
+        <a href="../pages/recipes.html">الوصفات</a>
+        <span>براوني بودينغ</span>
+    </div>
+
+    <!-- ========== محتوى الصفحة ========== -->
+    <main class="recipe-detail">
+
+        <!-- عنوان الطبق -->
+        <h1 class="recipe-title">براوني بودينغ</h1>
+
+        <!-- حاوية الصورة مع الأزرار -->
+        <div class="detail-image-container">
+            <div class="detail-image">
+                <img src="../images/Brownie Pudding.jpeg" alt="براوني بودينغ">
+                <!-- الأزرار اليسارية (قلب + مشاركة) -->
+                <div class="action-buttons">
+                    <div class="fav-icon">❤</div>
+                    <div class="share-icon"><i class="fas fa-share-alt"></i></div>
+                </div>
+                <!-- زر مستوى الصعوبة -->
+                <div class="difficulty-badge">سهل</div>
+            </div>
+        </div>
+
+        <!-- وصف قصير -->
+        <div class="recipe-description">
+            <p>حلوى براوني بودينغ غنية بالشوكولاتة، هشة من الداخل ومقرمشة من الخارج، تقدم مع آيس كريم الفانيليا.</p>
+        </div>
+
+        <!-- معلومات سريعة -->
+<div class="recipe-quick-info">
+    <div class="info-item">
+        <i class="fas fa-utensils"></i>
+        <span>الحصص:</span> 6 أشخاص
+    </div>
+    <div class="info-item">
+        <i class="fas fa-clock"></i>
+        <span>التحضير:</span> 15 دقيقة
+    </div>
+    <div class="info-item">
+        <i class="fas fa-fire"></i>
+        <span>الطبخ:</span> 35 دقيقة
+    </div>
+</div>
+
+        <!-- قسم المقادير والطريقة -->
+        <div class="two-columns">
+
+            <!-- المقادير - تشيك ليست تفاعلية -->
+            <div class="ingredients-section">
+                <h3><i class="fas fa-list-ul"></i> المقادير</h3>
+                <ul class="ingredients-list">
+                    <li>
+                        <input type="checkbox" id="ing1">
+                        <label for="ing1">
+                            <span class="name">بيض</span>
+                            <span class="details">بدرجة حرارة الغرفة</span>
+                            <span class="qty">4 حبة</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ing2">
+                        <label for="ing2">
+                            <span class="name">سكر</span>
+                            <span class="qty">2 كوب</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ing3">
+                        <label for="ing3">
+                            <span class="name">كاكاو بودرة</span>
+                            <span class="qty">¾ كوب</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ing4">
+                        <label for="ing4">
+                            <span class="name">دقيق</span>
+                            <span class="qty">½ كوب</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ing5">
+                        <label for="ing5">
+                            <span class="name">ملح</span>
+                            <span class="qty">رشة</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ing6">
+                        <label for="ing6">
+                            <span class="name">فانيلا</span>
+                            <span class="qty">1 ملعقة صغيرة</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ing7">
+                        <label for="ing7">
+                            <span class="name">زبدة</span>
+                            <span class="details">مذابة ومبردة</span>
+                            <span class="qty">200 جرام</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- الطريقة -->
+            <div class="method-section">
+                <h3><i class="fas fa-utensils"></i> الطريقة</h3>
+                <ol class="method-steps">
+                    <li>يخفق البيض (بدرجة حرارة الغرفة) مع السكر جيداً حتى يصبح لون الخليط أبيض وكثيف.</li>
+                    <li>يضاف الكاكاو البودرة، الدقيق، ورشة الملح إلى خليط البيض مع الاستمرار في الخلط حتى يتجانس.</li>
+                    <li>تضاف الفانيل والزبدة المذابة (بعد أن تبرد) ويستمر الخلط حتى يصبح القوام ناعماً.</li>
+                    <li>تدهن صينية الخبز بالزبدة ثم يصب الخليط فيها.</li>
+                    <li>توضع صينية الحلى داخل صينية أكبر منها، ويصب الماء المغلي في الصينية الكبيرة لعمل حمام مائي.</li>
+                    <li>تدخل الفرن المحمى مسبقاً على حرارة 180 درجة مئوية مع تشغيل المروحة لمدة 35 دقيقة.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- القيم الغذائية -->
+        <div class="nutrition-section">
+            <h3><i class="fas fa-chart-line"></i> القيم الغذائية</h3>
+            <p class="nutrition-note">المعلومات تقديرية</p>
+            <div class="nutrition-cards">
+                <div class="nutrient-card">
+                    <i class="fas fa-fire"></i>
+                    <div class="nutrient-value">608</div>
+                    <div class="nutrient-label">سعرات</div>
+                    <div class="nutrient-unit">kcal</div>
+                </div>
+                <div class="nutrient-card">
+                    <i class="fas fa-bread-slice"></i>
+                    <div class="nutrient-value">81</div>
+                    <div class="nutrient-label">كربوهيدرات</div>
+                    <div class="nutrient-unit">g</div>
+                </div>
+                <div class="nutrient-card">
+                    <i class="fas fa-tint"></i>
+                    <div class="nutrient-value">32</div>
+                    <div class="nutrient-label">دهون</div>
+                    <div class="nutrient-unit">g</div>
+                </div>
+                <div class="nutrient-card">
+                    <i class="fas fa-dumbbell"></i>
+                    <div class="nutrient-value">8</div>
+                    <div class="nutrient-label">بروتين</div>
+                    <div class="nutrient-unit">g</div>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </main>
+
+    <!-- ========== الفوتر ========== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <p>تواصل معنا</p>
+                <p>+966000000</p>
+                <p>Rasha@gmail.com</p>
+                <div class="social-icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-right">
+                <p>الشروط والأحكام</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© رشة</p>
+        </div>
+    </footer>
+
+</body>
+</html>
