@@ -1024,7 +1024,187 @@ h3::after {
         margin-top: 5px;
     }
 }
+/* ===================== */
+/* صفحة إضافة وصفة */
+/* ===================== */
 
+.add-recipe-page {
+    padding: 40px;
+    background: #f9faf9;
+}
+
+.add-recipe-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 40px;
+    padding: 50px 40px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+}
+
+.page-title {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 800;
+    color: #4f6357;
+    margin-bottom: 10px;
+}
+
+.page-subtitle {
+    text-align: center;
+    font-size: 20px;
+    color: #5e6f69;
+    margin-bottom: 50px;
+    font-weight: 500;
+}
+
+/* شبكة البطاقات */
+.methods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+/* كل بطاقة */
+.method-card {
+    background: #ffffff;
+    border-radius: 30px;
+    padding: 35px 25px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    border: 1px solid #e0e8e3;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.method-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 35px rgba(79,99,87,0.15);
+    border-color: #8ea79a;
+}
+
+.method-icon {
+    font-size: 55px;
+    color: #4f6357;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.method-card:hover .method-icon {
+    transform: scale(1.1);
+    color: #8ea79a;
+}
+
+.method-card h3 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #2c3e3a;
+    margin-bottom: 12px;
+}
+
+.method-card p {
+    font-size: 16px;
+    color: #5e6f69;
+    line-height: 1.6;
+}
+
+/* معلومات إضافية تظهر عند hover */
+.method-hover-info {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+    background: #4f6357;
+    color: white;
+    padding: 12px;
+    font-size: 14px;
+    transition: 0.3s;
+    opacity: 0;
+    text-align: center;
+}
+
+.method-card:hover .method-hover-info {
+    bottom: 0;
+    opacity: 1;
+}
+
+/* صندوق التلميحة */
+.tip-box {
+    background: #f0f7f3;
+    border-radius: 30px;
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    border-right: 5px solid #8ea79a;
+}
+
+.tip-box i {
+    font-size: 32px;
+    color: #8ea79a;
+}
+
+.tip-box p {
+    font-size: 18px;
+    color: #2c3e3a;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* رسالة قريباً */
+.coming-soon {
+    text-align: center;
+    background: #fef5e8;
+    border-radius: 50px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.coming-soon p {
+    font-size: 18px;
+    color: #b87c4e;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* استجابة للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .add-recipe-page {
+        padding: 20px;
+    }
+    .add-recipe-container {
+        padding: 30px 20px;
+    }
+    .page-title {
+        font-size: 32px;
+    }
+    .page-subtitle {
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+    .method-card {
+        padding: 25px 20px;
+    }
+    .method-icon {
+        font-size: 45px;
+    }
+    .method-card h3 {
+        font-size: 20px;
+    }
+    .tip-box {
+        padding: 15px 20px;
+    }
+    .tip-box i {
+        font-size: 28px;
+    }
+    .tip-box p {
+        font-size: 16px;
+    }
+}
 
 /* ===================== */
 /* FOOTER */
