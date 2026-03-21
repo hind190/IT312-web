@@ -1,1 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة وصفة | رشة</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
 
+    <!-- ========== الهيدر ========== -->
+    <header>
+        <div class="logo">
+            <img src="../images/logo.jpeg" alt="شعار رشة" width="60">
+            <h2>رشة</h2>
+        </div>
+        <div class="user">
+            <p class="welcome">مرحباً بك مجدداً</p>
+            <div class="user-box">
+                <img src="../images/user.png" alt="صورة المستخدم">
+                <select>
+                    <option>لوحة الطالب</option>
+                    <option>المعلومات الشخصية</option>
+                    <option>الوصفات المفضلة</option>
+                    <option>دوراتي</option>
+                    <option>ملاحظاتي</option>
+                    <option>التقييمات</option>
+                    <option>التواصل مع المعلمين</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== الناف بار ========== -->
+    <nav>
+        <input type="text" placeholder="بحث">
+        <ul>
+            <li><a href="../index.html">الرئيسية</a></li>
+            <li><a href="courses.html">الدورات</a></li>
+            <li><a href="recipes.html">الوصفات</a></li>
+            <li><a href="about.html">عن الموقع</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+    </nav>
+
+    <!-- ========== مسار الصفحة (Breadcrumbs) ========== -->
+    <div class="breadcrumbs">
+        <a href="../index.html">الرئيسية</a>
+        <a href="recipes.html">الوصفات</a>
+        <span>إضافة وصفة</span>
+    </div>
+
+    <!-- ========== محتوى صفحة إضافة الوصفة ========== -->
+    <main class="add-recipe-page">
+        <div class="add-recipe-container">
+            <h1 class="page-title">إضافة وصفة</h1>
+            <p class="page-subtitle">اختر طريقة إضافة وصفتك</p>
+
+            <div class="methods-grid">
+                <!-- بطاقة 1: فيديو من السوشال ميديا -->
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <h3>فيديو من السوشال ميديا</h3>
+                    <p>استورد من تيك توك، انستقرام، يوتيوب...</p>
+                    <div class="method-hover-info">
+                        <span>ادخل رابط الفيديو وسنقوم بإضافته</span>
+                    </div>
+                </div>
+
+                <!-- بطاقة 2: وصفة من موقع -->
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3>وصفة من موقع</h3>
+                    <p>الصق رابط من أي موقع طبخ</p>
+                    <div class="method-hover-info">
+                        <span>سنقوم باستخراج التفاصيل تلقائياً</span>
+                    </div>
+                </div>
+
+                <!-- بطاقة 3: صورة وصفة -->
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>صورة وصفة</h3>
+                    <p>صور أو اختر من الاستوديو</p>
+                    <div class="method-hover-info">
+                        <span>ارفع صورة الوصفة وسنضيفها</span>
+                    </div>
+                </div>
+
+                <!-- بطاقة 4: وصفة مكتوبة -->
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h3>وصفة مكتوبة</h3>
+                    <p>انسخ والصق نص الوصفة من أي مكان</p>
+                    <div class="method-hover-info">
+                        <span>اكتب المقادير والطريقة بنفسك</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ========== الفوتر ========== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <p>تواصل معنا</p>
+                <p>+966000000</p>
+                <p>Rasha@gmail.com</p>
+                <div class="social-icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-right">
+                <p>الشروط والأحكام</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© رشة</p>
+        </div>
+    </footer>
+
+</body>
+</html>
