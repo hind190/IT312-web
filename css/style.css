@@ -1,335 +1,417 @@
 /* RESET */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Tajawal", "Tahoma", sans-serif;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: "Tajawal", "Tahoma", sans-serif;
 }
 
 body {
-    background-color: #f6f3f1;
-    direction: rtl;
-    color: #333;
-    line-height: 1.6;
+background-color: #f6f3f1;
+direction: rtl;
+color: #333;
+line-height: 1.6;
 }
 
 /* HEADER */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    background: white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 15px 40px;
+background: white;
+box-shadow: 0 4px 15px rgba(0,0,0,0.03);
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+display: flex;
+align-items: center;
+gap: 10px;
 }
 
 .logo img {
-    width: 90px;
-    height: auto;
-    transition: transform 0.3s;
+width: 90px;
+height: auto;
+transition: transform 0.3s;
 }
 
 .logo img:hover {
-    transform: scale(1.05);
+transform: scale(1.05);
 }
 
 .logo h2 {
-    font-family: 'Tajawal', sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    color: #4f6357;
-    letter-spacing: 1px;
+font-family: 'Tajawal', sans-serif;
+font-size: 32px;
+font-weight: 700;
+color: #4f6357;
+letter-spacing: 1px;
 }
 
 .user {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+display: flex;
+align-items: center;
+gap: 15px;
 }
 
 .welcome {
-    font-size: 15px;
-    font-weight: 500;
-    color: #4f6357;
+font-size: 15px;
+font-weight: 500;
+color: #4f6357;
 }
 
 .user-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
 }
 
 .user-box img {
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #dfeae3;
-    transition: 0.3s;
+width: 65px;
+height: 65px;
+border-radius: 50%;
+object-fit: cover;
+border: 3px solid #dfeae3;
+transition: 0.3s;
 }
 
 .user-box img:hover {
-    border-color: #8ea79a;
+border-color: #8ea79a;
 }
 
-.user-box select {
-    margin-top: 8px;
-    padding: 8px 12px;
-    border-radius: 20px;
-    border: none;
-    background: #dfeae3;
-    color: #4f6357;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: 0.3s;
-    width: 140px;
-    text-align: center;
-    font-family: 'Tajawal', sans-serif;
+/* ---------------------- */
+/* القائمة المنسدلة - لوحة الطالب (DROPDOWN MENU) */
+/* ---------------------- */
+.dropdown {
+position: relative;
+width: 100%;
+margin-top: 8px;
 }
 
-.user-box select:hover {
-    background: #cfe0d5;
+.dropdown-btn {
+background: #dfeae3;
+border: none;
+padding: 8px 12px;
+border-radius: 20px;
+font-family: 'Tajawal', sans-serif;
+font-size: 14px;
+font-weight: 500;
+color: #4f6357;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 5px;
+width: 140px;
+transition: 0.3s;
 }
 
-.user-box select:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(142,167,154,0.3);
+.dropdown-btn i {
+font-size: 12px;
+color: #8ea79a;
+transition: 0.3s;
+}
+
+.dropdown-btn:hover {
+background: #cfe0d5;
+color: #2c3e3a;
+}
+
+.dropdown-content {
+position: absolute;
+top: 100%;
+left: 50%;
+transform: translateX(-50%);
+background: white;
+min-width: 200px;
+border-radius: 15px;
+box-shadow: 0 15px 30px rgba(79,99,87,0.15);
+padding: 8px 0;
+display: none;
+z-index: 1000;
+border: 1px solid #f0f0f0;
+margin-top: 5px;
+}
+
+.user-box:hover .dropdown-content,
+.dropdown-btn:hover + .dropdown-content,
+.dropdown-content:hover {
+display: block;
+animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+from {
+opacity: 0;
+transform: translateX(-50%) translateY(-10px);
+}
+to {
+opacity: 1;
+transform: translateX(-50%) translateY(0);
+}
+}
+
+.dropdown-content a {
+display: flex;
+align-items: center;
+gap: 12px;
+padding: 10px 15px;
+text-decoration: none;
+color: #4f6357;
+font-family: 'Tajawal', sans-serif;
+font-size: 14px;
+font-weight: 500;
+transition: 0.3s;
+border-bottom: 1px solid #f5f5f5;
+}
+
+.dropdown-content a:last-child {
+border-bottom: none;
+}
+
+.dropdown-content a i {
+width: 18px;
+color: #8ea79a;
+font-size: 14px;
+}
+
+.dropdown-content a:hover {
+background: #dfeae3;
+color: #2c3e3a;
+padding-right: 20px;
+}
+
+.dropdown-content a:hover i {
+color: #4f6357;
 }
 
 /* NAVBAR */
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 40px;
-    background: #fff;
-    border-top: 1px solid #f0f0f0;
-    direction: ltr;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 12px 40px;
+background: #fff;
+border-top: 1px solid #f0f0f0;
+direction: ltr;
+box-shadow: 0 4px 10px rgba(0,0,0,0.02);
 }
 
 nav ul {
-    display: flex;
-    list-style: none;
-    gap: 35px;
-    direction: rtl;
+display: flex;
+list-style: none;
+gap: 35px;
+direction: rtl;
 }
 
 nav a {
-    text-decoration: none;
-    color: #2c3e3a;
-    font-size: 16px;
-    font-weight: 600;
-    transition: 0.3s;
-    position: relative;
-    padding-bottom: 5px;
+text-decoration: none;
+color: #2c3e3a;
+font-size: 16px;
+font-weight: 600;
+transition: 0.3s;
+position: relative;
+padding-bottom: 5px;
 }
 
 nav a:hover {
-    color: #8ea79a;
+color: #8ea79a;
 }
 
 nav a::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 0;
-    height: 2.5px;
-    background: #8ea79a;
-    transition: 0.3s;
-    border-radius: 2px;
+content: "";
+position: absolute;
+bottom: 0;
+right: 0;
+width: 0;
+height: 2.5px;
+background: #8ea79a;
+transition: 0.3s;
+border-radius: 2px;
 }
 
 nav a:hover::after {
-    width: 100%;
+width: 100%;
 }
 
 nav input {
-    padding: 10px 20px;
-    border-radius: 30px;
-    border: 1px solid #e0e0e0;
-    width: 200px;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 14px;
-    transition: 0.3s;
-    background: #fafafa;
-    /* 👇 التعديل المطلوب: محاذاة النص لليمين */
-    text-align: right;
-    direction: rtl;
+padding: 10px 20px;
+border-radius: 30px;
+border: 1px solid #e0e0e0;
+width: 200px;
+font-family: 'Tajawal', sans-serif;
+font-size: 14px;
+transition: 0.3s;
+background: #fafafa;
+text-align: right;
+direction: rtl;
 }
 
 nav input:focus {
-    outline: none;
-    border-color: #8ea79a;
-    box-shadow: 0 0 0 4px rgba(142,167,154,0.15);
-    background: white;
+outline: none;
+border-color: #8ea79a;
+box-shadow: 0 0 0 4px rgba(142,167,154,0.15);
+background: white;
 }
 
 /* Breadcrumbs */
 .breadcrumbs {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #ffffff;
-    padding: 8px 20px;
-    margin: 20px 40px;
-    border-radius: 40px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-    font-size: 14px;
+display: inline-flex;
+align-items: center;
+gap: 8px;
+background: #ffffff;
+padding: 8px 20px;
+margin: 20px 40px;
+border-radius: 40px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+font-size: 14px;
 }
 
 .breadcrumbs a {
-    text-decoration: none;
-    color: #7f8c8d;
-    font-weight: 500;
-    transition: 0.3s;
+text-decoration: none;
+color: #7f8c8d;
+font-weight: 500;
+transition: 0.3s;
 }
 
 .breadcrumbs a:hover {
-    color: #8ea79a;
+color: #8ea79a;
 }
 
 .breadcrumbs span {
-    color: #4f6357;
-    font-weight: 700;
+color: #4f6357;
+font-weight: 700;
 }
 
 .breadcrumbs a::after {
-    content: "›";
-    margin: 0 8px;
-    color: #ccc;
-    font-weight: 400;
+content: "›";
+margin: 0 8px;
+color: #ccc;
+font-weight: 400;
 }
 
 .breadcrumbs span::after {
-    content: "";
+content: "";
 }
+
 /* ===================== */
 /* BANNER */
 /* ===================== */
 .add-recipe {
-    padding: 20px 40px;
+padding: 20px 40px;
 }
 
 .add-recipe-box {
-    height: 300px;
-    border-radius: 30px;
-    overflow: hidden;
-    position: relative;
-    background-image: url("../images/recipe-banner.jpeg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+height: 300px;
+border-radius: 30px;
+overflow: hidden;
+position: relative;
+background-image: url("../images/recipe-banner.jpeg");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 
 .add-recipe-box::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(to left, rgba(0,0,0,0.2), transparent);
+content: "";
+position: absolute;
+top: 0; left: 0; right: 0; bottom: 0;
+background: linear-gradient(to left, rgba(0,0,0,0.2), transparent);
 }
 
 .add-text {
-    position: absolute;
-    right: 50px;
-    top: 50%;
-    transform: translateY(-50%);
-    max-width: 450px;
-    color: white;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    z-index: 2;
+position: absolute;
+right: 50px;
+top: 50%;
+transform: translateY(-50%);
+max-width: 450px;
+color: white;
+text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+z-index: 2;
 }
 
 .add-text h2 {
-    font-family: 'Tajawal', sans-serif;
-    font-size: 38px;
-    font-weight: 800;
-    margin-bottom: 10px;
-    line-height: 1.3;
-    color: white;
+font-family: 'Tajawal', sans-serif;
+font-size: 38px;
+font-weight: 800;
+margin-bottom: 10px;
+line-height: 1.3;
+color: white;
 }
 
 .add-text p {
-    font-size: 18px;
-    font-weight: 500;
-    margin-top: 8px;
-    opacity: 0.95;
-    line-height: 1.6;
+font-size: 18px;
+font-weight: 500;
+margin-top: 8px;
+opacity: 0.95;
+line-height: 1.6;
 }
 
 .add-text button {
-    background: #4f6357;
-    color: white;
-    border: none;
-    padding: 14px 30px;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-top: 20px;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    box-shadow: 0 8px 20px rgba(79,99,87,0.3);
-    border: 2px solid transparent;
+background: #4f6357;
+color: white;
+border: none;
+padding: 14px 30px;
+border-radius: 50px;
+cursor: pointer;
+transition: 0.3s;
+margin-top: 20px;
+font-family: 'Tajawal', sans-serif;
+font-size: 18px;
+font-weight: 700;
+box-shadow: 0 8px 20px rgba(79,99,87,0.3);
+border: 2px solid transparent;
 }
 
 .add-text button:hover {
-    background: #6f8f82;
-    transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(79,99,87,0.4);
+background: #6f8f82;
+transform: translateY(-3px);
+box-shadow: 0 12px 25px rgba(79,99,87,0.4);
 }
 
 .add-text button:active {
-    transform: translateY(0);
+transform: translateY(0);
 }
 
 /* ===================== */
 /* FILTER SECTION */
 /* ===================== */
 .recipes-section {
-    padding: 0 40px 40px;
+padding: 0 40px 40px;
 }
 
 /* إخفاء الراديوات */
 input[name="category"] {
-    display: none;
+display: none;
 }
 
 /* تنسيق أزرار التصنيف */
 .filters {
-    text-align: center;
-    margin: 30px 0 25px;
+text-align: center;
+margin: 30px 0 25px;
 }
 
 .filters label {
-    background: #ffffff;
-    padding: 10px 22px;
-    margin: 5px;
-    border-radius: 40px;
-    cursor: pointer;
-    display: inline-block;
-    transition: all 0.3s ease;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: #4f6357;
-    border: 2px solid #e0e8e3;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+background: #ffffff;
+padding: 10px 22px;
+margin: 5px;
+border-radius: 40px;
+cursor: pointer;
+display: inline-block;
+transition: all 0.3s ease;
+font-family: 'Tajawal', sans-serif;
+font-size: 16px;
+font-weight: 600;
+color: #4f6357;
+border: 2px solid #e0e8e3;
+box-shadow: 0 4px 8px rgba(0,0,0,0.02);
 }
 
 .filters label:hover {
-    background: #e0f0e8;
-    border-color: #8ea79a;
-    transform: translateY(-2px);
+background: #e0f0e8;
+border-color: #8ea79a;
+transform: translateY(-2px);
 }
 
 /* تلوين الزر النشط */
@@ -339,154 +421,154 @@ input[name="category"] {
 #breakfast:checked ~ .filters label[for="breakfast"],
 #drink:checked ~ .filters label[for="drink"],
 #healthy:checked ~ .filters label[for="healthy"] {
-    background: #4f6357;
-    color: white;
-    border-color: #4f6357;
-    box-shadow: 0 8px 16px rgba(79,99,87,0.25);
+background: #4f6357;
+color: white;
+border-color: #4f6357;
+box-shadow: 0 8px 16px rgba(79,99,87,0.25);
 }
 
 /* عنوان القسم */
 h3 {
-    text-align: center;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 32px;
-    font-weight: 800;
-    color: #2c3e3a;
-    margin: 20px 0 25px;
-    position: relative;
-    display: inline-block;
-    width: 100%;
+text-align: center;
+font-family: 'Tajawal', sans-serif;
+font-size: 32px;
+font-weight: 800;
+color: #2c3e3a;
+margin: 20px 0 25px;
+position: relative;
+display: inline-block;
+width: 100%;
 }
 
 h3::after {
-    content: "";
-    display: block;
-    width: 80px;
-    height: 4px;
-    background: #8ea79a;
-    margin: 10px auto 0;
-    border-radius: 2px;
+content: "";
+display: block;
+width: 80px;
+height: 4px;
+background: #8ea79a;
+margin: 10px auto 0;
+border-radius: 2px;
 }
 
 /* شبكة الوصفات */
 .recipes {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 25px;
 }
 
 /* ===================== */
 /* CARDS */
 /* ===================== */
 .recipe-card {
-    background: white;
-    border-radius: 25px;
-    overflow: hidden;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    position: relative;
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 1px solid #f0f0f0;
+background: white;
+border-radius: 25px;
+overflow: hidden;
+text-align: center;
+box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+position: relative;
+transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+border: 1px solid #f0f0f0;
 }
 
 .recipe-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 20px 35px rgba(79,99,87,0.15);
-    border-color: #d0e0d8;
+transform: translateY(-12px);
+box-shadow: 0 20px 35px rgba(79,99,87,0.15);
+border-color: #d0e0d8;
 }
 
 .recipe-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    transition: 0.5s;
+width: 100%;
+height: 200px;
+object-fit: cover;
+transition: 0.5s;
 }
 
 .recipe-card:hover img {
-    transform: scale(1.07);
+transform: scale(1.07);
 }
 
 /* عنوان الأكلة داخل الكارد */
 .recipe-card h4 {
-    font-family: 'Tajawal', sans-serif;
-    font-size: 22px;
-    font-weight: 800;
-    color: #4f6357;
-    margin: 15px 10px 8px;
-    line-height: 1.4;
-    transition: 0.3s;
+font-family: 'Tajawal', sans-serif;
+font-size: 22px;
+font-weight: 800;
+color: #4f6357;
+margin: 15px 10px 8px;
+line-height: 1.4;
+transition: 0.3s;
 }
 
 .recipe-card:hover h4 {
-    color: #2c3e3a;
+color: #2c3e3a;
 }
 
 /* الوصف */
 .recipe-card p {
-    padding: 0 15px 10px;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 15px;
-    font-weight: 400;
-    color: #5e6f69;
-    line-height: 1.6;
-    max-height: 4.8em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+padding: 0 15px 10px;
+font-family: 'Tajawal', sans-serif;
+font-size: 15px;
+font-weight: 400;
+color: #5e6f69;
+line-height: 1.6;
+max-height: 4.8em;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical;
 }
 
 .recipe-card button {
-    margin: 0 15px 20px 15px;
-    padding: 12px 20px;
-    border: none;
-    background: #f0f7f3;
-    border-radius: 40px;
-    cursor: pointer;
-    transition: 0.3s;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: #4f6357;
-    border: 2px solid transparent;
-    width: calc(100% - 30px);
+margin: 0 15px 20px 15px;
+padding: 12px 20px;
+border: none;
+background: #f0f7f3;
+border-radius: 40px;
+cursor: pointer;
+transition: 0.3s;
+font-family: 'Tajawal', sans-serif;
+font-size: 16px;
+font-weight: 600;
+color: #4f6357;
+border: 2px solid transparent;
+width: calc(100% - 30px);
 }
 
 .recipe-card button:hover {
-    background: #4f6357;
-    color: white;
-    transform: scale(1.03);
-    box-shadow: 0 8px 18px rgba(79,99,87,0.3);
+background: #4f6357;
+color: white;
+transform: scale(1.03);
+box-shadow: 0 8px 18px rgba(79,99,87,0.3);
 }
 
 /* القلب (المفضلة) */
 .fav {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    width: 42px;
-    height: 42px;
-    background: rgba(255,255,255,0.9);
-    backdrop-filter: blur(2px);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    color: #aaa;
-    z-index: 10;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    border: 2px solid white;
+position: absolute;
+top: 15px;
+left: 15px;
+width: 42px;
+height: 42px;
+background: rgba(255,255,255,0.9);
+backdrop-filter: blur(2px);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 20px;
+color: #aaa;
+z-index: 10;
+cursor: pointer;
+transition: 0.3s;
+box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+border: 2px solid white;
 }
 
 .fav:hover {
-    color: #e74c3c;
-    transform: scale(1.15);
-    background: white;
-    box-shadow: 0 8px 18px rgba(231,76,60,0.3);
+color: #e74c3c;
+transform: scale(1.15);
+background: white;
+box-shadow: 0 8px 18px rgba(231,76,60,0.3);
 }
 
 /* ===================== */
@@ -495,714 +577,716 @@ h3::after {
 
 /* نخفي كل الكروت افتراضياً */
 .recipe-card {
-    display: none;
+display: none;
 }
 
 /* عرض الكل */
 #all:checked ~ .recipes .recipe-card {
-    display: block;
+display: block;
 }
 
 /* رئيسي */
 #main:checked ~ .recipes .main {
-    display: block;
+display: block;
 }
 
 /* حلويات */
 #dessert:checked ~ .recipes .dessert {
-    display: block;
+display: block;
 }
 
 /* فطور */
 #breakfast:checked ~ .recipes .breakfast {
-    display: block;
+display: block;
 }
 
 /* مشروبات */
 #drink:checked ~ .recipes .drink {
-    display: block;
+display: block;
 }
 
 /* صحي */
 #healthy:checked ~ .recipes .healthy {
-    display: block;
+display: block;
 }
+
 /* ===================== */
 /* صفحة تفاصيل الوصفة */
 /* ===================== */
 
 .recipe-detail {
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 0 40px;
+max-width: 1200px;
+margin: 30px auto;
+padding: 0 40px;
 }
 
 /* عنوان الطبق */
 .recipe-title {
-    text-align: center;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 40px;
-    font-weight: 800;
-    color: #4f6357;
-    margin-bottom: 20px;
-    position: relative;
-    display: inline-block;
-    width: 100%;
+text-align: center;
+font-family: 'Tajawal', sans-serif;
+font-size: 40px;
+font-weight: 800;
+color: #4f6357;
+margin-bottom: 20px;
+position: relative;
+display: inline-block;
+width: 100%;
 }
 
 .recipe-title::after {
-    content: "";
-    display: block;
-    width: 80px;
-    height: 4px;
-    background: #8ea79a;
-    margin: 12px auto 0;
-    border-radius: 2px;
+content: "";
+display: block;
+width: 80px;
+height: 4px;
+background: #8ea79a;
+margin: 12px auto 0;
+border-radius: 2px;
 }
 
 /* حاوية الصورة */
 .detail-image-container {
-    position: relative;
-    margin-bottom: 30px;
+position: relative;
+margin-bottom: 30px;
 }
 
 .detail-image {
-    position: relative;
-    width: 100%;
-    border-radius: 30px;
-    overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+position: relative;
+width: 100%;
+border-radius: 30px;
+overflow: hidden;
+box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
 .detail-image img {
-    width: 100%;
-    height: 450px;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s;
+width: 100%;
+height: 450px;
+object-fit: cover;
+display: block;
+transition: transform 0.5s;
 }
 
 .detail-image:hover img {
-    transform: scale(1.02);
+transform: scale(1.02);
 }
 
 /* الأزرار اليسارية (قلب + مشاركة) */
 .action-buttons {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    display: flex;
-    gap: 12px;
-    z-index: 10;
+position: absolute;
+top: 20px;
+left: 20px;
+display: flex;
+gap: 12px;
+z-index: 10;
 }
 
 .fav-icon,
 .share-icon {
-    width: 45px;
-    height: 45px;
-    background: rgba(255,255,255,0.9);
-    backdrop-filter: blur(2px);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    border: 2px solid white;
+width: 45px;
+height: 45px;
+background: rgba(255,255,255,0.9);
+backdrop-filter: blur(2px);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 22px;
+cursor: pointer;
+transition: 0.3s;
+box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+border: 2px solid white;
 }
 
 .fav-icon {
-    color: #bbb;
+color: #bbb;
 }
 
 .share-icon {
-    color: #4f6357;
+color: #4f6357;
 }
 
 .fav-icon:hover {
-    color: #e74c3c;
-    transform: scale(1.15);
-    background: white;
-    box-shadow: 0 8px 18px rgba(231,76,60,0.3);
+color: #e74c3c;
+transform: scale(1.15);
+background: white;
+box-shadow: 0 8px 18px rgba(231,76,60,0.3);
 }
 
 .share-icon:hover {
-    background: #4f6357;
-    color: white;
-    transform: scale(1.15);
+background: #4f6357;
+color: white;
+transform: scale(1.15);
 }
 
 /* زر مستوى الصعوبة */
 .difficulty-badge {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    background: rgba(79,99,87,0.9);
-    backdrop-filter: blur(4px);
-    color: white;
-    padding: 8px 20px;
-    border-radius: 40px;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    z-index: 10;
-    cursor: default;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    border: 1px solid rgba(255,255,255,0.3);
-    transition: 0.3s;
+position: absolute;
+bottom: 20px;
+left: 20px;
+background: rgba(79,99,87,0.9);
+backdrop-filter: blur(4px);
+color: white;
+padding: 8px 20px;
+border-radius: 40px;
+font-family: 'Tajawal', sans-serif;
+font-size: 16px;
+font-weight: 700;
+letter-spacing: 1px;
+z-index: 10;
+cursor: default;
+box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+border: 1px solid rgba(255,255,255,0.3);
+transition: 0.3s;
 }
 
 .difficulty-badge:hover {
-    background: #4f6357;
-    transform: translateY(-2px);
+background: #4f6357;
+transform: translateY(-2px);
 }
 
 /* الوصف القصير */
 .recipe-description {
-    background: white;
-    padding: 25px 35px;
-    border-radius: 30px;
-    margin-bottom: 40px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-    border: 1px solid #f0f0f0;
-    font-size: 18px;
-    line-height: 1.8;
-    color: #2c3e3a;
-    text-align: center;
+background: white;
+padding: 25px 35px;
+border-radius: 30px;
+margin-bottom: 40px;
+box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+border: 1px solid #f0f0f0;
+font-size: 18px;
+line-height: 1.8;
+color: #2c3e3a;
+text-align: center;
 }
 
 /* تخطيط العمودين */
 .two-columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-bottom: 50px;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 30px;
+margin-bottom: 50px;
 }
 
 /* الأقسام العامة */
 .ingredients-section,
 .method-section {
-    background: white;
-    border-radius: 30px;
-    padding: 25px 30px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-    border: 1px solid #f0f0f0;
-    transition: transform 0.3s;
+background: white;
+border-radius: 30px;
+padding: 25px 30px;
+box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+border: 1px solid #f0f0f0;
+transition: transform 0.3s;
 }
 
 .ingredients-section:hover,
 .method-section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(79,99,87,0.1);
+transform: translateY(-5px);
+box-shadow: 0 15px 30px rgba(79,99,87,0.1);
 }
 
 .ingredients-section h3,
 .method-section h3,
 .nutrition-section h3,
 .contact-info h3 {
-    font-size: 28px;
-    font-weight: 800;
-    color: #4f6357;
-    margin-bottom: 25px;
-    position: relative;
-    display: inline-block;
+font-size: 28px;
+font-weight: 800;
+color: #4f6357;
+margin-bottom: 25px;
+position: relative;
+display: inline-block;
 }
 
 .ingredients-section h3 i,
 .method-section h3 i,
 .nutrition-section h3 i {
-    margin-left: 10px;
-    color: #8ea79a;
+margin-left: 10px;
+color: #8ea79a;
 }
 
 .ingredients-section h3::after,
 .method-section h3::after,
 .nutrition-section h3::after {
-    content: "";
-    display: block;
-    width: 60px;
-    height: 3px;
-    background: #8ea79a;
-    margin-top: 8px;
-    border-radius: 3px;
+content: "";
+display: block;
+width: 60px;
+height: 3px;
+background: #8ea79a;
+margin-top: 8px;
+border-radius: 3px;
 }
 
 /* ========== تشيك ليست تفاعلية للمقادير ========== */
 .ingredients-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+list-style: none;
+padding: 0;
+margin: 0;
 }
 
 .ingredients-list li {
-    position: relative;
-    border-bottom: 1px dashed #e0e8e3;
-    padding: 0;
+position: relative;
+border-bottom: 1px dashed #e0e8e3;
+padding: 0;
 }
 
 /* إخفاء checkbox الحقيقي */
 .ingredients-list input {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
+position: absolute;
+opacity: 0;
+width: 0;
+height: 0;
 }
 
 /* جعل label يأخذ كامل العرض */
 .ingredients-list label {
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
-    padding: 15px 0;
-    cursor: pointer;
-    transition: 0.3s;
-    position: relative;
+display: flex;
+align-items: flex-start;
+gap: 15px;
+padding: 15px 0;
+cursor: pointer;
+transition: 0.3s;
+position: relative;
 }
 
 /* تأثير hover */
 .ingredients-list li:hover label {
-    background: rgba(142, 167, 154, 0.05);
-    border-radius: 12px;
-    padding-right: 10px;
-    padding-left: 10px;
+background: rgba(142, 167, 154, 0.05);
+border-radius: 12px;
+padding-right: 10px;
+padding-left: 10px;
 }
 
 /* الدائرة الفارغة قبل التحديد */
 .ingredients-list label::before {
-    content: "";
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: #f0f7f3;
-    border: 2px solid #8ea79a;
-    display: inline-block;
-    flex-shrink: 0;
-    margin-left: 12px;
-    transition: 0.2s;
+content: "";
+width: 28px;
+height: 28px;
+border-radius: 50%;
+background: #f0f7f3;
+border: 2px solid #8ea79a;
+display: inline-block;
+flex-shrink: 0;
+margin-left: 12px;
+transition: 0.2s;
 }
 
 /* عند تحديد checkbox: نغير لون الدائرة ونضيف علامة الصح */
 .ingredients-list input:checked + label::before {
-    background: #4f6357;
-    border-color: #4f6357;
-    content: "✓";
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
+background: #4f6357;
+border-color: #4f6357;
+content: "✓";
+color: white;
+font-size: 16px;
+font-weight: bold;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+line-height: 1;
 }
 
 /* تنسيق النص داخل المكون */
 .ingredients-list .name {
-    font-weight: 700;
-    color: #2c3e3a;
-    font-size: 18px;
-    display: inline-block;
-    margin-left: 8px;
+font-weight: 700;
+color: #2c3e3a;
+font-size: 18px;
+display: inline-block;
+margin-left: 8px;
 }
 
 .ingredients-list .details {
-    font-size: 14px;
-    color: #8ea79a;
-    display: inline-block;
-    margin-left: 8px;
+font-size: 14px;
+color: #8ea79a;
+display: inline-block;
+margin-left: 8px;
 }
 
 .ingredients-list .qty {
-    font-weight: 700;
-    color: #4f6357;
-    font-size: 16px;
-    background: #f0f7f3;
-    padding: 3px 10px;
-    border-radius: 20px;
-    display: inline-block;
-    margin-right: auto;
+font-weight: 700;
+color: #4f6357;
+font-size: 16px;
+background: #f0f7f3;
+padding: 3px 10px;
+border-radius: 20px;
+display: inline-block;
+margin-right: auto;
 }
 
 /* ========== الطريقة ========== */
 .method-steps {
-    list-style: none;
-    padding: 0;
-    counter-reset: step-counter;
+list-style: none;
+padding: 0;
+counter-reset: step-counter;
 }
 
 .method-steps li {
-    counter-increment: step-counter;
-    margin-bottom: 20px;
-    padding-right: 45px;
-    position: relative;
-    font-size: 17px;
-    line-height: 1.7;
-    color: #2c3e3a;
+counter-increment: step-counter;
+margin-bottom: 20px;
+padding-right: 45px;
+position: relative;
+font-size: 17px;
+line-height: 1.7;
+color: #2c3e3a;
 }
 
 .method-steps li::before {
-    content: counter(step-counter);
-    background: #4f6357;
-    color: white;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    position: absolute;
-    right: 0;
-    top: 0;
-    font-size: 16px;
-    box-shadow: 0 4px 8px rgba(79,99,87,0.2);
+content: counter(step-counter);
+background: #4f6357;
+color: white;
+width: 32px;
+height: 32px;
+border-radius: 50%;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+font-weight: bold;
+position: absolute;
+right: 0;
+top: 0;
+font-size: 16px;
+box-shadow: 0 4px 8px rgba(79,99,87,0.2);
 }
 
 /* ========== القيم الغذائية ========== */
 .nutrition-section {
-    background: white;
-    border-radius: 30px;
-    padding: 25px 30px;
-    margin-bottom: 40px;
-    text-align: center;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+background: white;
+border-radius: 30px;
+padding: 25px 30px;
+margin-bottom: 40px;
+text-align: center;
+box-shadow: 0 8px 25px rgba(0,0,0,0.05);
 }
 
 .nutrition-note {
-    color: #8ea79a;
-    font-size: 14px;
-    margin-bottom: 25px;
+color: #8ea79a;
+font-size: 14px;
+margin-bottom: 25px;
 }
 
 .nutrition-cards {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
+display: flex;
+justify-content: center;
+gap: 25px;
+flex-wrap: wrap;
 }
 
 .nutrient-card {
-    background: #f9fbfa;
-    border-radius: 25px;
-    padding: 20px 25px;
-    min-width: 130px;
-    text-align: center;
-    transition: 0.3s;
-    border: 1px solid #e0e8e3;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+background: #f9fbfa;
+border-radius: 25px;
+padding: 20px 25px;
+min-width: 130px;
+text-align: center;
+transition: 0.3s;
+border: 1px solid #e0e8e3;
+box-shadow: 0 4px 12px rgba(0,0,0,0.03);
 }
 
 .nutrient-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 20px rgba(79,99,87,0.1);
-    border-color: #8ea79a;
+transform: translateY(-5px);
+box-shadow: 0 12px 20px rgba(79,99,87,0.1);
+border-color: #8ea79a;
 }
 
 .nutrient-card i {
-    font-size: 35px;
-    color: #4f6357;
-    margin-bottom: 12px;
-    display: inline-block;
+font-size: 35px;
+color: #4f6357;
+margin-bottom: 12px;
+display: inline-block;
 }
 
 .nutrient-value {
-    font-size: 32px;
-    font-weight: 800;
-    color: #2c3e3a;
-    line-height: 1;
+font-size: 32px;
+font-weight: 800;
+color: #2c3e3a;
+line-height: 1;
 }
 
 .nutrient-label {
-    font-size: 16px;
-    font-weight: 600;
-    color: #4f6357;
-    margin: 8px 0 4px;
+font-size: 16px;
+font-weight: 600;
+color: #4f6357;
+margin: 8px 0 4px;
 }
 
 .nutrient-unit {
-    font-size: 13px;
-    color: #8ea79a;
+font-size: 13px;
+color: #8ea79a;
 }
 
- /* تنسيق إضافي لعرض معلومات الحصص والوقت */
-        .recipe-quick-info {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            background: #f9fbfa;
-            padding: 15px 25px;
-            border-radius: 60px;
-            margin-bottom: 30px;
-            border: 1px solid #e0e8e3;
-            flex-wrap: wrap;
-        }
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 16px;
-            color: #4f6357;
-        }
-        .info-item i {
-            font-size: 20px;
-            color: #8ea79a;
-        }
-        .info-item span {
-            font-weight: 700;
-            margin-left: 4px;
-        }
-        @media (max-width: 768px) {
-            .recipe-quick-info {
-                gap: 20px;
-                padding: 12px 20px;
-            }
-            .info-item {
-                font-size: 14px;
-            }
-        }
+/* تنسيق إضافي لعرض معلومات الحصص والوقت */
+.recipe-quick-info {
+display: flex;
+justify-content: center;
+gap: 30px;
+background: #f9fbfa;
+padding: 15px 25px;
+border-radius: 60px;
+margin-bottom: 30px;
+border: 1px solid #e0e8e3;
+flex-wrap: wrap;
+}
+.info-item {
+display: flex;
+align-items: center;
+gap: 8px;
+font-size: 16px;
+color: #4f6357;
+}
+.info-item i {
+font-size: 20px;
+color: #8ea79a;
+}
+.info-item span {
+font-weight: 700;
+margin-left: 4px;
+}
+@media (max-width: 768px) {
+.recipe-quick-info {
+gap: 20px;
+padding: 12px 20px;
+}
+.info-item {
+font-size: 14px;
+}
+}
 
 /* ========== استجابة للجوال ========== */
 @media (max-width: 768px) {
-    .recipe-detail {
-        padding: 0 20px;
-    }
-
-    .recipe-title {
-        font-size: 32px;
-    }
-
-    .detail-image img {
-        height: 250px;
-    }
-
-    .fav-icon, .share-icon {
-        width: 38px;
-        height: 38px;
-        font-size: 18px;
-    }
-
-    .difficulty-badge {
-        padding: 6px 15px;
-        font-size: 14px;
-        bottom: 15px;
-        left: 15px;
-    }
-
-    .two-columns {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .nutrition-cards {
-        gap: 15px;
-    }
-
-    .nutrient-card {
-        min-width: 110px;
-        padding: 15px;
-    }
-
-    .nutrient-value {
-        font-size: 26px;
-    }
-
-    .ingredients-section h3,
-    .method-section h3,
-    .nutrition-section h3 {
-        font-size: 24px;
-    }
-
-    .ingredients-list label {
-        flex-wrap: wrap;
-    }
-    
-    .ingredients-list .qty {
-        margin-right: 0;
-        margin-top: 5px;
-    }
+.recipe-detail {
+padding: 0 20px;
 }
+
+.recipe-title {
+font-size: 32px;
+}
+
+.detail-image img {
+height: 250px;
+}
+
+.fav-icon, .share-icon {
+width: 38px;
+height: 38px;
+font-size: 18px;
+}
+
+.difficulty-badge {
+padding: 6px 15px;
+font-size: 14px;
+bottom: 15px;
+left: 15px;
+}
+
+.two-columns {
+grid-template-columns: 1fr;
+gap: 20px;
+}
+
+.nutrition-cards {
+gap: 15px;
+}
+
+.nutrient-card {
+min-width: 110px;
+padding: 15px;
+}
+
+.nutrient-value {
+font-size: 26px;
+}
+
+.ingredients-section h3,
+.method-section h3,
+.nutrition-section h3 {
+font-size: 24px;
+}
+
+.ingredients-list label {
+flex-wrap: wrap;
+}
+
+.ingredients-list .qty {
+margin-right: 0;
+margin-top: 5px;
+}
+}
+
 /* ===================== */
 /* صفحة إضافة وصفة */
 /* ===================== */
 
 .add-recipe-page {
-    padding: 40px;
-    background: #f9faf9;
+padding: 40px;
+background: #f9faf9;
 }
 
 .add-recipe-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 40px;
-    padding: 50px 40px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+max-width: 1200px;
+margin: 0 auto;
+background: white;
+border-radius: 40px;
+padding: 50px 40px;
+box-shadow: 0 15px 35px rgba(0,0,0,0.05);
 }
 
 .page-title {
-    text-align: center;
-    font-size: 40px;
-    font-weight: 800;
-    color: #4f6357;
-    margin-bottom: 10px;
+text-align: center;
+font-size: 40px;
+font-weight: 800;
+color: #4f6357;
+margin-bottom: 10px;
 }
 
 .page-subtitle {
-    text-align: center;
-    font-size: 20px;
-    color: #5e6f69;
-    margin-bottom: 50px;
-    font-weight: 500;
+text-align: center;
+font-size: 20px;
+color: #5e6f69;
+margin-bottom: 50px;
+font-weight: 500;
 }
 
 /* شبكة البطاقات */
 .methods-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-bottom: 50px;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 30px;
+margin-bottom: 50px;
 }
 
 /* كل بطاقة */
 .method-card {
-    background: #ffffff;
-    border-radius: 30px;
-    padding: 35px 25px;
-    text-align: center;
-    transition: 0.3s;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    border: 1px solid #e0e8e3;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
+background: #ffffff;
+border-radius: 30px;
+padding: 35px 25px;
+text-align: center;
+transition: 0.3s;
+box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+border: 1px solid #e0e8e3;
+position: relative;
+overflow: hidden;
+cursor: pointer;
 }
 
 .method-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 35px rgba(79,99,87,0.15);
-    border-color: #8ea79a;
+transform: translateY(-10px);
+box-shadow: 0 20px 35px rgba(79,99,87,0.15);
+border-color: #8ea79a;
 }
 
 .method-icon {
-    font-size: 55px;
-    color: #4f6357;
-    margin-bottom: 20px;
-    transition: 0.3s;
+font-size: 55px;
+color: #4f6357;
+margin-bottom: 20px;
+transition: 0.3s;
 }
 
 .method-card:hover .method-icon {
-    transform: scale(1.1);
-    color: #8ea79a;
+transform: scale(1.1);
+color: #8ea79a;
 }
 
 .method-card h3 {
-    font-size: 24px;
-    font-weight: 800;
-    color: #2c3e3a;
-    margin-bottom: 12px;
+font-size: 24px;
+font-weight: 800;
+color: #2c3e3a;
+margin-bottom: 12px;
 }
 
 .method-card p {
-    font-size: 16px;
-    color: #5e6f69;
-    line-height: 1.6;
+font-size: 16px;
+color: #5e6f69;
+line-height: 1.6;
 }
 
 /* معلومات إضافية تظهر عند hover */
 .method-hover-info {
-    position: absolute;
-    bottom: -50px;
-    left: 0;
-    right: 0;
-    background: #4f6357;
-    color: white;
-    padding: 12px;
-    font-size: 14px;
-    transition: 0.3s;
-    opacity: 0;
-    text-align: center;
+position: absolute;
+bottom: -50px;
+left: 0;
+right: 0;
+background: #4f6357;
+color: white;
+padding: 12px;
+font-size: 14px;
+transition: 0.3s;
+opacity: 0;
+text-align: center;
 }
 
 .method-card:hover .method-hover-info {
-    bottom: 0;
-    opacity: 1;
+bottom: 0;
+opacity: 1;
 }
 
 /* صندوق التلميحة */
 .tip-box {
-    background: #f0f7f3;
-    border-radius: 30px;
-    padding: 20px 30px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 30px;
-    border-right: 5px solid #8ea79a;
+background: #f0f7f3;
+border-radius: 30px;
+padding: 20px 30px;
+display: flex;
+align-items: center;
+gap: 15px;
+margin-bottom: 30px;
+border-right: 5px solid #8ea79a;
 }
 
 .tip-box i {
-    font-size: 32px;
-    color: #8ea79a;
+font-size: 32px;
+color: #8ea79a;
 }
 
 .tip-box p {
-    font-size: 18px;
-    color: #2c3e3a;
-    margin: 0;
-    font-weight: 500;
+font-size: 18px;
+color: #2c3e3a;
+margin: 0;
+font-weight: 500;
 }
 
 /* رسالة قريباً */
 .coming-soon {
-    text-align: center;
-    background: #fef5e8;
-    border-radius: 50px;
-    padding: 15px;
-    margin-top: 20px;
+text-align: center;
+background: #fef5e8;
+border-radius: 50px;
+padding: 15px;
+margin-top: 20px;
 }
 
 .coming-soon p {
-    font-size: 18px;
-    color: #b87c4e;
-    font-weight: 600;
-    margin: 0;
+font-size: 18px;
+color: #b87c4e;
+font-weight: 600;
+margin: 0;
 }
 
 /* استجابة للشاشات الصغيرة */
 @media (max-width: 768px) {
-    .add-recipe-page {
-        padding: 20px;
-    }
-    .add-recipe-container {
-        padding: 30px 20px;
-    }
-    .page-title {
-        font-size: 32px;
-    }
-    .page-subtitle {
-        font-size: 18px;
-        margin-bottom: 30px;
-    }
-    .method-card {
-        padding: 25px 20px;
-    }
-    .method-icon {
-        font-size: 45px;
-    }
-    .method-card h3 {
-        font-size: 20px;
-    }
-    .tip-box {
-        padding: 15px 20px;
-    }
-    .tip-box i {
-        font-size: 28px;
-    }
-    .tip-box p {
-        font-size: 16px;
-    }
+.add-recipe-page {
+padding: 20px;
+}
+.add-recipe-container {
+padding: 30px 20px;
+}
+.page-title {
+font-size: 32px;
+}
+.page-subtitle {
+font-size: 18px;
+margin-bottom: 30px;
+}
+.method-card {
+padding: 25px 20px;
+}
+.method-icon {
+font-size: 45px;
+}
+.method-card h3 {
+font-size: 20px;
+}
+.tip-box {
+padding: 15px 20px;
+}
+.tip-box i {
+font-size: 28px;
+}
+.tip-box p {
+font-size: 16px;
+}
 }
 
 /* ===================== */
@@ -1210,370 +1294,354 @@ h3::after {
 /* ===================== */
 
 .quiz-page {
-    padding: 40px;
-    background: #f9faf9;
-    min-height: 70vh;
+padding: 40px;
+background: #f9faf9;
+min-height: 70vh;
 }
 
 .quiz-container {
-    max-width: 900px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 40px;
-    padding: 40px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+max-width: 900px;
+margin: 0 auto;
+background: white;
+border-radius: 40px;
+padding: 40px;
+box-shadow: 0 15px 35px rgba(0,0,0,0.05);
 }
-
 .quiz-title {
-    text-align: center;
-    font-size: 28px;
-    font-weight: 800;
-    color: #4f6357;
-    margin-bottom: 10px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #e0e8e3;
+text-align: center;
+font-size: 28px;
+font-weight: 800;
+color: #4f6357;
+margin-bottom: 10px;
+padding-bottom: 15px;
+border-bottom: 2px solid #e0e8e3;
 }
 
 .quiz-instructions {
-    text-align: center;
-    color: #5e6f69;
-    margin-bottom: 30px;
-    font-size: 16px;
+text-align: center;
+color: #5e6f69;
+margin-bottom: 30px;
+font-size: 16px;
 }
 
 /* تنسيق كل سؤال */
 .question-card {
-    background: #f9fbfa;
-    border-radius: 24px;
-    padding: 20px 25px;
-    margin-bottom: 25px;
-    border: 1px solid #e0e8e3;
-    transition: 0.2s;
+background: #f9fbfa;
+border-radius: 24px;
+padding: 20px 25px;
+margin-bottom: 25px;
+border: 1px solid #e0e8e3;
+transition: 0.2s;
 }
 
 .question-card:hover {
-    border-color: #8ea79a;
-    background: #ffffff;
+border-color: #8ea79a;
+background: #ffffff;
 }
 
 .question-header {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px dashed #e0e8e3;
+display: flex;
+align-items: baseline;
+gap: 12px;
+margin-bottom: 15px;
+padding-bottom: 10px;
+border-bottom: 1px dashed #e0e8e3;
 }
 
 .q-num {
-    background: #4f6357;
-    color: white;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 14px;
+background: #4f6357;
+color: white;
+width: 30px;
+height: 30px;
+border-radius: 50%;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+font-weight: bold;
+font-size: 14px;
 }
 
 .q-text {
-    font-size: 18px;
-    font-weight: 600;
-    color: #2c3e3a;
-    flex: 1;
-    line-height: 1.5;
+font-size: 18px;
+font-weight: 600;
+color: #2c3e3a;
+flex: 1;
+line-height: 1.5;
 }
 
 .options-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding-right: 42px;
+display: flex;
+flex-direction: column;
+gap: 12px;
+padding-right: 42px;
 }
 
 .options-list label {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    font-size: 16px;
-    color: #2c3e3a;
-    padding: 8px 15px;
-    border-radius: 40px;
-    transition: 0.2s;
+display: flex;
+align-items: center;
+gap: 12px;
+cursor: pointer;
+font-size: 16px;
+color: #2c3e3a;
+padding: 8px 15px;
+border-radius: 40px;
+transition: 0.2s;
 }
 
 .options-list label:hover {
-    background: #f0f7f3;
+background: #f0f7f3;
 }
 
 .options-list input[type="radio"] {
-    width: 18px;
-    height: 18px;
-    accent-color: #4f6357;
-    cursor: pointer;
+width: 18px;
+height: 18px;
+accent-color: #4f6357;
+cursor: pointer;
 }
 
 /* زر الإرسال */
 .quiz-buttons {
-    text-align: center;
-    margin-top: 30px;
+text-align: center;
+margin-top: 30px;
 }
 
 .quiz-submit-btn {
-    background: #4f6357;
-    color: white;
-    padding: 14px 35px;
-    border-radius: 50px;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 4px 12px rgba(79,99,87,0.3);
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+background: #4f6357;
+color: white;
+padding: 14px 35px;
+border-radius: 50px;
+font-family: 'Tajawal', sans-serif;
+font-size: 18px;
+font-weight: 700;
+border: none;
+cursor: pointer;
+transition: 0.3s;
+box-shadow: 0 4px 12px rgba(79,99,87,0.3);
+display: inline-flex;
+align-items: center;
+gap: 8px;
 }
 
 .quiz-submit-btn:hover {
-    background: #6f8f82;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(79,99,87,0.4);
+background: #6f8f82;
+transform: translateY(-2px);
+box-shadow: 0 8px 20px rgba(79,99,87,0.4);
 }
 
 /* استجابة للشاشات الصغيرة */
 @media (max-width: 768px) {
-    .quiz-page {
-        padding: 20px;
-    }
-    .quiz-container {
-        padding: 25px 20px;
-    }
-    .quiz-title {
-        font-size: 24px;
-    }
-    .q-text {
-        font-size: 16px;
-    }
-    .options-list {
-        padding-right: 20px;
-    }
-    .options-list label {
-        font-size: 14px;
-        padding: 6px 12px;
-    }
-    .quiz-submit-btn {
-        padding: 12px 28px;
-        font-size: 16px;
-    }
+.quiz-page {
+padding: 20px;
 }
-/* صفحة نتيجة الاختبار */
-body {
-    font-family: 'Tajawal', sans-serif;
-    background: #f6f3f1;
-    margin: 0;
+.quiz-container {
+padding: 25px 20px;
+}
+.quiz-title {
+font-size: 24px;
+}
+.q-text {
+font-size: 16px;
+}
+.options-list {
+padding-right: 20px;
+}
+.options-list label {
+font-size: 14px;
+padding: 6px 12px;
+}
+.quiz-submit-btn {
+padding: 12px 28px;
+font-size: 16px;
+}
 }
 
-/* الصفحة */
+/* صفحة نتيجة الاختبار */
 .result-page {
-    display: flex;
-    justify-content: center;
-    padding: 60px 20px;
+display: flex;
+justify-content: center;
+padding: 60px 20px;
 }
 
 /* الكرت */
 .card {
-    width: 600px;
-    background: white;
-    border-radius: 25px;
-    padding: 40px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-
-    text-align: center;
+width: 600px;
+background: white;
+border-radius: 25px;
+padding: 40px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+text-align: center;
 }
 
 /* العنوان */
 .card h1 {
-    margin-bottom: 10px;
-    color: #2c3e3a;
+margin-bottom: 10px;
+color: #2c3e3a;
 }
 
 /* النص */
 .subtitle {
-    color: #666;
-    margin-bottom: 30px;
+color: #666;
+margin-bottom: 30px;
 }
 
 /* النتيجة */
 .score-box {
-    background: #f0f7f3;
-    padding: 25px;
-    border-radius: 20px;
-    margin-bottom: 40px;
+background: #f0f7f3;
+padding: 25px;
+border-radius: 20px;
+margin-bottom: 40px;
 }
 
 .score-box h2 {
-    margin: 10px 0;
-    color: #4f6357;
+margin: 10px 0;
+color: #4f6357;
 }
 
 /* الأزرار */
 .buttons {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px; 
+display: flex;
+justify-content: space-between;
+gap: 20px;
 }
 
 .buttons .btn {
-    text-align: center;
+text-align: center;
 }
 
 /* زر */
 .btn {
-    padding: 12px 20px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-size: 14px;
-
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    flex-direction: row-reverse;
+padding: 12px 20px;
+border-radius: 20px;
+text-decoration: none;
+font-size: 14px;
+display: flex;
+align-items: center;
+gap: 8px;
+flex-direction: row-reverse;
 }
 
 /* زر فاتح */
 .btn.light {
-    background: #eee;
-    color: #333;
-
+background: #eee;
+color: #333;
 }
 
 /* زر غامق */
 .btn.dark {
-    background: #4f6357;
-    color: white;
-
+background: #4f6357;
+color: white;
 }
+
 /* أيقونة الكأس */
 .trophy {
-    font-size: 40px;
-    color: #f4c542;
-    display: block;
-    margin-bottom: 10px;
- animation: glow 1.5s infinite alternate;
+font-size: 40px;
+color: #f4c542;
+display: block;
+margin-bottom: 10px;
+animation: glow 1.5s infinite alternate;
 }
 
 @keyframes glow {
-    from { transform: scale(1); }
-    to { transform: scale(1.1); }
-}
-.btn i {
-    font-size: 14px;
+from { transform: scale(1); }
+to { transform: scale(1.1); }
 }
 
-.btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.btn i {
+font-size: 14px;
 }
 
 /* ===================== */
 /* FOOTER */
 /* ===================== */
 .footer {
-    background: #ffffff;
-    padding: 40px 30px 20px;
-    margin-top: 20px;
-    border-top: 1px solid #eaeaea;
-    box-shadow: 0 -5px 20px rgba(0,0,0,0.02);
+background: #ffffff;
+padding: 40px 30px 20px;
+margin-top: 20px;
+border-top: 1px solid #eaeaea;
+box-shadow: 0 -5px 20px rgba(0,0,0,0.02);
 }
 
 .footer-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    flex-wrap: wrap;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 50px;
+flex-wrap: wrap;
 }
 
 .footer-left {
-    text-align: right;
+text-align: right;
 }
 
 .footer-left p {
-    font-family: 'Tajawal', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    color: #4f6357;
-    margin: 8px 0;
+font-family: 'Tajawal', sans-serif;
+font-size: 16px;
+font-weight: 500;
+color: #4f6357;
+margin: 8px 0;
 }
 
 .footer-right {
-    text-align: right;
+text-align: right;
 }
 
 .footer-right p {
-    font-family: 'Tajawal', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: #2c3e3a;
-    cursor: pointer;
-    transition: 0.3s;
+font-family: 'Tajawal', sans-serif;
+font-size: 16px;
+font-weight: 600;
+color: #2c3e3a;
+cursor: pointer;
+transition: 0.3s;
 }
 
 .footer-right p:hover {
-    color: #8ea79a;
+color: #8ea79a;
 }
 
 .footer-divider {
-    width: 1px;
-    height: 80px;
-    background: linear-gradient(to bottom, transparent, #ccc, transparent);
+width: 1px;
+height: 80px;
+background: linear-gradient(to bottom, transparent, #ccc, transparent);
 }
 
 .social-icons {
-    margin-top: 15px;
-    display: flex;
-    gap: 15px;
+margin-top: 15px;
+display: flex;
+gap: 15px;
 }
 
 .social-icons i {
-    font-size: 22px;
-    color: #8ea79a;
-    transition: 0.3s;
-    cursor: pointer;
-    background: #f0f7f3;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+font-size: 22px;
+color: #8ea79a;
+transition: 0.3s;
+cursor: pointer;
+background: #f0f7f3;
+width: 45px;
+height: 45px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
 .social-icons i:hover {
-    background: #4f6357;
-    color: white;
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(79,99,87,0.3);
+background: #4f6357;
+color: white;
+transform: translateY(-5px);
+box-shadow: 0 8px 15px rgba(79,99,87,0.3);
 }
 
 .footer-bottom {
-    text-align: center;
-    margin-top: 30px;
-    border-top: 1px solid #eaeaea;
-    padding-top: 20px;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 15px;
-    font-weight: 400;
-    color: #888;
+text-align: center;
+margin-top: 30px;
+border-top: 1px solid #eaeaea;
+padding-top: 20px;
+font-family: 'Tajawal', sans-serif;
+font-size: 15px;
+font-weight: 400;
+color: #888;
 }
 
 .footer-bottom p {
-    margin: 0;
+margin: 0;
 }
