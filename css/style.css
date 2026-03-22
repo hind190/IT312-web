@@ -1206,6 +1206,283 @@ h3::after {
 }
 
 /* ===================== */
+/* صفحة الكويز (جميع الأسئلة) */
+/* ===================== */
+
+.quiz-page {
+    padding: 40px;
+    background: #f9faf9;
+    min-height: 70vh;
+}
+
+.quiz-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 40px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+}
+
+.quiz-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 800;
+    color: #4f6357;
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e0e8e3;
+}
+
+.quiz-instructions {
+    text-align: center;
+    color: #5e6f69;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+/* تنسيق كل سؤال */
+.question-card {
+    background: #f9fbfa;
+    border-radius: 24px;
+    padding: 20px 25px;
+    margin-bottom: 25px;
+    border: 1px solid #e0e8e3;
+    transition: 0.2s;
+}
+
+.question-card:hover {
+    border-color: #8ea79a;
+    background: #ffffff;
+}
+
+.question-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #e0e8e3;
+}
+
+.q-num {
+    background: #4f6357;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.q-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e3a;
+    flex: 1;
+    line-height: 1.5;
+}
+
+.options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 42px;
+}
+
+.options-list label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #2c3e3a;
+    padding: 8px 15px;
+    border-radius: 40px;
+    transition: 0.2s;
+}
+
+.options-list label:hover {
+    background: #f0f7f3;
+}
+
+.options-list input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #4f6357;
+    cursor: pointer;
+}
+
+/* زر الإرسال */
+.quiz-buttons {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.quiz-submit-btn {
+    background: #4f6357;
+    color: white;
+    padding: 14px 35px;
+    border-radius: 50px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 12px rgba(79,99,87,0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.quiz-submit-btn:hover {
+    background: #6f8f82;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(79,99,87,0.4);
+}
+
+/* استجابة للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .quiz-page {
+        padding: 20px;
+    }
+    .quiz-container {
+        padding: 25px 20px;
+    }
+    .quiz-title {
+        font-size: 24px;
+    }
+    .q-text {
+        font-size: 16px;
+    }
+    .options-list {
+        padding-right: 20px;
+    }
+    .options-list label {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+    .quiz-submit-btn {
+        padding: 12px 28px;
+        font-size: 16px;
+    }
+}
+/* صفحة نتيجة الاختبار */
+body {
+    font-family: 'Tajawal', sans-serif;
+    background: #f6f3f1;
+    margin: 0;
+}
+
+/* الصفحة */
+.result-page {
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
+}
+
+/* الكرت */
+.card {
+    width: 600px;
+    background: white;
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
+    text-align: center;
+}
+
+/* العنوان */
+.card h1 {
+    margin-bottom: 10px;
+    color: #2c3e3a;
+}
+
+/* النص */
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* النتيجة */
+.score-box {
+    background: #f0f7f3;
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+}
+
+.score-box h2 {
+    margin: 10px 0;
+    color: #4f6357;
+}
+
+/* الأزرار */
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; 
+}
+
+.buttons .btn {
+    text-align: center;
+}
+
+/* زر */
+.btn {
+    padding: 12px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    flex-direction: row-reverse;
+}
+
+/* زر فاتح */
+.btn.light {
+    background: #eee;
+    color: #333;
+
+}
+
+/* زر غامق */
+.btn.dark {
+    background: #4f6357;
+    color: white;
+
+}
+/* أيقونة الكأس */
+.trophy {
+    font-size: 40px;
+    color: #f4c542;
+    display: block;
+    margin-bottom: 10px;
+ animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+.btn i {
+    font-size: 14px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ===================== */
 /* FOOTER */
 /* ===================== */
 .footer {
