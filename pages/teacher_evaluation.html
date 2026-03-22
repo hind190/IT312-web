@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تقييم المعلمين </title>
+    <link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="../images/logo.jpeg" alt="logo" width="60">
+        <h2>رشة</h2>
+    </div>
+    <div class="user">
+        <p class="welcome">مرحباً بك مجدداً</p>
+        <div class="user-box">
+            <img src="../images/user.png" alt="user">
+            <select>
+                <option>لوحة الطالب</option>
+                <option>المعلومات الشخصية</option>
+                <option>الوصفات المفضلة</option>
+                <option>دوراتي</option>
+                <option>ملاحظاتي</option>
+                <option>التقييمات</option>
+                <option>التواصل مع المعلمين</option>
+            </select>
+        </div>
+    </div>
+</header>
+
+<nav>
+    <input type="text" placeholder="بحث">
+    <ul>
+        <li><a href="../index.html">الرئيسية</a></li>
+        <li><a href="courses.html">الدورات</a></li>
+        <li><a href="recipes.html">الوصفات</a></li>
+        <li><a href="about.html">عن الموقع</a></li>
+        <li><a href="contact.html">تواصل معنا</a></li>
+    </ul>
+</nav>
+
+<div class="breadcrumbs">
+    <a href="../index.html">الرئيسية</a>
+    <a href="courses.html">الدورات</a>
+    <span>تقييم المعلمين</span>
+</div>
+
+<main class="evaluation-page">
+
+    <div class="evaluation-header">
+        <h1>تقييم المعلمين</h1>
+        <p>اختر المعلم وشاركنا رأيك</p>
+    </div>
+
+    <!-- نموذج التقييم مع قائمة منسدلة -->
+    <div class="evaluation-form">
+        
+        <!-- قائمة اختيار المعلم -->
+        <div class="teacher-select">
+            <label for="teacher">اختر المعلم:</label>
+            <select id="teacher" class="teacher-dropdown">
+                <option value="">-- اختر المعلم --</option>
+                <option value="مريم">الشيف مريم</option>
+                <option value="نوره">الشيف نوره</option>
+                <option value="علي">الشيف علي</option>
+                <option value="سحر">الشيف سحر</option>
+                <option value="محمد">الشيف محمد</option>
+            </select>
+        </div>
+
+        <!-- نجوم التقييم -->
+        <div class="rating-stars">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+        </div>
+
+        <!-- حقل التعليق -->
+        <textarea rows="4" placeholder="اكتب تعليقك على المعلم..."></textarea>
+
+        <!-- زر الإرسال -->
+        <button class="submit-btn">إرسال التقييم</button>
+
+    </div>
+
+    <!-- آراء الطلاب السابقة -->
+    <div class="reviews-section">
+        <h2>آراء الطلاب</h2>
+        <p class="reviews-count">تقييمات سابقة من طلابنا</p>
+        
+        <div class="review-card">
+            <div class="review-header">
+                <div class="reviewer-info">
+                    <img src="../images/user.png" alt="طالب" class="reviewer-avatar">
+                    <span class="reviewer-name">نورة عبدالله</span>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <p class="review-text">الشيف مريم كانت رائعة! شرحها واضح ومبسط، استفدت جداً من الدورة</p>
+        </div>
+
+        
+
+        <div class="review-card">
+            <div class="review-header">
+                <div class="reviewer-info">
+                    <img src="../images/user.png" alt="طالب" class="reviewer-avatar">
+                    <span class="reviewer-name">هند القحطاني</span>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <p class="review-text">الشيف نوره ممتازة، شروحاتها واضحة وتجيب للطالب بطريقة سلسة. دورة متكامل</p>
+        </div>
+    </div>
+
+</main>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-left">
+            <p>تواصل معنا</p>
+            <p>+966000000</p>
+            <p>Rasha@gmail.com</p>
+            <div class="social-icons">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-whatsapp"></i>
+            </div>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-right">
+            <p>الشروط والأحكام</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>©️ رشة</p>
+    </div>
+</footer>
+
+</body>
+</html>
