@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار القهوة السعودية | رشة</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/quiz.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="../../images/logo.jpeg" alt="شعار رشة" width="60">
+            <h2>رشة</h2>
+        </div>
+        <div class="user">
+            <p class="welcome">مرحباً بك مجدداً</p>
+            <div class="user-box">
+                <img src="../../images/user.png" alt="صورة المستخدم">
+                <select>
+                    <option>لوحة الطالب</option>
+                    <option>المعلومات الشخصية</option>
+                    <option>الوصفات المفضلة</option>
+                    <option>دوراتي</option>
+                    <option>ملاحظاتي</option>
+                    <option>التقييمات</option>
+                    <option>التواصل مع المعلمين</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <input type="text" placeholder="بحث">
+        <ul>
+            <li><a href="../../index.html">الرئيسية</a></li>
+            <li><a href="../../courses.html">الدورات</a></li>
+            <li><a href="../../recipes.html">الوصفات</a></li>
+            <li><a href="../../about.html">عن الموقع</a></li>
+            <li><a href="../../contact.html">تواصل معنا</a></li>
+        </ul>
+    </nav>
+
+    <div class="breadcrumbs">
+        <a href="../../index.html">الرئيسية</a>
+        <a href="../../courses.html">الدورات</a>
+        <a href="../../courses/culture.html">الطبخ التقليدي</a>
+        <span>اختبار القهوة السعودية</span>
+    </div>
+
+    <main class="quiz-page">
+        <div class="quiz-container">
+            <h1 class="quiz-title">اختبار درس القهوة السعودية</h1>
+            <p class="quiz-instructions">أجب عن جميع الأسئلة التالية ثم اضغط "إرسال الاختبار".</p>
+
+            <form action="../result.html" method="get" class="quiz-form">
+                <!-- السؤال 1 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="q-num">1</span>
+                        <span class="q-text">أي من المكونات التالية ليس من مكونات القهوة السعودية الأساسية (حسب الجدول)؟</span>
+                    </div>
+                    <div class="options-list">
+                        <label><input type="radio" name="q1" value="بن سعودي"> بن سعودي</label>
+                        <label><input type="radio" name="q1" value="هيل مطحون"> هيل مطحون</label>
+                        <label><input type="radio" name="q1" value="سكر"> سكر</label>
+                        <label><input type="radio" name="q1" value="زعفران"> زعفران</label>
+                    </div>
+                </div>
+
+                <!-- السؤال 2 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="q-num">2</span>
+                        <span class="q-text">حسب خطوات التحضير، كم دقيقة تترك القهوة تغلي على نار هادئة بعد إضافة التوابل؟</span>
+                    </div>
+                    <div class="options-list">
+                        <label><input type="radio" name="q2" value="5 دقائق"> 5 دقائق</label>
+                        <label><input type="radio" name="q2" value="10 دقائق"> 10 دقائق</label>
+                        <label><input type="radio" name="q2" value="15 دقيقة"> 15 دقيقة</label>
+                        <label><input type="radio" name="q2" value="20 دقيقة"> 20 دقيقة</label>
+                    </div>
+                </div>
+
+                <!-- السؤال 3 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="q-num">3</span>
+                        <span class="q-text">ما هي الأداة التقليدية المستخدمة لطحن البن في الثقافة السعودية؟</span>
+                    </div>
+                    <div class="options-list">
+                        <label><input type="radio" name="q3" value="خلاط كهربائي"> خلاط كهربائي</label>
+                        <label><input type="radio" name="q3" value="هاون ومدقة (مهباش)"> هاون ومدقة (مهباش)</label>
+                        <label><input type="radio" name="q3" value="مطحنة يدوية"> مطحنة يدوية</label>
+                        <label><input type="radio" name="q3" value="مبشرة"> مبشرة</label>
+                    </div>
+                </div>
+
+                <!-- السؤال 4 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="q-num">4</span>
+                        <span class="q-text">وفقًا لآداب تقديم القهوة السعودية، ماذا يعني هز الفنجان (هز الدلة أو الفنجان)؟</span>
+                    </div>
+                    <div class="options-list">
+                        <label><input type="radio" name="q4" value="الرغبة في المزيد"> الرغبة في المزيد</label>
+                        <label><input type="radio" name="q4" value="الاكتفاء (لا تريد المزيد)"> الاكتفاء (لا تريد المزيد)</label>
+                        <label><input type="radio" name="q4" value="طلب سكر"> طلب سكر</label>
+                        <label><input type="radio" name="q4" value="طلب إعادة تسخين"> طلب إعادة تسخين</label>
+                    </div>
+                </div>
+
+                <!-- السؤال 5 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="q-num">5</span>
+                        <span class="q-text">أي من التوابل التالية **ليس** من التوابل التقليدية المضافة للقهوة السعودية؟</span>
+                    </div>
+                    <div class="options-list">
+                        <label><input type="radio" name="q5" value="هيل"> هيل</label>
+                        <label><input type="radio" name="q5" value="زعفران"> زعفران</label>
+                        <label><input type="radio" name="q5" value="قرفة"> قرفة</label>
+                        <label><input type="radio" name="q5" value="قرنفل (مسمار)"> قرنفل (مسمار)</label>
+                    </div>
+                </div>
+
+                <div class="quiz-buttons">
+                    <button type="submit" class="quiz-submit-btn">إرسال الاختبار</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <p>تواصل معنا</p>
+                <p>+966000000</p>
+                <p>Rasha@gmail.com</p>
+                <div class="social-icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-right">
+                <p>الشروط والأحكام</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© رشة</p>
+        </div>
+    </footer>
+
+</body>
+</html>
