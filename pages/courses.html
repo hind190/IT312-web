@@ -1,28 +1,29 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <title>الدورات</title>
-	<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
     <!-- ========== الهيدر ========== -->
-    <header>
-        <div class="logo">
+    <header class="my-header">
+        <div class="my-logo">
             <img src="../images/logo.jpeg" alt="logo" width="60">
             <h2>رشة</h2>
         </div>
 
-        <div class="user">
-            <p class="welcome">مرحباً بك مجدداً</p>
-            <div class="user-box">
+        <div class="my-user">
+            <p class="my-welcome">مرحباً بك مجدداً</p>
+            <div class="my-user-box">
                 <img src="../images/user.png" alt="user">
-                <select>
+                <select class="my-select">
                     <option>لوحة الطالب</option>
                     <option>المعلومات الشخصية</option>
                     <option>الوصفات المفضلة</option>
@@ -37,222 +38,213 @@
 
    
     <!-- NAVBAR -->
-<nav>
-
-<input type="text" placeholder="بحث">
-
-<ul>
-
-<li><a href="../index.html">الرئيسية</a></li>
-
-<li><a href="courses.html">الدورات</a></li>
-
-<li><a href="recipes.html">الوصفات</a></li>
-
-<li><a href="about.html">عن الموقع</a></li>
-
-<li><a href="contact.html">تواصل معنا</a></li>
-
-</ul>
-
-</nav>
+    <nav class="my-nav">
+        <input type="text" placeholder="بحث" class="my-search-input">
+        <ul class="my-nav-list">
+            <li><a href="../index.html">الرئيسية</a></li>
+            <li><a href="courses.html">الدورات</a></li>
+            <li><a href="recipes.html">الوصفات</a></li>
+            <li><a href="about.html">عن الموقع</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+    </nav>
   
-    <div class="breadcrumbs">
+    <div class="my-breadcrumbs">
         <a href="../index.html">الرئيسية</a>
         <span>الدورات</span>
     </div>
 
 
-    <div class="courses-section">
+    <div class="my-courses-section">
         
-        <div class="page-title">
+        <div class="my-page-title">
             <h2>الدورات التعليمية</h2>
             <p>تعلم الطهي من خلال مجموعة متنوعة من الدورات التعليمية</p>
         </div>
 
         
-        <div class="category-filters">
-            <ul class="filter-list">
-                <li><a href="#" class="filter-btn active">الكل</a></li>
-                <li><a href="#" class="filter-btn">للمبتدئين</a></li>
-                <li><a href="#" class="filter-btn">أكلات صحية</a></li>
-                <li><a href="#" class="filter-btn">حلويات</a></li>
-                <li><a href="#" class="filter-btn">معجنات</a></li>
-				<li><a href="#" class="filter-btn">مشروبات</a></li>
-            
-                <li><a href="#" class="filter-btn">الأكل السريع</a></li>
+        <div class="my-category-filters">
+            <ul class="my-filter-list">
+                <li><a href="#" class="my-filter-btn my-active">الكل</a></li>
+                <li><a href="#" class="my-filter-btn">للمبتدئين</a></li>
+                <li><a href="#" class="my-filter-btn">أكلات صحية</a></li>
+                <li><a href="#" class="my-filter-btn">حلويات</a></li>
+                <li><a href="#" class="my-filter-btn">معجنات</a></li>
+                <li><a href="#" class="my-filter-btn">مشروبات</a></li>
+                <li><a href="#" class="my-filter-btn">الأكل السريع</a></li>
             </ul>
         </div>
 
         <!-- شبكة الدورات (6 دورات) -->
-<div class="courses-grid">
+        <div class="my-courses-grid">
     
-    <!-- دورة 1 -->
-    <div class="course-card">
-        <div class="course-image">
-            <img src="../images/courseP2.jpeg" alt="اساسيات المطبخ">
-        </div>
-        <div class="course-content">
-            <h3 class="course-title"><a href="lessons/lesson2_page1.html">أساسيات المطبخ</a></h3>
-            <p class="course-description">دورة شاملة تهدف إلى تعليم أساسيات الطهي، واستخدام الأدوات بطريقة آمنة وفعالة.</p>
-            <div class="course-categories">
-                <span class="category-badge">للمبتدئين</span>
-            </div>
-            <div class="teacher">
-                <img src="../images/marim1.jpeg" alt="صورة الشيف" class="chef-avatar">
-                <div class="teacher-info">
-                    <span class="teacher-name">الشيف مريم</span>
-                    <div class="rating">
-                        <span class="stars">★★★★★</span>
+            <!-- دورة 1 -->
+            <div class="my-course-card">
+                <div class="my-course-image">
+                    <img src="../images/courseP2.jpeg" alt="اساسيات المطبخ">
+                </div>
+                <div class="my-course-content">
+                    <h3 class="my-course-title"><a href="lessons/lesson2_page1.html">أساسيات المطبخ</a></h3>
+                    <p class="my-course-description">دورة شاملة تهدف إلى تعليم أساسيات الطهي، واستخدام الأدوات بطريقة آمنة وفعالة.</p>
+                    <div class="my-course-categories">
+                        <span class="my-category-badge">للمبتدئين</span>
                     </div>
+                    <div class="my-teacher">
+                        <img src="../images/marim1.jpeg" alt="صورة الشيف" class="my-chef-avatar">
+                        <div class="my-teacher-info">
+                            <span class="my-teacher-name">الشيف مريم</span>
+                            <div class="my-rating">
+                                <span class="my-stars">★★★★★</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="lessons/lesson2_page1.html" class="my-course-link">عرض الدرس</a>
                 </div>
             </div>
-            <a href="lessons/lesson2_page1.html" class="course-link">عرض الدورة</a>
+
+            <!-- دورة 2 -->
+            <div class="my-course-card">
+                <div class="my-course-image">
+                    <img src="../images/courseP1.jpeg" alt="دورة الحلويات">
+                </div>
+                <div class="my-course-content">
+                    <h3 class="my-course-title"><a href="lessons/lesson1_page1.html">دورة الحلويات</a></h3>
+                    <p class="my-course-description">دورة تأسيسية في عالم الحلويات، تشمل التعرف على المكونات الأساسية وتقنيات الخبز البسيطة.</p>
+                    <div class="my-course-categories">
+                        <span class="my-category-badge">حلويات</span>
+                    </div>
+                    <div class="my-teacher">
+                        <img src="../images/nor1.jpeg" alt="صورة الشيف" class="my-chef-avatar">
+                        <div class="my-teacher-info">
+                            <span class="my-teacher-name">الشيف نوره</span>
+                            <div class="my-rating">
+                                <span class="my-stars">★★★★☆</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="lessons/lesson1_page1.html" class="my-course-link">عرض الدرس</a>
+                </div>
+            </div>
+
+            <!-- دورة 3 -->
+            <div class="my-course-card">
+                <div class="my-course-image">
+                    <img src="../images/courseP3.jpeg" alt="الأكل الصحي">
+                </div>
+                <div class="my-course-content">
+                    <h3 class="my-course-title"><a href="lessons/lesson3_page1.html">الأكل الصحي</a></h3>
+                    <p class="my-course-description">دورة تركز على إعداد وجبات متوازنة غذائياً باستخدام مكونات طبيعية ومناسبة لجميع الأعمار.</p>
+                    <div class="my-course-categories">
+                        <span class="my-category-badge">أكلات صحية</span>
+                    </div>
+                    <div class="my-teacher">
+                        <img src="../images/ail1.jpeg" alt="صورة الشيف" class="my-chef-avatar">
+                        <div class="my-teacher-info">
+                            <span class="my-teacher-name">الشيف علي</span>
+                            <div class="my-rating">
+                                <span class="my-stars">★★★☆☆</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="lessons/lesson3_page1.html" class="my-course-link">عرض الدرس</a>
+                </div>
+            </div>
+
+            <!-- دورة 4 -->
+            <div class="my-course-card">
+                <div class="my-course-image">
+                    <img src="../images/courseP4.jpeg" alt="المعجنات">
+                </div>
+                <div class="my-course-content">
+                    <h3 class="my-course-title"><a href="lessons/lesson4_page1.html">المعجنات والفطائر</a></h3>
+                    <p class="my-course-description">دورة متخصصة في تحضير أنواع العجائن المختلفة، وحشواتها، بأساليب احترافية.</p>
+                    <div class="my-course-categories">
+                        <span class="my-category-badge">معجنات</span>
+                    </div>
+                    <div class="my-teacher">
+                        <img src="../images//sahar1.jpeg" alt="صورة الشيف" class="my-chef-avatar">
+                        <div class="my-teacher-info">
+                            <span class="my-teacher-name">الشيف سحر</span>
+                            <div class="my-rating">
+                                <span class="my-stars">★★★★★</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="lessons/lesson4_page1.html" class="my-course-link">عرض الدرس</a>
+                </div>
+            </div>
+
+            <!-- دورة 5 -->
+            <div class="my-course-card">
+                <div class="my-course-image">
+                    <img src="../images/coffee.jpeg" alt="أساسيات القهوة">
+                </div>
+                <div class="my-course-content">
+                    <h3 class="my-course-title"><a href="lessons/lesson5_page1.html">أساسيات القهوة</a></h3>
+                    <p class="my-course-description">دورة تعليم أساسيات القهوة وطرق تحضيرها بطريقة سهلة واحترافية,من اختيار البن الى اعداد القهوة</p>
+                    <div class="my-course-categories">
+                        <span class="my-category-badge">مشروبات</span>
+                    </div>
+                    <div class="my-teacher">
+                        <img src="../images/nor1.jpeg" alt="صورة الشيف" class="my-chef-avatar">
+                        <div class="my-teacher-info">
+                            <span class="my-teacher-name">الشيف نوره</span>
+                            <div class="my-rating">
+                                <span class="my-stars">★★★★☆</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="lessons/lesson5_page1.html" class="my-course-link">عرض الدرس</a>
+                </div>
+            </div>
+
+            <!-- دورة 6 -->
+            <div class="my-course-card">
+                <div class="my-course-image">
+                    <img src="../images/courseP6.jpeg" alt="طبخ سريع">
+                </div>
+                <div class="my-course-content">
+                    <h3 class="my-course-title"><a href="lessons/lesson6_page1.html">الطبخ السريع</a></h3>
+                    <p class="my-course-description">دورة عملية لإعداد وجبات سريعة ولذيذة تناسب الأوقات المزدحمة دون التضحية بالجودة.</p>
+                    <div class="my-course-categories">
+                        <span class="my-category-badge">الأكل السريع</span>
+                    </div>
+                    <div class="my-teacher">
+                        <img src="../images/moh1.jpeg" alt="صورة الشيف" class="my-chef-avatar">
+                        <div class="my-teacher-info">
+                            <span class="my-teacher-name">الشيف محمد</span>
+                            <div class="my-rating">
+                                <span class="my-stars">★★★☆☆</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="lessons/lesson6_page1.html" class="my-course-link">عرض الدرس</a>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- دورة 2 -->
-    <div class="course-card">
-        <div class="course-image">
-            <img src="../images/courseP1.jpeg" alt="دورة الحلويات">
-        </div>
-        <div class="course-content">
-            <h3 class="course-title"><a href="lessons/lesson1_page1.html">دورة الحلويات</a></h3>
-            <p class="course-description">دورة تأسيسية في عالم الحلويات، تشمل التعرف على المكونات الأساسية وتقنيات الخبز البسيطة.</p>
-            <div class="course-categories">
-                <span class="category-badge">حلويات</span>
-            </div>
-            <div class="teacher">
-                <img src="../images/nor1.jpeg" alt="صورة الشيف" class="chef-avatar">
-                <div class="teacher-info">
-                    <span class="teacher-name">الشيف نوره</span>
-                    <div class="rating">
-                        <span class="stars">★★★★☆</span>
-                    </div>
-                </div>
-            </div>
-            <a href="lessons/lesson1_page1.html" class="course-link">عرض الدورة</a>
-        </div>
-    </div>
 
-    <!-- دورة 3 -->
-    <div class="course-card">
-        <div class="course-image">
-            <img src="../images/courseP3.jpeg" alt="الأكل الصحي">
-        </div>
-        <div class="course-content">
-            <h3 class="course-title"><a href="lessons/lesson3_page1.html">الأكل الصحي</a></h3>
-            <p class="course-description">دورة تركز على إعداد وجبات متوازنة غذائياً باستخدام مكونات طبيعية ومناسبة لجميع الأعمار.</p>
-            <div class="course-categories">
-                <span class="category-badge">أكلات صحية</span>
-            </div>
-            <div class="teacher">
-                <img src="../images/ail1.jpeg" alt="صورة الشيف" class="chef-avatar">
-                <div class="teacher-info">
-                    <span class="teacher-name">الشيف علي</span>
-                    <div class="rating">
-                        <span class="stars">★★★☆☆</span>
-                    </div>
-                </div>
-            </div>
-            <a href="lessons/lesson3_page1.html" class="course-link">عرض الدورة</a>
-        </div>
-    </div>
-
-    <!-- دورة 4 -->
-    <div class="course-card">
-        <div class="course-image">
-            <img src="../images/courseP4.jpeg" alt="المعجنات">
-        </div>
-        <div class="course-content">
-            <h3 class="course-title"><a href="lessons/lesson4_page1.html">المعجنات والفطائر</a></h3>
-            <p class="course-description">دورة متخصصة في تحضير أنواع العجائن المختلفة، وحشواتها، بأساليب احترافية.</p>
-            <div class="course-categories">
-                <span class="category-badge">معجنات</span>
-            </div>
-            <div class="teacher">
-                <img src="../images//sahar1.jpeg" alt="صورة الشيف" class="chef-avatar">
-                <div class="teacher-info">
-                    <span class="teacher-name">الشيف سحر</span>
-                    <div class="rating">
-                        <span class="stars">★★★★★</span>
-                    </div>
-                </div>
-            </div>
-            <a href="lessons/lesson4_page1.html" class="course-link">عرض الدورة</a>
-        </div>
-    </div>
-
-    <!-- دورة 5 -->
-    <div class="course-card">
-        <div class="course-image">
-            <img src="../images/coffee.jpeg" alt="أساسيات القهوة">
-        </div>
-        <div class="course-content">
-            <h3 class="course-title"><a href="lessons/lesson5_page1.html">أساسيات القهوة</a></h3>
-            <p class="course-description">دورة تعليم أساسيات القهوة وطرق تحضيرها بطريقة سهلة واحترافية,من اختيار البن الى اعداد القهوة</p>
-            <div class="course-categories">
-                <span class="category-badge">مشروبات</span>
-            </div>
-            <div class="teacher">
-                <img src="../images/nor1.jpeg" alt="صورة الشيف" class="chef-avatar">
-                <div class="teacher-info">
-                    <span class="teacher-name">الشيف نوره</span>
-                    <div class="rating">
-                        <span class="stars">★★★★☆</span>
-                    </div>
-                </div>
-            </div>
-            <a href="lessons/lesson5_page1.html" class="course-link">عرض الدورة</a>
-        </div>
-    </div>
-
-    <!-- دورة 6 -->
-    <div class="course-card">
-        <div class="course-image">
-            <img src="../images/courseP6.jpeg" alt="طبخ سريع">
-        </div>
-        <div class="course-content">
-            <h3 class="course-title"><a href="lessons/lesson6_page1.html">الطبخ السريع</a></h3>
-            <p class="course-description">دورة عملية لإعداد وجبات سريعة ولذيذة تناسب الأوقات المزدحمة دون التضحية بالجودة.</p>
-            <div class="course-categories">
-                <span class="category-badge">الأكل السريع</span>
-            </div>
-            <div class="teacher">
-                <img src="../images/moh1.jpeg" alt="صورة الشيف" class="chef-avatar">
-                <div class="teacher-info">
-                    <span class="teacher-name">الشيف محمد</span>
-                    <div class="rating">
-                        <span class="stars">★★★☆☆</span>
-                    </div>
-                </div>
-            </div>
-            <a href="lessons/lesson6_page1.html" class="course-link">عرض الدورة</a>
-        </div>
-    </div>
-
-</div>
-
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-left">
+    <footer class="my-footer">
+        <div class="my-footer-container">
+            <div class="my-footer-left">
                 <p>تواصل معنا</p>
                 <p>+966000000</p>
                 <p>Rasha@gmail.com</p>
-                <div class="social-icons">
+                <div class="my-social-icons">
                     <i class="fab fa-facebook-f"></i>
                     <i class="fab fa-instagram"></i>
                     <i class="fab fa-twitter"></i>
                     <i class="fab fa-whatsapp"></i>
                 </div>
             </div>
-            <div class="footer-divider"></div>
-            <div class="footer-right">
+            <div class="my-footer-divider"></div>
+            <div class="my-footer-right">
                 <p>الشروط والأحكام</p>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>©️ رشة</p>
+        <div class="my-footer-bottom">
+            <p>© رشة</p>
         </div>
     </footer>
 
