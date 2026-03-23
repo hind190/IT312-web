@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رشة - دوراتي</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <img src="../images/logo.jpeg" alt="رشة">
+            <h2>رشة</h2>
+        </div>
+        <div class="user">
+            <span class="welcome">مرحباً مجدداً</span>
+            <div class="user-box">
+                <img src="../images/user.png" alt="صورة المستخدم">
+                <div class="dropdown">
+                    <button class="dropdown-btn">
+                        لوحة الطالب
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="personal-info.html"><i class="fas fa-user"></i> المعلومات الشخصية</a>
+                        <a href="favorite-recipes.html"><i class="fas fa-heart"></i> الوصفات المفضلة</a>
+                        <a href="my-courses.html"><i class="fas fa-book-open"></i> دوراتي</a>
+                        <a href="my-notes.html"><i class="fas fa-sticky-note"></i> ملاحظاتي</a>
+                        <a href="evaluations.html"><i class="fas fa-star"></i> التقييمات</a>
+                        <a href="contact-teachers.html"><i class="fas fa-chalkboard-teacher"></i> التواصل مع المعلمين</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVBAR -->
+   <nav>
+    <ul>
+        <li><a href="../index.html">الرئيسية</a></li>
+        <li><a href="courses.html">الدورات</a></li>
+        <li><a href="recipes.html">الوصفات</a></li>
+        <li><a href="about.html">عن الموقع</a></li>
+        <li><a href="contact.html">تواصل معنا</a></li>
+    </ul>
+    <input type="text" placeholder="بحث">
+</nav>
+    <!-- BREADCRUMBS -->
+    <div class="breadcrumbs">
+        <a href="../index.html">الرئيسية</a>
+        <span>دوراتي</span>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="dashboard-container">
+        <!-- عنوان الصفحة -->
+        <div class="page-header">
+            <h1>دوراتي</h1>
+            <p class="sub-header">تتبع تقدمك في الدورات واستمر في التعلم</p>
+        </div>
+
+        <!-- شبكة الدورات -->
+        <div class="courses-grid">
+            <!-- دورة 1: أساسيات المطبخ -->
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="../images/courseP2.jpeg" alt="أساسيات المطبخ">
+                    <div class="course-progress-badge">100%</div>
+                </div>
+                <div class="course-info">
+                    <h3>أساسيات المطبخ</h3>
+                    <p class="teacher-name">الشيف مريم</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%;"></div>
+                    </div>
+                    <a href="lessons/lesson2_page1.html" class="course-btn">متابعة الدورة</a>
+                </div>
+            </div>
+
+            <!-- دورة 2: دورة الحلويات  -->
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="../images/courseP1.jpeg" alt="دورة الحلويات">
+                    <div class="course-progress-badge">100%</div>
+                </div>
+                <div class="course-info">
+                    <h3>دورة الحلويات</h3>
+                    <p class="teacher-name">الشيف نوره</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%;"></div>
+                    </div>
+                    <a href="lessons/lesson1_page1.html" class="course-btn">متابعة الدورة</a>
+                </div>
+            </div>
+
+            <!-- دورة 3: الأكل الصحي -->
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="../images/courseP3.jpeg" alt="الأكل الصحي">
+                    <div class="course-progress-badge">60%</div>
+                </div>
+                <div class="course-info">
+                    <h3>الأكل الصحي</h3>
+                    <p class="teacher-name">الشيف علي</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%;"></div>
+                    </div>
+                    <a href="lessons/lesson3_page1.html" class="course-btn">متابعة الدورة</a>
+                </div>
+            </div>
+
+            <!-- دورة 4: المعجنات والفطائر  -->
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="../images/courseP4.jpeg" alt="المعجنات والفطائر">
+                    <div class="course-progress-badge">0%</div>
+                </div>
+                <div class="course-info">
+                    <h3>المعجنات والفطائر</h3>
+                    <p class="teacher-name">الشيف سحر</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                    <a href="lessons/lesson4_page1.html" class="course-btn">متابعة الدورة</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <p>تواصل معنا</p>
+                <p>+966000000</p>
+                <p>Rasha@gmail.com</p>
+                <div class="social-icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-right">
+                <p>الشروط والأحكام</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© رشة</p>
+        </div>
+    </footer>
+</body>
+</html>

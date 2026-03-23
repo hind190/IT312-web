@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رشة - المعلومات الشخصية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <img src="../images/logo.jpeg" alt="رشة">
+            <h2>رشة</h2>
+        </div>
+        <div class="user">
+            <span class="welcome">مرحباً مجدداً</span>
+            <div class="user-box">
+                <img src="../images/user.png" alt="صورة المستخدم">
+                <div class="dropdown">
+                    <button class="dropdown-btn">
+                        لوحة الطالب
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="personal-info.html"><i class="fas fa-user"></i> المعلومات الشخصية</a>
+                        <a href="favorite-recipes.html"><i class="fas fa-heart"></i> الوصفات المفضلة</a>
+                        <a href="my-courses.html"><i class="fas fa-book-open"></i> دوراتي</a>
+                        <a href="my-notes.html"><i class="fas fa-sticky-note"></i> ملاحظاتي</a>
+                        <a href="evaluations.html"><i class="fas fa-star"></i> التقييمات</a>
+                        <a href="contact-teachers.html"><i class="fas fa-chalkboard-teacher"></i> التواصل مع المعلمين</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVBAR -->
+  <nav>
+    <ul>
+        <li><a href="../index.html">الرئيسية</a></li>
+        <li><a href="courses.html">الدورات</a></li>
+        <li><a href="recipes.html">الوصفات</a></li>
+        <li><a href="about.html">عن الموقع</a></li>
+        <li><a href="contact.html">تواصل معنا</a></li>
+    </ul>
+    <input type="text" placeholder="بحث">
+</nav>
+
+    <!-- BREADCRUMBS -->
+    <div class="breadcrumbs">
+        <a href="../index.html">الرئيسية</a>
+        <span>المعلومات الشخصية</span>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="dashboard-container">
+        <!-- عنوان الصفحة -->
+        <div class="page-header">
+            <h1>المعلومات الشخصية</h1>
+            <p class="sub-header">يمكنك عرض وتعديل معلوماتك الشخصية من هنا</p>
+        </div>
+
+        <!-- قسم تعديل الصور -->
+        <section class="profile-section">
+            <h2><i class="fas fa-camera"></i> تعديل الصور</h2>
+            <div class="profile-images">
+                <div class="main-image">
+                    <img src="../images/user.png" alt="الصورة الشخصية">
+                    <button class="edit-btn"><i class="fas fa-pen"></i> تعديل</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم المعلومات الأساسية -->
+<section class="profile-section">
+    <h2><i class="fas fa-id-card"></i> المعلومات الأساسية</h2>
+    
+    <div class="info-grid">
+        <!-- الصف الأول: الاسم الأول + اسم العائلة -->
+        <div class="info-item">
+            <label>الاسم الأول</label>
+            <input type="text" class="info-input" value="سارة">
+        </div>
+
+        <div class="info-item">
+            <label>اسم العائلة</label>
+            <input type="text" class="info-input" value="العمري">
+        </div>
+
+        <!-- الصف الثاني: تاريخ الميلاد + رقم الجوال -->
+        <div class="info-item">
+            <label>تاريخ الميلاد</label>
+            <input type="text" class="info-input" value="١٥ مارس ٢٠٠٠">
+        </div>
+
+        <div class="info-item">
+            <label>رقم الجوال</label>
+            <input type="text" class="info-input" value="+966 50 123 4567">
+        </div>
+
+        <!-- الصف الثالث: الدولة (قائمة منسدلة) -->
+        <div class="info-item full-width">
+            <label>الدولة</label>
+            <select class="info-select">
+                <option>المملكة العربية السعودية</option>
+                <option>الإمارات العربية المتحدة</option>
+                <option>الكويت</option>
+                <option>قطر</option>
+                <option>البحرين</option>
+                <option>عمان</option>
+            </select>
+        </div>
+
+        <!-- الصف الرابع: البريد الإلكتروني - -->
+        <div class="info-item full-width">
+            <label>البريد الإلكتروني</label>
+            <input type="email" class="info-input" value="sara.alomari@rashah.com">
+        </div>
+    </div>
+</section>
+
+        <!-- زر حفظ التغييرات -->
+        <div class="action-buttons">
+            <button class="save-btn"><i class="fas fa-save"></i>حفظ</button>
+        </div>
+    </main>
+
+   <!-- الفوتر -->
+<footer class="footer">
+
+<div class="footer-container">
+
+
+<div class="footer-left">
+<p>تواصل معنا</p>
+<p>+966000000</p>
+<p>Rasha@gmail.com</p>
+
+<div class="social-icons">
+<i class="fab fa-facebook-f"></i>
+<i class="fab fa-instagram"></i>
+<i class="fab fa-twitter"></i>
+<i class="fab fa-whatsapp"></i>
+</div>
+</div>
+
+
+<div class="footer-divider"></div>
+
+
+<div class="footer-right">
+<p>الشروط والأحكام</p>
+</div>
+
+</div>
+
+
+<div class="footer-bottom">
+<p>© رشة</p>
+</div>
+
+</footer>
+
+</body>
+</html>
