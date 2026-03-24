@@ -23,44 +23,38 @@
 <p class="welcome">مرحباً بك مجدداً</p>
 <div class="user-box">
         <img src="../images/user.png" alt="user">
-<select>
-<option>لوحة الطالب</option>
-<option>المعلومات الشخصية</option>
-<option> الوصفات المفضلة</option>
-<option> دوراتي</option>
-<option>ملاحظاتي</option>
-<option>التقييمات</option>
-<option>التواصل مع المعلمين</option>
-</select>
-</div>
+<div class="dropdown">
+    <button class="dropdown-btn">
+        لوحة الطالب
+        <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="dropdown-content">
+        <a href="personal-info.html"><i class="fas fa-user"></i> المعلومات الشخصية</a>
+        <a href="favorite-recipes.html"><i class="fas fa-heart"></i> الوصفات المفضلة</a>
+        <a href="my-courses.html"><i class="fas fa-book-open"></i> دوراتي</a>
+        <a href="my-notes.html"><i class="fas fa-sticky-note"></i> ملاحظاتي</a>
+        <a href="evaluations.html"><i class="fas fa-star"></i> التقييمات</a>
+        <a href="contact-teachers.html"><i class="fas fa-chalkboard-teacher"></i> التواصل مع المعلمين</a>
+    </div>
 </div>
 
 </header>
 
 <!-- NAVBAR -->
-<nav>
-
-<input type="text" placeholder="بحث">
-
-<ul>
-
-<li><a href="../index.html">الرئيسية</a></li>
-
-<li><a href="courses.html">الدورات</a></li>
-
-<li><a href="recipes.html">الوصفات</a></li>
-
-<li><a href="about.html">عن الموقع</a></li>
-
-<li><a href="contact.html">تواصل معنا</a></li>
-
-</ul>
-
+<nav class="my-nav">
+    <input class="my-nav-input" type="text" placeholder="بحث">
+    <ul class="my-nav-list">
+        <li><a class="my-nav-link" href="../index.html">الرئيسية</a></li>
+        <li><a class="my-nav-link" href="courses.html">الدورات</a></li>
+        <li><a class="my-nav-link" href="recipes.html">الوصفات</a></li>
+        <li><a class="my-nav-link" href="about.html">عن الموقع</a></li>
+        <li><a class="my-nav-link" href="contact.html">تواصل معنا</a></li>
+    </ul>
 </nav>
 
 <div class="breadcrumbs">
         <a href="../index.html">الرئيسية</a>
-        <a href="../courses.html">الدورات</a>
+        <a href="courses.html">الدورات</a>
         <span>نتيجة الاختبار</span>
     </div>
 
@@ -80,24 +74,66 @@
 
         <div class="buttons">
 
-    <a href="../pages/quiz/quiz-basics.html" class="btn dark">
-        <i class="fas fa-redo-alt"></i>
-        إعادة الاختبار
-    </a>
+    <!-- الصف الأول -->
+    <div class="top-buttons">
 
-    <a href="../courses/basics.html" class="btn light">
-        <i class="fas fa-arrow-left"></i>
-        العودة للدرس
-    </a>
+        <!-- إعادة (يصير فاتح) -->
+<a href="../pages/quiz/quiz-basics.html" class="btn light">
+    <i class="fas fa-redo-alt"></i>
+    إعادة الاختبار
+</a>
+
+
+        <a href="../pages/lessons/lesson2_page1.html" class="btn light">
+            <i class="fas fa-arrow-left"></i>
+            العودة للدرس
+        </a>
+
+    </div>
+
+    <!-- الصف الثاني -->
+<a href="../pages/courses-completion.html" class="btn finish">
+    <i class="fas fa-check-circle"></i>
+    إنهاء الدورة
+</a>
+
+    </div>
 
 </div>
-
     </div>
 
 </section>
 
+<!-- الفوتر -->
 <footer class="footer">
-    <p>© رشة</p>
+
+<div class="footer-container">
+
+<div class="footer-left">
+<p>تواصل معنا</p>
+<p>+966000000</p>
+<p>Rasha@gmail.com</p>
+
+<div class="social-icons">
+<i class="fab fa-facebook-f"></i>
+<i class="fab fa-instagram"></i>
+<i class="fab fa-twitter"></i>
+<i class="fab fa-whatsapp"></i>
+</div>
+</div>
+
+<div class="footer-divider"></div>
+
+<div class="footer-right">
+<p>الشروط والأحكام</p>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<p>© رشة</p>
+</div>
+
 </footer>
 
 </body>
