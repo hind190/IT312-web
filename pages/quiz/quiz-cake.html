@@ -17,38 +17,42 @@
             <h2>رشة</h2>
         </div>
         <div class="user">
-            <p class="welcome">مرحباً بك مجدداً</p>
-            <div class="user-box">
-                <img src="../../images/user.png" alt="صورة المستخدم">
-                <select>
-                    <option>لوحة الطالب</option>
-                    <option>المعلومات الشخصية</option>
-                    <option>الوصفات المفضلة</option>
-                    <option>دوراتي</option>
-                    <option>ملاحظاتي</option>
-                    <option>التقييمات</option>
-                    <option>التواصل مع المعلمين</option>
-                </select>
-            </div>
-        </div>
+<p class="welcome">مرحباً بك مجدداً</p>
+<div class="user-box">
+        <img src="../../images/user.png" alt="user">
+<div class="dropdown">
+    <button class="dropdown-btn">
+        لوحة الطالب
+        <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="dropdown-content">
+        <a href="personal-info.html"><i class="fas fa-user"></i> المعلومات الشخصية</a>
+        <a href="favorite-recipes.html"><i class="fas fa-heart"></i> الوصفات المفضلة</a>
+        <a href="my-courses.html"><i class="fas fa-book-open"></i> دوراتي</a>
+        <a href="my-notes.html"><i class="fas fa-sticky-note"></i> ملاحظاتي</a>
+        <a href="evaluations.html"><i class="fas fa-star"></i> التقييمات</a>
+        <a href="contact-teachers.html"><i class="fas fa-chalkboard-teacher"></i> التواصل مع المعلمين</a>
+    </div>
+</div>
     </header>
 
-    <nav>
-        <input type="text" placeholder="بحث">
-        <ul>
-            <li><a href="../../index.html">الرئيسية</a></li>
-            <li><a href="../../courses.html">الدورات</a></li>
-            <li><a href="../../recipes.html">الوصفات</a></li>
-            <li><a href="../../about.html">عن الموقع</a></li>
-            <li><a href="../../contact.html">تواصل معنا</a></li>
-        </ul>
-    </nav>
+   <!-- NAVBAR -->
+<nav class="my-nav">
+    <input class="my-nav-input" type="text" placeholder="بحث">
+    <ul class="my-nav-list">
+        <li><a class="my-nav-link" href="../../index.html">الرئيسية</a></li>
+        <li><a class="my-nav-link" href="../courses.html">الدورات</a></li>
+        <li><a class="my-nav-link" href="../recipes.html">الوصفات</a></li>
+        <li><a class="my-nav-link" href="../about.html">عن الموقع</a></li>
+        <li><a class="my-nav-link" href="../contact.html">تواصل معنا</a></li>
+    </ul>
+</nav>
 
     <div class="breadcrumbs">
         <a href="../../index.html">الرئيسية</a>
-        <a href="../../courses.html">الدورات</a>
-        <a href="../../courses/baking.html">فن الخبز والحلويات</a>
-        <span>اختبار الكيك</span>
+        <a href="../courses.html">الدورات</a>
+        <a href="/pages/lessons/lesson1_page1.html"> دورة الحلويات</a>
+        <span>اختبار كيك الفانيليا</span>
     </div>
 
     <main class="quiz-page">
