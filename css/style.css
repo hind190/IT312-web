@@ -2767,6 +2767,13 @@ nav input:focus {
 /* صفحة ملاحظاتي (MY NOTES) */
 /* ---------------------- */
 
+/* أيقونة الملاحظة */
+.note-icon {
+    color: #8ea79a;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
 /* نموذج الملاحظات */
 .notes-form {
     width: 100%;
@@ -2803,7 +2810,7 @@ nav input:focus {
 .note-item label {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
     padding: 15px 0;
     cursor: pointer;
     transition: 0.3s;
@@ -2866,28 +2873,7 @@ nav input:focus {
     flex: 1;
 }
 
-/* زر التعديل */
-.edit-note-btn {
-    background: transparent;
-    border: none;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: 0.3s;
-    color: #8ea79a;
-    font-size: 18px;
-    flex-shrink: 0;
-}
-
-.edit-note-btn:hover {
-    background: #dfeae3;
-    color: #4f6357;
-    transform: scale(1.1);
-}
+/* تم إزالة زر التعديل بالكامل */
 
 /* نموذج إضافة ملاحظة */
 .add-note-form {
@@ -2979,7 +2965,7 @@ nav input:focus {
     }
     
     .note-item label {
-        width: calc(100% - 50px);
+        width: 100%;
         flex-wrap: wrap;
     }
     
@@ -2994,12 +2980,7 @@ nav input:focus {
     .delete-btn, .add-btn {
         justify-content: center;
     }
-    
-    .edit-note-btn {
-        align-self: center;
-    }
 }
-
 /* ---------------------- */
 /* صفحة التقييمات (EVALUATIONS) */
 /* ---------------------- */
@@ -3024,7 +3005,7 @@ nav input:focus {
     border-color: #dfeae3;
 }
 
-/* أزرار التعديل والحذف */
+/* أزرار الحذف فقط */
 .evaluation-actions {
     position: absolute;
     top: 15px;
@@ -3034,7 +3015,8 @@ nav input:focus {
     z-index: 5;
 }
 
-.edit-eval-btn, .delete-eval-btn {
+/* تم إزالة زر التعديل */
+.delete-eval-btn {
     background: transparent;
     border: none;
     width: 36px;
@@ -3046,19 +3028,6 @@ nav input:focus {
     cursor: pointer;
     transition: 0.3s;
     font-size: 16px;
-}
-
-.edit-eval-btn {
-    color: #4f6357;
-}
-
-.edit-eval-btn:hover {
-    background: #dfeae3;
-    color: #2c3e3a;
-    transform: scale(1.1);
-}
-
-.delete-eval-btn {
     color: #c0392b;
 }
 
@@ -3131,16 +3100,28 @@ nav input:focus {
     color: #c0392b;
 }
 
-/* العنوان مع خط */
+/* العنوان مع أيقونة وخط */
+.title-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.eval-icon {
+    color: #8ea79a;
+    font-size: 18px;
+}
+
 .evaluation-title {
     font-size: 18px;
     font-weight: 700;
     color: #4f6357;
-    margin-bottom: 12px;
     text-align: right;
     position: relative;
     display: inline-block;
     padding-bottom: 5px;
+    margin: 0;
 }
 
 .evaluation-title::after {
@@ -3158,7 +3139,7 @@ nav input:focus {
     display: flex;
     gap: 4px;
     justify-content: flex-start;
-    margin-bottom: 5px;
+    margin-top: 5px;
 }
 
 .stars i {
