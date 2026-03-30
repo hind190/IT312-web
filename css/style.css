@@ -1,4 +1,729 @@
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Tajawal", "Tahoma", sans-serif;
+}
+
+body {
+    background-color: #f6f3f1;
+    direction: rtl;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+
+.vision-card {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #c8e6c9;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.vision-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(46, 125, 50, 0.1);
+}
+
+.vision-card h3 {
+    color: #2e7d32;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    border-right: none;
+    padding-right: 0;
+}
+
+.vision-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #1b5e20;
+    margin-bottom: 0;
+}
+
+@media (max-width: 780px) {
+    .vision-card {
+        margin: 1.5rem 1rem;
+        padding: 1rem;
+    }
+    .vision-card h3 {
+        font-size: 1.2rem;
+    }
+    .vision-card p {
+        font-size: 0.85rem;
+    }
+}
+
+
+
+.teachers-showcase {
+    padding: 2rem 1rem;
+}
+
+.teachers-showcase h1 {
+    color: #2e7d32;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.section-desc {
+    text-align: center;
+    color: #4caf50;
+    margin-bottom: 2rem;
+}
+
+.sort-controls {
+    max-width: 300px;
+    margin: 0 auto 2rem auto;
+    text-align: center;
+}
+
+.sort-controls label {
+    display: block;
+    font-weight: 600;
+    color: #2e7d32;
+    margin-bottom: 0.5rem;
+}
+
+#sort-select {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 40px;
+    border: 1px solid #c8e6c9;
+    background: white;
+    font-family: inherit;
+    font-size: 1rem;
+    color: #1b5e20;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#sort-select:focus {
+    outline: none;
+    border-color: #2e7d32;
+    box-shadow: 0 0 0 2px rgba(46,125,50,0.2);
+}
+.teachers-horizontal {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 1rem 0.5rem 2rem;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.teachers-list-horizontal {
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+
+.teacher-card-horizontal {
+    background: white;
+    border-radius: 28px;
+    width: 260px;
+    flex-shrink: 0;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    border: 1px solid #c8e6c9;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;      
+    align-items: center;          
+    text-align: center;
+    padding: 1rem;                
+    min-height: 260px;           
+}
+
+.teacher-card-horizontal:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(46,125,50,0.1);
+}
+
+.teacher-card-horizontal img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid #66bb6a;
+}
+
+.teacher-card-horizontal i {
+    font-size: 80px;
+    color: #66bb6a;
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.teacher-card-horizontal h3 {
+    font-size: 1.3rem;
+    color: #1b5e20;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.teacher-card-horizontal .years {
+    font-size: 0.9rem;
+    color: #4caf50;
+    background: #e8f5e9;
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 30px;
+    margin-top: 0.75rem;
+}
+
+.teachers-horizontal::-webkit-scrollbar {
+    height: 8px;
+}
+.teachers-horizontal::-webkit-scrollbar-track {
+    background: #e8f5e9;
+    border-radius: 10px;
+}
+.teachers-horizontal::-webkit-scrollbar-thumb {
+    background: #66bb6a;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .teacher-card-horizontal {
+        width: 200px;
+        min-height: 220px;
+        padding: 0.8rem;
+    }
+    .teacher-card-horizontal img {
+        width: 80px;
+        height: 80px;
+    }
+    .teacher-card-horizontal i {
+        font-size: 70px;
+    }
+    .teacher-card-horizontal h3 {
+        font-size: 1rem;
+    }
+}
+
+
+/* ---------------------- */
+/*  إعدادات عامة (RESET) */
+/* ---------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Tajawal", "Tahoma", sans-serif;
+}
+
+body {
+    background-color: #f6f3f1;
+    direction: rtl;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ========================================= */
+/* بطاقة الرؤية (رويتنا) في الصفحة الرئيسية  */
+/* ========================================= */
+
+.vision-card {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #c8e6c9;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.vision-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(46, 125, 50, 0.1);
+}
+
+.vision-card h3 {
+    color: #2e7d32;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    border-right: none;
+    padding-right: 0;
+}
+
+.vision-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #1b5e20;
+    margin-bottom: 0;
+}
+
+@media (max-width: 780px) {
+    .vision-card {
+        margin: 1.5rem 1rem;
+        padding: 1rem;
+    }
+    .vision-card h3 {
+        font-size: 1.2rem;
+    }
+    .vision-card p {
+        font-size: 0.85rem;
+    }
+}
+
+/* ==================== personal-info.css ==================== */
+/* تنسيقات خاصة بصفحة المعلومات الشخصية */
+
+.social-icons i {
+    font-size: 22px;
+    color: #8ea79a;
+    margin: 0 8px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.social-icons i:hover {
+    color: #4f6357;
+    transform: translateY(-3px);
+}
+.personal-info-main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 20px;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.profile-header h1 {
+    color: #4f6357;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.profile-header h1::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 80px;
+    height: 3px;
+    background: #8ea79a;
+    border-radius: 2px;
+}
+
+.sub-text {
+    color: #5e6f69;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+.profile-card {
+    background: white;
+    border-radius: 30px;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+/* قسم الصورة الشخصية */
+.profile-image-section {
+    flex: 0 0 180px;
+    text-align: center;
+}
+
+.avatar-large {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #dfeae3;
+    margin: 0 auto 1rem;
+}
+
+.avatar-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.edit-photo-btn {
+    background: #f0f7f3;
+    border: 1px solid #dfeae3;
+    color: #4f6357;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.edit-photo-btn:hover {
+    background: #e0f0e8;
+    border-color: #8ea79a;
+}
+
+/* نموذج المعلومات */
+.profile-form {
+    flex: 1;
+    min-width: 250px;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: #4f6357;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #dfeae3;
+    border-radius: 20px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.95rem;
+    background: #fefefe;
+    transition: 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #8ea79a;
+    box-shadow: 0 0 0 3px rgba(142,167,154,0.1);
+}
+
+.save-btn {
+    background: #4f6357;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 40px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.save-btn:hover {
+    background: #6f8f82;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(79,99,87,0.3);
+}
+
+/* استجابة للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .profile-card {
+        flex-direction: column;
+        align-items: center;
+    }
+    .profile-image-section {
+        flex: 0 0 auto;
+    }
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+/* ==================== contact.css ==================== */
+/* تنسيقات خاصة بصفحة "تواصل معنا" */
+
+.contact-main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 20px;
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    justify-content: center;
+}
+
+/* قسم المعلومات (النص) */
+.contact-info {
+    width: 100%;
+}
+
+.contact-info h1 {
+    color: #4f6357;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    border-right: 4px solid #8ea79a;
+    padding-right: 1rem;
+}
+
+.contact-info p {
+    color: #5e6f69;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    text-align: justify;
+}
+
+/* قسم النموذج */
+.contact-form {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 30px;
+    padding: 2rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+}
+
+.contact-form h2 {
+    color: #4f6357;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid #dfeae3;
+    display: inline-block;
+    width: auto;
+    padding-bottom: 0.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: #4f6357;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #dfeae3;
+    border-radius: 20px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 1rem;
+    background: #fefefe;
+    transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #8ea79a;
+    box-shadow: 0 0 0 3px rgba(142,167,154,0.2);
+}
+
+.submit-btn {
+    background: #4f6357;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 40px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.submit-btn:hover {
+    background: #6f8f82;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(79,99,87,0.3);
+}
+
+/* استجابة للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .contact-container {
+        gap: 2rem;
+    }
+    .contact-form {
+        padding: 1.5rem;
+    }
+}
+
+/* ========================================= */
+/* صفحة من نحن (قائمة المعلمين الأفقية)       */
+/* ========================================= */
+
+.teachers-showcase {
+    padding: 2rem 1rem;
+}
+
+.teachers-showcase h1 {
+    color: #2e7d32;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.section-desc {
+    text-align: center;
+    color: #4caf50;
+    margin-bottom: 2rem;
+}
+
+.sort-controls {
+    max-width: 300px;
+    margin: 0 auto 2rem auto;
+    text-align: center;
+}
+
+.sort-controls label {
+    display: block;
+    font-weight: 600;
+    color: #2e7d32;
+    margin-bottom: 0.5rem;
+}
+
+#sort-select {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 40px;
+    border: 1px solid #c8e6c9;
+    background: white;
+    font-family: inherit;
+    font-size: 1rem;
+    color: #1b5e20;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#sort-select:focus {
+    outline: none;
+    border-color: #2e7d32;
+    box-shadow: 0 0 0 2px rgba(46,125,50,0.2);
+}
+
+.teachers-horizontal {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 1rem 0.5rem 2rem;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.teachers-list-horizontal {
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+
+.teacher-card-horizontal {
+    background: white;
+    border-radius: 28px;
+    width: 260px;
+    flex-shrink: 0;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    border: 1px solid #c8e6c9;
+    transition: transform 0.3s;
+}
+
+.teacher-card-horizontal:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(46,125,50,0.1);
+}
+
+.teacher-card-horizontal img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1rem;
+    border: 3px solid #66bb6a;
+}
+
+.teacher-card-horizontal h3 {
+    font-size: 1.3rem;
+    color: #1b5e20;
+    margin-bottom: 0.5rem;
+}
+
+.teacher-card-horizontal .years {
+    font-size: 0.9rem;
+    color: #4caf50;
+    background: #e8f5e9;
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 30px;
+    margin-top: 0.5rem;
+}
+
+.teachers-horizontal::-webkit-scrollbar {
+    height: 8px;
+}
+.teachers-horizontal::-webkit-scrollbar-track {
+    background: #e8f5e9;
+    border-radius: 10px;
+}
+.teachers-horizontal::-webkit-scrollbar-thumb {
+    background: #66bb6a;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .teacher-card-horizontal {
+        width: 220px;
+        padding: 1rem;
+    }
+    .teacher-card-horizontal img {
+        width: 100px;
+        height: 100px;
+    }
+    .teacher-card-horizontal h3 {
+        font-size: 1.1rem;
+    }
+}
+
+
+
+
+
+
+
+
+
 /* ---------------------- */
 /*  إعدادات عامة (RESET) */
 /* ---------------------- */
@@ -201,6 +926,1289 @@ nav {
     background: #fff;
     border-top: 1px solid #f0f0f0;
     box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+    direction: rtl;
+}
+
+nav a {
+    text-decoration: none;
+    color: #2c3e3a;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+nav a:hover {
+    color: #8ea79a;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2.5px;
+    background: #8ea79a;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav input {
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid #e0e0e0;
+    width: 200px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 14px;
+    transition: 0.3s;
+    background: #fafafa;
+    text-align: right;
+    direction: rtl;
+}
+
+nav input:focus {
+    outline: none;
+    border-color: #8ea79a;
+    box-shadow: 0 0 0 4px rgba(142,167,154,0.15);
+    background: white;
+}
+
+/* ---------------------- */
+/* مسار الصفحة (BREADCRUMBS) - مشترك */
+/* ---------------------- */
+.breadcrumbs {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    padding: 8px 20px;
+    margin: 20px 40px;
+    border-radius: 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    font-size: 14px;
+}
+
+.breadcrumbs a {
+    text-decoration: none;
+    color: #7f8c8d;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.breadcrumbs a:hover {
+    color: #8ea79a;
+}
+
+.breadcrumbs span {
+    color: #4f6357;
+    font-weight: 700;
+}
+
+.breadcrumbs a::after {
+    content: "›";
+    margin: 0 8px;
+    color: #ccc;
+    font-weight: 400;
+}
+
+/* ---------------------- */
+/*  صفحات لوحة الطالب (DASHBOARD PAGES) - مختصر */
+/* ---------------------- */
+.dashboard-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px 40px;
+}
+
+.page-header h1 {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #2c3e3a;
+    margin-bottom: 8px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+.page-header h1::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60px;
+    height: 4px;
+    background: #8ea79a;
+    border-radius: 2px;
+}
+.sub-header {
+    color: #5e6f69;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.profile-section {
+    background: white;
+    border-radius: 25px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid #f0f0f0;
+}
+/* ... باقي تنسيقات لوحة الطالب يمكن إضافتها لاحقاً */
+
+/* ---------------------- */
+/*  الفوتر (FOOTER) - مشترك */
+/* ---------------------- */
+.footer {
+    background: #ffffff;
+    padding: 40px 30px 20px;
+    margin-top: 40px;
+    border-top: 1px solid #eaeaea;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    max-width: 800px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.footer-left p, .footer-right p {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #4f6357;
+    margin: 8px 0;
+}
+
+.footer-right p {
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.footer-divider {
+    width: 1px;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, #ccc, transparent);
+}
+
+.social-icons {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons i {
+    font-size: 22px;
+    color: #8ea79a;
+    transition: 0.3s;
+    cursor: pointer;
+    background: #f0f7f3;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icons i:hover {
+    background: #4f6357;
+    color: white;
+    transform: translateY(-5px);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    border-top: 1px solid #eaeaea;
+    padding-top: 20px;
+    font-size: 15px;
+    color: #888;
+}
+
+/* ============================================ */
+/* تنسيقات بطاقات فريق المعلمين (صفحة عن الموقع) */
+/* ============================================ */
+.teachers-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 2rem !important;
+    margin: 2rem 0;
+}
+
+.teachers-grid .teacher-card {
+    width: 300px !important;
+    flex: 0 0 auto !important;
+    background: white;
+    border-radius: 28px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #e0e8e3;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.teachers-grid .teacher-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-color: #c8e6c9;
+}
+
+/* رأس البطاقة (الصورة + الاسم) */
+.teachers-grid .card-header {
+    background: #fef9f0;
+    padding: 1.5rem 1rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid #f0e4d4;
+}
+
+/* أيقونة الصورة الدائرية */
+.teachers-grid .avatar-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid #4f6357;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f7f3;
+    flex-shrink: 0;
+}
+.teachers-grid .avatar-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.teachers-grid .avatar-icon i {
+    font-size: 2rem;
+    color: #4f6357;
+}
+
+/* معلومات المعلم */
+.teachers-grid .teacher-info h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: #2c3e3a;
+}
+.teachers-grid .specialty {
+    font-size: 0.75rem;
+    background: #e8f5e9;
+    padding: 4px 10px;
+    border-radius: 30px;
+    color: #2e7d32;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+/* جسم البطاقة */
+.teachers-grid .card-body {
+    padding: 1.2rem;
+    flex-grow: 1;
+}
+.teachers-grid .rating-stars {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+.teachers-grid .stars-container {
+    display: inline-flex;
+    direction: ltr;
+    gap: 3px;
+    font-size: 1rem;
+}
+.teachers-grid .rating-number {
+    background: #e8f5e9;
+    padding: 4px 10px;
+    border-radius: 40px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #2e7d32;
+}
+.teachers-grid .review-count {
+    font-size: 0.7rem;
+    color: #4caf50;
+    margin-bottom: 10px;
+}
+.teachers-grid .teacher-desc {
+    font-size: 0.8rem;
+    color: #5e6f69;
+    border-top: 1px solid #e0e8e3;
+    padding-top: 10px;
+    margin-top: 5px;
+}
+.teachers-grid .badge-rank {
+    font-size: 0.7rem;
+    background: #e8f5e9;
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 50px;
+    margin-top: 12px;
+    color: #2e7d32;
+    font-weight: 500;
+}
+
+/* استجابة للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .teachers-grid .teacher-card {
+        width: 100% !important;
+        max-width: 320px;
+    }
+}
+/* ---------------------- */
+/*  تنسيقات الصفحة الرئيسية (دورات، معلمين، طلاب) */
+/* ---------------------- */
+.courses, .teachers, .student-reviews {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.courses h2, .teachers h2, .student-reviews h2 {
+    font-size: 2rem;
+    color: #4f6357;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+.section-subtitle {
+    text-align: center;
+    color: #6f8f82;
+    margin-bottom: 2rem;
+}
+
+/* الحاويات المرنة للبطاقات */
+.courses .course-slider,
+.teachers .teacher-slider,
+.student-reviews .review-slider {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 1.5rem !important;
+}
+
+/* البطاقات الأساسية */
+.courses .course-card,
+.teachers .teacher-card,
+.student-reviews .review-card {
+    width: 260px !important;
+    flex: 0 0 auto !important;
+    background: white !important;
+    border-radius: 25px !important;
+    border: 1px solid #e0e8e3 !important;
+    padding: 1rem !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.8rem !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+    transition: transform 0.2s !important;
+}
+.courses .course-card:hover,
+.teachers .teacher-card:hover,
+.student-reviews .review-card:hover {
+    transform: translateY(-5px) !important;
+}
+
+/* تنسيقات الصور داخل البطاقات */
+.courses .course-card img,
+.teachers .teacher-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.student-reviews .review-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto;
+}
+
+/* عناصر الدورات */
+.courses .course-card h3 {
+    font-size: 1.3rem;
+    margin: 0.5rem 0;
+    color: #2c3e3a;
+}
+.courses .course-card p {
+    font-size: 0.9rem;
+    color: #5e6f69;
+}
+.courses .course-category {
+    display: inline-block;
+    background: #f0f7f3;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: #4f6357;
+    font-weight: 600;
+}
+.courses .chef-info {
+    font-size: 0.9rem;
+    color: #4f6357;
+}
+.courses .course-btn {
+    background: #4f6357;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+}
+.courses .course-btn:hover {
+    background: #6f8f82;
+    transform: translateY(-2px);
+}
+
+/* عناصر المعلمين */
+.teachers .teacher-card h3 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: #2c3e3a;
+}
+.teachers .teacher-card .rating {
+    color: #ffb347;
+    margin: 0.2rem 0;
+}
+.teachers .teacher-card p {
+    font-size: 0.85rem;
+    color: #5e6f69;
+}
+.teachers .teacher-btn {
+    background: #4f6357;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+.teachers .teacher-btn:hover {
+    background: #6f8f82;
+    transform: translateY(-2px);
+}
+
+/* عناصر الطلاب */
+.student-reviews .review-card h3 {
+    font-size: 1rem;
+    margin: 0.3rem 0;
+    color: #2c3e3a;
+}
+.student-reviews .review-card p {
+    font-size: 0.85rem;
+    color: #5e6f69;
+}
+.student-reviews .review-card .rating {
+    color: #ffb347;
+    font-size: 0.9rem;
+}
+
+/* النجوم العامة */
+.rating {
+    color: #ffc107;
+    direction: ltr;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+/* ==================== تنسيقات صفحة عن الموقع ==================== */
+.about-section {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 20px;
+}
+.about-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+.about-card {
+    background: white;
+    border-radius: 30px;
+    padding: 2rem;
+    flex: 1;
+    min-width: 250px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+    transition: transform 0.3s;
+}
+.about-card:hover {
+    transform: translateY(-5px);
+}
+.about-card h2 {
+    color: #4f6357;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+.about-card p {
+    color: #5e6f69;
+    line-height: 1.7;
+}
+
+/* قسم فريق المعلمين في صفحة about */
+.teachers-team {
+    margin-top: 3rem;
+    background: #fef9f0;
+    border-radius: 40px;
+    padding: 2rem;
+}
+.teachers-team h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #4f6357;
+    margin-bottom: 1.5rem;
+}
+.filter-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    background: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    width: fit-content;
+    margin: 0 auto 2rem auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+}
+.filter-label {
+    font-weight: 600;
+    color: #5e6f69;
+}
+.filter-options {
+    display: flex;
+    gap: 1rem;
+}
+.filter-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+}
+.filter-option input {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.team-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+.team-card {
+    background: white;
+    border-radius: 25px;
+    padding: 1.5rem;
+    width: 280px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+    transition: transform 0.2s;
+}
+.team-card:hover {
+    transform: translateY(-5px);
+}
+.team-card h3 {
+    font-size: 1.6rem;
+    color: #4f6357;
+    margin-bottom: 1rem;
+}
+.expertise {
+    margin: 1rem 0;
+}
+.expertise span {
+    display: block;
+    font-size: 0.9rem;
+    color: #8ea79a;
+    margin-bottom: 0.5rem;
+}
+.expertise-options {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+.expertise-options label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+.expertise-options input {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.rating-stars {
+    margin-top: 1rem;
+    direction: ltr;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    color: #ffc107;
+}
+.bottom-rating {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e0e8e3;
+    direction: ltr;
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+    color: #ffc107;
+}
+.bottom-rating .far.fa-circle {
+    color: #ccc;
+}
+
+/* أيقونة الصورة الدائرية (avatar) */
+.avatar-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid #4f6357;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f7f3;
+}
+.avatar-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* استجابة للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .courses .course-card,
+    .teachers .teacher-card,
+    .student-reviews .review-card {
+        width: 100% !important;
+        max-width: 280px;
+    }
+    .about-grid .about-card {
+        min-width: 100%;
+    }
+    .team-card {
+        width: 100% !important;
+        max-width: 280px;
+    }
+}
+
+/* ---------------------- */
+/*  صفحات لوحة الطالب (DASHBOARD PAGES) - مختصر */
+/* ---------------------- */
+.dashboard-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px 40px;
+}
+
+.page-header h1 {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #2c3e3a;
+    margin-bottom: 8px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+.page-header h1::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60px;
+    height: 4px;
+    background: #8ea79a;
+    border-radius: 2px;
+}
+.sub-header {
+    color: #5e6f69;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.profile-section {
+    background: white;
+    border-radius: 25px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid #f0f0f0;
+}
+/* ... باقي تنسيقات لوحة الطالب يمكن إضافتها لاحقاً */
+
+/* ---------------------- */
+/*  الفوتر (FOOTER) - مشترك */
+/* ---------------------- */
+.footer {
+    background: #ffffff;
+    padding: 40px 30px 20px;
+    margin-top: 40px;
+    border-top: 1px solid #eaeaea;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    max-width: 800px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.footer-left p, .footer-right p {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #4f6357;
+    margin: 8px 0;
+}
+
+.footer-right p {
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.footer-divider {
+    width: 1px;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, #ccc, transparent);
+}
+
+.social-icons {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons i {
+    font-size: 22px;
+    color: #8ea79a;
+    transition: 0.3s;
+    cursor: pointer;
+    background: #f0f7f3;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icons i:hover {
+    background: #4f6357;
+    color: white;
+    transform: translateY(-5px);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    border-top: 1px solid #eaeaea;
+    padding-top: 20px;
+    font-size: 15px;
+    color: #888;
+}
+
+/* ---------------------- */
+/*  تنسيقات الصفحة الرئيسية (دورات، معلمين، طلاب) */
+/* ---------------------- */
+.courses, .teachers, .student-reviews {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.courses h2, .teachers h2, .student-reviews h2 {
+    font-size: 2rem;
+    color: #4f6357;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+.section-subtitle {
+    text-align: center;
+    color: #6f8f82;
+    margin-bottom: 2rem;
+}
+
+/* الحاويات المرنة للبطاقات */
+.courses .course-slider,
+.teachers .teacher-slider,
+.student-reviews .review-slider {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 1.5rem !important;
+}
+
+/* البطاقات الأساسية */
+.courses .course-card,
+.teachers .teacher-card,
+.student-reviews .review-card {
+    width: 260px !important;
+    flex: 0 0 auto !important;
+    background: white !important;
+    border-radius: 25px !important;
+    border: 1px solid #e0e8e3 !important;
+    padding: 1rem !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.8rem !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+    transition: transform 0.2s !important;
+}
+.courses .course-card:hover,
+.teachers .teacher-card:hover,
+.student-reviews .review-card:hover {
+    transform: translateY(-5px) !important;
+}
+
+/* تنسيقات الصور داخل البطاقات */
+.courses .course-card img,
+.teachers .teacher-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.student-reviews .review-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto;
+}
+
+/* عناصر الدورات */
+.courses .course-card h3 {
+    font-size: 1.3rem;
+    margin: 0.5rem 0;
+    color: #2c3e3a;
+}
+.courses .course-card p {
+    font-size: 0.9rem;
+    color: #5e6f69;
+}
+.courses .course-category {
+    display: inline-block;
+    background: #f0f7f3;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: #4f6357;
+    font-weight: 600;
+}
+.courses .chef-info {
+    font-size: 0.9rem;
+    color: #4f6357;
+}
+.courses .course-btn {
+    background: #4f6357;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+}
+.courses .course-btn:hover {
+    background: #6f8f82;
+    transform: translateY(-2px);
+}
+
+/* عناصر المعلمين */
+.teachers .teacher-card h3 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: #2c3e3a;
+}
+.teachers .teacher-card .rating {
+    color: #ffb347;
+    margin: 0.2rem 0;
+}
+.teachers .teacher-card p {
+    font-size: 0.85rem;
+    color: #5e6f69;
+}
+.teachers .teacher-btn {
+    background: #4f6357;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+.teachers .teacher-btn:hover {
+    background: #6f8f82;
+    transform: translateY(-2px);
+}
+
+/* عناصر الطلاب */
+.student-reviews .review-card h3 {
+    font-size: 1rem;
+    margin: 0.3rem 0;
+    color: #2c3e3a;
+}
+.student-reviews .review-card p {
+    font-size: 0.85rem;
+    color: #5e6f69;
+}
+.student-reviews .review-card .rating {
+    color: #ffb347;
+    font-size: 0.9rem;
+}
+
+/* النجوم العامة */
+.rating {
+    color: #ffc107;
+    direction: ltr;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+/* ==================== تنسيقات صفحة عن الموقع ==================== */
+.about-section {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 20px;
+}
+.about-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+.about-card {
+    background: white;
+    border-radius: 30px;
+    padding: 2rem;
+    flex: 1;
+    min-width: 250px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+    transition: transform 0.3s;
+}
+.about-card:hover {
+    transform: translateY(-5px);
+}
+.about-card h2 {
+    color: #4f6357;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+.about-card p {
+    color: #5e6f69;
+    line-height: 1.7;
+}
+
+/* قسم فريق المعلمين (في صفحة about) */
+.teachers-team {
+    margin-top: 3rem;
+    background: #fef9f0;
+    border-radius: 40px;
+    padding: 2rem;
+}
+.teachers-team h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #4f6357;
+    margin-bottom: 1.5rem;
+}
+.filter-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    background: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    width: fit-content;
+    margin: 0 auto 2rem auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+}
+.filter-label {
+    font-weight: 600;
+    color: #5e6f69;
+}
+.filter-options {
+    display: flex;
+    gap: 1rem;
+}
+.filter-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+}
+.filter-option input {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.team-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+.team-card {
+    background: white;
+    border-radius: 25px;
+    padding: 1.5rem;
+    width: 280px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+    transition: transform 0.2s;
+}
+.team-card:hover {
+    transform: translateY(-5px);
+}
+.team-card h3 {
+    font-size: 1.6rem;
+    color: #4f6357;
+    margin-bottom: 1rem;
+}
+.expertise {
+    margin: 1rem 0;
+}
+.expertise span {
+    display: block;
+    font-size: 0.9rem;
+    color: #8ea79a;
+    margin-bottom: 0.5rem;
+}
+.expertise-options {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+.expertise-options label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+.expertise-options input {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.rating-stars {
+    margin-top: 1rem;
+    direction: ltr;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    color: #ffc107;
+}
+.bottom-rating {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e0e8e3;
+    direction: ltr;
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+    color: #ffc107;
+}
+.bottom-rating .far.fa-circle {
+    color: #ccc;
+}
+
+/* أيقونة الصورة الدائرية */
+.avatar-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid #4f6357;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f7f3;
+}
+.avatar-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* استجابة للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .courses .course-card,
+    .teachers .teacher-card,
+    .student-reviews .review-card {
+        width: 100% !important;
+        max-width: 280px;
+    }
+    .about-grid .about-card {
+        min-width: 100%;
+    }
+}
+
+/* ---------------------- */
+/*  القائمة المنسدلة (DROPDOWN MENU) - لوحة الطالب */
+/* ---------------------- */
+.dropdown {
+    position: relative;
+    width: 100%;
+    margin-top: 8px;
+}
+
+.dropdown-btn {
+    background: #dfeae3;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4f6357;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 140px;
+    transition: 0.3s;
+}
+
+.dropdown-btn i {
+    font-size: 12px;
+    color: #8ea79a;
+    transition: 0.3s;
+}
+
+.dropdown-btn:hover {
+    background: #cfe0d5;
+    color: #2c3e3a;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    min-width: 200px;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(79,99,87,0.15);
+    padding: 8px 0;
+    display: none;
+    z-index: 1000;
+    border: 1px solid #f0f0f0;
+    margin-top: 5px;
+}
+
+.user-box:hover .dropdown-content,
+.dropdown-btn:hover + .dropdown-content,
+.dropdown-content:hover {
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.dropdown-content a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #4f6357;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.3s;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a i {
+    width: 18px;
+    color: #8ea79a;
+    font-size: 14px;
+}
+
+.dropdown-content a:hover {
+    background: #dfeae3;
+    color: #2c3e3a;
+    padding-right: 20px;
+}
+
+.dropdown-content a:hover i {
+    color: #4f6357;
+}
+
+/* ---------------------- */
+/*  شريط التنقل (NAVBAR) - مشترك بين جميع الصفحات */
+/* ---------------------- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px;
+    background: #fff;
+    border-top: 1px solid #f0f0f0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+	flex-direction: row-reverse;
 }
 
 nav ul {
@@ -3654,1098 +5662,6 @@ h3::after {
     }
     
     .options-list label {
-        font-size: 14px;
-        padding: 6px 12px;
-    }
-    
-    .quiz-submit-btn {
-        padding: 12px 28px;
-        font-size: 16px;
-    }
-}
-
-/* ======================================== */
-/* تنسيق صفحات الدروس (LESSON PAGES) */
-/* ======================================== */
-
-/* صفحة الدرس */
-.my-lesson-page {
-    padding: 20px 40px 60px;
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: #f6f3f1;
-}
-
-/* عنوان الدرس */
-.lesson-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.lesson-header h1 {
-    font-family: 'Tajawal', sans-serif;
-    font-size: 42px;
-    font-weight: 800;
-    color: #4f6357;
-    margin-bottom: 10px;
-}
-
-.lesson-header p {
-    font-size: 20px;
-    color: #6f8f82;
-    font-weight: 500;
-}
-
-.my-lesson-page h2 {
-    font-family: 'Tajawal', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: #4f6357;
-    margin: 30px 0 20px;
-    border-right: 5px solid #8ea79a;
-    padding-right: 15px;
-}
-
-/* الجداول */
-.my-lesson-page table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.my-lesson-page th {
-    background-color: #4f6357;
-    color: white;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 15px;
-    text-align: center;
-}
-
-.my-lesson-page td {
-    padding: 12px 15px;
-    border-bottom: 1px solid #e0e8e3;
-    text-align: center;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 16px;
-    color: #2c3e3a;
-}
-
-.my-lesson-page tr:last-child td {
-    border-bottom: none;
-}
-
-.my-lesson-page tr:hover {
-    background-color: #f0f7f3;
-}
-
-/* القوائم المتداخلة */
-.my-lesson-page ul, 
-.my-lesson-page ol {
-    font-family: 'Tajawal', sans-serif;
-    color: #2c3e3a;
-    padding-right: 30px;
-}
-
-.my-lesson-page ul ul,
-.my-lesson-page ol ol,
-.my-lesson-page ul ol,
-.my-lesson-page ol ul {
-    margin: 8px 0;
-    padding-right: 25px;
-}
-
-.my-lesson-page li {
-    margin: 8px 0;
-    font-size: 17px;
-    line-height: 1.6;
-}
-
-.my-lesson-page ul {
-    list-style-type: disc;
-}
-
-.my-lesson-page ul ul {
-    list-style-type: circle;
-}
-
-.my-lesson-page ul ul ul {
-    list-style-type: square;
-}
-
-.my-lesson-page ol {
-    list-style-type: decimal;
-}
-
-.my-lesson-page ol ol {
-    list-style-type: lower-alpha;
-}
-
-.my-lesson-page ol ol ol {
-    list-style-type: lower-roman;
-}
-
-/* بطاقة اليوتيوب */
-.my-youtube-card {
-    margin: 30px 0;
-}
-
-.my-youtube-link {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 15px;
-    background: white;
-    border-radius: 20px;
-    padding: 15px 25px;
-    text-decoration: none;
-    transition: 0.3s;
-    border: 1px solid #e0e8e3;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.my-youtube-link:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 25px rgba(0,0,0,0.1);
-    border-color: #ff0000;
-}
-
-.my-youtube-icon {
-    background-color: #ff0000;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.my-youtube-icon i {
-    font-size: 28px;
-    color: white;
-}
-
-.my-youtube-info {
-    flex: 1;
-}
-
-.my-youtube-info h4 {
-    font-family: 'Tajawal', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: #4f6357;
-    margin: 0 0 5px 0;
-}
-
-.my-youtube-info p {
-    font-family: 'Tajawal', sans-serif;
-    font-size: 14px;
-    color: #6f8f82;
-    margin: 0;
-}
-
-.my-watch-btn {
-    background-color: #f0f7f3;
-    color: #4f6357;
-    padding: 8px 20px;
-    border-radius: 30px;
-    font-size: 14px;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.my-youtube-link:hover .my-watch-btn {
-    background-color: #ff0000;
-    color: white;
-}
-
-/* أزرار التنقل */
-.my-lesson-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 50px 0;
-    width: 100%;
-}
-
-.my-nav-btn {
-    display: inline-block;
-    background-color: #f0f7f3;
-    color: #4f6357;
-    text-decoration: none;
-    padding: 14px 30px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 18px;
-    min-width: 130px;
-    text-align: center;
-    transition: all 0.3s;
-    border: 2px solid transparent;
-    font-family: 'Tajawal', sans-serif;
-}
-
-.my-nav-btn:hover {
-    background-color: #4f6357;
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 18px rgba(79,99,87,0.3);
-}
-
-.my-nav-btn.prev {
-    margin-left: auto;
-}
-
-.my-nav-btn.next {
-    margin-right: auto;
-}
-
-.my-nav-btn.disabled {
-    background-color: #ccc;
-    pointer-events: none;
-    opacity: 0.6;
-}
-
-/* صورة البطل */
-.my-lesson-hero {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-    margin-bottom: 30px;
-    border-radius: 30px;
-}
-
-.my-lesson-hero img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.my-hero-text {
-    position: absolute;
-    top: 50%;
-    right: 50px;
-    transform: translateY(-50%);
-    color: white;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
-    z-index: 10;
-}
-
-.my-hero-text h1 {
-    font-family: 'Tajawal', sans-serif;
-    font-size: 64px;
-    font-weight: 800;
-    margin: 0;
-}
-
-/* نصائح */
-.tips-section {
-    background-color: #e0f0e8;
-    padding: 20px 30px;
-    border-radius: 20px;
-    margin: 30px 0;
-}
-
-.tips-section h3 {
-    font-family: 'Tajawal', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: #4f6357;
-    margin-bottom: 15px;
-}
-
-.tips-section ul {
-    list-style-type: none;
-    padding-right: 0;
-}
-
-.tips-section li {
-    margin: 10px 0;
-    padding-right: 25px;
-    position: relative;
-}
-
-.tips-section li::before {
-    content: "•";
-    color: #4f6357;
-    font-size: 20px;
-    position: absolute;
-    right: 0;
-    top: -2px;
-}
-
-/* حاوية القائمة المتداخلة */
-.nested-list-container {
-    background: white;
-    padding: 20px 30px;
-    border-radius: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    margin: 20px 0;
-}
-
-.nested-list-container h3 {
-    font-family: 'Tajawal', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: #4f6357;
-    margin-bottom: 15px;
-}
-
-/* فيديو */
-.my-lesson-page video {
-    width: 100%;
-    border-radius: 20px;
-    margin: 20px 0;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-/* استجابة للشاشات الصغيرة */
-@media (max-width: 768px) {
-    .my-lesson-page {
-        padding: 20px;
-    }
-    
-    .lesson-header h1 {
-        font-size: 32px;
-    }
-    
-    .my-lesson-page h2 {
-        font-size: 24px;
-    }
-    
-    .my-lesson-page table {
-        font-size: 14px;
-    }
-    
-    .my-lesson-page td, 
-    .my-lesson-page th {
-        padding: 8px;
-    }
-    
-    .my-lesson-nav {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .my-nav-btn {
-        width: 100%;
-        max-width: 250px;
-    }
-    
-    .my-nav-btn.prev,
-    .my-nav-btn.next {
-        margin: 0 auto;
-    }
-    
-    .my-lesson-hero {
-        height: 300px;
-    }
-    
-    .my-hero-text {
-        right: 20px;
-        left: 20px;
-        text-align: center;
-    }
-    
-    .my-hero-text h1 {
-        font-size: 42px;
-    }
-    
-    .my-youtube-link {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-/* أزرار الإجراءات */
-.action-buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-    margin-bottom: 40px;
-    clear: both;
-    position: relative;
-    z-index: 1;
-}
-
-
-.dashboard-container {
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-.footer {
-    clear: both;
-    position: relative;
+        font-size: 1
+	}
 	
-}
-/* ======================================== */
-/* تنسيق الـ Navbar */
-/* ======================================== */
-
-.my-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 40px;
-    background: #fff;
-    border-top: 1px solid #f0f0f0;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-    flex-direction: row-reverse; 
-}
-
-.my-nav-list {
-    display: flex;
-    list-style: none;
-    gap: 35px;
-    direction: rtl;
-    margin: 0;
-    padding: 0;
-}
-
-.my-nav-list a {
-    text-decoration: none;
-    color: #2c3e3a;
-    font-size: 16px;
-    font-weight: 600;
-    transition: 0.3s;
-    position: relative;
-    padding-bottom: 5px;
-}
-
-.my-nav-list a:hover {
-    color: #8ea79a;
-}
-
-.my-nav-list a::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 0;
-    height: 2.5px;
-    background: #8ea79a;
-    transition: 0.3s;
-    border-radius: 2px;
-}
-
-.my-nav-list a:hover::after {
-    width: 100%;
-}
-
-.my-search-input {
-    padding: 10px 20px;
-    border-radius: 30px;
-    border: 1px solid #e0e0e0;
-    width: 200px;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 14px;
-    transition: 0.3s;
-    background: #fafafa;
-    text-align: right;
-    direction: rtl;
-}
-
-.my-search-input:focus {
-    outline: none;
-    border-color: #8ea79a;
-    box-shadow: 0 0 0 4px rgba(142,167,154,0.15);
-    background: white;
-}
-
-/* للشاشات الصغيرة */
-@media (max-width: 768px) {
-    .my-nav {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .my-nav-list {
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-}
-/* ======================================== */
-/* تنسيق الـ Navbar  */
-/* ======================================== */
-
-
-.recipes-page .my-nav,
-.recipes-page nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 40px;
-    background: #fff;
-    border-top: 1px solid #f0f0f0;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-    flex-direction: row;  
-}
-
-.recipes-page .my-nav-list,
-.recipes-page nav ul {
-    display: flex;
-    list-style: none;
-    gap: 35px;
-    direction: rtl;
-    margin: 0;
-    padding: 0;
-    order: 2;  
-}
-
-.recipes-page .my-search-input,
-.recipes-page nav input {
-    order: 1; 
-    padding: 10px 20px;
-    border-radius: 30px;
-    border: 1px solid #e0e0e0;
-    width: 200px;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 14px;
-    background: #fafafa;
-    text-align: right;
-    direction: rtl;
-}
-
-/* للشاشات الصغيرة */
-@media (max-width: 768px) {
-    .recipes-page .my-nav,
-    .recipes-page nav {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .recipes-page .my-nav-list,
-    .recipes-page nav ul {
-        order: 1;
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .recipes-page .my-search-input,
-    .recipes-page nav input {
-        order: 2;
-    }
-}
-/*/* ===================== */
- صفحة تفاصيل الوصفة */
-/* ===================== */
-
-.recipe-detail {
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 0 40px;
-}
-
-/* عنوان الطبق */
-.recipe-title {
-    text-align: center;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 40px;
-    font-weight: 800;
-    color: #4f6357;
-    margin-bottom: 20px;
-    position: relative;
-    display: inline-block;
-    width: 100%;
-}
-
-.recipe-title::after {
-    content: "";
-    display: block;
-    width: 80px;
-    height: 4px;
-    background: #8ea79a;
-    margin: 12px auto 0;
-    border-radius: 2px;
-}
-
-/* حاوية الصورة */
-.detail-image-container {
-    position: relative;
-    margin-bottom: 30px;
-}
-
-.detail-image {
-    position: relative;
-    width: 100%;
-    border-radius: 30px;
-    overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-}
-
-.detail-image img {
-    width: 100%;
-    height: 450px;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s;
-}
-
-.detail-image:hover img {
-    transform: scale(1.02);
-}
-
-/* الأزرار اليسارية (قلب + مشاركة) */
-.action-buttons {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    display: flex;
-    gap: 12px;
-    z-index: 10;
-}
-
-.fav-icon,
-.share-icon {
-    width: 45px;
-    height: 45px;
-    background: rgba(255,255,255,0.9);
-    backdrop-filter: blur(2px);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    border: 2px solid white;
-}
-
-.fav-icon {
-    color: #bbb;
-}
-
-.share-icon {
-    color: #4f6357;
-}
-
-.fav-icon:hover {
-    color: #e74c3c;
-    transform: scale(1.15);
-    background: white;
-    box-shadow: 0 8px 18px rgba(231,76,60,0.3);
-}
-
-.share-icon:hover {
-    background: #4f6357;
-    color: white;
-    transform: scale(1.15);
-}
-
-/* زر مستوى الصعوبة */
-.difficulty-badge {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    background: rgba(79,99,87,0.9);
-    backdrop-filter: blur(4px);
-    color: white;
-    padding: 8px 20px;
-    border-radius: 40px;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    z-index: 10;
-    cursor: default;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    border: 1px solid rgba(255,255,255,0.3);
-    transition: 0.3s;
-}
-
-.difficulty-badge:hover {
-    background: #4f6357;
-    transform: translateY(-2px);
-}
-
-/* الوصف القصير */
-.recipe-description {
-    background: white;
-    padding: 25px 35px;
-    border-radius: 30px;
-    margin-bottom: 40px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-    border: 1px solid #f0f0f0;
-    font-size: 18px;
-    line-height: 1.8;
-    color: #2c3e3a;
-    text-align: center;
-}
-
-/* تخطيط العمودين */
-.two-columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-bottom: 50px;
-}
-
-/* الأقسام العامة */
-.ingredients-section,
-.method-section {
-    background: white;
-    border-radius: 30px;
-    padding: 25px 30px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-    border: 1px solid #f0f0f0;
-    transition: transform 0.3s;
-}
-
-.ingredients-section:hover,
-.method-section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(79,99,87,0.1);
-}
-
-.ingredients-section h3,
-.method-section h3,
-.nutrition-section h3,
-.contact-info h3 {
-    font-size: 28px;
-    font-weight: 800;
-    color: #4f6357;
-    margin-bottom: 25px;
-    position: relative;
-    display: inline-block;
-}
-
-.ingredients-section h3 i,
-.method-section h3 i,
-.nutrition-section h3 i {
-    margin-left: 10px;
-    color: #8ea79a;
-}
-
-.ingredients-section h3::after,
-.method-section h3::after,
-.nutrition-section h3::after {
-    content: "";
-    display: block;
-    width: 60px;
-    height: 3px;
-    background: #8ea79a;
-    margin-top: 8px;
-    border-radius: 3px;
-}
-
-/* ========== تشيك ليست تفاعلية للمقادير ========== */
-.ingredients-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.ingredients-list li {
-    position: relative;
-    border-bottom: 1px dashed #e0e8e3;
-    padding: 0;
-}
-
-/* إخفاء checkbox الحقيقي */
-.ingredients-list input {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-/* جعل label يأخذ كامل العرض */
-.ingredients-list label {
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
-    padding: 15px 0;
-    cursor: pointer;
-    transition: 0.3s;
-    position: relative;
-}
-
-/* تأثير hover */
-.ingredients-list li:hover label {
-    background: rgba(142, 167, 154, 0.05);
-    border-radius: 12px;
-    padding-right: 10px;
-    padding-left: 10px;
-}
-
-/* الدائرة الفارغة قبل التحديد */
-.ingredients-list label::before {
-    content: "";
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: #f0f7f3;
-    border: 2px solid #8ea79a;
-    display: inline-block;
-    flex-shrink: 0;
-    margin-left: 12px;
-    transition: 0.2s;
-}
-
-/* عند تحديد checkbox: نغير لون الدائرة ونضيف علامة الصح */
-.ingredients-list input:checked + label::before {
-    background: #4f6357;
-    border-color: #4f6357;
-    content: "?";
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-}
-
-/* تنسيق النص داخل المكون */
-.ingredients-list .name {
-    font-weight: 700;
-    color: #2c3e3a;
-    font-size: 18px;
-    display: inline-block;
-    margin-left: 8px;
-}
-
-.ingredients-list .details {
-    font-size: 14px;
-    color: #8ea79a;
-    display: inline-block;
-    margin-left: 8px;
-}
-
-.ingredients-list .qty {
-    font-weight: 700;
-    color: #4f6357;
-    font-size: 16px;
-    background: #f0f7f3;
-    padding: 3px 10px;
-    border-radius: 20px;
-    display: inline-block;
-    margin-right: auto;
-}
-
-/* ========== الطريقة ========== */
-.method-steps {
-    list-style: none;
-    padding: 0;
-    counter-reset: step-counter;
-}
-
-.method-steps li {
-    counter-increment: step-counter;
-    margin-bottom: 20px;
-    padding-right: 45px;
-    position: relative;
-    font-size: 17px;
-    line-height: 1.7;
-    color: #2c3e3a;
-}
-
-.method-steps li::before {
-    content: counter(step-counter);
-    background: #4f6357;
-    color: white;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    position: absolute;
-    right: 0;
-    top: 0;
-    font-size: 16px;
-    box-shadow: 0 4px 8px rgba(79,99,87,0.2);
-}
-
-/* ========== القيم الغذائية ========== */
-.nutrition-section {
-    background: white;
-    border-radius: 30px;
-    padding: 25px 30px;
-    margin-bottom: 40px;
-    text-align: center;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-}
-
-.nutrition-note {
-    color: #8ea79a;
-    font-size: 14px;
-    margin-bottom: 25px;
-}
-
-.nutrition-cards {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
-}
-
-.nutrient-card {
-    background: #f9fbfa;
-    border-radius: 25px;
-    padding: 20px 25px;
-    min-width: 130px;
-    text-align: center;
-    transition: 0.3s;
-    border: 1px solid #e0e8e3;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-}
-
-.nutrient-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 20px rgba(79,99,87,0.1);
-    border-color: #8ea79a;
-}
-
-.nutrient-card i {
-    font-size: 35px;
-    color: #4f6357;
-    margin-bottom: 12px;
-    display: inline-block;
-}
-
-.nutrient-value {
-    font-size: 32px;
-    font-weight: 800;
-    color: #2c3e3a;
-    line-height: 1;
-}
-
-.nutrient-label {
-    font-size: 16px;
-    font-weight: 600;
-    color: #4f6357;
-    margin: 8px 0 4px;
-}
-
-.nutrient-unit {
-    font-size: 13px;
-    color: #8ea79a;
-}
-
- /* تنسيق إضافي لعرض معلومات الحصص والوقت */
-        .recipe-quick-info {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            background: #f9fbfa;
-            padding: 15px 25px;
-            border-radius: 60px;
-            margin-bottom: 30px;
-            border: 1px solid #e0e8e3;
-            flex-wrap: wrap;
-        }
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 16px;
-            color: #4f6357;
-        }
-        .info-item i {
-            font-size: 20px;
-            color: #8ea79a;
-        }
-        .info-item span {
-            font-weight: 700;
-            margin-left: 4px;
-        }
-        @media (max-width: 768px) {
-            .recipe-quick-info {
-                gap: 20px;
-                padding: 12px 20px;
-            }
-            .info-item {
-                font-size: 14px;
-            }
-        }
-
-/* ========== استجابة للجوال ========== */
-@media (max-width: 768px) {
-    .recipe-detail {
-        padding: 0 20px;
-    }
-
-    .recipe-title {
-        font-size: 32px;
-    }
-
-    .detail-image img {
-        height: 250px;
-    }
-
-    .fav-icon, .share-icon {
-        width: 38px;
-        height: 38px;
-        font-size: 18px;
-    }
-
-    .difficulty-badge {
-        padding: 6px 15px;
-        font-size: 14px;
-        bottom: 15px;
-        left: 15px;
-    }
-
-    .two-columns {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .nutrition-cards {
-        gap: 15px;
-    }
-
-    .nutrient-card {
-        min-width: 110px;
-        padding: 15px;
-    }
-
-    .nutrient-value {
-        font-size: 26px;
-    }
-
-    .ingredients-section h3,
-    .method-section h3,
-    .nutrition-section h3 {
-        font-size: 24px;
-    }
-
-    .ingredients-list label {
-        flex-wrap: wrap;
-    }
-    
-    .ingredients-list .qty {
-        margin-right: 0;
-        margin-top: 5px;
-    }
-}
-
-
-/* ======================================== */
-/* تثبيت زر الحفظ في صفحة المعلومات الشخصية */
-/* ======================================== */
-
-/* تأكيد أن زر الحفظ في صفحة المعلومات الشخصية لا يتأثر */
-.dashboard-container .action-buttons {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    bottom: auto !important;
-    display: flex !important;
-    justify-content: center !important;
-    margin-top: 30px !important;
-    margin-bottom: 40px !important;
-    background: transparent !important;
-}
