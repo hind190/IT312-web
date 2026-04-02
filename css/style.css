@@ -11,7 +11,9 @@
 .recipes-card,
 .recipes-item {
     flex: 0 0 auto;           /* تثبيت العرض */
-    width: 260px;             /* عرض مناسب للبطاقة */
+    width: 260px;  
+        text-align: center !important;
+           /* عرض مناسب للبطاقة */
     /* لا تغير باقي الخصائص (خلفية، ظل، إلخ) */
 }
  /* ========================================= */
@@ -38,6 +40,13 @@
     padding: 1rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     transition: 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.course-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(79,99,87,0.15);
 }
 
 .course-item img {
@@ -100,6 +109,12 @@
     text-align: center;
     padding: 1rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+.teacher-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(79,99,87,0.15);
 }
 
 .teacher-item img {
@@ -151,6 +166,12 @@
     text-align: center;
     padding: 1rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+.review-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(79,99,87,0.15);
 }
 
 .review-item img {
@@ -201,8 +222,90 @@
     color: #1b5e20;
 }
 
+/* ========================================= */
+/* توسيط عناوين الصفحة الرئيسية فقط (بدون التأثير على الكروت) */
+/* ========================================= */
 
+.home-page .courses h2,
+.home-page .teachers h2,
+.home-page .student-reviews h2,
+.home-page .section-title,
+.home-page .section-subtitle {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100%;
+}
 
+/* ========================================= */
+/* تنسيق المسافات بين العناوين والكروت في الصفحة الرئيسية */
+/* ========================================= */
+
+/* 1. مسافة أسفل عنوان كل قسم */
+.home-page .courses h2,
+.home-page .teachers h2,
+.home-page .student-reviews h2,
+.home-page .section-title {
+    margin-bottom: 0.5rem !important;
+}
+
+/* 2. مسافة أسفل النص الفرعي (إن وجد) */
+.home-page .section-subtitle {
+    margin-bottom: 2rem !important;
+}
+
+/* 3. مسافة أعلى الكروت (لجميع الأقسام) */
+.home-page .course-slider,
+.home-page .teacher-slider,
+.home-page .review-slider {
+    margin-top: 1.5rem !important;
+}
+
+/* 4. مسافة أسفل الكروت (لإبعاد الأقسام عن بعضها) */
+.home-page .courses,
+.home-page .teachers,
+.home-page .student-reviews {
+    margin-bottom: 3rem !important;
+}
+
+/* تحسين جمالي لعناوين الأقسام - لون أخضر غامق */
+.home-page .courses h2,
+.home-page .teachers h2,
+.home-page .student-reviews h2,
+.home-page .section-title {
+    position: relative;
+    display: inline-block;
+    font-size: 2.2rem;
+    letter-spacing: -0.5px;
+    color: #4f6357;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+/* الخط الزخرفي أسفل العنوان */
+.home-page .courses h2::after,
+.home-page .teachers h2::after,
+.home-page .student-reviews h2::after,
+.home-page .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 60px;
+    height: 3px;
+    background: #1b5e20; /* أخضر غامق */
+    border-radius: 3px;
+    transition: width 0.3s;
+}
+
+/* تكبير الخط عند المرور */
+.home-page .courses h2:hover::after,
+.home-page .teachers h2:hover::after,
+.home-page .student-reviews h2:hover::after,
+.home-page .section-title:hover::after {
+    width: 100px;
+}
  
  {
     margin: 0;
@@ -252,6 +355,7 @@ body {
     margin-bottom: 0;
 }
 
+
 @media (max-width: 780px) {
     .vision-card {
         margin: 1.5rem 1rem;
@@ -267,153 +371,198 @@ body {
 
 
 
-.teachers-showcase {
-    padding: 2rem 1rem;
+/* ========================================= */
+/* صفحة عن الموقع - البطاقات عمودياً (تحت بعض) */
+/* ========================================= */
+
+.about-stack {
+    display: flex;
+    flex-direction: column;  /* جعل البطاقات عمودية */
+    align-items: center;     /* توسيطها أفقياً */
+    gap: 2rem;
+    max-width: 800px;        /* عرض مناسب للقراءة */
+    margin: 2rem auto;
+    padding: 0 20px;
 }
 
+.about-card {
+    background: white;
+    border-radius: 30px;
+    padding: 2rem;
+    width: 100%;             /* تأخذ العرض الكامل للحاوية */
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border: 1px solid #e0e8e3;
+    transition: transform 0.3s;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(79,99,87,0.1);
+}
+
+.about-card h2 {
+    color: #1b5e20;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 8px;
+}
+
+.about-card h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+    width: 50px;
+    height: 3px;
+    background: #8ea79a;
+    border-radius: 3px;
+    transition: width 0.3s;
+}
+
+.about-card:hover h2::after {
+    width: 80px;
+}
+
+.about-card p {
+    color: #2c3e3a;
+    line-height: 1.8;
+    font-size: 1rem;
+    text-align: justify;
+}
+
+/* ========================================= */
+/* قسم المعلمين - مضبوط ومحترف */
+/* ========================================= */
+
+/* عنوان القسم */
 .teachers-showcase h1 {
-    color: #2e7d32;
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+    color: #214e24; /* أخضر غامق */
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
     text-align: center;
 }
 
+/* الخط تحت العنوان */
+.teachers-showcase h1::after {
+    content: '';
+    display: block;
+    width: 70px;
+    height: 3px;
+    background: #8ea79a;
+    margin: 8px auto 0;
+    border-radius: 3px;
+}
+
+/* النص الفرعي */
 .section-desc {
     text-align: center;
-    color: #4caf50;
+    color: #4f6357; /* أخضر هادي */
+    font-size: 1.1rem;
     margin-bottom: 2rem;
 }
 
-.sort-controls {
-    max-width: 300px;
-    margin: 0 auto 2rem auto;
-    text-align: center;
+/* الحاوية العامة */
+.teachers-horizontal {
+    display: flex;
+    justify-content: center;   /* 🔥 توسيط */
+    padding: 20px;
 }
 
-.sort-controls label {
-    display: block;
-    font-weight: 600;
-    color: #2e7d32;
-    margin-bottom: 0.5rem;
+/* ترتيب الكروت */
+.teachers-list-horizontal {
+    display: flex;
+    justify-content: center;   /* 🔥 توسيط */
+    gap: 25px;
+    flex-wrap: wrap;           /* 🔥 يخليهم ينزلون سطر ثاني */
 }
 
-#sort-select {
-    width: 100%;
-    padding: 10px 15px;
-    border-radius: 40px;
-    border: 1px solid #c8e6c9;
+/* الكرت */
+.teacher-card-horizontal {
     background: white;
-    font-family: inherit;
-    font-size: 1rem;
-    color: #1b5e20;
-    cursor: pointer;
+    border-radius: 25px;
+    width: 200px;             /* 🔥 حجم مربّع تقريبًا */
+    height: 230px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    padding: 20px;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    border: 1px solid #c8e6c9;
+
     transition: 0.3s;
 }
 
-#sort-select:focus {
-    outline: none;
-    border-color: #2e7d32;
-    box-shadow: 0 0 0 2px rgba(46,125,50,0.2);
-}
-.teachers-horizontal {
-    overflow-x: auto;
-    white-space: nowrap;
-    padding: 1rem 0.5rem 2rem;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-}
-
-.teachers-list-horizontal {
-    display: flex;
-    gap: 2rem;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-}
-
-.teacher-card-horizontal {
-    background: white;
-    border-radius: 28px;
-    width: 260px;
-    flex-shrink: 0;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    border: 1px solid #c8e6c9;
-    transition: transform 0.3s;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;      
-    align-items: center;          
-    text-align: center;
-    padding: 1rem;                
-    min-height: 260px;           
-}
-
+/* hover */
 .teacher-card-horizontal:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(46,125,50,0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(27,94,32,0.15);
 }
 
+/* الصورة */
 .teacher-card-horizontal img {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 1rem;
+    margin-bottom: 10px;
     border: 3px solid #66bb6a;
 }
 
-.teacher-card-horizontal i {
-    font-size: 80px;
-    color: #66bb6a;
-    margin-bottom: 0.75rem;
-    display: block;
-}
-
+/* الاسم */
 .teacher-card-horizontal h3 {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     color: #1b5e20;
     margin: 0;
-    line-height: 1.3;
 }
 
-.teacher-card-horizontal .years {
-    font-size: 0.9rem;
-    color: #4caf50;
-    background: #e8f5e9;
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 30px;
-    margin-top: 0.75rem;
+/* العنوان */
+.teachers-showcase h1 {
+    color: #2e543e !important; 
 }
 
-.teachers-horizontal::-webkit-scrollbar {
-    height: 8px;
-}
-.teachers-horizontal::-webkit-scrollbar-track {
-    background: #e8f5e9;
-    border-radius: 10px;
-}
-.teachers-horizontal::-webkit-scrollbar-thumb {
-    background: #66bb6a;
-    border-radius: 10px;
+/* النص الفرعي */
+.teachers-showcase .section-desc {
+    color: #0d3b1f !important;
 }
 
+/* دائرة صورة المعلم */
+.teacher-card-horizontal img {
+    border: 3px solid #9fb4a7 !important; 
+}
+
+/* استجابة للشاشات الصغيرة */
 @media (max-width: 768px) {
     .teacher-card-horizontal {
-        width: 200px;
-        min-height: 220px;
-        padding: 0.8rem;
+        width: 220px;
+        padding: 1rem;
     }
     .teacher-card-horizontal img {
-        width: 80px;
-        height: 80px;
-    }
-    .teacher-card-horizontal i {
-        font-size: 70px;
+        width: 100px;
+        height: 100px;
     }
     .teacher-card-horizontal h3 {
+        font-size: 1.1rem;
+    }
+    .teachers-showcase h1 {
+        font-size: 1.8rem;
+    }
+    .section-desc {
         font-size: 1rem;
+        padding: 0 1rem;
     }
 }
+
+
+
 
 
 /* ---------------------- */
@@ -499,27 +648,49 @@ body {
     justify-content: center;
 }
 
-/* قسم المعلومات (النص) */
+/* ===== قسم المعلومات (العنوان والنص) ===== */
 .contact-info {
     width: 100%;
+    text-align: center;  /* توسيط المحتوى */
 }
 
 .contact-info h1 {
-    color: #4f6357;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    border-right: 4px solid #8ea79a;
-    padding-right: 1rem;
+    color: #1b5e20;  /* أخضر غامق */
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 12px;
+    border-right: none;  /* إزالة الحد الجانبي */
+}
+
+/* خط زخرفي أسفل العنوان */
+.contact-info h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+    width: 70px;
+    height: 3px;
+    background: #8ea79a;
+    border-radius: 3px;
+    transition: width 0.3s;
+}
+
+.contact-info h1:hover::after {
+    width: 120px;
 }
 
 .contact-info p {
     color: #5e6f69;
     line-height: 1.8;
-    margin-bottom: 1.2rem;
-    text-align: justify;
+    margin: 1rem auto 0;
+    max-width: 600px;  /* لجعل النص أضيق وأسهل للقراءة */
+    font-size: 1.1rem;
 }
 
-/* قسم النموذج */
+/* ===== النموذج (كما هو مع تحسينات بسيطة) ===== */
 .contact-form {
     width: 100%;
     max-width: 700px;
@@ -2532,55 +2703,6 @@ box-shadow: 0 0 0 3px rgba(79,99,87,0.1);
     border-color: #8ea79a;
 }
 
-.courses-container input[type="radio"] {
-    display: none;
-}
-
-
-.courses-container .my-course-card {
-    display: none;
-}
-
-
-#course-all:checked ~ .my-courses-grid .my-course-card {
-    display: block;
-}
-
-#course-beginners:checked ~ .my-courses-grid .beginners {
-    display: block;
-}
-
-#course-healthy:checked ~ .my-courses-grid .healthy {
-    display: block;
-}
-
-#course-sweets:checked ~ .my-courses-grid .sweets {
-    display: block;
-}
-
-#course-pastries:checked ~ .my-courses-grid .pastries {
-    display: block;
-}
-
-#course-drinks:checked ~ .my-courses-grid .drinks {
-    display: block;
-}
-
-#course-fastfood:checked ~ .my-courses-grid .fastfood {
-    display: block;
-}
-
-
-#course-all:checked ~ .my-category-filters label[for="course-all"],
-#course-beginners:checked ~ .my-category-filters label[for="course-beginners"],
-#course-healthy:checked ~ .my-category-filters label[for="course-healthy"],
-#course-sweets:checked ~ .my-category-filters label[for="course-sweets"],
-#course-pastries:checked ~ .my-category-filters label[for="course-pastries"],
-#course-drinks:checked ~ .my-category-filters label[for="course-drinks"],
-#course-fastfood:checked ~ .my-category-filters label[for="course-fastfood"] {
-    background: #4f6357;
-    color: white;
-}
 .my-user-box select {
     margin-top: 8px;
     padding: 8px 12px;
