@@ -1,24 +1,22 @@
  ⁠
- /* جعل الوصفات تظهر أفقياً */
 .recipes-slider {
     display: flex;
-    flex-wrap: wrap;          /* تلتف عند ضيق الشاشة */
-    justify-content: center;  /* توسيط البطاقات */
+    flex-wrap: wrap;          
+    justify-content: center;  
     gap: 1.5rem;
     margin: 2rem 0;
 }
 
 .recipes-card,
 .recipes-item {
-    flex: 0 0 auto;           /* تثبيت العرض */
+    flex: 0 0 auto;          
     width: 260px;  
         text-align: center !important;
-           /* عرض مناسب للبطاقة */
-    /* لا تغير باقي الخصائص (خلفية، ظل، إلخ) */
+           
 }
- /* ========================================= */
-/* تنسيقات الصفحة الرئيسية (بعد تغيير الأسماء) */
-/* ========================================= */
+ 
+/* تنسيقات الصفحة الرئيسية  */
+
 
 .course-slider {
     display: flex;
@@ -94,7 +92,7 @@
     width: 100%;
 }
 
-/* قسم أفضل المعلمين - عرض أفقي */
+/* قسم أفضل المعلمين ي */
 .teacher-slider {
     display: flex;
     flex-wrap: wrap;
@@ -151,7 +149,7 @@
     width: 100%;
 }
 
-/* قسم آراء الطلاب - عرض أفقي */
+/* قسم آراء الطلاب ي */
 .review-slider {
     display: flex;
     flex-wrap: wrap;
@@ -222,9 +220,7 @@
     color: #1b5e20;
 }
 
-/* ========================================= */
-/* توسيط عناوين الصفحة الرئيسية فقط (بدون التأثير على الكروت) */
-/* ========================================= */
+/*توسيط عناوين الصفحة الرئيسية ط  */
 
 .home-page .courses h2,
 .home-page .teachers h2,
@@ -237,11 +233,10 @@
     width: 100%;
 }
 
-/* ========================================= */
 /* تنسيق المسافات بين العناوين والكروت في الصفحة الرئيسية */
-/* ========================================= */
 
-/* 1. مسافة أسفل عنوان كل قسم */
+
+/*  مسافة أسفل عنوان كل قسم */
 .home-page .courses h2,
 .home-page .teachers h2,
 .home-page .student-reviews h2,
@@ -249,19 +244,19 @@
     margin-bottom: 0.5rem !important;
 }
 
-/* 2. مسافة أسفل النص الفرعي (إن وجد) */
+/* 2. مسافة أسفل النص الفرعي  */
 .home-page .section-subtitle {
     margin-bottom: 2rem !important;
 }
 
-/* 3. مسافة أعلى الكروت (لجميع الأقسام) */
+/* 3. مسافة أعلى الكروت  */
 .home-page .course-slider,
 .home-page .teacher-slider,
 .home-page .review-slider {
     margin-top: 1.5rem !important;
 }
 
-/* 4. مسافة أسفل الكروت (لإبعاد الأقسام عن بعضها) */
+/* 4. مسافة أسفل الكروت  */
 .home-page .courses,
 .home-page .teachers,
 .home-page .student-reviews {
@@ -371,16 +366,14 @@ body {
 
 
 
-/* ========================================= */
-/* صفحة عن الموقع - البطاقات عمودياً (تحت بعض) */
-/* ========================================= */
+/* صفحة عن الموقع - البطاقات  (تحت بعض) */
 
 .about-stack {
     display: flex;
-    flex-direction: column;  /* جعل البطاقات عمودية */
-    align-items: center;     /* توسيطها أفقياً */
+    flex-direction: column;  
+    align-items: center;     
     gap: 2rem;
-    max-width: 800px;        /* عرض مناسب للقراءة */
+    max-width: 800px;        
     margin: 2rem auto;
     padding: 0 20px;
 }
@@ -434,9 +427,7 @@ body {
     text-align: justify;
 }
 
-/* ========================================= */
-/* قسم المعلمين - مضبوط ومحترف */
-/* ========================================= */
+/*قسم المعلمين ف */
 
 /* عنوان القسم */
 .teachers-showcase h1 {
@@ -468,23 +459,23 @@ body {
 /* الحاوية العامة */
 .teachers-horizontal {
     display: flex;
-    justify-content: center;   /* 🔥 توسيط */
+    justify-content: center;   
     padding: 20px;
 }
 
 /* ترتيب الكروت */
 .teachers-list-horizontal {
     display: flex;
-    justify-content: center;   /* 🔥 توسيط */
+    justify-content: center;   
     gap: 25px;
-    flex-wrap: wrap;           /* 🔥 يخليهم ينزلون سطر ثاني */
+    flex-wrap: wrap;           
 }
 
 /* الكرت */
 .teacher-card-horizontal {
     background: white;
     border-radius: 25px;
-    width: 200px;             /* 🔥 حجم مربّع تقريبًا */
+    width: 200px;             
     height: 230px;
 
     display: flex;
@@ -582,9 +573,7 @@ body {
     line-height: 1.6;
 }
 
-/* ========================================= */
 /* بطاقة الرؤية (رويتنا) في الصفحة الرئيسية  */
-/* ========================================= */
 
 .vision-card {
     max-width: 600px;
@@ -633,7 +622,6 @@ body {
 
 
 /* ==================== contact.css ==================== */
-/* تنسيقات خاصة بصفحة "تواصل معنا" */
 
 .contact-main {
     max-width: 1200px;
@@ -651,7 +639,7 @@ body {
 /* ===== قسم المعلومات (العنوان والنص) ===== */
 .contact-info {
     width: 100%;
-    text-align: center;  /* توسيط المحتوى */
+    text-align: center;  
 }
 
 .contact-info h1 {
@@ -661,7 +649,7 @@ body {
     position: relative;
     display: inline-block;
     padding-bottom: 12px;
-    border-right: none;  /* إزالة الحد الجانبي */
+    border-right: none;  
 }
 
 /* خط زخرفي أسفل العنوان */
@@ -686,11 +674,11 @@ body {
     color: #5e6f69;
     line-height: 1.8;
     margin: 1rem auto 0;
-    max-width: 600px;  /* لجعل النص أضيق وأسهل للقراءة */
+    max-width: 600px;  
     font-size: 1.1rem;
 }
 
-/* ===== النموذج (كما هو مع تحسينات بسيطة) ===== */
+/* ===== النموذج  ===== */
 .contact-form {
     width: 100%;
     max-width: 700px;
@@ -773,9 +761,8 @@ body {
     }
 }
 
-/* ========================================= */
-/* صفحة من نحن (قائمة المعلمين الأفقية)       */
-/* ========================================= */
+
+/* صفحة من نحن        */
 
 .teachers-showcase {
     padding: 2rem 1rem;
@@ -911,7 +898,6 @@ body {
 
 
 
-/* //////////////////---------------------- */
 /*  إعدادات عامة (RESET) */
 /* ---------------------- */
 * {
@@ -928,7 +914,6 @@ body {
     line-height: 1.6;
 }
 
-/* ---------------------- */
 /*  الهيدر (HEADER) - مشترك بين جميع الصفحات */
 /* ---------------------- */
 header {
@@ -997,7 +982,7 @@ header {
 }
 
 /* ---------------------- */
-/*  القائمة المنسدلة (DROPDOWN MENU) - لوحة الطالب */
+/* (DROPDOWN MENU) - لوحة الطالب */
 /* ---------------------- */
 .dropdown {
     position: relative;
@@ -1807,7 +1792,6 @@ box-shadow: 0 0 0 3px rgba(79,99,87,0.1);
     flex: 1;
 }
 
-/* تم إزالة زر التعديل بالكامل */
 
 /* نموذج إضافة ملاحظة */
 .add-note-form {
@@ -1992,7 +1976,7 @@ box-shadow: 0 0 0 3px rgba(79,99,87,0.1);
     gap: 20px;
     margin-bottom: 15px;
     flex-wrap: wrap;
-    padding-left: 100px; /* مساحة للأزرار والتاريخ */
+    padding-left: 100px; 
 }
 
 .evaluation-image {
@@ -5660,7 +5644,6 @@ content: "\2713" !important;
 /* تثبيت زر الحفظ في صفحة المعلومات الشخصية */
 /* ======================================== */
 
-/* تأكيد أن زر الحفظ في صفحة المعلومات الشخصية لا يتأثر */
 .dashboard-container .action-buttons {
     position: relative !important;
     top: auto !important;
