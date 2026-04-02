@@ -2532,6 +2532,55 @@ box-shadow: 0 0 0 3px rgba(79,99,87,0.1);
     border-color: #8ea79a;
 }
 
+.courses-container input[type="radio"] {
+    display: none;
+}
+
+
+.courses-container .my-course-card {
+    display: none;
+}
+
+
+#course-all:checked ~ .my-courses-grid .my-course-card {
+    display: block;
+}
+
+#course-beginners:checked ~ .my-courses-grid .beginners {
+    display: block;
+}
+
+#course-healthy:checked ~ .my-courses-grid .healthy {
+    display: block;
+}
+
+#course-sweets:checked ~ .my-courses-grid .sweets {
+    display: block;
+}
+
+#course-pastries:checked ~ .my-courses-grid .pastries {
+    display: block;
+}
+
+#course-drinks:checked ~ .my-courses-grid .drinks {
+    display: block;
+}
+
+#course-fastfood:checked ~ .my-courses-grid .fastfood {
+    display: block;
+}
+
+
+#course-all:checked ~ .my-category-filters label[for="course-all"],
+#course-beginners:checked ~ .my-category-filters label[for="course-beginners"],
+#course-healthy:checked ~ .my-category-filters label[for="course-healthy"],
+#course-sweets:checked ~ .my-category-filters label[for="course-sweets"],
+#course-pastries:checked ~ .my-category-filters label[for="course-pastries"],
+#course-drinks:checked ~ .my-category-filters label[for="course-drinks"],
+#course-fastfood:checked ~ .my-category-filters label[for="course-fastfood"] {
+    background: #4f6357;
+    color: white;
+}
 .my-user-box select {
     margin-top: 8px;
     padding: 8px 12px;
