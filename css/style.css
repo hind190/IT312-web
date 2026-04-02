@@ -1,5 +1,746 @@
+ ⁠
+ /* جعل الوصفات تظهر أفقياً */
+.recipes-slider {
+    display: flex;
+    flex-wrap: wrap;          /* تلتف عند ضيق الشاشة */
+    justify-content: center;  /* توسيط البطاقات */
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.recipes-card,
+.recipes-item {
+    flex: 0 0 auto;           /* تثبيت العرض */
+    width: 260px;             /* عرض مناسب للبطاقة */
+    /* لا تغير باقي الخصائص (خلفية، ظل، إلخ) */
+}
+ /* ========================================= */
+/* تنسيقات الصفحة الرئيسية (بعد تغيير الأسماء) */
+/* ========================================= */
+
+.course-slider {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.course-item {
+    flex: 0 0 auto;
+    width: 260px;
+}
+.course-item {
+    background: white;
+    border-radius: 20px;
+    width: 240px;
+    overflow: hidden;
+    text-align: center;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.course-item img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.course-item h3 {
+    font-size: 1.2rem;
+    margin: 0.8rem 0 0.5rem;
+    color: #2c3e3a;
+}
+
+.course-item p {
+    font-size: 0.85rem;
+    color: #5e6f69;
+    margin-bottom: 0.8rem;
+}
+
+.course-category {
+    background: #f0f7f3;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    color: #4f6357;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.chef-info {
+    font-size: 0.8rem;
+    color: #4f6357;
+    margin-bottom: 0.8rem;
+}
+
+.course-btn {
+    background: #4f6357;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* قسم أفضل المعلمين - عرض أفقي */
+.teacher-slider {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.teacher-item {
+    background: white;
+    border-radius: 20px;
+    width: 200px;
+    text-align: center;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.teacher-item img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 0.8rem;
+}
+
+.teacher-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+}
+
+.teacher-item .rating {
+    color: #ffb347;
+    margin: 0.3rem 0;
+}
+
+.teacher-item p {
+    font-size: 0.8rem;
+    color: #5e6f69;
+    margin-bottom: 0.8rem;
+}
+
+.teacher-btn {
+    background: #4f6357;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* قسم آراء الطلاب - عرض أفقي */
+.review-slider {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.review-item {
+    background: white;
+    border-radius: 20px;
+    width: 240px;
+    text-align: center;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.review-item img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 0.5rem;
+}
+
+.review-item h3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+}
+
+.review-item p {
+    font-size: 0.8rem;
+    color: #5e6f69;
+    margin-bottom: 0.5rem;
+}
+
+.review-item .rating {
+    color: #ffb347;
+    font-size: 0.9rem;
+}
+
+/* بطاقة الرؤية */
+.vision-box {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #c8e6c9;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.vision-box h3 {
+    color: #2e7d32;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+}
+
+.vision-box p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #1b5e20;
+}
+
+
+
+ 
+ {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Tajawal", "Tahoma", sans-serif;
+}
+
+body {
+    background-color: #f6f3f1;
+    direction: rtl;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+
+.vision-card {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #c8e6c9;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.vision-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(46, 125, 50, 0.1);
+}
+
+.vision-card h3 {
+    color: #2e7d32;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    border-right: none;
+    padding-right: 0;
+}
+
+.vision-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #1b5e20;
+    margin-bottom: 0;
+}
+
+@media (max-width: 780px) {
+    .vision-card {
+        margin: 1.5rem 1rem;
+        padding: 1rem;
+    }
+    .vision-card h3 {
+        font-size: 1.2rem;
+    }
+    .vision-card p {
+        font-size: 0.85rem;
+    }
+}
+
+
+
+.teachers-showcase {
+    padding: 2rem 1rem;
+}
+
+.teachers-showcase h1 {
+    color: #2e7d32;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.section-desc {
+    text-align: center;
+    color: #4caf50;
+    margin-bottom: 2rem;
+}
+
+.sort-controls {
+    max-width: 300px;
+    margin: 0 auto 2rem auto;
+    text-align: center;
+}
+
+.sort-controls label {
+    display: block;
+    font-weight: 600;
+    color: #2e7d32;
+    margin-bottom: 0.5rem;
+}
+
+#sort-select {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 40px;
+    border: 1px solid #c8e6c9;
+    background: white;
+    font-family: inherit;
+    font-size: 1rem;
+    color: #1b5e20;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#sort-select:focus {
+    outline: none;
+    border-color: #2e7d32;
+    box-shadow: 0 0 0 2px rgba(46,125,50,0.2);
+}
+.teachers-horizontal {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 1rem 0.5rem 2rem;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.teachers-list-horizontal {
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+
+.teacher-card-horizontal {
+    background: white;
+    border-radius: 28px;
+    width: 260px;
+    flex-shrink: 0;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    border: 1px solid #c8e6c9;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;      
+    align-items: center;          
+    text-align: center;
+    padding: 1rem;                
+    min-height: 260px;           
+}
+
+.teacher-card-horizontal:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(46,125,50,0.1);
+}
+
+.teacher-card-horizontal img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid #66bb6a;
+}
+
+.teacher-card-horizontal i {
+    font-size: 80px;
+    color: #66bb6a;
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.teacher-card-horizontal h3 {
+    font-size: 1.3rem;
+    color: #1b5e20;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.teacher-card-horizontal .years {
+    font-size: 0.9rem;
+    color: #4caf50;
+    background: #e8f5e9;
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 30px;
+    margin-top: 0.75rem;
+}
+
+.teachers-horizontal::-webkit-scrollbar {
+    height: 8px;
+}
+.teachers-horizontal::-webkit-scrollbar-track {
+    background: #e8f5e9;
+    border-radius: 10px;
+}
+.teachers-horizontal::-webkit-scrollbar-thumb {
+    background: #66bb6a;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .teacher-card-horizontal {
+        width: 200px;
+        min-height: 220px;
+        padding: 0.8rem;
+    }
+    .teacher-card-horizontal img {
+        width: 80px;
+        height: 80px;
+    }
+    .teacher-card-horizontal i {
+        font-size: 70px;
+    }
+    .teacher-card-horizontal h3 {
+        font-size: 1rem;
+    }
+}
+
 
 /* ---------------------- */
+/*  إعدادات عامة (RESET) */
+/* ---------------------- */
+•⁠  ⁠{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Tajawal", "Tahoma", sans-serif;
+}
+
+body {
+    background-color: #f6f3f1;
+    direction: rtl;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ========================================= */
+/* بطاقة الرؤية (رويتنا) في الصفحة الرئيسية  */
+/* ========================================= */
+
+.vision-card {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #c8e6c9;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.vision-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(46, 125, 50, 0.1);
+}
+
+.vision-card h3 {
+    color: #2e7d32;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    border-right: none;
+    padding-right: 0;
+}
+
+.vision-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #1b5e20;
+    margin-bottom: 0;
+}
+
+@media (max-width: 780px) {
+    .vision-card {
+        margin: 1.5rem 1rem;
+        padding: 1rem;
+    }
+    .vision-card h3 {
+        font-size: 1.2rem;
+    }
+    .vision-card p {
+        font-size: 0.85rem;
+    }
+}
+
+
+/* ==================== contact.css ==================== */
+/* تنسيقات خاصة بصفحة "تواصل معنا" */
+
+.contact-main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 20px;
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    justify-content: center;
+}
+
+/* قسم المعلومات (النص) */
+.contact-info {
+    width: 100%;
+}
+
+.contact-info h1 {
+    color: #4f6357;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    border-right: 4px solid #8ea79a;
+    padding-right: 1rem;
+}
+
+.contact-info p {
+    color: #5e6f69;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    text-align: justify;
+}
+
+/* قسم النموذج */
+.contact-form {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 30px;
+    padding: 2rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+}
+
+.contact-form h2 {
+    color: #4f6357;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid #dfeae3;
+    display: inline-block;
+    width: auto;
+    padding-bottom: 0.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: #4f6357;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #dfeae3;
+    border-radius: 20px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 1rem;
+    background: #fefefe;
+    transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #8ea79a;
+    box-shadow: 0 0 0 3px rgba(142,167,154,0.2);
+}
+
+.submit-btn {
+    background: #4f6357;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 40px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.submit-btn:hover {
+    background: #6f8f82;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(79,99,87,0.3);
+}
+
+/* استجابة للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .contact-container {
+        gap: 2rem;
+    }
+    .contact-form {
+        padding: 1.5rem;
+    }
+}
+
+/* ========================================= */
+/* صفحة من نحن (قائمة المعلمين الأفقية)       */
+/* ========================================= */
+
+.teachers-showcase {
+    padding: 2rem 1rem;
+}
+
+.teachers-showcase h1 {
+    color: #2e7d32;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.section-desc {
+    text-align: center;
+    color: #4caf50;
+    margin-bottom: 2rem;
+}
+
+.sort-controls {
+    max-width: 300px;
+    margin: 0 auto 2rem auto;
+    text-align: center;
+}
+
+.sort-controls label {
+    display: block;
+    font-weight: 600;
+    color: #2e7d32;
+    margin-bottom: 0.5rem;
+}
+
+#sort-select {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 40px;
+    border: 1px solid #c8e6c9;
+    background: white;
+    font-family: inherit;
+    font-size: 1rem;
+    color: #1b5e20;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#sort-select:focus {
+    outline: none;
+    border-color: #2e7d32;
+    box-shadow: 0 0 0 2px rgba(46,125,50,0.2);
+}
+
+.teachers-horizontal {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 1rem 0.5rem 2rem;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.teachers-list-horizontal {
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+
+.teacher-card-horizontal {
+    background: white;
+    border-radius: 28px;
+    width: 260px;
+    flex-shrink: 0;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    border: 1px solid #c8e6c9;
+    transition: transform 0.3s;
+}
+
+.teacher-card-horizontal:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(46,125,50,0.1);
+}
+
+.teacher-card-horizontal img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1rem;
+    border: 3px solid #66bb6a;
+}
+
+.teacher-card-horizontal h3 {
+    font-size: 1.3rem;
+    color: #1b5e20;
+    margin-bottom: 0.5rem;
+}
+
+.teacher-card-horizontal .years {
+    font-size: 0.9rem;
+    color: #4caf50;
+    background: #e8f5e9;
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 30px;
+    margin-top: 0.5rem;
+}
+
+.teachers-horizontal::-webkit-scrollbar {
+    height: 8px;
+}
+.teachers-horizontal::-webkit-scrollbar-track {
+    background: #e8f5e9;
+    border-radius: 10px;
+}
+.teachers-horizontal::-webkit-scrollbar-thumb {
+    background: #66bb6a;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .teacher-card-horizontal {
+        width: 220px;
+        padding: 1rem;
+    }
+    .teacher-card-horizontal img {
+        width: 100px;
+        height: 100px;
+    }
+    .teacher-card-horizontal h3 {
+        font-size: 1.1rem;
+    }
+}
+
+
+
+/* //////////////////---------------------- */
 /*  إعدادات عامة (RESET) */
 /* ---------------------- */
 * {
@@ -299,7 +1040,7 @@ nav input:focus {
 }
 
 /* ---------------------- */
-/*  صفحات لوحة الطالب (DASHBOARD PAGES) */
+/*    المعلومات الشخصية -الصفحات لوحة الطالب (DASHBOARD PAGES) */
 /* ---------------------- */
 .dashboard-container {
     max-width: 1000px;
@@ -516,6 +1257,36 @@ nav input:focus {
     background: #6f8f82;
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(79,99,87,0.3);
+}
+/* تنسيق حقل التاريخ (date picker) */
+input[type="date"] {
+width: 100%;
+padding: 10px 15px;
+border: 2px solid #dfeae3;
+border-radius: 15px;
+font-family: 'Tajawal', sans-serif;
+font-size: 16px;
+color: #2c3e3a;
+background: white;
+transition: all 0.3s ease;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+background-color: #dfeae3;
+padding: 5px;
+border-radius: 10px;
+cursor: pointer;
+}
+
+input[type="date"]:hover {
+border-color: #8ea79a;
+background-color: #fafafa;
+}
+
+input[type="date"]:focus {
+outline: none;
+border-color: #4f6357;
+box-shadow: 0 0 0 3px rgba(79,99,87,0.1);
 }
 
 /* ---------------------- */
