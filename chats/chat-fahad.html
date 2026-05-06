@@ -9,6 +9,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .toast-message {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #4f6357;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 14px;
+            z-index: 9999;
+            animation: fadeInUp 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            font-family: 'Tajawal', sans-serif;
+        }
+        .toast-message.error {
+            background: #e74c3c;
+        }
+        .toast-message.warning {
+            background: #f39c12;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
 <!-- HEADER -->
@@ -38,7 +70,7 @@
             </div>
         </div>
     </header>
- <!-- NAVBAR -->
+<!-- NAVBAR -->
     <nav>
         <ul>
             <li><a href="../index.html">الرئيسية</a></li>
@@ -49,13 +81,13 @@
         </ul>
         <input type="text" placeholder="بحث">
     </nav>
-  <!-- BREADCRUMBS -->
+<!-- BREADCRUMBS -->
     <div class="breadcrumbs">
         <a href="../index.html">الرئيسية</a>
         <a href="../pages/contact-teachers.html">التواصل مع المعلمين</a>
         <span>شيف فهد العتيبي</span>
     </div>
-  <!-- MAIN CONTENT -->
+<!-- MAIN CONTENT -->
     <main class="dashboard-container">
         <div class="chat-header">
             <div class="chat-teacher-info">
@@ -70,54 +102,23 @@
             </a>
         </div>
 
-        <div class="chat-messages-area">
-            <div class="message-row student-message">
-                <div class="message-bubble">
-                    <p>السلام عليكم، هل يمكن استخدام بهار الكبسة بدل البهار المشكل في الوصفات؟</p>
-                    <span class="message-time">٠٨:١٥ ص</span>
-                </div>
-                <img src="../images/user.png" alt="أنت" class="message-avatar">
-            </div>
-
-            <div class="message-row teacher-message">
-                <img src="../images/chef-fahad.jpg" alt="شيف فهد" class="message-avatar">
-                <div class="message-bubble">
-                    <p>وعليكم السلام، نعم يمكن، لكن النكهة ستختلف قليلاً. أفضل استخدام البهار المشكل عشان تحصلين على الطعم المتوازن.</p>
-                    <span class="message-time">٠٨:٤٥ ص</span>
-                </div>
-            </div>
-
-            <div class="message-row student-message">
-                <div class="message-bubble">
-                    <p>شكراً على المعلومة. كم النسبة المناسبة من البهار المشكل للكيلو لحم؟</p>
-                    <span class="message-time">٠٩:٠٠ ص</span>
-                </div>
-                <img src="../images/user.png" alt="أنت" class="message-avatar">
-            </div>
-
-            <div class="message-row teacher-message">
-                <img src="../images/chef-fahad.jpg" alt="شيف فهد" class="message-avatar">
-                <div class="message-bubble">
-                    <p>ملعقة كبيرة تكفي للكيلو، لكن حسب ذوقك تقدرين تزيدين أو تنقصين. جربي وعدلي حسب رغبتك.</p>
-                    <span class="message-time">٠٩:٣٠ ص</span>
-                </div>
-            </div>
+        <div class="chat-messages-area" id="chatMessagesArea">
+            <!-- الرسائل ستظهر هنا -->
         </div>
 
         <div class="chat-input-area">
             <div class="input-actions">
-                <button class="attach-btn" onclick="attachFile()" title="إرفاق ملف">
+                <button class="attach-btn" id="attachBtn" title="إرفاق ملف">
                     <i class="fas fa-plus"></i>
                 </button>
-                
             </div>
             <textarea id="messageInput" placeholder="اكتب رسالتك هنا..." rows="2"></textarea>
-            <button class="send-btn" onclick="sendMessage()">
+            <button class="send-btn" id="sendBtn">
                 <i class="fas fa-paper-plane"></i>
             </button>
         </div>
     </main>
- <!-- FOOTER -->
+<!-- FOOTER -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-left">
@@ -141,6 +142,279 @@
         </div>
     </footer>
 
-  
+    <script>
+        // ============================================
+        // محادثة شيف فهد العتيبي
+        // ============================================
+        
+        // معرف المعلم
+        const teacherId = 'chef-fahad';
+        const teacherName = 'شيف فهد العتيبي';
+        const teacherImage = '../images/chef-fahad.jpg';
+        
+        // تحميل الرسائل المحفوظة
+        let messages = JSON.parse(localStorage.getItem(`chat_${teacherId}`) || '[]');
+        
+        // دالة عرض رسالة منبثقة
+        function showToastMessage(message, type = "success") {
+            const oldMsg = document.querySelector('.toast-message');
+            if (oldMsg) oldMsg.remove();
+            
+            const msg = document.createElement('div');
+            msg.className = `toast-message ${type}`;
+            let icon = type === 'error' ? 'fa-exclamation-circle' : 'fa-check-circle';
+            if (type === 'warning') icon = 'fa-triangle-exclamation';
+            msg.innerHTML = `<i class="fas ${icon}"></i> ${message}`;
+            document.body.appendChild(msg);
+            
+            setTimeout(() => {
+                if (msg) msg.remove();
+            }, 3000);
+        }
+        
+        // دالة تنقية النص
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // الحصول على الوقت الحالي
+        function getCurrentTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            return `${hours}:${minutes}`;
+        }
+        
+        // عرض الرسائل في واجهة المحادثة
+        function loadMessages() {
+            const messagesArea = document.getElementById('chatMessagesArea');
+            if (!messagesArea) return;
+            
+            messagesArea.innerHTML = '';
+            
+            if (messages.length === 0) {
+                // رسائل ترحيبية افتراضية للمرة الأولى
+                const defaultMessages = [
+                    {
+                        type: 'student-message',
+                        text: 'السلام عليكم، هل يمكن استخدام بهار الكبسة بدل البهار المشكل في الوصفات؟',
+                        time: '٠٨:١٥ ص'
+                    },
+                    {
+                        type: 'teacher-message',
+                        text: 'وعليكم السلام، نعم يمكن، لكن النكهة ستختلف قليلاً. أفضل استخدام البهار المشكل عشان تحصلين على الطعم المتوازن.',
+                        time: '٠٨:٤٥ ص'
+                    },
+                    {
+                        type: 'student-message',
+                        text: 'شكراً على المعلومة. كم النسبة المناسبة من البهار المشكل للكيلو لحم؟',
+                        time: '٠٩:٠٠ ص'
+                    },
+                    {
+                        type: 'teacher-message',
+                        text: 'ملعقة كبيرة تكفي للكيلو، لكن حسب ذوقك تقدرين تزيدين أو تنقصين. جربي وعدلي حسب رغبتك.',
+                        time: '٠٩:٣٠ ص'
+                    }
+                ];
+                messages = defaultMessages;
+                saveMessages();
+            }
+            
+            messages.forEach(msg => {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message-row ${msg.type}`;
+                messageDiv.innerHTML = `
+                    ${msg.type === 'teacher-message' ? `<img src="${teacherImage}" alt="${teacherName}" class="message-avatar">` : ''}
+                    <div class="message-bubble">
+                        <p>${escapeHtml(msg.text)}</p>
+                        <span class="message-time">${msg.time}</span>
+                    </div>
+                    ${msg.type === 'student-message' ? `<img src="../images/user.png" alt="أنت" class="message-avatar">` : ''}
+                `;
+                messagesArea.appendChild(messageDiv);
+            });
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+        }
+        
+        // حفظ الرسائل في localStorage
+        function saveMessages() {
+            localStorage.setItem(`chat_${teacherId}`, JSON.stringify(messages));
+            
+            // تحديث آخر رسالة في قائمة المحادثات
+            if (messages.length > 0 && window.updateLastMessage) {
+                const lastMsg = messages[messages.length - 1];
+                window.updateLastMessage(teacherId, lastMsg.text, lastMsg.time);
+            }
+        }
+        
+        // إرسال رسالة جديدة
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const messageText = input.value.trim();
+            
+            if (messageText === "") {
+                showToastMessage(" الرجاء كتابة رسالة", "error");
+                return;
+            }
+            
+            const currentTime = getCurrentTime();
+            
+            // إضافة رسالة الطالب
+            const studentMessage = {
+                type: 'student-message',
+                text: messageText,
+                time: currentTime
+            };
+            messages.push(studentMessage);
+            
+            // عرض الرسالة في الواجهة
+            const messagesArea = document.getElementById('chatMessagesArea');
+            const studentMsgDiv = document.createElement('div');
+            studentMsgDiv.className = 'message-row student-message';
+            studentMsgDiv.innerHTML = `
+                <div class="message-bubble">
+                    <p>${escapeHtml(messageText)}</p>
+                    <span class="message-time">${currentTime}</span>
+                </div>
+                <img src="../images/user.png" alt="أنت" class="message-avatar">
+            `;
+            messagesArea.appendChild(studentMsgDiv);
+            
+            // مسح حقل الإدخال
+            input.value = '';
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+            
+            // حفظ الرسائل
+            saveMessages();
+            
+            // محاكاة رد المعلم
+            setTimeout(() => {
+                const replies = [
+                    "أهلاً بك! شكراً على سؤالك. سأجيبك حالاً 👨‍🍳",
+                    "ممتاز! هذا سؤال مهم جداً في الطبخ",
+                    "أنا هنا لمساعدتك في أي استفسار",
+                    "نصيحتي لك: جربي الطريقة وشاركيني النتيجة",
+                    "استمري في التعلم، أنتِ على الطريق الصحيح!"
+                ];
+                const randomReply = replies[Math.floor(Math.random() * replies.length)];
+                
+                const teacherMessage = {
+                    type: 'teacher-message',
+                    text: randomReply,
+                    time: getCurrentTime()
+                };
+                messages.push(teacherMessage);
+                
+                const teacherMsgDiv = document.createElement('div');
+                teacherMsgDiv.className = 'message-row teacher-message';
+                teacherMsgDiv.innerHTML = `
+                    <img src="${teacherImage}" alt="${teacherName}" class="message-avatar">
+                    <div class="message-bubble">
+                        <p>${escapeHtml(randomReply)}</p>
+                        <span class="message-time">${getCurrentTime()}</span>
+                    </div>
+                `;
+                messagesArea.appendChild(teacherMsgDiv);
+                messagesArea.scrollTop = messagesArea.scrollHeight;
+                
+                saveMessages();
+            }, 1000);
+        }
+        
+        // دالة إرفاق ملف
+        function attachFile() {
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'image/*, .pdf, .txt';
+            fileInput.style.display = 'none';
+            
+            fileInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const fileName = file.name;
+                    const fileSize = (file.size / 1024).toFixed(2);
+                    
+                    const currentTime = getCurrentTime();
+                    const fileMessage = {
+                        type: 'student-message',
+                        text: ` تم إرفاق ملف: ${fileName} (${fileSize} KB)`,
+                        time: currentTime
+                    };
+                    messages.push(fileMessage);
+                    
+                    const messagesArea = document.getElementById('chatMessagesArea');
+                    const fileMsgDiv = document.createElement('div');
+                    fileMsgDiv.className = 'message-row student-message';
+                    fileMsgDiv.innerHTML = `
+                        <div class="message-bubble">
+                            <p> تم إرفاق ملف: ${escapeHtml(fileName)} (${fileSize} KB)</p>
+                            <span class="message-time">${currentTime}</span>
+                        </div>
+                        <img src="../images/user.png" alt="أنت" class="message-avatar">
+                    `;
+                    messagesArea.appendChild(fileMsgDiv);
+                    messagesArea.scrollTop = messagesArea.scrollHeight;
+                    
+                    saveMessages();
+                    showToastMessage(` تم إرفاق الملف: ${fileName}`, "success");
+                    
+                    setTimeout(() => {
+                        const replyText = "شكراً لمشاركتك الملف! سأطلع عليه قريباً ";
+                        const teacherMessage = {
+                            type: 'teacher-message',
+                            text: replyText,
+                            time: getCurrentTime()
+                        };
+                        messages.push(teacherMessage);
+                        
+                        const teacherMsgDiv = document.createElement('div');
+                        teacherMsgDiv.className = 'message-row teacher-message';
+                        teacherMsgDiv.innerHTML = `
+                            <img src="${teacherImage}" alt="${teacherName}" class="message-avatar">
+                            <div class="message-bubble">
+                                <p>${escapeHtml(replyText)}</p>
+                                <span class="message-time">${getCurrentTime()}</span>
+                            </div>
+                        `;
+                        messagesArea.appendChild(teacherMsgDiv);
+                        messagesArea.scrollTop = messagesArea.scrollHeight;
+                        saveMessages();
+                    }, 800);
+                }
+            });
+            
+            document.body.appendChild(fileInput);
+            fileInput.click();
+            document.body.removeChild(fileInput);
+        }
+        
+        // ربط الأحداث
+        document.addEventListener('DOMContentLoaded', function() {
+            loadMessages();
+            
+            const sendBtn = document.getElementById('sendBtn');
+            if (sendBtn) {
+                sendBtn.addEventListener('click', sendMessage);
+            }
+            
+            const attachBtn = document.getElementById('attachBtn');
+            if (attachBtn) {
+                attachBtn.addEventListener('click', attachFile);
+            }
+            
+            const messageInput = document.getElementById('messageInput');
+            if (messageInput) {
+                messageInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        sendMessage();
+                    }
+                });
+            }
+        });
+    </script>
+	<script src="../js/script.js"></script>
 </body>
 </html>
