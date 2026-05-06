@@ -220,6 +220,8 @@
             // تأكيد الروابط مرة أخرى
             sessionStorage.setItem("currentQuizUrl", window.location.href);
             sessionStorage.setItem("lessonPageUrl", "../../pages/lessons/lesson3_page1.html");
+			        // ✅ إضافة اسم الدورة بالعربي (لظهوره في جدول النتائج)
+        sessionStorage.setItem("courseName", "الأكل الصحي");
 
             window.location.href = "../result.html";
         });
