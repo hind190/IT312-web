@@ -231,6 +231,249 @@
                 // تأكيد الروابط مرة أخرى (للتأكد)
                 sessionStorage.setItem("currentQuizUrl", window.location.href);
                 sessionStorage.setItem("lessonPageUrl", "../../pages/lessons/lesson2_page1.html");
+				        // ✅ إضافة اسم الدورة بالعربي (لظهوره في جدول النتائج)
+                 sessionStorage.setItem("courseName", "أساسيات المطبخ");
+
+                // الانتقال إلى صفحة النتيجة
+                window.location.href = "../result.html";
+            });
+        })();
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار الأدوات الأساسية للطبخ | رشة</title>
+    <!-- ربط ملفات CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ========== الهيدر ========== -->
+    <header>
+        <div class="logo">
+            <img src="../../images/logo.jpeg" alt="شعار رشة" width="60">
+            <h2>رشة</h2>
+        </div>
+        <div class="user">
+            <p class="welcome">مرحباً بك مجدداً</p>
+            <div class="user-box">
+                <img src="../../images/user.png" alt="user">
+                <div class="dropdown">
+                    <button class="dropdown-btn">
+                        لوحة الطالب
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="personal-info.html"><i class="fas fa-user"></i> المعلومات الشخصية</a>
+                        <a href="favorite-recipes.html"><i class="fas fa-heart"></i> الوصفات المفضلة</a>
+                        <a href="my-courses.html"><i class="fas fa-book-open"></i> دوراتي</a>
+                        <a href="my-notes.html"><i class="fas fa-sticky-note"></i> ملاحظاتي</a>
+                        <a href="evaluations.html"><i class="fas fa-star"></i> التقييمات</a>
+                        <a href="contact-teachers.html"><i class="fas fa-chalkboard-teacher"></i> التواصل مع المعلمين</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVBAR -->
+    <nav class="my-nav">
+        <input class="my-nav-input" type="text" placeholder="بحث">
+        <ul class="my-nav-list">
+            <li><a class="my-nav-link" href="../../index.html">الرئيسية</a></li>
+            <li><a class="my-nav-link" href="../courses.html">الدورات</a></li>
+            <li><a class="my-nav-link" href="../recipes.html">الوصفات</a></li>
+            <li><a class="my-nav-link" href="../about.html">عن الموقع</a></li>
+            <li><a class="my-nav-link" href="../contact.html">تواصل معنا</a></li>
+        </ul>
+    </nav>
+
+    <!-- ========== مسار الصفحة (Breadcrumbs) ========== -->
+    <div class="breadcrumbs">
+        <a href="../../index.html">الرئيسية</a>
+        <a href="../courses.html">الدورات</a>
+        <a href="/pages/lessons/lesson2_page1.html">أساسيات المطبخ</a>
+        <span>اختبار الأدوات الأساسية</span>
+    </div>
+
+    <!-- ========== محتوى الكويز ========== -->
+    <main class="quiz-page">
+        <div class="quiz-container">
+            <h1 class="quiz-title">اختبار درس الأدوات الأساسية للطبخ</h1>
+            <p class="quiz-instructions">أجب عن جميع الأسئلة التالية ثم اضغط "إرسال الاختبار".</p>
+
+            <form id="quizForm" class="quiz-form">
+                <!-- السؤال 1 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="q-num">1</span>
+                        <span class="q-text">ما هي الأداة الأساسية المستخدمة لتقطيع اللحوم والخضروات بشكل رئيسي؟</span>
+                    </div>
+                    <div class="options-list">
+                        <label><input type="radio" name="q1" value="سكين الشيف"> سكين الشيف</label>
+                        <label><input type="radio" name="q1" value="لوح التقطيع"> لوح التقطيع</label>
+                        <label><input type="radio" name="q1" value="ملعقة خشبية"> ملعقة خشبية</label>
+                        <label><input type="radio" name="q1" value="خلاط كهربائي"> خلاط كهربائي</label>
+                    </div>
+                </div>
+
+                <!-- السؤال 2 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="q-num">2</span>
+                        <span class="q-text">ما المادة المفضلة للوح التقطيع لتجنب إتلاف السكاكين؟</span>
+                    </div>
+                    <div class="options-list">
+                        <label><input type="radio" name="q2" value="الزجاج"> الزجاج</label>
+                        <label><input type="radio" name="q2" value="الخشب أو البلاستيك"> الخشب أو البلاستيك</label>
+                        <label><input type="radio" name="q2" value="المعدن"> المعدن</label>
+                        <label><input type="radio" name="q2" value="السيراميك"> السيراميك</label>
+                    </div>
+                </div>
+
+                <!-- السؤال 3 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="q-num">3</span>
+                        <span class="q-text">أي من الأدوات التالية يستخدم لخلط المكونات السائلة؟</span>
+                    </div>
+                    <div class="options-list">
+                        <label><input type="radio" name="q3" value="مقلاة تيفال"> مقلاة تيفال</label>
+                        <label><input type="radio" name="q3" value="قدر ستانلس ستيل"> قدر ستانلس ستيل</label>
+                        <label><input type="radio" name="q3" value="خلاط كهربائي"> خلاط كهربائي</label>
+                        <label><input type="radio" name="q3" value="مشحذ السكاكين"> مشحذ السكاكين</label>
+                    </div>
+                </div>
+
+                <!-- السؤال 4 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="q-num">4</span>
+                        <span class="q-text">وفقًا لنصائح السلامة في المطبخ، ما الذي يجب فعله قبل البدء في الطهي؟</span>
+                    </div>
+                    <div class="options-list">
+                        <label><input type="radio" name="q4" value="شحذ السكاكين"> شحذ السكاكين</label>
+                        <label><input type="radio" name="q4" value="غسل اليدين جيدًا"> غسل اليدين جيدًا</label>
+                        <label><input type="radio" name="q4" value="ترتيب الأدوات حسب الاستخدام"> ترتيب الأدوات حسب الاستخدام</label>
+                        <label><input type="radio" name="q4" value="تسخين الفرن"> تسخين الفرن</label>
+                    </div>
+                </div>
+
+                <!-- السؤال 5 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="q-num">5</span>
+                        <span class="q-text">أي نوع من السكاكين يستخدم خصيصًا لتقطيع الخبز دون سحقه؟</span>
+                    </div>
+                    <div class="options-list">
+                        <label><input type="radio" name="q5" value="Chef Knife (سكين الشيف)"> Chef Knife (سكين الشيف)</label>
+                        <label><input type="radio" name="q5" value="Paring Knife (سكين التقشير)"> Paring Knife (سكين التقشير)</label>
+                        <label><input type="radio" name="q5" value="Bread Knife (سكين الخبز)"> Bread Knife (سكين الخبز)</label>
+                        <label><input type="radio" name="q5" value="Fillet Knife (سكين الفيليه)"> Fillet Knife (سكين الفيليه)</label>
+                    </div>
+                </div>
+
+                <div class="quiz-buttons">
+                    <button type="button" id="submitQuizBtn" class="quiz-submit-btn">إرسال الاختبار</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- ========== الفوتر ========== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <p>تواصل معنا</p>
+                <p>+966000000</p>
+                <p>Rasha@gmail.com</p>
+                <div class="social-icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-right">
+                <p>الشروط والأحكام</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© رشة</p>
+        </div>
+    </footer>
+
+     <!-- ربط الملف العام (script.js) أولاً -->
+    <script src="../../js/script.js"></script>
+
+    <!-- كود الاختبار الخاص (مع تخزين الروابط) -->
+    <script>
+        // تخزين الروابط فوراً
+        sessionStorage.setItem("currentQuizUrl", window.location.href);
+        sessionStorage.setItem("lessonPageUrl", "../../pages/lessons/lesson2_page1.html");  // رابط الدرس المرتبط
+
+        (function () {
+            var submitBtn = document.getElementById("submitQuizBtn");
+            if (!submitBtn) return;
+
+            var TOTAL_QUESTIONS = 5;
+            var QUIZ_KEY = "basic_tools_quiz";  // اسم فريد لهذا الاختبار
+            var CORRECT_ANSWERS = {
+                q1: "سكين الشيف",
+                q2: "الخشب أو البلاستيك",
+                q3: "خلاط كهربائي",
+                q4: "غسل اليدين جيدًا",
+                q5: "Bread Knife (سكين الخبز)"
+            };
+
+            function allAnswered() {
+                for (var i = 1; i <= TOTAL_QUESTIONS; i++) {
+                    if (!document.querySelector('input[name="q' + i + '"]:checked')) {
+                        alert("الرجاء الإجابة على السؤال رقم " + i);
+                        var card = document.querySelectorAll(".question-card")[i - 1];
+                        if (card) card.scrollIntoView({ behavior: "smooth", block: "center" });
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            function calculateScore() {
+                var score = 0;
+                for (var i = 1; i <= TOTAL_QUESTIONS; i++) {
+                    var selected = document.querySelector('input[name="q' + i + '"]:checked');
+                    if (selected && selected.value === CORRECT_ANSWERS['q' + i]) score++;
+                }
+                return score;
+            }
+
+            submitBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+                if (!allAnswered()) return;
+
+                var currentScore = calculateScore();
+                var stored = localStorage.getItem(QUIZ_KEY);
+                var bestScore = stored !== null ? parseInt(stored, 10) : 0;
+                if (currentScore > bestScore) {
+                    bestScore = currentScore;
+                    localStorage.setItem(QUIZ_KEY, bestScore);
+                }
+
+                // تخزين بيانات الاختبار الحالي
+                sessionStorage.setItem("currentQuizScore", currentScore);
+                sessionStorage.setItem("quizBestScore", bestScore);
+                sessionStorage.setItem("quizTotalQuestions", TOTAL_QUESTIONS);
+                sessionStorage.setItem("quizName", QUIZ_KEY);
+                // تأكيد الروابط مرة أخرى (للتأكد)
+                sessionStorage.setItem("currentQuizUrl", window.location.href);
+                sessionStorage.setItem("lessonPageUrl", "../../pages/lessons/lesson2_page1.html");
 
                 // الانتقال إلى صفحة النتيجة
                 window.location.href = "../result.html";
