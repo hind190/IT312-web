@@ -3,6 +3,26 @@
 // script.js - ملف واحد لجميع الصفحات
 // ========================================
 
+
+(function applyThemeToAllPages() {
+    // تطبيق الثيم المخزن عند تحميل الصفحة
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-theme');
+    }
+    
+    // مراقبة التغييرات في localStorage (إذا تغير من أي صفحة)
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'theme') {
+            if (e.newValue === 'dark') {
+                document.body.classList.add('dark-theme');
+            } else {
+                document.body.classList.remove('dark-theme');
+            }
+        }
+    });
+})();
+
+
 // التحقق إذا كانت الصفحة الحالية هي الصفحة الرئيسية
 const isHomePage = window.location.pathname === '/' || 
                    window.location.pathname.includes('index.html') ||
