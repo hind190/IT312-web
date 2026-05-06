@@ -220,6 +220,8 @@
             // تأكيد الروابط مرة أخرى
             sessionStorage.setItem("currentQuizUrl", window.location.href);
             sessionStorage.setItem("lessonPageUrl", "../../pages/lessons/lesson5_page1.html");
+			        // ✅ إضافة اسم الدورة بالعربي (لظهوره في جدول النتائج)
+        sessionStorage.setItem("courseName", "أساسيات القهوة");
 
             window.location.href = "../result.html";
         });
