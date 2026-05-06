@@ -3252,6 +3252,10 @@ h3::after {
     box-shadow: 0 8px 18px rgba(231,76,60,0.3);
 }
 
+.fav.active {
+    color: #ff4757;
+}
+
 /* FILTER LOGIC */
 .recipe-card {
     display: none;
