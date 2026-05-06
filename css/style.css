@@ -196,6 +196,30 @@
     font-size: 0.9rem;
 }
 
+
+
+/* ===== إصلاح ظهور "رؤيتنا" على الجوال ===== */
+@media (max-width: 768px) {
+    .vision-box {
+        display: block !important;
+        max-width: 90% !important;
+        margin: 1rem auto !important;
+        padding: 1rem !important;
+    }
+    
+    .vision-box h3 {
+        font-size: 1.2rem !important;
+        display: block !important;
+    }
+    
+    .vision-box p {
+        font-size: 0.85rem !important;
+        display: block !important;
+        line-height: 1.5 !important;
+    }
+}
+
+
 /* بطاقة الرؤية */
 .vision-box {
     max-width: 600px;
@@ -3252,10 +3276,6 @@ h3::after {
     box-shadow: 0 8px 18px rgba(231,76,60,0.3);
 }
 
-.fav.active {
-    color: #ff4757;
-}
-
 /* FILTER LOGIC */
 .recipe-card {
     display: none;
@@ -5408,18 +5428,56 @@ content: "\2713" !important;
 }
 
 /* للشاشات الصغيرة */
+    /* ===== تنسيق القائمة للجوال (لجميع الصفحات) ===== */
 @media (max-width: 768px) {
-    .my-nav {
-        flex-direction: column;
-        gap: 10px;
+    
+    /* القائمة الرئيسية العادية */
+    nav {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 15px !important;
+        padding: 15px !important;
     }
     
-    .my-nav-list {
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
+    nav ul {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+    
+    nav ul li {
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    nav ul li a {
+        display: block !important;
+        padding: 5px 0 !important;
+    }
+    
+    nav input {
+        width: 90% !important;
+        margin-top: 5px !important;
+    }
+    
+    /* الهيدر */
+    header {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 15px !important;
+    }
+    
+    .user {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    .dropdown-btn {
+        margin: 0 auto !important;
     }
 }
+
 /* ======================================== */
 /* تنسيق الـ Navbar  */
 /* ======================================== */
