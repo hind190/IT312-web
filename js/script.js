@@ -38,50 +38,47 @@
     });
 })();
 
-// 2. زر تبديل الثيمات (بألوان رايقة)
-(function () {
-
-    // هذا يشتغل فوراً قبل أي شي — يطبق الثيم على كل الصفحات
-    if (localStorage.getItem("siteTheme") === "dark") {
-        document.body.classList.add("dark-theme");
+// 2. زر تبديل الثيمات
+(function() {
+    // تطبيق الثيم المخزن فوراً
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-theme');
     }
 
-    function onReady(fn) {
-        if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", fn);
-        } else { fn(); }
+    const themeBtn = document.createElement('button');
+    themeBtn.id = 'themeSwitch';
+    themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+    themeBtn.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 50px;
+        height: 50px;
+        background: #4f6357;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 22px;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        transition: transform 0.3s;
+    `;
+    themeBtn.onmouseover = () => themeBtn.style.transform = 'scale(1.1)';
+    themeBtn.onmouseout = () => themeBtn.style.transform = 'scale(1)';
+    document.body.appendChild(themeBtn);
+
+    if (localStorage.getItem('theme') === 'dark') {
+        themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
     }
 
-    onReady(function () {
-
-        var btn = document.getElementById("themeToggleBtn");
-        if (!btn) return; // باقي الصفحات توقف هنا — الثيم طُبق فوق
-
-        var icon  = btn.querySelector("i");
-        var label = btn.querySelector("span");
-
-        // ضبط الزر حسب الثيم الحالي
-        if (localStorage.getItem("siteTheme") === "dark") {
-            icon.className    = "fas fa-sun";
-            label.textContent = "الثيم الفاتح";
-        }
-
-        btn.addEventListener("click", function () {
-            var isDark = document.body.classList.toggle("dark-theme");
-
-            if (isDark) {
-                icon.className    = "fas fa-sun";
-                label.textContent = "الثيم الفاتح";
-                localStorage.setItem("siteTheme", "dark");
-            } else {
-                icon.className    = "fas fa-moon";
-                label.textContent = "الثيم الداكن";
-                localStorage.setItem("siteTheme", "light");
-            }
-        });
-
+    themeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme');
+        const isDark = document.body.classList.contains('dark-theme');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        console.log(`✅ تم تغيير الثيم إلى ${isDark ? 'داكن' : 'فاتح'}`);
     });
-
 })();
 
 // 3. زر "المزيد" للدروس
@@ -168,7 +165,7 @@
 (function() {
     const courseBtns = document.querySelectorAll('.course-btn');
     courseBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
+        btn.addEventListener('click', function() {
             const courseName = this.closest('.course-item')?.querySelector('h3')?.innerText || 'الدورة';
             console.log(`✅ تم الضغط على: عرض درس ${courseName}`);
         });
@@ -179,7 +176,7 @@
 (function() {
     const navLinks = document.querySelectorAll('nav a');
     navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function() {
             const pageName = this.innerText;
             console.log(`✅ تم الضغط على: ${pageName}`);
         });
@@ -210,7 +207,7 @@
     }
 })();
 
-// 9. الساعة الحقيقية (لون أخضر - بدون ثواني)
+// 9. الساعة الحقيقية
 (function() {
     setTimeout(function() {
         const footer = document.querySelector('.footer');
@@ -235,14 +232,264 @@
         updateClock();
         setInterval(updateClock, 60000);
         
-        console.log('✅ الساعة شغالة (أخضر - بدون ثواني)');
+        console.log('✅ الساعة شغالة');
     }, 500);
 })();
 
 console.log('✅ تم تحميل جميع أزرار الصفحة الرئيسية بنجاح!');
+
+
 // ========================================
-// home.js - صفحة الرئيسية كاملة نهايه
+// 2. صفحة عن الموقع (About Us)
 // ========================================
+
+if (document.getElementById('teachersContainer')) {
+    // بيانات المعلمين
+    const teachersData = [
+        { name: "أحمد", img: "../images/chef-ahmed.jpg", experience: 12 },
+        { name: "نوره", img: "../images/chef-noura.jpg", experience: 8 },
+        { name: "لمى", img: "../images/chef-lama.jpg", experience: 5 }
+    ];
+
+    // عرض المعلمين
+    function displayTeachers(teachers) {
+        const container = document.getElementById('teachersContainer');
+        if (!container) return;
+        
+        container.innerHTML = '';
+        
+        for (let i = 0; i < teachers.length; i++) {
+            const teacher = teachers[i];
+            const card = document.createElement('div');
+            card.className = 'teacher-card-horizontal';
+            card.innerHTML = `
+                <img src="${teacher.img}" alt="${teacher.name}">
+                <h3>${teacher.name}</h3>
+                <div class="experience-years">📅 ${teacher.experience} سنوات خبرة</div>
+            `;
+            container.appendChild(card);
+        }
+    }
+
+    // ترتيب عشوائي
+    function shuffleArray(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    // ترتيب حسب الاختيار
+    function sortTeachers(type) {
+        let sorted = [...teachersData];
+        
+        if (type === 'name-asc') {
+            sorted.sort((a, b) => a.name.localeCompare(b.name, 'ar'));
+        } 
+        else if (type === 'name-desc') {
+            sorted.sort((a, b) => b.name.localeCompare(a.name, 'ar'));
+        }
+        else if (type === 'exp-asc') {
+            sorted.sort((a, b) => a.experience - b.experience);
+        }
+        else if (type === 'exp-desc') {
+            sorted.sort((a, b) => b.experience - a.experience);
+        }
+        
+        return sorted;
+    }
+
+    // تشغيل الصفحة
+    let currentTeachers = shuffleArray([...teachersData]);
+    displayTeachers(currentTeachers);
+
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) {
+        sortSelect.addEventListener('change', function() {
+            const value = this.value;
+            
+            if (value === '') {
+                currentTeachers = shuffleArray([...teachersData]);
+            } else {
+                currentTeachers = sortTeachers(value);
+            }
+            
+            displayTeachers(currentTeachers);
+        });
+    }
+
+    console.log('✅ about.js شغال');
+}
+
+
+// ========================================
+// 3. صفحة تواصل معنا (Contact Us)
+// ========================================
+
+
+if (document.querySelector('.contact-form form')) {
+    (function initContactPage() {
+        
+        const contactForm = document.querySelector('.contact-form form');
+        if (!contactForm) return;
+
+        // إضافة زر مسح الحقول
+        const clearBtn = document.createElement('button');
+        clearBtn.type = 'button';
+        clearBtn.id = 'clearBtn';
+        clearBtn.innerHTML = '<i class="fas fa-eraser"></i> مسح الحقول';
+        clearBtn.style.cssText = `
+            background-color: #8ea79a;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+            margin-right: 15px;
+            transition: 0.3s;
+        `;
+        clearBtn.onmouseover = () => clearBtn.style.backgroundColor = '#6f8f82';
+        clearBtn.onmouseout = () => clearBtn.style.backgroundColor = '#8ea79a';
+        
+        const submitBtn = contactForm.querySelector('.submit-btn');
+        submitBtn.style.marginLeft = '15px';
+        submitBtn.parentNode.insertBefore(clearBtn, submitBtn.nextSibling);
+
+        clearBtn.addEventListener('click', function() {
+            contactForm.reset();
+            document.querySelectorAll('.error-message').forEach(err => err.remove());
+            document.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
+                input.style.borderColor = '#dfeae3';
+            });
+            console.log('✅ تم مسح جميع الحقول');
+        });
+
+        // دالة التحقق من البريد الإلكتروني
+        function isValidEmail(email) {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+
+        // دالة التحقق من أن الاسم لا يبدأ برقم
+        function nameNotStartWithNumber(name) {
+            const firstChar = name.trim().charAt(0);
+            return isNaN(parseInt(firstChar));
+        }
+
+        // دالة التحقق من أن الاسم FirstName LastName
+        function isValidFullName(name) {
+            const trimmedName = name.trim();
+            const parts = trimmedName.split(' ');
+            return parts.length >= 2 && parts[0].length > 0 && parts[1].length > 0;
+        }
+
+        // دالة عرض الخطأ
+        function showError(input, message) {
+            let errorDiv = input.parentElement.querySelector('.error-message');
+            if (!errorDiv) {
+                errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                errorDiv.style.cssText = `
+                    color: #e94560;
+                    font-size: 13px;
+                    margin-top: 5px;
+                    padding-right: 15px;
+                `;
+                input.parentElement.appendChild(errorDiv);
+            }
+            errorDiv.textContent = message;
+            input.style.borderColor = '#e94560';
+        }
+
+        // دالة إزالة الخطأ
+        function removeError(input) {
+            const errorDiv = input.parentElement.querySelector('.error-message');
+            if (errorDiv) errorDiv.remove();
+            input.style.borderColor = '#dfeae3';
+        }
+
+        // حدث إرسال النموذج
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
+            
+            let isValid = true;
+            
+            // التحقق من الاسم
+            if (!nameInput.value.trim()) {
+                showError(nameInput, '❌ الرجاء إدخال الاسم');
+                isValid = false;
+            } else if (!nameNotStartWithNumber(nameInput.value)) {
+                showError(nameInput, '❌ الاسم لا يمكن أن يبدأ برقم');
+                isValid = false;
+            } else if (!isValidFullName(nameInput.value)) {
+                showError(nameInput, '❌ الرجاء إدخال الاسم الكامل (مثال: أحمد محمد)');
+                isValid = false;
+            } else {
+                removeError(nameInput);
+            }
+            
+            // التحقق من البريد الإلكتروني
+            if (!emailInput.value.trim()) {
+                showError(emailInput, '❌ الرجاء إدخال البريد الإلكتروني');
+                isValid = false;
+            } else if (!isValidEmail(emailInput.value.trim())) {
+                showError(emailInput, '❌ الرجاء إدخال بريد إلكتروني صحيح (مثال: name@example.com)');
+                isValid = false;
+            } else {
+                removeError(emailInput);
+            }
+            
+            // التحقق من الرسالة
+            if (!messageInput.value.trim()) {
+                showError(messageInput, '❌ الرجاء كتابة رسالتك');
+                isValid = false;
+            } else {
+                removeError(messageInput);
+            }
+            
+            // إذا كان كل شيء صحيح
+            if (isValid) {
+                const senderName = nameInput.value.trim();
+                
+                // ✅ Popup alert مع اسم المرسل (المطلوب)
+                alert(`✅ تم إرسال رسالتك بنجاح يا ${senderName}!\n\nشكراً لتواصلك معنا، سنقوم بالرد عليك قريباً.`);
+                
+                // مسح الحقول
+                contactForm.reset();
+                document.querySelectorAll('.error-message').forEach(err => err.remove());
+                document.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
+                    input.style.borderColor = '#dfeae3';
+                });
+                
+                console.log('✅ تم إرسال الرسالة بنجاح');
+            } else {
+                console.log('❌ فشل الإرسال: البيانات غير صحيحة');
+            }
+        });
+
+        // إزالة الخطأ عند الكتابة
+        const inputs = ['name', 'email', 'message'];
+        inputs.forEach(id => {
+            const input = document.getElementById(id);
+            if (input) {
+                input.addEventListener('input', function() {
+                    removeError(this);
+                });
+            }
+        });
+
+        console.log('✅ تم تحميل صفحة تواصل معنا بنجاح');
+    })();
+}
+
+
 
 // ============================================================
 //  QUIZ — الأدوات الأساسية للطبخ
