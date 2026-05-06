@@ -9,6 +9,277 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* ============================================ */
+        /* تلوين الخلفية حسب الأولوية */
+        /* ============================================ */
+        .note-item.priority-1 {
+            background-color: #ffe5e5 !important;
+            border-left: 5px solid #e74c3c !important;
+        }
+        .note-item.priority-2 {
+            background-color: #fff3e0 !important;
+            border-left: 5px solid #f39c12 !important;
+        }
+        .note-item.priority-3 {
+            background-color: #e8f0e8 !important;
+            border-left: 5px solid #27ae60 !important;
+        }
+        
+        /* ============================================ */
+        /* تنسيق رسائل Toast المنبثقة */
+        /* ============================================ */
+        .toast-message {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #4f6357;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            animation: slideInRight 0.3s ease, fadeOut 3s ease 2.5s forwards;
+            font-family: 'Tajawal', sans-serif;
+            direction: rtl;
+        }
+        
+        .toast-message.error {
+            background: #e74c3c;
+        }
+        
+        .toast-message.success {
+            background: #27ae60;
+        }
+        
+        .toast-message.warning {
+            background: #f39c12;
+        }
+        
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+        
+        /* ============================================ */
+        /* زر الحفظ المميز */
+        /* ============================================ */
+        .save-notes-btn {
+            background: linear-gradient(135deg, #4f6357, #6f8f82);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(79,99,87,0.2);
+        }
+        
+        .save-notes-btn:hover {
+            background: linear-gradient(135deg, #3d5247, #5a7a6b);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(79,99,87,0.3);
+        }
+        
+        .notes-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 500px;
+            overflow-y: auto;
+            padding: 5px;
+        }
+        
+        .note-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            background: white;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .note-item:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .note-checkbox {
+            width: 20px;
+            height: 20px;
+            margin-left: 15px;
+            cursor: pointer;
+            accent-color: #4f6357;
+        }
+        
+        .note-item label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            cursor: pointer;
+            margin: 0;
+        }
+        
+        .note-icon {
+            color: #8ea79a;
+            font-size: 18px;
+        }
+        
+        .note-priority {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            min-width: 85px;
+            text-align: center;
+        }
+        
+        .note-text {
+            font-size: 15px;
+            color: #2c3e3a;
+            flex: 1;
+            line-height: 1.5;
+        }
+        
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: #8ea79a;
+            background: #fafafa;
+            border-radius: 16px;
+        }
+        
+        .add-note-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form-group label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #4f6357;
+        }
+        
+        .form-group textarea {
+            padding: 12px 15px;
+            border: 2px solid #dfeae3;
+            border-radius: 15px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 14px;
+            resize: vertical;
+            transition: 0.3s;
+        }
+        
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #8ea79a;
+            box-shadow: 0 0 0 3px rgba(142,167,154,0.1);
+        }
+        
+        .info-select {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #dfeae3;
+            border-radius: 15px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 14px;
+            background: white;
+            cursor: pointer;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .add-btn, .delete-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 40px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .add-btn {
+            background: #f0f7f3;
+            color: #4f6357;
+        }
+        
+        .add-btn:hover {
+            background: #4f6357;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .delete-btn {
+            background: #fff0f0;
+            color: #c0392b;
+            border: 1px solid #ffcdcd;
+        }
+        
+        .delete-btn:hover {
+            background: #c0392b;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .form-actions {
+                flex-direction: column;
+            }
+            .note-item {
+                flex-wrap: wrap;
+            }
+            .toast-message {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                text-align: center;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- HEADER -->
@@ -46,7 +317,7 @@
             <li><a href="courses.html">الدورات</a></li>
             <li><a href="recipes.html">الوصفات</a></li>
             <li><a href="aboutweb.html">عن الموقع</a></li>
-        <li><a href="couwithUs.html">تواصل معنا</a></li>
+            <li><a href="couwithUs.html">تواصل معنا</a></li>
         </ul>
         <input type="text" placeholder="بحث">
     </nav>
@@ -59,76 +330,40 @@
 
     <!-- MAIN CONTENT -->
     <main class="dashboard-container">
-        <!-- عنوان الصفحة -->
         <div class="page-header">
             <h1>ملاحظاتي</h1>
             <p class="sub-header">سجلي ملاحظاتك المهمة ورتبيها حسب الأولوية</p>
         </div>
 
-        <!-- قسم عرض الملاحظات مع زر الحذف فقط -->
         <section class="profile-section">
             <h2><i class="fas fa-list"></i> ملاحظاتي المحفوظة</h2>
-            <form class="notes-form" action="#" method="post">
-                <div class="notes-list">
-                    <!-- ملاحظة 1 -->
-                    <div class="note-item">
-                        <input type="checkbox" name="note1" id="note1">
-                        <label for="note1">
-                            <i class="fas fa-sticky-note note-icon"></i>
-                            <span class="note-priority priority-1">الأولوية 1</span>
-                            <span class="note-text">تحضير وصفة الكوكيز لتقديمها في درس الطبخ يوم الأحد</span>
-                        </label>
-                        <!-- تم إزالة زر التعديل -->
-                    </div>
-                    
-                    <!-- ملاحظة 2 -->
-                    <div class="note-item">
-                        <input type="checkbox" name="note2" id="note2">
-                        <label for="note2">
-                            <i class="fas fa-sticky-note note-icon"></i>
-                            <span class="note-priority priority-2">الأولوية 2</span>
-                            <span class="note-text">مراجعة دورة تكوين البهارات وتطبيق الوصفات الجديدة</span>
-                        </label>
-                    </div>
-                    
-                    <!-- ملاحظة 3 -->
-                    <div class="note-item">
-                        <input type="checkbox" name="note3" id="note3">
-                        <label for="note3">
-                            <i class="fas fa-sticky-note note-icon"></i>
-                            <span class="note-priority priority-3">الأولوية 3</span>
-                            <span class="note-text">شراء مستلزمات المعجنات من السوبر ماركت</span>
-                        </label>
-                    </div>
-                </div>
-                <div class="form-actions">
-                    <button type="submit" class="delete-btn"><i class="fas fa-trash"></i> حذف المحدد</button>
-                </div>
-            </form>
+            <div class="notes-list" id="notesListContainer"></div>
+            <div class="form-actions" style="margin-top: 20px;">
+                <button class="delete-btn" id="deleteSelectedBtn"><i class="fas fa-trash"></i> حذف المحدد</button>
+            </div>
         </section>
 
-        <!-- قسم إضافة ملاحظة جديدة -->
         <section class="profile-section">
             <h2><i class="fas fa-plus-circle"></i> إضافة ملاحظة جديدة</h2>
-            <form class="notes-form" action="#" method="post">
-                <div class="add-note-form">
-                    <div class="form-group">
-                        <label for="note-text">نص الملاحظة</label>
-                        <textarea id="note-text" name="note-text" rows="3" placeholder="أكتب ملاحظتك هنا..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="note-priority">الأولوية</label>
-                        <select id="note-priority" name="note-priority" class="info-select">
-                            <option value="1">الأولوية 1 (عاجل)</option>
-                            <option value="2">الأولوية 2 (مهم)</option>
-                            <option value="3">الأولوية 3 (عادي)</option>
-                        </select>
-                    </div>
+            <div class="add-note-form">
+                <div class="form-group">
+                    <label for="note-text">نص الملاحظة</label>
+                    <textarea id="note-text" rows="3" placeholder="أكتب ملاحظتك هنا... (30 حرف على الأقل)"></textarea>
                 </div>
-                <div class="form-actions">
-                    <button type="submit" class="add-btn"><i class="fas fa-plus"></i> إضافة</button>
+                <div class="form-group">
+                    <label for="note-priority">الأولوية</label>
+                    <select id="note-priority" class="info-select">
+                        <option value="">-- اختر الأولوية --</option>
+                        <option value="1">الأولوية 1 (عاجل) - أحمر</option>
+                        <option value="2">الأولوية 2 (مهم) - أصفر</option>
+                        <option value="3">الأولوية 3 (عادي) - أخضر</option>
+                    </select>
                 </div>
-            </form>
+            </div>
+            <div class="form-actions">
+                <button class="add-btn" id="addNoteBtn"><i class="fas fa-plus"></i> إضافة</button>
+                <button class="save-notes-btn" id="saveNotesBtn"><i class="fas fa-save"></i> حفظ</button>
+            </div>
         </section>
     </main>
 
@@ -155,5 +390,7 @@
             <p>© رشة</p>
         </div>
     </footer>
+
+    <script src="../js/script.js"></script>
 </body>
 </html>
