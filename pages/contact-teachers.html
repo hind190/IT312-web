@@ -9,6 +9,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .toast-message {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #4f6357;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 14px;
+            z-index: 9999;
+            animation: fadeInUp 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            font-family: 'Tajawal', sans-serif;
+        }
+        .toast-message.error {
+            background: #e74c3c;
+        }
+        .toast-message.warning {
+            background: #f39c12;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- HEADER -->
@@ -40,16 +72,16 @@
     </header>
 
     <!-- NAVBAR -->
-   <nav>
-    <ul>
-        <li><a href="../index.html">الرئيسية</a></li>
-        <li><a href="courses.html">الدورات</a></li>
-        <li><a href="recipes.html">الوصفات</a></li>
-       <li><a href="aboutweb.html">عن الموقع</a></li>
-        <li><a href="couwithUs.html">تواصل معنا</a></li>
-    </ul>
-    <input type="text" placeholder="بحث">
-</nav>
+    <nav>
+        <ul>
+            <li><a href="../index.html">الرئيسية</a></li>
+            <li><a href="courses.html">الدورات</a></li>
+            <li><a href="recipes.html">الوصفات</a></li>
+            <li><a href="aboutweb.html">عن الموقع</a></li>
+            <li><a href="couwithUs.html">تواصل معنا</a></li>
+        </ul>
+        <input type="text" placeholder="بحث">
+    </nav>
 
     <!-- BREADCRUMBS -->
     <div class="breadcrumbs">
@@ -70,20 +102,20 @@
                 <div class="teacher-select-wrapper">
                     <select id="new-teacher-select" class="teacher-select">
                         <option value="">اختر معلم للتواصل</option>
-                        <option value="yasser">الشيف مريم</option>
-                        <option value="mona">الشيف نوره</option>
-                        <option value="khaled">الشيف علي</option>
-                        <option value="reem">الشيف سحر</option>
+                        <option value="maryam" data-file="chat-maryam.html" data-name="الشيف مريم" data-img="../images/marim1.jpeg" data-status="active">الشيف مريم</option>
+                        <option value="noura" data-file="chat-noura.html" data-name="الشيف نورة" data-img="../images/nor1.jpeg" data-status="active">الشيف نورة</option>
+                        <option value="ali" data-file="chat-ali.html" data-name="الشيف علي" data-img="../images/ail1.jpeg" data-status="offline">الشيف علي</option>
+                        <option value="sahar" data-file="chat-sahar.html" data-name="الشيف سحر" data-img="../images/sahar1.jpeg" data-status="active">الشيف سحر</option>
                     </select>
-                    <button class="add-teacher-btn" onclick="startNewChat()">
+                    <button class="add-teacher-btn" id="addTeacherBtn">
                         <i class="fas fa-plus"></i>
                     </button>
                 </div>
             </div>
 
-            <div class="conversations-list">
-               
-                <a href="../chats/chat-noura.html" class="conversation-card">
+            <div class="conversations-list" id="conversationsList">
+                <!-- المعلمين الأساسيين (موجودين ثابتين في HTML) -->
+                <a href="../chats/chat-noura.html" class="conversation-card" data-teacher-id="chef-noura" data-is-default="true">
                     <div class="conversation-avatar">
                         <img src="../images/chef-noura.jpg" alt="شيف نورة">
                         <span class="status-dot active"></span>
@@ -97,7 +129,7 @@
                     </div>
                 </a>
 
-                <a href="../chats/chat-ahmed.html" class="conversation-card">
+                <a href="../chats/chat-ahmed.html" class="conversation-card" data-teacher-id="chef-ahmed" data-is-default="true">
                     <div class="conversation-avatar">
                         <img src="../images/chef-ahmed.jpg" alt="شيف أحمد">
                         <span class="status-dot offline"></span>
@@ -111,7 +143,7 @@
                     </div>
                 </a>
 
-                <a href="../chats/chat-lama.html" class="conversation-card">
+                <a href="../chats/chat-lama.html" class="conversation-card" data-teacher-id="chef-lama" data-is-default="true">
                     <div class="conversation-avatar">
                         <img src="../images/chef-lama.jpg" alt="شيف لمى">
                         <span class="status-dot active"></span>
@@ -125,7 +157,7 @@
                     </div>
                 </a>
 
-                <a href="../chats/chat-fahad.html" class="conversation-card">
+                <a href="../chats/chat-fahad.html" class="conversation-card" data-teacher-id="chef-fahad" data-is-default="true">
                     <div class="conversation-avatar">
                         <img src="../images/chef-fahad.jpg" alt="شيف فهد">
                         <span class="status-dot offline"></span>
@@ -165,6 +197,156 @@
         </div>
     </footer>
 
-   
+    <script>
+        // دالة عرض رسالة منبثقة
+        function showToastMessage(message, type = "success") {
+            const oldMsg = document.querySelector('.toast-message');
+            if (oldMsg) oldMsg.remove();
+            
+            const msg = document.createElement('div');
+            msg.className = `toast-message ${type}`;
+            let icon = type === 'error' ? 'fa-exclamation-circle' : 'fa-check-circle';
+            if (type === 'warning') icon = 'fa-triangle-exclamation';
+            msg.innerHTML = `<i class="fas ${icon}"></i> ${message}`;
+            document.body.appendChild(msg);
+            
+            setTimeout(() => {
+                if (msg) msg.remove();
+            }, 3000);
+        }
+
+        // تخزين المعلمين المضافين (في الذاكرة المؤقتة)
+        let addedTeachers = [];
+
+        // تحميل المعلمين المضافين من localStorage
+        function loadAddedTeachers() {
+            const saved = localStorage.getItem('addedTeachers');
+            if (saved) {
+                addedTeachers = JSON.parse(saved);
+                // عرض المعلمين المضافين
+                addedTeachers.forEach(teacher => {
+                    addTeacherCardToTop(teacher.id, teacher.name, teacher.img, teacher.status, teacher.chatFile, false);
+                });
+            }
+        }
+
+        // حفظ المعلمين المضافين في localStorage
+        function saveAddedTeachers() {
+            localStorage.setItem('addedTeachers', JSON.stringify(addedTeachers));
+        }
+
+        // إضافة بطاقة المعلم إلى أعلى القائمة
+        function addTeacherCardToTop(teacherId, teacherName, teacherImg, teacherStatus, chatFile, save = true) {
+            const container = document.getElementById('conversationsList');
+            
+            // التحقق إذا كان المعلم مضاف مسبقاً (بما فيهم الأساسيين)
+            const existing = document.querySelector(`.conversation-card[data-teacher-id="${teacherId}"]`);
+            if (existing) {
+                return false;
+            }
+            
+            // إنشاء بطاقة المعلم الجديد
+            const card = document.createElement('a');
+            card.className = 'conversation-card';
+            card.setAttribute('data-teacher-id', teacherId);
+            card.setAttribute('data-is-added', 'true');
+            card.href = `../chats/${chatFile}?teacher=${teacherId}`;
+            card.innerHTML = `
+                <div class="conversation-avatar">
+                    <img src="${teacherImg}" alt="${teacherName}" onerror="this.src='../images/user.png'">
+                    <span class="status-dot ${teacherStatus}"></span>
+                </div>
+                <div class="conversation-info">
+                    <h4>${teacherName}</h4>
+                    <p class="last-message">✨ بدأت محادثة جديدة</p>
+                </div>
+                <div class="conversation-time">
+                    <span>الآن</span>
+                </div>
+            `;
+            
+            // إضافة البطاقة في أعلى القائمة (قبل أول عنصر)
+            container.insertBefore(card, container.firstChild);
+            
+            if (save) {
+                // حفظ في المصفوفة و localStorage
+                const teacher = {
+                    id: teacherId,
+                    name: teacherName,
+                    img: teacherImg,
+                    status: teacherStatus,
+                    chatFile: chatFile,
+                    addedAt: Date.now()
+                };
+                addedTeachers.unshift(teacher);
+                saveAddedTeachers();
+            }
+            
+            return true;
+        }
+
+        // تحديث آخر رسالة لمعلم مضاف
+        window.updateLastMessageForAdded = function(teacherId, lastMessage, lastTime) {
+            // تحديث في localStorage أولاً
+            let teachers = JSON.parse(localStorage.getItem('addedTeachers') || '[]');
+            const index = teachers.findIndex(t => t.id === teacherId);
+            if (index !== -1) {
+                teachers[index].lastMessage = lastMessage;
+                teachers[index].lastTime = lastTime;
+                localStorage.setItem('addedTeachers', JSON.stringify(teachers));
+            }
+            
+            // تحديث في الواجهة
+            const card = document.querySelector(`.conversation-card[data-teacher-id="${teacherId}"]`);
+            if (card) {
+                const lastMsgElement = card.querySelector('.last-message');
+                const timeElement = card.querySelector('.conversation-time span');
+                if (lastMsgElement) lastMsgElement.textContent = lastMessage;
+                if (timeElement) timeElement.textContent = lastTime;
+            }
+        };
+
+        // وظيفة بدء محادثة جديدة من زر الإضافة
+        function startNewChat() {
+            const select = document.getElementById('new-teacher-select');
+            const selectedOption = select.options[select.selectedIndex];
+            
+            if (!selectedOption.value) {
+                showToastMessage(" الرجاء اختيار معلم من القائمة", "error");
+                return;
+            }
+            
+            const teacherId = selectedOption.value;
+            const chatFile = selectedOption.getAttribute('data-file');
+            const teacherName = selectedOption.getAttribute('data-name');
+            const teacherImg = selectedOption.getAttribute('data-img');
+            const teacherStatus = selectedOption.getAttribute('data-status');
+            
+            // إضافة المعلم إلى القائمة
+            const added = addTeacherCardToTop(teacherId, teacherName, teacherImg, teacherStatus, chatFile, true);
+            
+            if (added) {
+                showToastMessage(`✨ تم إضافة ${teacherName} إلى محادثاتك`, "success");
+                setTimeout(() => {
+                    window.location.href = `../chats/${chatFile}?teacher=${teacherId}`;
+                }, 600);
+            } else {
+                showToastMessage(` ${teacherName} مضاف بالفعل إلى القائمة`, "warning");
+            }
+        }
+
+        // ربط الأحداث عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            // تحميل المعلمين المضافين سابقاً
+            loadAddedTeachers();
+            
+            // ربط زر الإضافة
+            const addBtn = document.getElementById('addTeacherBtn');
+            if (addBtn) {
+                addBtn.addEventListener('click', startNewChat);
+            }
+        });
+    </script>
+	<script src="../js/script.js"></script>
 </body>
 </html>
