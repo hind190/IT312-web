@@ -60,7 +60,7 @@
             <h1 class="quiz-title">اختبار درس الفطور الصحي</h1>
             <p class="quiz-instructions">أجب عن جميع الأسئلة التالية ثم اضغط "إرسال الاختبار".</p>
 
-            <form action="../result.html" method="get" class="quiz-form">
+<form id="quizForm" class="quiz-form">
                 <!-- السؤال 1 -->
                 <div class="question-card">
                     <div class="question-header">
@@ -132,7 +132,7 @@
                 </div>
 
                 <div class="quiz-buttons">
-                    <button type="submit" class="quiz-submit-btn">إرسال الاختبار</button>
+<button type="button" id="submitQuizBtn" class="quiz-submit-btn">إرسال الاختبار</button>
                 </div>
             </form>
         </div>
@@ -160,6 +160,70 @@
             <p>© رشة</p>
         </div>
     </footer>
+<script src="../../js/script.js"></script>
+<script>
+    // تخزين الروابط فورًا
+    sessionStorage.setItem("currentQuizUrl", window.location.href);
+    sessionStorage.setItem("lessonPageUrl", "../../pages/lessons/lesson3_page1.html");
 
+    (function () {
+        var submitBtn = document.getElementById("submitQuizBtn");
+        if (!submitBtn) return;
+
+        var TOTAL_QS = 5;
+        var QUIZ_KEY = "healthy_breakfast_quiz";
+        var CORRECT_ANSWERS = {
+            q1: "دقيق أبيض",           // ليس من مكونات الفطور الصحي (غير صحي)
+            q2: "10 دقائق",            // وقت نقع الشوفان (حسب الخطوات – افتراضي)
+            q3: "خلاط كهربائي",        // الأداة غير المطلوبة (يكفي الخلط باليد)
+            q4: "مكسرات محمصة",        // للحصول على مذاق مقرمش
+            q5: "10 دقائق"             // مدة التبريد قبل التقديم
+        };
+
+        function allAnswered() {
+            for (var i = 1; i <= TOTAL_QS; i++) {
+                if (!document.querySelector('input[name="q' + i + '"]:checked')) {
+                    alert("⚠️ الرجاء الإجابة على السؤال رقم " + i);
+                    var card = document.querySelectorAll(".question-card")[i - 1];
+                    if (card) card.scrollIntoView({ behavior: "smooth", block: "center" });
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function calculateScore() {
+            var score = 0;
+            for (var i = 1; i <= TOTAL_QS; i++) {
+                var selected = document.querySelector('input[name="q' + i + '"]:checked');
+                if (selected && selected.value === CORRECT_ANSWERS['q' + i]) score++;
+            }
+            return score;
+        }
+
+        submitBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (!allAnswered()) return;
+
+            var currentScore = calculateScore();
+            var stored = localStorage.getItem(QUIZ_KEY);
+            var bestScore = stored !== null ? parseInt(stored, 10) : 0;
+            if (currentScore > bestScore) {
+                bestScore = currentScore;
+                localStorage.setItem(QUIZ_KEY, bestScore);
+            }
+
+            sessionStorage.setItem("currentQuizScore", currentScore);
+            sessionStorage.setItem("quizBestScore", bestScore);
+            sessionStorage.setItem("quizTotalQuestions", TOTAL_QS);
+            sessionStorage.setItem("quizName", QUIZ_KEY);
+            // تأكيد الروابط مرة أخرى
+            sessionStorage.setItem("currentQuizUrl", window.location.href);
+            sessionStorage.setItem("lessonPageUrl", "../../pages/lessons/lesson3_page1.html");
+
+            window.location.href = "../result.html";
+        });
+    })();
+</script>
 </body>
 </html>
