@@ -128,6 +128,41 @@
                     var lessonUrl = sessionStorage.getItem("lessonPageUrl");
                     backBtn.href = lessonUrl ? lessonUrl : "../pages/lessons/lesson1_page1.html";
                 }
+
+                // ✅ إضافة حفظ نتيجة الاختبار في localStorage (لظهورها في جدول دوراتي)
+                // هذه الإضافة تأخذ اسم الدورة من sessionStorage (المرسلة من صفحة الكويز)
+                // وتحفظ النتيجة في localStorage تحت مفتاح quizResults
+                var courseName = sessionStorage.getItem("courseName");
+                var currentScore = sessionStorage.getItem("currentQuizScore");
+                var totalQuestions = sessionStorage.getItem("quizTotalQuestions");
+                
+                if (courseName && currentScore && totalQuestions) {
+                    // جلب النتائج السابقة من localStorage
+                    var quizResults = [];
+                    var savedResults = localStorage.getItem("quizResults");
+                    if (savedResults) {
+                        try {
+                            quizResults = JSON.parse(savedResults);
+                        } catch(e) {
+                            console.error("خطأ في قراءة النتائج:", e);
+                        }
+                    }
+                    
+                    // إضافة النتيجة الجديدة
+                    var newResult = {
+                        courseName: courseName,
+                        score: parseInt(currentScore),
+                        totalQuestions: parseInt(totalQuestions),
+                        date: new Date().toISOString(),
+                        percentage: Math.round((parseInt(currentScore) / parseInt(totalQuestions)) * 100)
+                    };
+                    
+                    quizResults.push(newResult);
+                    
+                    // حفظ في localStorage
+                    localStorage.setItem("quizResults", JSON.stringify(quizResults));
+                    console.log("✅ تم حفظ نتيجة الاختبار لـ " + courseName + ": " + currentScore + "/" + totalQuestions);
+                }
             });
         })();
     </script>
