@@ -9,6 +9,68 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* تنسيق رسائل Toast */
+        .toast-message {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #4f6357;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            animation: slideInRight 0.3s ease, fadeOut 3s ease 2.5s forwards;
+            font-family: 'Tajawal', sans-serif;
+            direction: rtl;
+        }
+        
+        .toast-message.error {
+            background: #e74c3c;
+        }
+        
+        .toast-message.success {
+            background: #27ae60;
+        }
+        
+        .toast-message.warning {
+            background: #f39c12;
+        }
+        
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .toast-message {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                text-align: center;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- HEADER -->
@@ -46,7 +108,7 @@
             <li><a href="courses.html">الدورات</a></li>
             <li><a href="recipes.html">الوصفات</a></li>
             <li><a href="aboutweb.html">عن الموقع</a></li>
-        <li><a href="couwithUs.html">تواصل معنا</a></li>
+            <li><a href="couwithUs.html">تواصل معنا</a></li>
         </ul>
         <input type="text" placeholder="بحث">
     </nav>
@@ -59,22 +121,19 @@
 
     <!-- MAIN CONTENT -->
     <main class="dashboard-container">
-        <!-- عنوان الصفحة -->
         <div class="page-header">
             <h1>التقييمات</h1>
             <p class="sub-header">مراجعاتك السابقة للدورات والوصفات</p>
         </div>
 
-        <!-- قسم التقييمات السابقة -->
         <section class="profile-section">
             <h2><i class="fas fa-history"></i> تقييماتي السابقة</h2>
             
             <div class="evaluations-list">
-                <!-- تقييم 1 - دورة أساسيات المطبخ -->
+                <!-- تقييم 1 -->
                 <div class="evaluation-card" id="eval1">
                     <div class="evaluation-actions">
-                        <!-- تم إزالة زر التعديل -->
-                        <button class="delete-eval-btn" onclick="deleteEvaluation(1)">
+                        <button class="delete-eval-btn" data-id="1">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </div>
@@ -101,10 +160,10 @@
                     <p class="evaluation-text">دورة ممتازة جداً، استفدت كثير من أساسيات الطبخ الصحيحة. شرح الشيف مريم كان واضح وسلس. أنصح الجميع بالتسجيل فيها.</p>
                 </div>
 
-                <!-- تقييم 2 - وصفة كوكيز -->
+                <!-- تقييم 2 -->
                 <div class="evaluation-card" id="eval2">
                     <div class="evaluation-actions">
-                        <button class="delete-eval-btn" onclick="deleteEvaluation(2)">
+                        <button class="delete-eval-btn" data-id="2">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </div>
@@ -131,10 +190,10 @@
                     <p class="evaluation-text">وصفة الكوكيز كانت رائعة، الطريقة سهلة والمكونات متوفرة. العجينة طلعت مقرمشة من برا وطرية من جوا. أنصح الجميع بتجربتها!</p>
                 </div>
 
-                <!-- تقييم 3 - دورة الأكل الصحي -->
+                <!-- تقييم 3 -->
                 <div class="evaluation-card" id="eval3">
                     <div class="evaluation-actions">
-                        <button class="delete-eval-btn" onclick="deleteEvaluation(3)">
+                        <button class="delete-eval-btn" data-id="3">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </div>
@@ -161,10 +220,10 @@
                     <p class="evaluation-text">دورة "الأكل الصحي" غيرت نظرتي للطعام الصحي تماماً. تعلمت كيف أعد وجبات متوازنة ولذيذة. المحتوى غني والتطبيق العملي ممتع.</p>
                 </div>
 
-                <!-- تقييم 4 - وصفة بيتزا -->
+                <!-- تقييم 4 -->
                 <div class="evaluation-card" id="eval4">
                     <div class="evaluation-actions">
-                        <button class="delete-eval-btn" onclick="deleteEvaluation(4)">
+                        <button class="delete-eval-btn" data-id="4">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </div>
@@ -218,12 +277,6 @@
         </div>
     </footer>
 
-    <script>
-        function deleteEvaluation(id) {
-            if (confirm("هل أنت متأكد من حذف هذا التقييم؟")) {
-                alert("تم حذف التقييم رقم " + id + "\n(هذه وظيفة مؤقتة، الحذف الفعلي سيعمل في Phase 3)");
-            }
-        }
-    </script>
+    <script src="../js/script.js"></script>
 </body>
 </html>
