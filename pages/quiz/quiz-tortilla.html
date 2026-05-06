@@ -221,6 +221,8 @@
             // تأكيد الروابط
             sessionStorage.setItem("currentQuizUrl", window.location.href);
             sessionStorage.setItem("lessonPageUrl", "../../pages/lessons/lesson6_page1.html");
+			        // ✅ إضافة اسم الدورة بالعربي (لظهوره في جدول النتائج)
+        sessionStorage.setItem("courseName", "الطبخ السريع");
 
             window.location.href = "../result.html";
         });
