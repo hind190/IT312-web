@@ -107,7 +107,7 @@
 
 <!-- main -->
 <div class="recipe-card main">
-<div class="fav">❤</div>
+<div class="fav" onclick="toggleFav('pasta', this)">❤</div>
 <img src="../images/pasta.jpeg" alt="باستا">
 <h4>باستا</h4>
 <p>وصفة باستا سهلة ولذيذة يمكن تحضيرها بسرعة</p>
@@ -116,7 +116,7 @@
 
 
 <div class="recipe-card main">
-<div class="fav">❤</div>
+<div class="fav" onclick="toggleFav('shawarma', this)">❤</div>
 <img src="../images/shawarma.jpeg" alt="شاورما">
 <h4>شاورما دجاج</h4>
 <p>لفائف خبز محشوة بدجاج متبل ومشوي مع صوص الثوم والخضار، وجبة سريعة ولذيذة</p>
@@ -124,7 +124,7 @@
 </div>
 
 <div class="recipe-card main">
-<div class="fav">❤</div>
+<div class="fav" onclick="toggleFav('kabsa', this)">❤</div>
 <img src="../images/kabsa.jpeg" alt="كبسه">
 <h4>كبسة الدجاج</h4>
 <p>طبق عربي مشهور من الأرز بالبهارات مع دجاج متبل ولذيذ</p>
@@ -132,7 +132,7 @@
 </div>
 
 <div class="recipe-card main">
-<div class="fav">❤</div>
+<div class="fav" onclick="toggleFav('pizza', this)">❤</div>
 <img src="../images/pizza.jpeg" alt="بيتزا">
 <h4>بيتزا</h4>
 <p>بيتزا لذيذة بصلصة الطماطم والجبن المذاب مع طبقات من الخضار والبيبروني، مثالية كوجبة سريعة ومشبعة</p>
@@ -141,7 +141,7 @@
 
 <!-- healthy -->
 <div class="recipe-card healthy">
-<div class="fav">❤</div>
+<div class="fav" onclick="toggleFav('salad', this)">❤</div>
 <img src="../images/salad.jpeg" alt="سلطة خضراء طازجة ">
 <h4>سلطة خضراء طازجة</h4>
 <p>طبق سلطة صحي ومنعش غني بالفيتامينات، يجمع الخضروات الطازجة مع جبنة الفيتا وزيت الزيتون</p>
@@ -149,7 +149,7 @@
 </div>
 
 <div class="recipe-card healthy">
-<div class="fav">❤</div>
+<div class="fav" onclick="toggleFav('salmon', this)">❤</div>
 <img src="../images/salmon.jpeg" alt="سالمون مشوي">
 <h4>سالمون مشوي مع البطاطس والبروكلي</h4>
 <p>طبق صحي من السالمون المشوي مع خضار طازجة وبطاطس محمصة</p>
@@ -157,7 +157,7 @@
 </div>
 
 <div class="recipe-card healthy">
-<div class="fav">❤</div>
+<div class="fav" onclick="toggleFav('bucky-ball', this)">❤</div>
 <img src="../images/bucky ball.jpeg" alt="بوكي سالمون مع الأرز والأفوكادو">
 <h4>بوكي سالمون مع الأرز والأفوكادو</h4>
 <p>وعاء صحي من الأرز مع مكعبات السالمون الطازج والخضار</p>
@@ -165,7 +165,7 @@
 </div>
 
 <div class="recipe-card healthy">
-<div class="fav">❤</div>
+<div class="fav" onclick="toggleFav('soup', this)">❤</div>
 <img src="../images/soup.jpeg" alt="شوربة خضار">
 <h4>شوربة خضار</h4>
 <p>شوربة دافئة وخفيفة مليئة بالخضار الطازجة</p>
@@ -175,7 +175,7 @@
 
 <!-- breakfast -->
 <div class="recipe-card breakfast">
-<div class="fav">❤</div>
+<div class="fav" onclick="toggleFav('egg', this)">❤</div>
 <img src="../images/egg.jpeg" alt="بيض تركي">
 <h4>بيض على الطريقة التركية</h4>
 <p>طبق إفطار تركي طازج وغني بالبروتين يتميز بزبادي يوناني كريمي ممزوج بالأعشاب، مغطى ببيض مسلوق طري ومرق الزبدة الحارة</p>
@@ -183,7 +183,7 @@
 </div>
 
 <div class="recipe-card breakfast">
-<div class="fav">❤</div>
+<div class="fav" onclick="toggleFav('pancake', this)">❤</div>
 <img src="../images/pancake.jpeg" alt="بانكيك">
 <h4>بانكيك</h4>
 <p>بانكيك هش يقدم مع العسل والفواكه الطازجة</p>
@@ -191,7 +191,7 @@
 </div>
 
 <div class="recipe-card breakfast">
-<div class="fav">❤</div>
+<div class="fav" onclick="toggleFav('tuna-sandwich', this)">❤</div>
 <img src="../images/tuna sandwich.jpeg" alt="ساندويتش تونة">
 <h4>ساندويتش تونة</h4>
 <p>ساندويتش سريع من التونة مع الخس والخبز المحمص</p>
@@ -199,7 +199,7 @@
 </div>
 
 <div class="recipe-card breakfast">
-<div class="fav">❤</div>
+<div class="fav" onclick="toggleFav('bean', this)">❤</div>
 <img src="../images/bean.jpeg">
 <h4>فول</h4>
 <p>طبق فطور عربي بسيط من الفول المتبل بالليمون وزيت الزيتون.</p>
@@ -209,7 +209,7 @@
 
 <!-- dessert -->
 <div class="recipe-card dessert">
-<div class="fav">❤</div>
+<div class="fav" onclick="toggleFav('brownie-pudding', this)">❤</div>
 <img src="../images/Brownie Pudding.jpeg" alt="براوني بودينغ">
 <h4>براوني بودينغ</h4>
 <p>بودينغ براوني غني وطري، مثالي جداً مع مغرفة من آيس كريم الفانيليا</p>
@@ -217,7 +217,7 @@
 </div>
 
 <div class="recipe-card dessert">
-<div class="fav">❤</div>
+<div class="fav" onclick="toggleFav('cupcake', this)">❤</div>
 <img src="../images/cup cake.jpeg" alt="كب كيك فانيليا">
 <h4>كب كيك فانيليا</h4>
 <p>كب كيك طري بنكهة الفانيليا مع كريمة خفيفة</p>
@@ -225,7 +225,7 @@
 </div>
 
 <div class="recipe-card dessert">
-<div class="fav">❤</div>
+<div class="fav" onclick="toggleFav('cookies', this)">❤</div>
 <img src="../images/cookies.jpeg" alt="كوكيز">
 <h4>كوكيز</h4>
 <p>كوكيز طري ولذيذ مع قطع الشوكولاتة</p>
@@ -233,7 +233,7 @@
 </div>
 
 <div class="recipe-card dessert">
-<div class="fav">❤</div>
+<div class="fav" onclick="toggleFav('tiramisu', this)">❤</div>
 <img src="../images/tramiso.jpeg" alt="تيراميسو">
 <h4>تيراميسو</h4>
 <p>حلى إيطالي كريمي بطبقات من البسكويت والقهوة</p>
@@ -243,7 +243,7 @@
 
 <!-- drink -->
 <div class="recipe-card drink">
-<div class="fav">❤</div>
+<div class="fav" onclick="toggleFav('milkshake', this)">❤</div>
 <img src="../images/milkshake.jpeg" alt="ميلك شيك أوريو">
 <h4>ميلك شيك أوريو</h4>
 <p>مشروب بارد كريمي بنكهة بسكويت الأوريو</p>
@@ -251,7 +251,7 @@
 </div>
 
 <div class="recipe-card drink">
-<div class="fav">❤</div>
+<div class="fav" onclick="toggleFav('coffee', this)">❤</div>
 <img src="../images/coffee.jpeg" alt="آيس لاتيه">
 <h4>آيس لاتيه</h4>
 <p>قهوة باردة مع الحليب والثلج</p>
@@ -259,7 +259,7 @@
 </div>
 
 <div class="recipe-card drink">
-<div class="fav">❤</div>
+<div class="fav" onclick="toggleFav('watermelon-juice', this)">❤</div>
 <img src="../images/watermelon juice.jpeg" alt="عصير بطيخ">
 <h4>عصير بطيخ</h4>
 <p>عصير منعش من البطيخ الطازج</p>
@@ -267,7 +267,7 @@
 </div>
 
 <div class="recipe-card drink">
-<div class="fav">❤</div>
+<div class="fav" onclick="toggleFav('hot-chocolate', this)">❤</div>
 <img src="../images/hot chocolate.jpeg" alt="شوكلاته ساخنة">
 <h4>شوكلاته ساخنة</h4>
 <p>مشروب شوكولاتة دافئ وكريمي</p>
@@ -310,6 +310,8 @@
 </div>
 
 </footer>
+
+    <script src="../js/script.js"></script>
 
 </body>
 </html>
