@@ -1,8 +1,42 @@
+
 // ========================================
-// home.js - صفحة الرئيسية كاملة
+// script.js - ملف واحد لجميع الصفحات
 // ========================================
 
-// 1. زر العودة للأعلى (يظهر فقط في الصفحة الرئيسية)
+
+(function applyThemeToAllPages() {
+    // تطبيق الثيم المخزن عند تحميل الصفحة
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-theme');
+    }
+    
+    // مراقبة التغييرات في localStorage (إذا تغير من أي صفحة)
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'theme') {
+            if (e.newValue === 'dark') {
+                document.body.classList.add('dark-theme');
+            } else {
+                document.body.classList.remove('dark-theme');
+            }
+        }
+    });
+})();
+
+
+// ========================================
+// 1. أزرار الصفحة الرئيسية (تظهر فقط في الهوم)
+// ========================================
+
+// التحقق إذا كانت الصفحة الحالية هي الصفحة الرئيسية
+const isHomePage = window.location.pathname === '/' || 
+                   window.location.pathname.includes('index.html') ||
+                   window.location.pathname.endsWith('/') ||
+                   window.location.pathname === '/index.html';
+
+
+if (isHomePage) {
+
+// 1. زر العودة للأعلى
 (function() {
     const backBtn = document.createElement('button');
     backBtn.id = 'backToTop';
@@ -41,7 +75,7 @@
     });
 })();
 
-// 2. زر تبديل الثيمات (يظهر فقط في الصفحة الرئيسية)
+// 2. زر تبديل الثيمات (أيقونات إيموجي)
 (function() {
     // تطبيق الثيم المخزن فوراً
     if (localStorage.getItem('theme') === 'dark') {
@@ -50,7 +84,7 @@
 
     const themeBtn = document.createElement('button');
     themeBtn.id = 'themeSwitch';
-    themeBtn.innerHTML = '🌙';
+    themeBtn.innerHTML = '🌙';  // أيقونة قمر
     themeBtn.style.cssText = `
         position: fixed;
         bottom: 20px;
@@ -75,7 +109,7 @@
     document.body.appendChild(themeBtn);
 
     if (localStorage.getItem('theme') === 'dark') {
-        themeBtn.innerHTML = '☀️';
+        themeBtn.innerHTML = '☀️';  // أيقونة شمس
     }
 
     themeBtn.addEventListener('click', () => {
@@ -243,6 +277,9 @@
 })();
 
 console.log('✅ تم تحميل جميع أزرار الصفحة الرئيسية بنجاح!');
+
+}  // <-- إغلاق شرط isHomePage
+
 
 // ========================================
 // 2. صفحة عن الموقع (About Us)
