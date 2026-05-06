@@ -6,7 +6,7 @@
 (function() {
     const backBtn = document.createElement('button');
     backBtn.id = 'backToTop';
-    backBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    backBtn.innerHTML = '▲';
     backBtn.style.cssText = `
         position: fixed;
         bottom: 20px;
@@ -18,11 +18,14 @@
         border: none;
         border-radius: 50%;
         cursor: pointer;
-        font-size: 22px;
+        font-size: 24px;
         display: none;
         z-index: 1000;
         box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         transition: transform 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     `;
     backBtn.onmouseover = () => backBtn.style.transform = 'scale(1.1)';
     backBtn.onmouseout = () => backBtn.style.transform = 'scale(1)';
@@ -38,7 +41,7 @@
     });
 })();
 
-// 2. زر تبديل الثيمات
+// 2. زر تبديل الثيمات (أيقونات إيموجي)
 (function() {
     // تطبيق الثيم المخزن فوراً
     if (localStorage.getItem('theme') === 'dark') {
@@ -47,7 +50,7 @@
 
     const themeBtn = document.createElement('button');
     themeBtn.id = 'themeSwitch';
-    themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+    themeBtn.innerHTML = '🌙';  // أيقونة قمر
     themeBtn.style.cssText = `
         position: fixed;
         bottom: 20px;
@@ -59,24 +62,27 @@
         border: none;
         border-radius: 50%;
         cursor: pointer;
-        font-size: 22px;
+        font-size: 24px;
         z-index: 1000;
         box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         transition: transform 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     `;
     themeBtn.onmouseover = () => themeBtn.style.transform = 'scale(1.1)';
     themeBtn.onmouseout = () => themeBtn.style.transform = 'scale(1)';
     document.body.appendChild(themeBtn);
 
     if (localStorage.getItem('theme') === 'dark') {
-        themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+        themeBtn.innerHTML = '☀️';  // أيقونة شمس
     }
 
     themeBtn.addEventListener('click', () => {
         document.body.classList.toggle('dark-theme');
         const isDark = document.body.classList.contains('dark-theme');
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        themeBtn.innerHTML = isDark ? '☀️' : '🌙';
         console.log(`✅ تم تغيير الثيم إلى ${isDark ? 'داكن' : 'فاتح'}`);
     });
 })();
