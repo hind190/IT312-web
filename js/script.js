@@ -1,4 +1,95 @@
+// ============================================================
+//  ملف مشترك لجميع صفحات الموقع (آمن ولا يتعارض)
+// ============================================================
 
+(function() {
+    function onReady(fn) {
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", fn);
+        } else {
+            fn();
+        }
+    }
+
+    onReady(function() {
+        // -----------------------------------------------
+        // 1. ميزات الصفحة الرئيسية (تظهر فقط إذا وجدت العناصر)
+        // -----------------------------------------------
+        
+        // زر العودة للأعلى (Back to Top)
+        var backToTopBtn = document.getElementById("backToTop");
+        if (backToTopBtn) {
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 300) {
+                    backToTopBtn.style.display = "block";
+                } else {
+                    backToTopBtn.style.display = "none";
+                }
+            });
+            backToTopBtn.addEventListener("click", function() {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+        }
+
+        // الساعة الحقيقية في الفوتر
+        var clockSpan = document.getElementById("realTimeClock");
+        if (clockSpan) {
+            function updateClock() {
+                var now = new Date();
+                clockSpan.textContent = now.toLocaleTimeString("ar-SA");
+            }
+            updateClock();
+            setInterval(updateClock, 1000);
+        }
+
+        // أزرار تغيير الثيم
+        var themeLight = document.getElementById("themeLight");
+        var themeDark = document.getElementById("themeDark");
+        if (themeLight && themeDark) {
+            themeLight.addEventListener("click", function() {
+                document.body.classList.remove("dark-theme");
+                document.body.classList.add("light-theme");
+            });
+            themeDark.addEventListener("click", function() {
+                document.body.classList.remove("light-theme");
+                document.body.classList.add("dark-theme");
+            });
+        }
+
+        // -----------------------------------------------
+        // 2. صفحة النتيجة (تظهر فقط إذا وجدت عناصر النتيجة)
+        // -----------------------------------------------
+        var currentScoreEl = document.getElementById("currentScore");
+        var bestScoreEl = document.getElementById("bestScore");
+        if (currentScoreEl && bestScoreEl) {
+            var currentScore = sessionStorage.getItem("currentQuizScore");
+            var bestScore = sessionStorage.getItem("quizBestScore");
+            var total = sessionStorage.getItem("quizTotalQuestions");
+
+            if (currentScore === null || total === null) {
+                currentScoreEl.textContent = "لا توجد بيانات";
+                bestScoreEl.textContent = "لا توجد بيانات";
+            } else {
+                currentScoreEl.textContent = currentScore + " / " + total;
+                bestScoreEl.textContent = (bestScore !== null ? bestScore : "?") + " / " + total;
+            }
+
+            // إعادة الاختبار
+            var retakeBtn = document.getElementById("retakeQuizBtn");
+            if (retakeBtn) {
+                var originalUrl = sessionStorage.getItem("currentQuizUrl");
+                retakeBtn.href = originalUrl ? originalUrl : "../pages/quiz/quiz-basics.html";
+            }
+
+            // العودة للدرس
+            var backToLessonBtn = document.getElementById("backToLessonBtn");
+            if (backToLessonBtn) {
+                var lessonUrl = sessionStorage.getItem("lessonPageUrl");
+                backToLessonBtn.href = lessonUrl ? lessonUrl : "../pages/lessons/lesson1_page1.html";
+            }
+        }
+    });
+})();
 // ========================================
 // script.js - ملف واحد لجميع الصفحات
 // ========================================
@@ -532,459 +623,8 @@ if (document.querySelector('.contact-form form')) {
 }
 
 
-
 // ============================================================
-//  QUIZ — الأدوات الأساسية للطبخ
-// ============================================================
-(function () {
-
-    function onReady(fn) {
-        if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", fn);
-        } else { fn(); }
-    }
-
-    onReady(function () {
-
-        var submitBtn = document.getElementById("submitQuizBtn");
-        if (!submitBtn) return;
-
-        var TOTAL_QUESTIONS = 5;
-        var QUIZ_KEY = "basic_tools_quiz";
-
-        var CORRECT_ANSWERS = {
-            q1: "سكين الشيف",
-            q2: "الخشب أو البلاستيك",
-            q3: "خلاط كهربائي",
-            q4: "غسل اليدين جيدًا",
-            q5: "Bread Knife (سكين الخبز)"
-        };
-
-        function allAnswered() {
-            for (var i = 1; i <= TOTAL_QUESTIONS; i++) {
-                if (!document.querySelector('input[name="q' + i + '"]:checked')) {
-                    alert("الرجاء الإجابة على السؤال رقم " + i);
-                    var card = document.querySelectorAll(".question-card")[i - 1];
-                    if (card) card.scrollIntoView({ behavior: "smooth", block: "center" });
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        function calculateScore() {
-            var score = 0;
-            for (var i = 1; i <= TOTAL_QUESTIONS; i++) {
-                var key = "q" + i;
-                var selected = document.querySelector('input[name="' + key + '"]:checked');
-                if (selected && selected.value === CORRECT_ANSWERS[key]) score++;
-            }
-            return score;
-        }
-
-        submitBtn.addEventListener("click", function (e) {
-            e.preventDefault();
-            if (!allAnswered()) return;
-
-            var currentScore = calculateScore();
-            var stored = localStorage.getItem(QUIZ_KEY);
-            var bestScore = stored !== null ? parseInt(stored, 10) : 0;
-            if (currentScore > bestScore) {
-                bestScore = currentScore;
-                localStorage.setItem(QUIZ_KEY, bestScore);
-            }
-
-            sessionStorage.setItem("currentQuizScore",   currentScore);
-            sessionStorage.setItem("quizBestScore",      bestScore);
-            sessionStorage.setItem("quizTotalQuestions", TOTAL_QUESTIONS);
-            sessionStorage.setItem("quizName",           QUIZ_KEY);
-
-            window.location.href = "../result.html";
-        });
-
-    });
-
-})();
-
-// ============================================================
-//  QUIZ — كيك الفانيلا
-// ============================================================
-(function () {
-
-    function onReady(fn) {
-        if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", fn);
-        } else { fn(); }
-    }
-
-    onReady(function () {
-
-        var submitBtn = document.getElementById("submitQuizBtn");
-        if (!submitBtn) return;
-
-        var TOTAL_QUESTIONS = 5;
-        var QUIZ_KEY = "vanilla_cake_quiz";
-
-        var CORRECT_ANSWERS = {
-            q1: "15 دقيقة",
-            q2: "180 درجة",
-            q3: "ملعقة خشبية",
-            q4: "لا تفتح قبل 20 دقيقة",
-            q5: "كاكاو بودرة"
-        };
-
-        function allAnswered() {
-            for (var i = 1; i <= TOTAL_QUESTIONS; i++) {
-                if (!document.querySelector('input[name="q' + i + '"]:checked')) {
-                    alert("الرجاء الإجابة على السؤال رقم " + i);
-                    var card = document.querySelectorAll(".question-card")[i - 1];
-                    if (card) card.scrollIntoView({ behavior: "smooth", block: "center" });
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        function calculateScore() {
-            var score = 0;
-            for (var i = 1; i <= TOTAL_QUESTIONS; i++) {
-                var key = "q" + i;
-                var selected = document.querySelector('input[name="' + key + '"]:checked');
-                if (selected && selected.value === CORRECT_ANSWERS[key]) score++;
-            }
-            return score;
-        }
-
-        submitBtn.addEventListener("click", function (e) {
-            e.preventDefault();
-            if (!allAnswered()) return;
-
-            var currentScore = calculateScore();
-            var stored = localStorage.getItem(QUIZ_KEY);
-            var bestScore = stored !== null ? parseInt(stored, 10) : 0;
-            if (currentScore > bestScore) {
-                bestScore = currentScore;
-                localStorage.setItem(QUIZ_KEY, bestScore);
-            }
-
-            sessionStorage.setItem("currentQuizScore",   currentScore);
-            sessionStorage.setItem("quizBestScore",      bestScore);
-            sessionStorage.setItem("quizTotalQuestions", TOTAL_QUESTIONS);
-            sessionStorage.setItem("quizName",           QUIZ_KEY);
-
-            window.location.href = "../result.html";
-        });
-
-    });
-
-})();
-
-// ============================================================
-//  QUIZ — القهوة السعودية
-// ============================================================
-(function () {
-
-    function onReady(fn) {
-        if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", fn);
-        } else { fn(); }
-    }
-
-    onReady(function () {
-
-        var submitBtn = document.getElementById("submitQuizBtn");
-        if (!submitBtn) return;
-
-        // تحقق إننا في صفحة كويز القهوة تحديداً
-        if (!document.querySelector('input[name="q1"][value="بن سعودي"]')) return;
-
-        var TOTAL_QUESTIONS = 5;
-        var QUIZ_KEY = "saudi_coffee_quiz";
-
-        var CORRECT_ANSWERS = {
-            q1: "سكر",
-            q2: "10 دقائق",
-            q3: "هاون ومدقة (مهباش)",
-            q4: "الاكتفاء (لا تريد المزيد)",
-            q5: "قرفة"
-        };
-
-        function allAnswered() {
-            for (var i = 1; i <= TOTAL_QUESTIONS; i++) {
-                if (!document.querySelector('input[name="q' + i + '"]:checked')) {
-                    alert("الرجاء الإجابة على السؤال رقم " + i);
-                    var card = document.querySelectorAll(".question-card")[i - 1];
-                    if (card) card.scrollIntoView({ behavior: "smooth", block: "center" });
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        function calculateScore() {
-            var score = 0;
-            for (var i = 1; i <= TOTAL_QUESTIONS; i++) {
-                var key = "q" + i;
-                var selected = document.querySelector('input[name="' + key + '"]:checked');
-                if (selected && selected.value === CORRECT_ANSWERS[key]) score++;
-            }
-            return score;
-        }
-
-        submitBtn.addEventListener("click", function (e) {
-            e.preventDefault();
-            if (!allAnswered()) return;
-
-            var currentScore = calculateScore();
-            var stored = localStorage.getItem(QUIZ_KEY);
-            var bestScore = stored !== null ? parseInt(stored, 10) : 0;
-            if (currentScore > bestScore) {
-                bestScore = currentScore;
-                localStorage.setItem(QUIZ_KEY, bestScore);
-            }
-
-            sessionStorage.setItem("currentQuizScore",   currentScore);
-            sessionStorage.setItem("quizBestScore",      bestScore);
-            sessionStorage.setItem("quizTotalQuestions", TOTAL_QUESTIONS);
-            sessionStorage.setItem("quizName",           QUIZ_KEY);
-
-            window.location.href = "../result.html";
-        });
-
-    });
-
-})();
-
-// ============================================================
-//  QUIZ — الفطور الصحي
-// ============================================================
-(function () {
-
-    function onReady(fn) {
-        if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", fn);
-        } else { fn(); }
-    }
-
-    onReady(function () {
-
-        var submitBtn = document.getElementById("submitQuizBtn");
-        if (!submitBtn) return;
-
-        // تمييز هذا الكويز عن غيره
-        if (!document.querySelector('input[name="q1"][value="شوفان"]')) return;
-
-        var TOTAL_QUESTIONS = 5;
-        var QUIZ_KEY = "healthy_breakfast_quiz";
-
-        var CORRECT_ANSWERS = {
-            q1: "دقيق أبيض",
-            q2: "5 دقائق",
-            q3: "خلاط كهربائي",
-            q4: "مكسرات محمصة",
-            q5: "10 دقائق"
-        };
-
-        function allAnswered() {
-            for (var i = 1; i <= TOTAL_QUESTIONS; i++) {
-                if (!document.querySelector('input[name="q' + i + '"]:checked')) {
-                    alert("الرجاء الإجابة على السؤال رقم " + i);
-                    var card = document.querySelectorAll(".question-card")[i - 1];
-                    if (card) card.scrollIntoView({ behavior: "smooth", block: "center" });
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        function calculateScore() {
-            var score = 0;
-            for (var i = 1; i <= TOTAL_QUESTIONS; i++) {
-                var key = "q" + i;
-                var selected = document.querySelector('input[name="' + key + '"]:checked');
-                if (selected && selected.value === CORRECT_ANSWERS[key]) score++;
-            }
-            return score;
-        }
-
-        submitBtn.addEventListener("click", function (e) {
-            e.preventDefault();
-            if (!allAnswered()) return;
-
-            var currentScore = calculateScore();
-            var stored = localStorage.getItem(QUIZ_KEY);
-            var bestScore = stored !== null ? parseInt(stored, 10) : 0;
-            if (currentScore > bestScore) {
-                bestScore = currentScore;
-                localStorage.setItem(QUIZ_KEY, bestScore);
-            }
-
-            sessionStorage.setItem("currentQuizScore",   currentScore);
-            sessionStorage.setItem("quizBestScore",      bestScore);
-            sessionStorage.setItem("quizTotalQuestions", TOTAL_QUESTIONS);
-            sessionStorage.setItem("quizName",           QUIZ_KEY);
-
-            window.location.href = "../result.html";
-        });
-
-    });
-
-})();
-
-// ============================================================
-//  QUIZ — فطاير بالجبن والدجاج
-// ============================================================
-(function () {
-
-    function onReady(fn) {
-        if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", fn);
-        } else { fn(); }
-    }
-
-    onReady(function () {
-
-        var submitBtn = document.getElementById("submitQuizBtn");
-        if (!submitBtn) return;
-
-        // تمييز هذا الكويز عن غيره
-        if (!document.querySelector('input[name="q1"][value="دقيق"]')) return;
-
-        var TOTAL_QUESTIONS = 5;
-        var QUIZ_KEY = "cheese_chicken_pie_quiz";
-
-        var CORRECT_ANSWERS = {
-            q1: "سكر",
-            q2: "60 دقيقة",
-            q3: "حشوة اللحم المفروم",
-            q4: "180 درجة مئوية",
-            q5: "10 دقائق"
-        };
-
-        function allAnswered() {
-            for (var i = 1; i <= TOTAL_QUESTIONS; i++) {
-                if (!document.querySelector('input[name="q' + i + '"]:checked')) {
-                    alert("الرجاء الإجابة على السؤال رقم " + i);
-                    var card = document.querySelectorAll(".question-card")[i - 1];
-                    if (card) card.scrollIntoView({ behavior: "smooth", block: "center" });
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        function calculateScore() {
-            var score = 0;
-            for (var i = 1; i <= TOTAL_QUESTIONS; i++) {
-                var key = "q" + i;
-                var selected = document.querySelector('input[name="' + key + '"]:checked');
-                if (selected && selected.value === CORRECT_ANSWERS[key]) score++;
-            }
-            return score;
-        }
-
-        submitBtn.addEventListener("click", function (e) {
-            e.preventDefault();
-            if (!allAnswered()) return;
-
-            var currentScore = calculateScore();
-            var stored = localStorage.getItem(QUIZ_KEY);
-            var bestScore = stored !== null ? parseInt(stored, 10) : 0;
-            if (currentScore > bestScore) {
-                bestScore = currentScore;
-                localStorage.setItem(QUIZ_KEY, bestScore);
-            }
-
-            sessionStorage.setItem("currentQuizScore",   currentScore);
-            sessionStorage.setItem("quizBestScore",      bestScore);
-            sessionStorage.setItem("quizTotalQuestions", TOTAL_QUESTIONS);
-            sessionStorage.setItem("quizName",           QUIZ_KEY);
-
-            window.location.href = "../result.html";
-        });
-
-    });
-
-})();
-
-// ============================================================
-//  QUIZ — التورتيلا بالدجاج
-// ============================================================
-(function () {
-
-    function onReady(fn) {
-        if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", fn);
-        } else { fn(); }
-    }
-
-    onReady(function () {
-
-        var submitBtn = document.getElementById("submitQuizBtn");
-        if (!submitBtn) return;
-
-        // تمييز هذا الكويز عن غيره
-        if (!document.querySelector('input[name="q1"][value="صدور دجاج"]')) return;
-
-        var TOTAL_QUESTIONS = 5;
-        var QUIZ_KEY = "tortilla_chicken_quiz";
-
-        var CORRECT_ANSWERS = {
-            q1: "زيتون أسود",
-            q2: "5 دقائق",
-            q3: "حشوة المأكولات البحرية",
-            q4: "3 أيام",
-            q5: "تسخينها في الفرن"
-        };
-
-        function allAnswered() {
-            for (var i = 1; i <= TOTAL_QUESTIONS; i++) {
-                if (!document.querySelector('input[name="q' + i + '"]:checked')) {
-                    alert("الرجاء الإجابة على السؤال رقم " + i);
-                    var card = document.querySelectorAll(".question-card")[i - 1];
-                    if (card) card.scrollIntoView({ behavior: "smooth", block: "center" });
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        function calculateScore() {
-            var score = 0;
-            for (var i = 1; i <= TOTAL_QUESTIONS; i++) {
-                var key = "q" + i;
-                var selected = document.querySelector('input[name="' + key + '"]:checked');
-                if (selected && selected.value === CORRECT_ANSWERS[key]) score++;
-            }
-            return score;
-        }
-
-        submitBtn.addEventListener("click", function (e) {
-            e.preventDefault();
-            if (!allAnswered()) return;
-
-            var currentScore = calculateScore();
-            var stored = localStorage.getItem(QUIZ_KEY);
-            var bestScore = stored !== null ? parseInt(stored, 10) : 0;
-            if (currentScore > bestScore) {
-                bestScore = currentScore;
-                localStorage.setItem(QUIZ_KEY, bestScore);
-            }
-
-            sessionStorage.setItem("currentQuizScore",   currentScore);
-            sessionStorage.setItem("quizBestScore",      bestScore);
-            sessionStorage.setItem("quizTotalQuestions", TOTAL_QUESTIONS);
-            sessionStorage.setItem("quizName",           QUIZ_KEY);
-
-            window.location.href = "../result.html";
-        });
-
-    });
-
-})();
-
-// ============================================================
-//  RESULT PAGE MODULE
+//  RESULT PAGE MODULE (معدل لدعم العودة للدرس)
 // ============================================================
 (function () {
 
@@ -998,23 +638,45 @@ if (document.querySelector('.contact-form form')) {
 
     onReady(function () {
 
-        // تحقق من وجود عناصر صفحة النتيجة (يمنع التشغيل في صفحات أخرى)
+        // عرض الدرجات (كما كان)
         var currentScoreEl = document.getElementById("currentScore");
         var bestScoreEl    = document.getElementById("bestScore");
-        if (!currentScoreEl || !bestScoreEl) return;
+        if (currentScoreEl && bestScoreEl) {
+            var currentScore = sessionStorage.getItem("currentQuizScore");
+            var bestScore    = sessionStorage.getItem("quizBestScore");
+            var total        = sessionStorage.getItem("quizTotalQuestions");
 
-        // جلب البيانات
-        var currentScore = sessionStorage.getItem("currentQuizScore");
-        var bestScore    = sessionStorage.getItem("quizBestScore");
-        var total        = sessionStorage.getItem("quizTotalQuestions");
+            if (currentScore === null || total === null) {
+                currentScoreEl.textContent = "لا توجد بيانات";
+                bestScoreEl.textContent    = "لا توجد بيانات";
+            } else {
+                currentScoreEl.textContent = currentScore + " / " + total;
+                bestScoreEl.textContent    = bestScore    + " / " + total;
+            }
+        }
 
-        // عرض الدرجات — إذا ما في بيانات يعرض رسالة تنبيه
-        if (currentScore === null || total === null) {
-            currentScoreEl.textContent = "لا توجد بيانات";
-            bestScoreEl.textContent    = "لا توجد بيانات";
-        } else {
-            currentScoreEl.textContent = currentScore + " / " + total;
-            bestScoreEl.textContent    = bestScore    + " / " + total;
+        // 🔁 إعادة توجيه زر "إعادة الاختبار" إلى نفس الاختبار الذي جاء منه الطالب
+        var retakeBtn = document.getElementById("retakeQuizBtn");
+        if (retakeBtn) {
+            var originalQuizUrl = sessionStorage.getItem("currentQuizUrl");
+            if (originalQuizUrl) {
+                retakeBtn.href = originalQuizUrl;
+            } else {
+                // رابط افتراضي في حالة عدم وجود الرابط المسجل
+                retakeBtn.href = "../pages/quiz/quiz-basics.html";
+            }
+        }
+
+        // 🔁 إضافة: توجيه زر "العودة للدرس" إلى الدرس المرتبط بالاختبار
+        var backToLessonBtn = document.getElementById("backToLessonBtn");
+        if (backToLessonBtn) {
+            var lessonUrl = sessionStorage.getItem("lessonPageUrl");
+            if (lessonUrl) {
+                backToLessonBtn.href = lessonUrl;
+            } else {
+                // رابط افتراضي إذا لم يتم تخزينه
+                backToLessonBtn.href = "../pages/lessons/lesson1_page1.html";
+            }
         }
 
     });
@@ -1165,3 +827,30 @@ if (document.querySelector('.contact-form form')) {
     });
 
 })();
+
+// ============================================================
+//  FAVORITE RECIPES MODULE (إدارة الوصفات المفضلة)
+// ============================================================
+// إدارة الوصفات المفضلة
+function toggleFav(id, btn) {
+  let favs = JSON.parse(localStorage.getItem('favRecipes') || '[]');
+  
+  if (favs.includes(id)) {
+    favs = favs.filter(f => f !== id);
+    btn.classList.remove('active');
+  } else {
+    favs.push(id);
+    btn.classList.add('active');
+  }
+  
+  localStorage.setItem('favRecipes', JSON.stringify(favs));
+}
+
+// تلوين القلوب عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', () => {
+  const favs = JSON.parse(localStorage.getItem('favRecipes') || '[]');
+  document.querySelectorAll('.fav[onclick]').forEach(btn => {
+    const id = btn.getAttribute('onclick').match(/'([^']+)'/)?.[1];
+    if (id && favs.includes(id)) btn.classList.add('active');
+  });
+});
