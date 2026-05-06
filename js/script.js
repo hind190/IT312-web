@@ -1,20 +1,8 @@
 // ========================================
-// script.js - ملف واحد لجميع الصفحات
+// home.js - صفحة الرئيسية كاملة
 // ========================================
 
-// التحقق إذا كانت الصفحة الحالية هي الصفحة الرئيسية
-const isHomePage = window.location.pathname === '/' || 
-                   window.location.pathname.includes('index.html') ||
-                   window.location.pathname.endsWith('/') ||
-                   window.location.pathname === '/index.html';
-
-// ========================================
-// 1. أزرار الصفحة الرئيسية (تظهر فقط في الهوم)
-// ========================================
-
-if (isHomePage) {
-
-// 1. زر العودة للأعلى
+// 1. زر العودة للأعلى (يظهر فقط في الصفحة الرئيسية)
 (function() {
     const backBtn = document.createElement('button');
     backBtn.id = 'backToTop';
@@ -53,7 +41,7 @@ if (isHomePage) {
     });
 })();
 
-// 2. زر تبديل الثيمات (أيقونات إيموجي)
+// 2. زر تبديل الثيمات (يظهر فقط في الصفحة الرئيسية)
 (function() {
     // تطبيق الثيم المخزن فوراً
     if (localStorage.getItem('theme') === 'dark') {
@@ -62,7 +50,7 @@ if (isHomePage) {
 
     const themeBtn = document.createElement('button');
     themeBtn.id = 'themeSwitch';
-    themeBtn.innerHTML = '🌙';  // أيقونة قمر
+    themeBtn.innerHTML = '🌙';
     themeBtn.style.cssText = `
         position: fixed;
         bottom: 20px;
@@ -87,7 +75,7 @@ if (isHomePage) {
     document.body.appendChild(themeBtn);
 
     if (localStorage.getItem('theme') === 'dark') {
-        themeBtn.innerHTML = '☀️';  // أيقونة شمس
+        themeBtn.innerHTML = '☀️';
     }
 
     themeBtn.addEventListener('click', () => {
@@ -255,9 +243,6 @@ if (isHomePage) {
 })();
 
 console.log('✅ تم تحميل جميع أزرار الصفحة الرئيسية بنجاح!');
-
-}  // <-- إغلاق شرط isHomePage
-
 
 // ========================================
 // 2. صفحة عن الموقع (About Us)
