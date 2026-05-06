@@ -9,6 +9,54 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* ============================================ */
+        /* تنسيق جدول نتائج الاختبارات */
+        /* ============================================ */
+        .scores-section {
+            background: white;
+            border-radius: 25px;
+            padding: 25px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            border: 1px solid #f0f0f0;
+        }
+        .scores-section h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #4f6357;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .scores-section .desc {
+            color: #5e6f69;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .scores-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .scores-table th {
+            background: #4f6357;
+            color: white;
+            padding: 12px;
+            text-align: center;
+        }
+        .scores-table td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #dfeae3;
+        }
+        .no-data {
+            text-align: center;
+            padding: 30px;
+            color: #8ea79a;
+        }
+    </style>
 </head>
 <body>
     <!-- HEADER -->
@@ -40,16 +88,17 @@
     </header>
 
     <!-- NAVBAR -->
-   <nav>
-    <ul>
-        <li><a href="../index.html">الرئيسية</a></li>
-        <li><a href="courses.html">الدورات</a></li>
-        <li><a href="recipes.html">الوصفات</a></li>
-        <li><a href="aboutweb.html">عن الموقع</a></li>
-        <li><a href="couwithUs.html">تواصل معنا</a></li>
-    </ul>
-    <input type="text" placeholder="بحث">
-</nav>
+    <nav>
+        <ul>
+            <li><a href="../index.html">الرئيسية</a></li>
+            <li><a href="courses.html">الدورات</a></li>
+            <li><a href="recipes.html">الوصفات</a></li>
+            <li><a href="aboutweb.html">عن الموقع</a></li>
+            <li><a href="couwithUs.html">تواصل معنا</a></li>
+        </ul>
+        <input type="text" placeholder="بحث">
+    </nav>
+
     <!-- BREADCRUMBS -->
     <div class="breadcrumbs">
         <a href="../index.html">الرئيسية</a>
@@ -82,7 +131,7 @@
                 </div>
             </div>
 
-            <!-- دورة 2: دورة الحلويات  -->
+            <!-- دورة 2: دورة الحلويات -->
             <div class="course-card">
                 <div class="course-image">
                     <img src="../images/courseP1.jpeg" alt="دورة الحلويات">
@@ -114,7 +163,7 @@
                 </div>
             </div>
 
-            <!-- دورة 4: المعجنات والفطائر  -->
+            <!-- دورة 4: المعجنات والفطائر -->
             <div class="course-card">
                 <div class="course-image">
                     <img src="../images/courseP4.jpeg" alt="المعجنات والفطائر">
@@ -130,6 +179,9 @@
                 </div>
             </div>
         </div>
+
+        <!-- جدول نتائج الاختبارات السابقة -->
+        <div id="scoresTableContainer"></div>
     </main>
 
     <!-- FOOTER -->
@@ -155,5 +207,7 @@
             <p>© رشة</p>
         </div>
     </footer>
+
+    <script src="../js/script.js"></script>
 </body>
 </html>
