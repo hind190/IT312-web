@@ -350,6 +350,167 @@ body {
     margin-bottom: 0;
 }
 
+/* ===== الثيم الداكن ===== */
+body.dark-theme {
+    background-color: #1a1f1d;
+    color: #e8f0ec;
+}
+
+body.dark-theme header {
+    background-color: #1a1f1d;
+    border-bottom: 1px solid #2e3d35;
+}
+
+body.dark-theme nav,
+body.dark-theme .my-nav {
+    background-color: #243029;
+}
+
+body.dark-theme nav a,
+body.dark-theme .my-nav-link {
+    color: #c5d9cc;
+}
+
+body.dark-theme .course-item,
+body.dark-theme .teacher-item,
+body.dark-theme .review-item,
+body.dark-theme .vision-box,
+body.dark-theme .vision-card {
+    background: #243029;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+body.dark-theme .course-item h3,
+body.dark-theme .teacher-item h3,
+body.dark-theme .review-item h3 {
+    color: #e8f0ec;
+}
+
+body.dark-theme .course-item p,
+body.dark-theme .teacher-item p,
+body.dark-theme .review-item p {
+    color: #a8bfb2;
+}
+
+body.dark-theme .course-category {
+    background: #2e3d35;
+    color: #8ea79a;
+}
+
+body.dark-theme .vision-box h3,
+body.dark-theme .vision-card h3 {
+    color: #8ea79a;
+}
+
+body.dark-theme .vision-box p,
+body.dark-theme .vision-card p {
+    color: #a8bfb2;
+}
+
+body.dark-theme .footer {
+    background-color: #141a17;
+    color: #a8bfb2;
+}
+
+body.dark-theme .breadcrumbs {
+    background: #1e2923;
+    color: #8ea79a !important;
+}
+
+body.dark-theme .breadcrumbs a,
+body.dark-theme .breadcrumbs span {
+    color: #8ea79a !important;
+}
+
+body.dark-theme .home-page .courses h2,
+body.dark-theme .home-page .teachers h2,
+body.dark-theme .home-page .student-reviews h2 {
+    color: #8ea79a;
+}
+
+/* ===== زر الثيم ===== */
+.theme-btn-wrapper {
+    padding: 5px 20px;
+    display: flex;
+    justify-content: flex-end;  /* يمين في RTL */
+}
+
+.theme-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;   /* أصغر */
+    border: 2px solid #4f6357;
+    border-radius: 30px;
+    background: white;
+    color: #4f6357;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 13px;     /* أصغر */
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: 0.3s;
+}
+
+body.dark-theme .theme-toggle-btn {
+    background: #243029;
+    border-color: #8ea79a;
+    color: #e8f0ec;
+}
+
+body.dark-theme .theme-toggle-btn:hover {
+    background: #8ea79a;
+    color: #1a1f1d;
+}
+
+/* ===== فتات الخبز ===== */
+.breadcrumbs {
+    background: #e8f0ec;
+    color: #4f6357 !important;
+}
+
+.breadcrumbs a,
+.breadcrumbs span {
+    color: #4f6357 !important;
+}
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;  /* نص اليمين، زر اليسار */
+}
+
+/* ===== فواصل بين الأقسام ===== */
+.courses,
+.teachers,
+.student-reviews {
+    padding: 50px 40px;
+    border-bottom: 2px solid #c0cec8;
+}
+
+body.dark-theme .courses,
+body.dark-theme .teachers,
+body.dark-theme .student-reviews {
+    border-bottom: 2px solid #3a4f43;
+}
+
+/* ===== فاصل الفوتر ===== */
+.footer-divider {
+    width: 2px;
+    min-height: 80px;
+    background: #8ea79a !important;
+    opacity: 1 !important;
+    margin: 0 30px;
+}
+
+body.dark-theme .footer-divider {
+    background: #4f6357 !important;
+}
+
+.footer-left p,
+.footer-right p {
+    color: #c5d9cc;
+}
+
 
 @media (max-width: 780px) {
     .vision-card {
@@ -3657,6 +3818,182 @@ content: "\2713" !important;
     color: #b87c4e;
     font-weight: 600;
     margin: 0;
+}
+
+/* ===== Modals ===== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-box {
+    background: #fff;
+    border-radius: 30px;
+    padding: 40px 35px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to   { transform: scale(1);    opacity: 1; }
+}
+
+.modal-close {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    background: #f0f7f3;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+    color: #4f6357;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.modal-close:hover { background: #4f6357; color: white; }
+
+.modal-icon {
+    font-size: 50px;
+    color: #4f6357;
+    margin-bottom: 15px;
+}
+
+.modal-box h2 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #2c3e3a;
+    margin-bottom: 8px;
+}
+
+.modal-box p {
+    font-size: 15px;
+    color: #5e6f69;
+    margin-bottom: 20px;
+}
+
+.modal-input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1.5px solid #e0e8e3;
+    border-radius: 15px;
+    font-size: 15px;
+    font-family: 'Tajawal', sans-serif;
+    color: #2c3e3a;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    transition: 0.2s;
+    direction: rtl;
+}
+
+.modal-input:focus {
+    outline: none;
+    border-color: #4f6357;
+}
+
+.modal-textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1.5px solid #e0e8e3;
+    border-radius: 15px;
+    font-size: 15px;
+    font-family: 'Tajawal', sans-serif;
+    color: #2c3e3a;
+    height: 140px;
+    resize: none;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    direction: rtl;
+    transition: 0.2s;
+}
+
+.modal-textarea:focus {
+    outline: none;
+    border-color: #4f6357;
+}
+
+.modal-submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: #4f6357;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 17px;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.modal-submit-btn:hover { background: #3a4f43; }
+
+/* رفع صورة */
+.upload-area {
+    border: 2px dashed #8ea79a;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 15px;
+    color: #5e6f69;
+    transition: 0.2s;
+}
+
+.upload-area i { font-size: 36px; color: #8ea79a; margin-bottom: 10px; }
+
+.upload-label {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 8px 22px;
+    background: #f0f7f3;
+    border-radius: 20px;
+    color: #4f6357;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.upload-label:hover { background: #4f6357; color: white; }
+.upload-preview { font-size: 13px; color: #4f6357; margin-top: 8px; font-weight: 600; }
+
+/* Toast */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: #4f6357;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 2000;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
 /* صفحة الكويز */
