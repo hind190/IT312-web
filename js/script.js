@@ -90,10 +90,10 @@
         }
     });
 })();
+
 // ========================================
 // script.js - ملف واحد لجميع الصفحات
 // ========================================
-
 
 (function applyThemeToAllPages() {
     // تطبيق الثيم المخزن عند تحميل الصفحة
@@ -113,7 +113,6 @@
     });
 })();
 
-
 // ========================================
 // 1. أزرار الصفحة الرئيسية (تظهر فقط في الهوم)
 // ========================================
@@ -123,7 +122,6 @@ const isHomePage = window.location.pathname === '/' ||
                    window.location.pathname.includes('index.html') ||
                    window.location.pathname.endsWith('/') ||
                    window.location.pathname === '/index.html';
-
 
 if (isHomePage) {
 
@@ -371,7 +369,6 @@ console.log('✅ تم تحميل جميع أزرار الصفحة الرئيسي
 
 }  // <-- إغلاق شرط isHomePage
 
-
 // ========================================
 // 2. صفحة عن الموقع (About Us)
 // ========================================
@@ -455,11 +452,9 @@ if (document.getElementById('teachersContainer')) {
     console.log('✅ about.js شغال');
 }
 
-
 // ========================================
 // 3. صفحة تواصل معنا (Contact Us)
 // ========================================
-
 
 if (document.querySelector('.contact-form form')) {
     (function initContactPage() {
@@ -622,7 +617,6 @@ if (document.querySelector('.contact-form form')) {
     })();
 }
 
-
 // ============================================================
 //  RESULT PAGE MODULE (معدل لدعم العودة للدرس)
 // ============================================================
@@ -682,7 +676,6 @@ if (document.querySelector('.contact-form form')) {
     });
 
 })();
-
 
 // ============================================================
 //  ADD RECIPE PAGE MODULE
@@ -854,3 +847,696 @@ document.addEventListener('DOMContentLoaded', () => {
     if (id && favs.includes(id)) btn.classList.add('active');
   });
 });
+
+// ============================================
+// الجزء المدمج
+// ============================================
+
+console.log("✅ JavaScript Phase 3 - شموخ (مدمج مع كود صديقتي)");
+
+// ============================================
+// دوال مساعدة (من كودي)
+// ============================================
+
+function showToastMessage(message, type = "success") {
+    const oldMsg = document.querySelector('.toast-message');
+    if (oldMsg) oldMsg.remove();
+    
+    const msg = document.createElement('div');
+    msg.className = `toast-message ${type}`;
+    
+    let icon = 'fa-check-circle';
+    if (type === 'error') icon = 'fa-exclamation-circle';
+    if (type === 'warning') icon = 'fa-triangle-exclamation';
+    
+    msg.innerHTML = `<i class="fas ${icon}"></i> ${message}`;
+    document.body.appendChild(msg);
+    
+    // إضافة تنسيق التوست إذا مو موجود
+    if (!document.querySelector('#toast-style')) {
+        const style = document.createElement('style');
+        style.id = 'toast-style';
+        style.textContent = `
+            .toast-message {
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                background: #4f6357;
+                color: white;
+                padding: 12px 24px;
+                border-radius: 50px;
+                font-size: 14px;
+                z-index: 9999;
+                animation: fadeInUp 0.3s ease;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                font-family: 'Tajawal', sans-serif;
+            }
+            .toast-message.error {
+                background: #e74c3c;
+            }
+            .toast-message.warning {
+                background: #f39c12;
+            }
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    setTimeout(() => {
+        if (msg) msg.remove();
+    }, 3000);
+}
+
+// ============================================
+// المعلومات الشخصية (personal-info.html) - من كودي
+// ============================================
+
+// دالة تحويل الصورة إلى Base64
+function imageToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (error) => reject(error);
+        reader.readAsDataURL(file);
+    });
+}
+
+// دالة حفظ جميع المعلومات الشخصية في localStorage
+function savePersonalInfo() {
+    // جلب البيانات من الحقول
+    const firstName = document.getElementById('firstName')?.value || '';
+    const lastName = document.getElementById('lastName')?.value || '';
+    const birthdate = document.getElementById('birthdate')?.value || '';
+    const phone = document.getElementById('phone')?.value || '';
+    const country = document.getElementById('country')?.value || '';
+    const email = document.getElementById('email')?.value || '';
+    
+    // جلب الصورة الحالية
+    const profileImageSrc = document.getElementById('profileImage')?.src || '../images/user.png';
+    
+    // تجميع البيانات في كائن واحد
+    const userData = {
+        firstName: firstName,
+        lastName: lastName,
+        birthdate: birthdate,
+        phone: phone,
+        country: country,
+        email: email,
+        profileImage: profileImageSrc,
+        updatedAt: new Date().toLocaleString('ar-SA')
+    };
+    
+    // حفظ في localStorage
+    localStorage.setItem('userPersonalInfo', JSON.stringify(userData));
+    
+    // تحديث الصورة في الهيدر أيضاً
+    const headerImage = document.getElementById('headerUserImage');
+    if (headerImage && profileImageSrc !== '../images/user.png') {
+        headerImage.src = profileImageSrc;
+    }
+    
+    showToastMessage("✅ تم حفظ المعلومات الشخصية بنجاح", "success");
+    console.log("✅ تم حفظ المعلومات الشخصية في localStorage");
+}
+
+// دالة تحميل المعلومات الشخصية من localStorage
+function loadPersonalInfo() {
+    const savedData = localStorage.getItem('userPersonalInfo');
+    
+    if (savedData) {
+        const userData = JSON.parse(savedData);
+        
+        // تعبئة الحقول بالبيانات المحفوظة
+        if (document.getElementById('firstName')) document.getElementById('firstName').value = userData.firstName || '';
+        if (document.getElementById('lastName')) document.getElementById('lastName').value = userData.lastName || '';
+        if (document.getElementById('birthdate')) document.getElementById('birthdate').value = userData.birthdate || '';
+        if (document.getElementById('phone')) document.getElementById('phone').value = userData.phone || '';
+        if (document.getElementById('country')) document.getElementById('country').value = userData.country || 'المملكة العربية السعودية';
+        if (document.getElementById('email')) document.getElementById('email').value = userData.email || '';
+        
+        // تعبئة الصورة الشخصية
+        if (userData.profileImage && userData.profileImage !== '../images/user.png' && !userData.profileImage.includes('blob:')) {
+            const profileImage = document.getElementById('profileImage');
+            if (profileImage) profileImage.src = userData.profileImage;
+            
+            // تحديث الصورة في الهيدر أيضاً
+            const headerImage = document.getElementById('headerUserImage');
+            if (headerImage) headerImage.src = userData.profileImage;
+        }
+        
+        console.log("✅ تم تحميل المعلومات الشخصية من localStorage");
+    } else {
+        console.log("ℹ️ لا توجد بيانات محفوظة، يتم استخدام البيانات الافتراضية");
+    }
+}
+
+function initPersonalInfoPage() {
+    console.log("Personal Info Page - Ready");
+    
+    // تحميل البيانات المحفوظة
+    loadPersonalInfo();
+    
+    // زر تعديل الصورة
+    const editImageBtn = document.getElementById('editImageBtn');
+    const imageInput = document.getElementById('profileImageInput');
+    const profileImage = document.getElementById('profileImage');
+    
+    if (editImageBtn && imageInput) {
+        editImageBtn.addEventListener('click', function() {
+            // فتح نافذة اختيار الملف
+            imageInput.click();
+        });
+        
+        // معالج اختيار الصورة
+        imageInput.addEventListener('change', async function(e) {
+            const file = e.target.files[0];
+            
+            if (file) {
+                // التحقق من أن الملف صورة
+                if (!file.type.startsWith('image/')) {
+                    showToastMessage("❌ الرجاء اختيار ملف صورة صالح (jpg, png, gif)", "error");
+                    return;
+                }
+                
+                // التحقق من حجم الصورة (حد أقصى 2MB)
+                if (file.size > 2 * 1024 * 1024) {
+                    showToastMessage("❌ حجم الصورة كبير جداً، الرجاء اختيار صورة أقل من 2 ميجابايت", "error");
+                    return;
+                }
+                
+                try {
+                    // تحويل الصورة إلى Base64
+                    const base64Image = await imageToBase64(file);
+                    
+                    // عرض الصورة في الواجهة
+                    if (profileImage) profileImage.src = base64Image;
+                    
+                    showToastMessage("✅ تم تغيير الصورة الشخصية، اضغط حفظ لحفظ التغييرات", "success");
+                } catch (error) {
+                    console.error("خطأ في تحويل الصورة:", error);
+                    showToastMessage("❌ حدث خطأ أثناء تحميل الصورة", "error");
+                }
+            }
+        });
+    }
+    
+    // زر حفظ المعلومات
+    const saveBtn = document.getElementById('savePersonalInfoBtn');
+    if (saveBtn) {
+        // إزالة المستمعات القديمة لتجنب التكرار
+        const newSaveBtn = saveBtn.cloneNode(true);
+        saveBtn.parentNode.replaceChild(newSaveBtn, saveBtn);
+        newSaveBtn.addEventListener('click', function() {
+            savePersonalInfo();
+        });
+    }
+}
+
+// ============================================
+// الوصفات المفضلة (favorite-recipes.html) - من كودي
+// ============================================
+
+let timeouts = {};
+
+function initFavoriteRecipesPage() {
+    console.log("Favorite Recipes Page - Remove after 2 seconds");
+
+    function checkAndShowEmptyMessage() {
+        const visibleCards = document.querySelectorAll('.recipe-card:not(.removed)');
+        const noRecipesMsg = document.getElementById('noRecipesMessage');
+        if (visibleCards.length === 0) {
+            if (noRecipesMsg) noRecipesMsg.style.display = 'block';
+        } else {
+            if (noRecipesMsg) noRecipesMsg.style.display = 'none';
+        }
+    }
+
+    function hideRecipeCard(card) {
+        if (timeouts[card.id]) clearTimeout(timeouts[card.id]);
+        timeouts[card.id] = setTimeout(() => {
+            card.classList.add('removed');
+            checkAndShowEmptyMessage();
+        }, 2000);
+    }
+
+    function showRecipeCard(card) {
+        if (timeouts[card.id]) {
+            clearTimeout(timeouts[card.id]);
+            delete timeouts[card.id];
+        }
+        card.classList.remove('removed');
+        checkAndShowEmptyMessage();
+    }
+
+    document.querySelectorAll('.fav-heart-icon').forEach(heart => {
+        heart.style.color = 'red';
+        const card = heart.closest('.recipe-card');
+
+        heart.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (this.style.color === 'red') {
+                this.style.color = 'gray';
+                hideRecipeCard(card);
+            } else {
+                this.style.color = 'red';
+                showRecipeCard(card);
+            }
+        });
+    });
+
+    checkAndShowEmptyMessage();
+}
+
+// ============================================
+// صفحة دوراتي (my-courses.html) - من كودي (محدثة لديناميكية الجدول)
+// ============================================
+
+function initMyCoursesPage() {
+    console.log("My Courses Page - جدول نتائج الاختبارات الديناميكي");
+
+    function displayScoresTable() {
+        const container = document.getElementById('scoresTableContainer');
+        if (!container) return;
+
+        // ✅ قراءة النتائج من localStorage بدلاً من البيانات الثابتة
+        let quizResults = [];
+        const savedResults = localStorage.getItem('quizResults');
+        
+        if (savedResults) {
+            try {
+                quizResults = JSON.parse(savedResults);
+            } catch(e) {
+                console.error("خطأ في قراءة النتائج:", e);
+            }
+        }
+
+        // ✅ إذا لم توجد نتائج، نعرض رسالة "لا توجد نتائج"
+        if (quizResults.length === 0) {
+            container.innerHTML = `
+                <div class="scores-section">
+                    <h3><i class="fas fa-clipboard-list"></i> نتائج اختباراتك السابقة</h3>
+                    <p class="desc">لم تقم بإجراء أي اختبار بعد. قم بإكمال الدورات واختبر نفسك!</p>
+                    <div class="no-data">📭 لا توجد نتائج اختبارات حالياً</div>
+                </div>
+            `;
+            return;
+        }
+
+        // ✅ ترتيب النتائج من الأحدث إلى الأقدم
+        const sortedResults = [...quizResults].sort((a, b) => 
+            new Date(b.date) - new Date(a.date)
+        );
+
+        // ✅ بناء الجدول ديناميكياً
+        let tableHTML = `
+            <div class="scores-section">
+                <h3><i class="fas fa-clipboard-list"></i> نتائج اختباراتك السابقة</h3>
+                <p class="desc">هذه قائمة بنتائج الاختبارات التي قمت بها في دوراتك المختلفة</p>
+                <table class="scores-table">
+                    <thead>
+                        <tr>
+                            <th>اسم الدورة</th>
+                            <th>الدرجة</th>
+                            <th>التاريخ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        `;
+
+        sortedResults.forEach(result => {
+            let formattedDate = result.date;
+            try {
+                const dateObj = new Date(result.date);
+                formattedDate = dateObj.toLocaleDateString('ar-SA', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit'
+                });
+            } catch(e) {
+                formattedDate = result.date || 'غير معروف';
+            }
+            
+            tableHTML += `
+                <tr>
+                    <td>${escapeHtmlForTable(result.courseName)}</td>
+                    <td>${result.score}/${result.totalQuestions}</td>
+                    <td>${formattedDate}</td>
+                </tr>
+            `;
+        });
+
+        tableHTML += `
+                    </tbody>
+                </table>
+            </div>
+        `;
+        container.innerHTML = tableHTML;
+    }
+
+    function escapeHtmlForTable(text) {
+        if (!text) return '';
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    displayScoresTable();
+}
+
+// ============================================
+// صفحة ملاحظاتي (my-notes.html) - من كودي
+// ============================================
+
+let notesArray = [];
+
+function initMyNotesPage() {
+    console.log("My Notes Page - Phase 3");
+
+    function loadNotes() {
+        const stored = localStorage.getItem('myNotes');
+        if (stored && stored !== '[]') {
+            notesArray = JSON.parse(stored);
+        } else {
+            notesArray = [
+                { id: Date.now() + 1, text: "تحضير وصفة الكوكيز لتقديمها في درس الطبخ يوم الأحد", priority: "1" },
+                { id: Date.now() + 2, text: "مراجعة دورة تكوين البهارات وتطبيق الوصفات الجديدة", priority: "2" },
+                { id: Date.now() + 3, text: "شراء مستلزمات المعجنات من السوبر ماركت", priority: "3" }
+            ];
+        }
+        renderNotes();
+    }
+
+    function saveToStorage() {
+        localStorage.setItem('myNotes', JSON.stringify(notesArray));
+        showToastMessage("تم حفظ التغييرات بنجاح", "success");
+    }
+
+    function renderNotes() {
+        const container = document.getElementById('notesListContainer');
+        if (!container) return;
+
+        if (notesArray.length === 0) {
+            container.innerHTML = '<div class="no-data">📭 لا توجد ملاحظات حالياً</div>';
+            return;
+        }
+
+        container.innerHTML = '';
+        notesArray.forEach(note => {
+            const noteDiv = document.createElement('div');
+            noteDiv.className = `note-item priority-${note.priority}`;
+            noteDiv.setAttribute('data-id', note.id);
+            noteDiv.innerHTML = `
+                <input type="checkbox" class="note-checkbox" data-id="${note.id}" id="note_${note.id}">
+                <label for="note_${note.id}">
+                    <i class="fas fa-sticky-note note-icon"></i>
+                    <span class="note-priority priority-${note.priority}">الأولوية ${note.priority}</span>
+                    <span class="note-text">${escapeHtmlForNotes(note.text)}</span>
+                </label>
+            `;
+            container.appendChild(noteDiv);
+        });
+    }
+
+    function addNote() {
+        const text = document.getElementById('note-text').value.trim();
+        const priority = document.getElementById('note-priority').value;
+
+        if (text.length === 0) {
+            showToastMessage("الرجاء إدخال نص الملاحظة", "error");
+            return;
+        }
+        if (text.length < 30) {
+            showToastMessage("نص الملاحظة قصير جداً، يجب أن يكون 30 حرفاً على الأقل", "error");
+            return;
+        }
+        if (!priority) {
+            showToastMessage("الرجاء اختيار الأولوية", "error");
+            return;
+        }
+
+        const newNote = {
+            id: Date.now(),
+            text: text,
+            priority: priority
+        };
+        notesArray.push(newNote);
+        renderNotes();
+
+        document.getElementById('note-text').value = '';
+        document.getElementById('note-priority').value = '';
+        showToastMessage("تم إضافة الملاحظة بنجاح", "success");
+    }
+
+    function deleteSelectedNotes(event) {
+        if (event) event.stopPropagation();
+        
+        const checkboxes = document.querySelectorAll('.note-checkbox:checked');
+        
+        if (checkboxes.length === 0) {
+            showToastMessage("الرجاء تحديد ملاحظة واحدة على الأقل للحذف", "error");
+            return;
+        }
+
+        const confirmDelete = confirm(`⚠️ هل أنت متأكد من حذف ${checkboxes.length} ملاحظة؟`);
+        
+        if (confirmDelete) {
+            const idsToDelete = Array.from(checkboxes).map(cb => parseInt(cb.getAttribute('data-id')));
+            notesArray = notesArray.filter(note => !idsToDelete.includes(note.id));
+            renderNotes();
+            showToastMessage("تم حذف الملاحظات المحددة", "success");
+        }
+    }
+
+    function escapeHtmlForNotes(str) {
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    const addBtn = document.getElementById('addNoteBtn');
+    const saveBtn = document.getElementById('saveNotesBtn');
+    const deleteBtn = document.getElementById('deleteSelectedBtn');
+    
+    if (addBtn) {
+        const newAddBtn = addBtn.cloneNode(true);
+        addBtn.parentNode.replaceChild(newAddBtn, addBtn);
+        newAddBtn.addEventListener('click', addNote);
+    }
+    
+    if (saveBtn) {
+        const newSaveBtn = saveBtn.cloneNode(true);
+        saveBtn.parentNode.replaceChild(newSaveBtn, saveBtn);
+        newSaveBtn.addEventListener('click', saveToStorage);
+    }
+    
+    if (deleteBtn) {
+        const newDeleteBtn = deleteBtn.cloneNode(true);
+        deleteBtn.parentNode.replaceChild(newDeleteBtn, deleteBtn);
+        newDeleteBtn.addEventListener('click', deleteSelectedNotes);
+    }
+
+    loadNotes();
+}
+
+// ============================================
+// صفحة التقييمات (evaluations.html) - من كودي
+// ============================================
+
+function initEvaluationsPage() {
+    console.log("Evaluations Page - Ready");
+
+    const deleteButtons = document.querySelectorAll('.delete-eval-btn');
+    
+    deleteButtons.forEach(button => {
+        const newButton = button.cloneNode(true);
+        button.parentNode.replaceChild(newButton, button);
+        
+        newButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const cardId = this.getAttribute('data-id');
+            const evaluationCard = document.getElementById(`eval${cardId}`);
+            
+            if (!evaluationCard) return;
+            
+            const confirmDelete = confirm(`⚠️ هل أنت متأكد من حذف هذا التقييم؟`);
+            
+            if (confirmDelete) {
+                evaluationCard.remove();
+                showToastMessage("تم حذف التقييم بنجاح", "success");
+            }
+        });
+    });
+}
+
+// ============================================
+// إدارة المحادثات المحفوظة (localStorage) - من كودي
+// ============================================
+
+// حفظ محادثة جديدة
+function saveConversation(teacherId, teacherName, teacherImg, teacherStatus, lastMessage, lastTime) {
+    let conversations = JSON.parse(localStorage.getItem('conversations') || '[]');
+    
+    const existingIndex = conversations.findIndex(c => c.id === teacherId);
+    
+    const conversation = {
+        id: teacherId,
+        name: teacherName,
+        img: teacherImg,
+        status: teacherStatus,
+        lastMessage: lastMessage,
+        lastTime: lastTime,
+        lastMessageTime: new Date().getTime()
+    };
+    
+    if (existingIndex !== -1) {
+        conversations[existingIndex] = conversation;
+    } else {
+        conversations.unshift(conversation);
+    }
+    
+    conversations.sort((a, b) => b.lastMessageTime - a.lastMessageTime);
+    localStorage.setItem('conversations', JSON.stringify(conversations));
+    return conversation;
+}
+
+// تحميل وعرض المحادثات المحفوظة
+function loadAndDisplayConversations() {
+    const container = document.getElementById('conversationsList');
+    if (!container) return;
+    
+    const conversations = JSON.parse(localStorage.getItem('conversations') || '[]');
+    
+    if (conversations.length === 0) {
+        container.innerHTML = '<div class="no-conversations">📭 لا توجد محادثات بعد، ابدأ محادثة جديدة بالضغط على زر +</div>';
+        return;
+    }
+    
+    container.innerHTML = '';
+    conversations.forEach(conv => {
+        let chatFile = '';
+        if (conv.id === 'maryam') chatFile = 'chat-maryam.html';
+        else if (conv.id === 'noura') chatFile = 'chat-noura.html';
+        else if (conv.id === 'ali') chatFile = 'chat-ali.html';
+        else if (conv.id === 'sahar') chatFile = 'chat-sahar.html';
+        else if (conv.id === 'chef-noura') chatFile = 'chat-noura.html';
+        else if (conv.id === 'chef-ahmed') chatFile = 'chat-ahmed.html';
+        else if (conv.id === 'chef-lama') chatFile = 'chat-lama.html';
+        else if (conv.id === 'chef-fahad') chatFile = 'chat-fahad.html';
+        else chatFile = `chat-${conv.id}.html`;
+        
+        const card = document.createElement('a');
+        card.className = 'conversation-card';
+        card.href = `../chats/${chatFile}?teacher=${conv.id}`;
+        card.innerHTML = `
+            <div class="conversation-avatar">
+                <img src="${conv.img}" alt="${conv.name}" onerror="this.src='../images/user.png'">
+                <span class="status-dot ${conv.status}"></span>
+            </div>
+            <div class="conversation-info">
+                <h4>${conv.name}</h4>
+                <p class="last-message">${conv.lastMessage || 'ابدأ المحادثة الآن'}</p>
+            </div>
+            <div class="conversation-time">
+                <span>${conv.lastTime || 'الآن'}</span>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+}
+
+// بدء محادثة جديدة من زر الإضافة
+function startNewChat() {
+    const select = document.getElementById('new-teacher-select');
+    const selectedOption = select.options[select.selectedIndex];
+    
+    if (!selectedOption.value) {
+        showToastMessage("❌ الرجاء اختيار معلم من القائمة", "error");
+        return;
+    }
+    
+    const teacherId = selectedOption.value;
+    const chatFile = selectedOption.getAttribute('data-file');
+    const teacherName = selectedOption.getAttribute('data-name');
+    const teacherImg = selectedOption.getAttribute('data-img');
+    const teacherStatus = selectedOption.getAttribute('data-status');
+    
+    // حفظ المحادثة في localStorage
+    saveConversation(teacherId, teacherName, teacherImg, teacherStatus, "✨ بدأت محادثة جديدة", "الآن");
+    
+    showToastMessage(`✨ تم فتح محادثة مع ${teacherName}`, "success");
+    setTimeout(() => {
+        window.location.href = `../chats/${chatFile}?teacher=${teacherId}`;
+    }, 500);
+}
+
+// تحديث آخر رسالة لمحادثة
+window.updateLastMessage = function(teacherId, lastMessage, lastTime) {
+    let conversations = JSON.parse(localStorage.getItem('conversations') || '[]');
+    const index = conversations.findIndex(c => c.id === teacherId);
+    
+    if (index !== -1) {
+        conversations[index].lastMessage = lastMessage;
+        conversations[index].lastTime = lastTime;
+        conversations[index].lastMessageTime = new Date().getTime();
+        conversations.sort((a, b) => b.lastMessageTime - a.lastMessageTime);
+        localStorage.setItem('conversations', JSON.stringify(conversations));
+    }
+};
+
+// صفحة التواصل مع المعلمين
+function initContactTeachersPage() {
+    console.log("Contact Teachers Page - Ready");
+    
+    // تحميل وعرض المحادثات المحفوظة
+    loadAndDisplayConversations();
+    
+    // ربط زر الإضافة
+    const addBtn = document.getElementById('addTeacherBtn');
+    if (addBtn) {
+        const newAddBtn = addBtn.cloneNode(true);
+        addBtn.parentNode.replaceChild(newAddBtn, addBtn);
+        newAddBtn.addEventListener('click', startNewChat);
+    }
+}
+
+// ============================================
+// تشغيل حسب الصفحة الحالية (موحد) - من كودي
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const path = window.location.pathname;
+    console.log("🔍 Current page:", path);
+    
+    if (path.includes('personal-info.html')) {
+        initPersonalInfoPage();
+    }
+    else if (path.includes('favorite-recipes.html')) {
+        initFavoriteRecipesPage();
+    }
+    else if (path.includes('my-courses.html')) {
+        initMyCoursesPage();
+    }
+    else if (path.includes('my-notes.html')) {
+        initMyNotesPage();
+    }
+    else if (path.includes('evaluations.html')) {
+        initEvaluationsPage();
+    }
+    else if (path.includes('contact-teachers.html')) {
+        initContactTeachersPage();
+    }
+});
+
+console.log('✅ تم تحميل جميع ملفات JavaScript بنجاح (كود مدمج)!');
