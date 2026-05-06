@@ -55,6 +55,77 @@
         <span>إضافة وصفة</span>
     </div>
 
+    <!-- ===== Modals ===== -->
+
+<!-- 1. فيديو سوشال ميديا -->
+<div class="modal-overlay" id="modal-social">
+    <div class="modal-box">
+        <button class="modal-close" data-close="modal-social"><i class="fas fa-times"></i></button>
+        <div class="modal-icon"><i class="fab fa-tiktok"></i></div>
+        <h2>فيديو من السوشال ميديا</h2>
+        <p>الصق رابط الفيديو من تيك توك أو انستقرام أو يوتيوب</p>
+        <input type="url" class="modal-input" id="input-social" placeholder="https://www.tiktok.com/...">
+        <button class="modal-submit-btn" id="btn-social">
+            <i class="fas fa-plus-circle"></i> إضافة الفيديو
+        </button>
+    </div>
+</div>
+
+<!-- 2. وصفة من موقع -->
+<div class="modal-overlay" id="modal-website">
+    <div class="modal-box">
+        <button class="modal-close" data-close="modal-website"><i class="fas fa-times"></i></button>
+        <div class="modal-icon"><i class="fas fa-link"></i></div>
+        <h2>وصفة من موقع</h2>
+        <p>الصق رابط الوصفة من أي موقع طبخ</p>
+        <input type="url" class="modal-input" id="input-website" placeholder="https://www.example.com/recipe...">
+        <button class="modal-submit-btn" id="btn-website">
+            <i class="fas fa-plus-circle"></i> استيراد الوصفة
+        </button>
+    </div>
+</div>
+
+<!-- 3. صورة وصفة -->
+<div class="modal-overlay" id="modal-image">
+    <div class="modal-box">
+        <button class="modal-close" data-close="modal-image"><i class="fas fa-times"></i></button>
+        <div class="modal-icon"><i class="fas fa-camera"></i></div>
+        <h2>صورة وصفة</h2>
+        <p>ارفع صورة الوصفة من جهازك</p>
+        <div class="upload-area" id="uploadArea">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>اسحب الصورة هنا أو</p>
+            <label for="imageUpload" class="upload-label">اختر من الجهاز</label>
+            <input type="file" id="imageUpload" accept="image/*" style="display:none">
+            <p class="upload-preview" id="uploadPreview"></p>
+        </div>
+        <button class="modal-submit-btn" id="btn-image">
+            <i class="fas fa-plus-circle"></i> إضافة الصورة
+        </button>
+    </div>
+</div>
+
+<!-- 4. وصفة مكتوبة -->
+<div class="modal-overlay" id="modal-text">
+    <div class="modal-box">
+        <button class="modal-close" data-close="modal-text"><i class="fas fa-times"></i></button>
+        <div class="modal-icon"><i class="fas fa-pen-fancy"></i></div>
+        <h2>وصفة مكتوبة</h2>
+        <p>اكتب أو الصق نص الوصفة كاملاً</p>
+        <input type="text" class="modal-input" id="input-recipe-title" placeholder="اسم الوصفة">
+        <textarea class="modal-textarea" id="input-recipe-text" placeholder="المقادير والطريقة..."></textarea>
+        <button class="modal-submit-btn" id="btn-text">
+            <i class="fas fa-plus-circle"></i> حفظ الوصفة
+        </button>
+    </div>
+</div>
+
+<!-- Toast إشعار النجاح -->
+<div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toast-msg">تمت الإضافة بنجاح!</span>
+</div>
+
     <!-- ========== محتوى صفحة إضافة الوصفة ========== -->
     <main class="add-recipe-page">
         <div class="add-recipe-container">
@@ -136,6 +207,7 @@
             <p>© رشة</p>
         </div>
     </footer>
+    <script src="../js/script.js"></script>
 
 </body>
 </html>
