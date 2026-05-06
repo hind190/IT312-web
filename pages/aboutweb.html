@@ -77,41 +77,27 @@
         </div>
 
         <!-- قسم المعلمين -->
-        <section class="teachers-showcase">
-            <h1>فريق المعلمين</h1>
-            <p class="section-desc">تعرف على نخبة من الطهاة المحترفين الذين يقودون دوراتنا</p>
+<section class="teachers-showcase">
+    <h1>فريق المعلمين</h1>
+    <p class="section-desc">تعرف على نخبة من الطهاة المحترفين الذين يقودون دوراتنا</p>
 
-            <div class="sort-controls">
-                <label for="sort-select">ترتيب المعلمين حسب:</label>
-                <select id="sort-select">
-                    <optgroup label="سنوات الخبرة">
-                        <option value="exp-asc">من الأقل إلى الأعلى خبرة</option>
-                        <option value="exp-desc">من الأعلى إلى الأقل خبرة</option>
-                    </optgroup>
-                    <optgroup label="الاسم">
-                        <option value="name-asc">أ - ي</option>
-                        <option value="name-desc">ي - أ</option>
-                    </optgroup>
-                </select>
-            </div>
+    <div class="sort-controls">
+        <label for="sort-select">ترتيب المعلمين حسب:</label>
+        <select id="sort-select">
+            <option value="">-- اختر الترتيب --</option>
+            <option value="name-asc">الاسم (أ - ي)</option>
+            <option value="name-desc">الاسم (ي - أ)</option>
+            <option value="exp-asc">سنوات الخبرة (من الأقل للأعلى)</option>
+            <option value="exp-desc">سنوات الخبرة (من الأعلى للأقل)</option>
+        </select>
+    </div>
 
-            <div class="teachers-horizontal">
-                <div class="teachers-list-horizontal">
-                    <div class="teacher-card-horizontal">
-                        <img src="../images/chef-noura.jpg" alt="الشيف نوره">
-                        <h3>الشيف نوره</h3>
-                    </div>
-                    <div class="teacher-card-horizontal">
-                        <img src="../images/chef-ahmed.jpg" alt="شيف أحمد">
-                        <h3>الشيف أحمد</h3>
-                    </div>
-                    <div class="teacher-card-horizontal">
-                        <img src="../images/chef-lama.jpg" alt="شيف لمى">
-                        <h3>الشيف لمى</h3>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <div class="teachers-horizontal">
+        <div class="teachers-list-horizontal" id="teachersContainer">
+            <!-- المعلمين راح يظهرون هنا عن طريق JavaScript -->
+        </div>
+    </div>
+</section> 
     </main>
 
     <footer class="footer">
@@ -138,5 +124,8 @@
         </div>
     </footer>
 
+<script src="../js/script.js"></script>
+
 </body>
 </html>
+
