@@ -9,6 +9,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* إخفاء البطاقة المحذوفة */
+        .recipe-card.removed {
+            display: none !important;
+        }
+    </style>
 </head>
 <body>
     <!-- HEADER -->
@@ -39,18 +45,17 @@
         </div>
     </header>
 
-    
     <!-- NAVBAR -->
-<nav>
-    <ul>
-        <li><a href="../index.html">الرئيسية</a></li>
-        <li><a href="courses.html">الدورات</a></li>
-        <li><a href="recipes.html">الوصفات</a></li>
-         <li><a href="aboutweb.html">عن الموقع</a></li>
-        <li><a href="couwithUs.html">تواصل معنا</a></li>
-    </ul>
-    <input type="text" placeholder="بحث">
-</nav>
+    <nav>
+        <ul>
+            <li><a href="../index.html">الرئيسية</a></li>
+            <li><a href="courses.html">الدورات</a></li>
+            <li><a href="recipes.html">الوصفات</a></li>
+            <li><a href="aboutweb.html">عن الموقع</a></li>
+            <li><a href="couwithUs.html">تواصل معنا</a></li>
+        </ul>
+        <input type="text" placeholder="بحث">
+    </nav>
 
     <!-- BREADCRUMBS -->
     <div class="breadcrumbs">
@@ -60,45 +65,48 @@
 
     <!-- MAIN CONTENT -->
     <main class="dashboard-container">
-        <!-- عنوان الصفحة -->
         <div class="page-header">
             <h1>الوصفات المفضلة</h1>
             <p class="sub-header">استعرضي وصفتك المفضلة واحفظيها لمطبخك</p>
         </div>
 
         <!-- شبكة الوصفات -->
-        <div class="recipes-grid">
+        <div class="recipes-grid" id="recipesGridContainer">
             <!-- كوكيز -->
-            <div class="recipe-card">
+            <div class="recipe-card" id="recipe-cookies">
                 <div class="recipe-image">
                     <img src="../images/cookies.jpeg" alt="كوكيز">
                     <div class="fav-heart">
-                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-heart fav-heart-icon" data-recipe="cookies"></i>
                     </div>
                 </div>
                 <div class="recipe-info">
                     <h3>كوكيز</h3>
                     <p>كوكيز شوكلاته شهية، مقرمشة من الخارج وطرية من الداخل</p>
-                   
                     <a href="../recipe-details/cookies.html" class="recipe-btn">عرض التفاصيل</a>
                 </div>
             </div>
 
             <!-- بيتزا -->
-            <div class="recipe-card">
+            <div class="recipe-card" id="recipe-pizza">
                 <div class="recipe-image">
                     <img src="../images/pizza.jpeg" alt="بيتزا">
                     <div class="fav-heart">
-                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-heart fav-heart-icon" data-recipe="pizza"></i>
                     </div>
                 </div>
                 <div class="recipe-info">
                     <h3>بيتزا</h3>
                     <p>بيتزا إيطالية بالجبنة والصلصة، عجينة هشة ومقرمشة</p>
-                
                     <a href="../recipe-details/pizza.html" class="recipe-btn">عرض التفاصيل</a>
                 </div>
             </div>
+        </div>
+
+        <!-- رسالة عند عدم وجود وصفات -->
+        <div id="noRecipesMessage" style="display: none; text-align: center; padding: 40px; color: #8ea79a;">
+            <i class="fas fa-heart-broken" style="font-size: 48px; margin-bottom: 15px;"></i>
+            <p>لا توجد وصفات مفضلة حالياً</p>
         </div>
     </main>
 
@@ -125,5 +133,7 @@
             <p>© رشة</p>
         </div>
     </footer>
+
+    <script src="../js/script.js"></script>
 </body>
 </html>
