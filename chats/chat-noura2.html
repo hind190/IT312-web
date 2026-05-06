@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رشة - محادثة مع الشيف نورة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .toast-message {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #4f6357;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 14px;
+            z-index: 9999;
+            animation: fadeInUp 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            font-family: 'Tajawal', sans-serif;
+        }
+        .toast-message.error {
+            background: #e74c3c;
+        }
+        .toast-message.warning {
+            background: #f39c12;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- HEADER -->
+    <header>
+        <div class="logo">
+            <img src="../images/logo.jpeg" alt="رشة">
+            <h2>رشة</h2>
+        </div>
+        <div class="user">
+            <span class="welcome">مرحباً مجدداً</span>
+            <div class="user-box">
+                <img src="../images/user.png" alt="صورة المستخدم">
+                <div class="dropdown">
+                    <button class="dropdown-btn">
+                        لوحة الطالب
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="../pages/personal-info.html"><i class="fas fa-user"></i> المعلومات الشخصية</a>
+                        <a href="../pages/favorite-recipes.html"><i class="fas fa-heart"></i> الوصفات المفضلة</a>
+                        <a href="../pages/my-courses.html"><i class="fas fa-book-open"></i> دوراتي</a>
+                        <a href="../pages/my-notes.html"><i class="fas fa-sticky-note"></i> ملاحظاتي</a>
+                        <a href="../pages/evaluations.html"><i class="fas fa-star"></i> التقييمات</a>
+                        <a href="../pages/contact-teachers.html"><i class="fas fa-chalkboard-teacher"></i> التواصل مع المعلمين</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+<!-- NAVBAR -->
+    <nav>
+        <ul>
+            <li><a href="../index.html">الرئيسية</a></li>
+            <li><a href="../pages/courses.html">الدورات</a></li>
+            <li><a href="../pages/recipes.html">الوصفات</a></li>
+            <li><a href="../pages/aboutweb.html">عن الموقع</a></li>
+            <li><a href="../pages/couwithUs.html">تواصل معنا</a></li>
+        </ul>
+        <input type="text" placeholder="بحث">
+    </nav>
+
+<!-- BREADCRUMBS -->
+    <div class="breadcrumbs">
+        <a href="../index.html">الرئيسية</a>
+        <a href="../pages/contact-teachers.html">التواصل مع المعلمين</a>
+        <span>الشيف نورة</span>
+    </div>
+
+<!-- MAIN CONTENT -->
+    <main class="dashboard-container">
+        <div class="chat-header">
+            <div class="chat-teacher-info">
+                <img src="../images/nor1.jpeg" alt="الشيف نورة" class="chat-avatar">
+                <div class="chat-teacher-details">
+                    <h1>الشيف نورة</h1>
+                    <span class="chat-status-badge active">متصل الآن</span>
+                </div>
+            </div>
+            <a href="../pages/contact-teachers.html" class="back-btn">
+                العودة <i class="fas fa-arrow-left"></i>
+            </a>
+        </div>
+
+        <div class="chat-messages-area" id="chatMessagesArea">
+        </div>
+
+        <div class="chat-input-area">
+            <div class="input-actions">
+                <button class="attach-btn" id="attachBtn" title="إرفاق ملف">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <textarea id="messageInput" placeholder="اكتب رسالتك هنا..." rows="2"></textarea>
+            <button class="send-btn" id="sendBtn">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </main>
+
+<!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <p>تواصل معنا</p>
+                <p>+966000000</p>
+                <p>Rasha@gmail.com</p>
+                <div class="social-icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-right">
+                <p>الشروط والأحكام</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© رشة</p>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================
+        // محادثة الشيف نورة 
+        // ============================================
+        
+        // معرف المعلم
+        const teacherId = 'noura';
+        const teacherName = 'الشيف نورة';
+        const teacherImage = '../images/nor1.jpeg';
+        
+        // تحميل الرسائل المحفوظة
+        let messages = JSON.parse(localStorage.getItem(`chat_${teacherId}`) || '[]');
+        
+        // دالة عرض رسالة منبثقة
+        function showToastMessage(message, type = "success") {
+            const oldMsg = document.querySelector('.toast-message');
+            if (oldMsg) oldMsg.remove();
+            
+            const msg = document.createElement('div');
+            msg.className = `toast-message ${type}`;
+            let icon = type === 'error' ? 'fa-exclamation-circle' : 'fa-check-circle';
+            if (type === 'warning') icon = 'fa-triangle-exclamation';
+            msg.innerHTML = `<i class="fas ${icon}"></i> ${message}`;
+            document.body.appendChild(msg);
+            
+            setTimeout(() => {
+                if (msg) msg.remove();
+            }, 3000);
+        }
+        
+        // دالة تنقية النص
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // الحصول على الوقت الحالي
+        function getCurrentTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            return `${hours}:${minutes}`;
+        }
+        
+        // عرض الرسائل في واجهة المحادثة
+        function loadMessages() {
+            const messagesArea = document.getElementById('chatMessagesArea');
+            if (!messagesArea) return;
+            
+            messagesArea.innerHTML = '';
+            
+            if (messages.length === 0) {
+                messagesArea.innerHTML = '<div style="text-align: center; padding: 40px; color: #8ea79a;">✨ لا توجد رسائل بعد، ابدأ المحادثة</div>';
+                return;
+            }
+            
+            messages.forEach(msg => {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message-row ${msg.type}`;
+                messageDiv.innerHTML = `
+                    ${msg.type === 'teacher-message' ? `<img src="${teacherImage}" alt="${teacherName}" class="message-avatar">` : ''}
+                    <div class="message-bubble">
+                        <p>${escapeHtml(msg.text)}</p>
+                        <span class="message-time">${msg.time}</span>
+                    </div>
+                    ${msg.type === 'student-message' ? `<img src="../images/user.png" alt="أنت" class="message-avatar">` : ''}
+                `;
+                messagesArea.appendChild(messageDiv);
+            });
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+        }
+        
+        // حفظ الرسائل في localStorage
+        function saveMessages() {
+            localStorage.setItem(`chat_${teacherId}`, JSON.stringify(messages));
+            
+            // تحديث آخر رسالة في قائمة المحادثات (للمعلمين المضافين)
+            if (messages.length > 0 && window.updateLastMessageForAdded) {
+                const lastMsg = messages[messages.length - 1];
+                window.updateLastMessageForAdded(teacherId, lastMsg.text, lastMsg.time);
+            }
+        }
+        
+        // إرسال رسالة جديدة
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const messageText = input.value.trim();
+            
+            if (messageText === "") {
+                showToastMessage(" الرجاء كتابة رسالة", "error");
+                return;
+            }
+            
+            const currentTime = getCurrentTime();
+            
+            // إضافة رسالة الطالب
+            const studentMessage = {
+                type: 'student-message',
+                text: messageText,
+                time: currentTime
+            };
+            messages.push(studentMessage);
+            
+            // عرض الرسالة في الواجهة
+            const messagesArea = document.getElementById('chatMessagesArea');
+            
+            // إزالة رسالة "لا توجد رسائل" إذا موجودة
+            if (messagesArea.children.length === 1 && messagesArea.children[0].innerText?.includes('لا توجد رسائل')) {
+                messagesArea.innerHTML = '';
+            }
+            
+            const studentMsgDiv = document.createElement('div');
+            studentMsgDiv.className = 'message-row student-message';
+            studentMsgDiv.innerHTML = `
+                <div class="message-bubble">
+                    <p>${escapeHtml(messageText)}</p>
+                    <span class="message-time">${currentTime}</span>
+                </div>
+                <img src="../images/user.png" alt="أنت" class="message-avatar">
+            `;
+            messagesArea.appendChild(studentMsgDiv);
+            
+            // مسح حقل الإدخال
+            input.value = '';
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+            
+            // حفظ الرسائل
+            saveMessages();
+            
+            // محاكاة رد المعلم
+            setTimeout(() => {
+                const replies = [
+                    "أهلاً بك! أنا الشيف نورة، كيف أساعدك اليوم؟ 🌸",
+                    "مرحباً! سعيدة بتواصلك، اسألي ما شئت 💕",
+                    "نصيحتي لك: جربي الوصفة وشاركيني النتيجة",
+                    "أنا هنا لمساعدتك في أي وقت تحتاجينني"
+                ];
+                const randomReply = replies[Math.floor(Math.random() * replies.length)];
+                
+                const teacherMessage = {
+                    type: 'teacher-message',
+                    text: randomReply,
+                    time: getCurrentTime()
+                };
+                messages.push(teacherMessage);
+                
+                const teacherMsgDiv = document.createElement('div');
+                teacherMsgDiv.className = 'message-row teacher-message';
+                teacherMsgDiv.innerHTML = `
+                    <img src="${teacherImage}" alt="${teacherName}" class="message-avatar">
+                    <div class="message-bubble">
+                        <p>${escapeHtml(randomReply)}</p>
+                        <span class="message-time">${getCurrentTime()}</span>
+                    </div>
+                `;
+                messagesArea.appendChild(teacherMsgDiv);
+                messagesArea.scrollTop = messagesArea.scrollHeight;
+                
+                saveMessages();
+            }, 1000);
+        }
+        
+        // دالة إرفاق ملف
+        function attachFile() {
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'image/*, .pdf, .txt';
+            fileInput.style.display = 'none';
+            
+            fileInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const fileName = file.name;
+                    const fileSize = (file.size / 1024).toFixed(2);
+                    
+                    const currentTime = getCurrentTime();
+                    const fileMessage = {
+                        type: 'student-message',
+                        text: `📎 تم إرفاق ملف: ${fileName} (${fileSize} KB)`,
+                        time: currentTime
+                    };
+                    messages.push(fileMessage);
+                    
+                    const messagesArea = document.getElementById('chatMessagesArea');
+                    const fileMsgDiv = document.createElement('div');
+                    fileMsgDiv.className = 'message-row student-message';
+                    fileMsgDiv.innerHTML = `
+                        <div class="message-bubble">
+                            <p>📎 تم إرفاق ملف: ${escapeHtml(fileName)} (${fileSize} KB)</p>
+                            <span class="message-time">${currentTime}</span>
+                        </div>
+                        <img src="../images/user.png" alt="أنت" class="message-avatar">
+                    `;
+                    messagesArea.appendChild(fileMsgDiv);
+                    messagesArea.scrollTop = messagesArea.scrollHeight;
+                    
+                    saveMessages();
+                    showToastMessage(` تم إرفاق الملف: ${fileName}`, "success");
+                    
+                    setTimeout(() => {
+                        const replyText = "شكراً لمشاركتك الملف! سأطلع عليه قريباً 📄";
+                        const teacherMessage = {
+                            type: 'teacher-message',
+                            text: replyText,
+                            time: getCurrentTime()
+                        };
+                        messages.push(teacherMessage);
+                        
+                        const teacherMsgDiv = document.createElement('div');
+                        teacherMsgDiv.className = 'message-row teacher-message';
+                        teacherMsgDiv.innerHTML = `
+                            <img src="${teacherImage}" alt="${teacherName}" class="message-avatar">
+                            <div class="message-bubble">
+                                <p>${escapeHtml(replyText)}</p>
+                                <span class="message-time">${getCurrentTime()}</span>
+                            </div>
+                        `;
+                        messagesArea.appendChild(teacherMsgDiv);
+                        messagesArea.scrollTop = messagesArea.scrollHeight;
+                        saveMessages();
+                    }, 800);
+                }
+            });
+            
+            document.body.appendChild(fileInput);
+            fileInput.click();
+            document.body.removeChild(fileInput);
+        }
+        
+        // ربط الأحداث
+        document.addEventListener('DOMContentLoaded', function() {
+            loadMessages();
+            
+            const sendBtn = document.getElementById('sendBtn');
+            if (sendBtn) {
+                sendBtn.addEventListener('click', sendMessage);
+            }
+            
+            const attachBtn = document.getElementById('attachBtn');
+            if (attachBtn) {
+                attachBtn.addEventListener('click', attachFile);
+            }
+            
+            const messageInput = document.getElementById('messageInput');
+            if (messageInput) {
+                messageInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        sendMessage();
+                    }
+                });
+            }
+        });
+    </script>
+	<script src="../js/script.js"></script>
+</body>
+</html>
