@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <style>
-        /* إخفاء البطاقة المحذوفة */
         .recipe-card.removed {
             display: none !important;
         }
     </style>
 </head>
 <body>
+
     <!-- HEADER -->
     <header>
         <div class="logo">
@@ -72,40 +72,12 @@
 
         <!-- شبكة الوصفات -->
         <div class="recipes-grid" id="recipesGridContainer">
-            <!-- كوكيز -->
-            <div class="recipe-card" id="recipe-cookies">
-                <div class="recipe-image">
-                    <img src="../images/cookies.jpeg" alt="كوكيز">
-                    <div class="fav-heart">
-                        <i class="fas fa-heart fav-heart-icon" data-recipe="cookies"></i>
-                    </div>
-                </div>
-                <div class="recipe-info">
-                    <h3>كوكيز</h3>
-                    <p>كوكيز شوكلاته شهية، مقرمشة من الخارج وطرية من الداخل</p>
-                    <a href="../recipe-details/cookies.html" class="recipe-btn">عرض التفاصيل</a>
-                </div>
-            </div>
-
-            <!-- بيتزا -->
-            <div class="recipe-card" id="recipe-pizza">
-                <div class="recipe-image">
-                    <img src="../images/pizza.jpeg" alt="بيتزا">
-                    <div class="fav-heart">
-                        <i class="fas fa-heart fav-heart-icon" data-recipe="pizza"></i>
-                    </div>
-                </div>
-                <div class="recipe-info">
-                    <h3>بيتزا</h3>
-                    <p>بيتزا إيطالية بالجبنة والصلصة، عجينة هشة ومقرمشة</p>
-                    <a href="../recipe-details/pizza.html" class="recipe-btn">عرض التفاصيل</a>
-                </div>
-            </div>
+            <!-- تتعبأ تلقائياً من JavaScript -->
         </div>
 
         <!-- رسالة عند عدم وجود وصفات -->
         <div id="noRecipesMessage" style="display: none; text-align: center; padding: 40px; color: #8ea79a;">
-            <i class="fas fa-heart-broken" style="font-size: 48px; margin-bottom: 15px;"></i>
+            <i class="fas fa-heart-broken" style="font-size: 48px; margin-bottom: 15px; display: block;"></i>
             <p>لا توجد وصفات مفضلة حالياً</p>
         </div>
     </main>
@@ -135,5 +107,76 @@
     </footer>
 
     <script src="../js/script.js"></script>
+    <script>
+    const allRecipes = {
+        pasta:              { name: 'باستا', img: '../images/pasta.jpeg', link: '../recipe-details/pasta.html' },
+        shawarma:           { name: 'شاورما دجاج', img: '../images/shawarma.jpeg', link: '../recipe-details/shawarma.html' },
+        kabsa:              { name: 'كبسة الدجاج', img: '../images/kabsa.jpeg', link: '../recipe-details/kabsa.html' },
+        pizza:              { name: 'بيتزا', img: '../images/pizza.jpeg', link: '../recipe-details/pizza.html' },
+        salad:              { name: 'سلطة خضراء', img: '../images/salad.jpeg', link: '../recipe-details/salad.html' },
+        salmon:             { name: 'سالمون مشوي', img: '../images/salmon.jpeg', link: '../recipe-details/salmon.html' },
+        'bucky-ball':       { name: 'بوكي سالمون', img: '../images/bucky ball.jpeg', link: '../recipe-details/bucky ball.html' },
+        soup:               { name: 'شوربة خضار', img: '../images/soup.jpeg', link: '../recipe-details/soup.html' },
+        egg:                { name: 'بيض تركي', img: '../images/egg.jpeg', link: '../recipe-details/egg.html' },
+        pancake:            { name: 'بانكيك', img: '../images/pancake.jpeg', link: '../recipe-details/pancake.html' },
+        'tuna-sandwich':    { name: 'ساندويتش تونة', img: '../images/tuna sandwich.jpeg', link: '../recipe-details/tuna sandwich.html' },
+        bean:               { name: 'فول', img: '../images/bean.jpeg', link: '../recipe-details/bean.html' },
+        'brownie-pudding':  { name: 'براوني بودينغ', img: '../images/Brownie Pudding.jpeg', link: '../recipe-details/brownie-pudding.html' },
+        cupcake:            { name: 'كب كيك فانيليا', img: '../images/cup cake.jpeg', link: '../recipe-details/cup cake.html' },
+        cookies:            { name: 'كوكيز', img: '../images/cookies.jpeg', link: '../recipe-details/cookies.html' },
+        tiramisu:           { name: 'تيراميسو', img: '../images/tramiso.jpeg', link: '../recipe-details/tramiso.html' },
+        milkshake:          { name: 'ميلك شيك أوريو', img: '../images/milkshake.jpeg', link: '../recipe-details/milkshake.html' },
+        coffee:             { name: 'آيس لاتيه', img: '../images/coffee.jpeg', link: '../recipe-details/coffee.html' },
+        'watermelon-juice': { name: 'عصير بطيخ', img: '../images/watermelon juice.jpeg', link: '../recipe-details/watermelon juice.html' },
+        'hot-chocolate':    { name: 'شوكلاته ساخنة', img: '../images/hot chocolate.jpeg', link: '../recipe-details/hot chocolate.html' },
+    };
+
+    function removeFav(id) {
+        let favs = JSON.parse(localStorage.getItem('favRecipes') || '[]');
+        favs = favs.filter(f => f !== id);
+        localStorage.setItem('favRecipes', JSON.stringify(favs));
+        const card = document.getElementById('card-' + id);
+        if (card) card.remove();
+        checkEmpty();
+    }
+
+    function checkEmpty() {
+        const container = document.getElementById('recipesGridContainer');
+        const noMsg = document.getElementById('noRecipesMessage');
+        if (container.children.length === 0) {
+            noMsg.style.display = 'block';
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const favs = JSON.parse(localStorage.getItem('favRecipes') || '[]');
+        const container = document.getElementById('recipesGridContainer');
+        const noMsg = document.getElementById('noRecipesMessage');
+
+        if (favs.length === 0) {
+            noMsg.style.display = 'block';
+            return;
+        }
+
+        favs.forEach(id => {
+            const r = allRecipes[id];
+            if (!r) return;
+            container.innerHTML += `
+                <div class="recipe-card" id="card-${id}">
+                    <div class="recipe-image">
+                        <img src="${r.img}" alt="${r.name}">
+                        <div class="fav-heart" onclick="removeFav('${id}')" title="إزالة من المفضلة">
+                            <i class="fas fa-heart fav-heart-icon" style="color: #ff4757;"></i>
+                        </div>
+                    </div>
+                    <div class="recipe-info">
+                        <h3>${r.name}</h3>
+                        <a href="${r.link}" class="recipe-btn">عرض التفاصيل</a>
+                    </div>
+                </div>
+            `;
+        });
+    });
+    </script>
 </body>
 </html>
