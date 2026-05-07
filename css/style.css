@@ -3276,6 +3276,12 @@ h3::after {
     box-shadow: 0 8px 18px rgba(231,76,60,0.3);
 }
 
+/* ✅ أضف هذا القسم الجديد ✅ */
+.fav.active {
+    color: #e74c3c !important;  /* نفس لون hover */
+    background: white;          /* اختياري: يعطي نفس خلفية hover */
+}
+
 /* FILTER LOGIC */
 .recipe-card {
     display: none;
@@ -3397,6 +3403,14 @@ h3::after {
     transform: scale(1.15);
     background: white;
     box-shadow: 0 8px 18px rgba(231,76,60,0.3);
+}
+
+.fav-icon.active {
+    color: #ff4757;
+}
+
+.fav-icon.active:hover {
+    color: #e74c3c;
 }
 
 .share-icon:hover {
@@ -3540,7 +3554,7 @@ h3::after {
 .ingredients-list input:checked + label::before {
     background: #4f6357;
     border-color: #4f6357;
-content: "\2713" !important;
+    content: "\2713" !important;
     color: white;
     font-size: 16px;
     font-weight: bold;
@@ -6688,5 +6702,321 @@ content: "\2713" !important;
     .dropdown-content::-webkit-scrollbar-thumb {
         background: #8ea79a;
         border-radius: 10px;
+    }
+}
+
+/* ============================================ */
+/* تحسينات الجوال لصفحات الوصفات، التفاصيل، الكويزات، والنتيجة */
+/* ============================================ */
+
+/* للشاشات الصغيرة (عرض أقل من 768px) */
+@media (max-width: 768px) {
+    /* ----- صفحة الوصفات (recipes) ----- */
+    .recipes {
+        grid-template-columns: 1fr !important;  /* عمود واحد */
+        gap: 20px !important;
+        padding: 0 10px;
+    }
+    
+    .recipe-card {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 95%;
+        border-radius: 20px;
+    }
+    
+    .recipe-card img {
+        height: 180px;
+        object-fit: cover;
+    }
+    
+    .recipe-card h4 {
+        font-size: 18px;
+        margin: 12px 10px 5px;
+    }
+    
+    .recipe-card p {
+        font-size: 14px;
+        padding: 0 10px 5px;
+        max-height: 4em;
+    }
+    
+    .recipe-card button {
+        padding: 10px;
+        font-size: 14px;
+        width: calc(100% - 20px);
+        margin: 0 10px 15px;
+    }
+    
+    /* تصفية الفئات */
+    .filters {
+        gap: 8px;
+        margin: 15px 0;
+    }
+    .filters label {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    
+    /* ----- صفحة تفاصيل الوصفة (recipe-details) ----- */
+    .recipe-detail {
+        padding: 0 15px;
+        margin: 20px auto;
+    }
+    
+    .recipe-title {
+        font-size: 26px !important;
+    }
+    
+    .detail-image img {
+        height: 220px !important;
+    }
+    
+    .difficulty-badge {
+        font-size: 12px;
+        padding: 4px 12px;
+        bottom: 10px;
+        left: 10px;
+    }
+    
+    .action-buttons {
+        top: 10px;
+        left: 10px;
+        gap: 8px;
+    }
+    
+    .fav-icon, .share-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+    
+    .recipe-description {
+        font-size: 15px;
+        padding: 15px 20px;
+        margin-bottom: 25px;
+    }
+    
+    .two-columns {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+    
+    .ingredients-section,
+    .method-section,
+    .nutrition-section {
+        padding: 15px 20px;
+    }
+    
+    .ingredients-section h3,
+    .method-section h3,
+    .nutrition-section h3 {
+        font-size: 22px;
+    }
+    
+    .ingredients-list label {
+        flex-wrap: wrap;
+        padding: 10px 0;
+    }
+    
+    .ingredients-list .qty {
+        margin-right: 0;
+        margin-top: 5px;
+    }
+    
+    .method-steps li {
+        font-size: 15px;
+        padding-right: 35px;
+        margin-bottom: 15px;
+    }
+    
+    .method-steps li::before {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+        line-height: 28px;
+    }
+    
+    .nutrition-cards {
+        gap: 15px;
+    }
+    
+    .nutrient-card {
+        min-width: 100px;
+        padding: 12px;
+    }
+    
+    .nutrient-value {
+        font-size: 24px;
+    }
+    
+    .recipe-quick-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 15px;
+    }
+    
+    .info-item {
+        font-size: 14px;
+    }
+    
+    /* ----- صفحة الكويز (quiz) ----- */
+    .quiz-page {
+        padding: 15px;
+    }
+    
+    .quiz-container {
+        padding: 20px 15px;
+    }
+    
+    .quiz-title {
+        font-size: 22px;
+    }
+    
+    .question-card {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .q-num {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+    
+    .q-text {
+        font-size: 16px;
+    }
+    
+    .options-list {
+        padding-right: 0;  /* إزالة المسافة على الجوال */
+        margin-top: 10px;
+    }
+    
+    .options-list label {
+        font-size: 14px;
+        padding: 6px 10px;
+        gap: 8px;
+    }
+    
+    .options-list input[type="radio"] {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .quiz-submit-btn {
+        padding: 10px 25px;
+        font-size: 16px;
+    }
+    
+    /* ----- صفحة النتيجة (result) ----- */
+    .result-page {
+        padding: 30px 15px;
+    }
+    
+    .card {
+        width: 95%;
+        padding: 25px 20px;
+        margin: 0 auto;
+    }
+    
+    .card h1 {
+        font-size: 26px;
+    }
+    
+    .score-box {
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .score-box h2 {
+        font-size: 28px;
+    }
+    
+    .top-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .top-buttons .btn {
+        width: 100% !important;
+        justify-content: center;
+    }
+    
+    .bottom-button .btn {
+        width: 100% !important;
+        margin: 0 auto;
+    }
+    
+    .btn {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+    
+    /* ----- أزرار التنقل العامة ----- */
+    .my-nav {
+        flex-direction: column;
+        gap: 12px;
+        padding: 10px;
+    }
+    
+    .my-nav-list {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .my-search-input {
+        width: 90%;
+        margin: 5px auto;
+    }
+    
+    /* تحسين عرض الجداول */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+/* للشاشات الصغيرة جدًا (أقل من 480px) */
+@media (max-width: 480px) {
+    .recipe-title {
+        font-size: 22px !important;
+    }
+    
+    .detail-image img {
+        height: 180px !important;
+    }
+    
+    .ingredients-section h3,
+    .method-section h3,
+    .nutrition-section h3 {
+        font-size: 20px;
+    }
+    
+    .nutrient-card {
+        min-width: 80px;
+    }
+    
+    .quiz-title {
+        font-size: 20px;
+    }
+    
+    .q-text {
+        font-size: 14px;
+    }
+    
+    .options-list label {
+        font-size: 13px;
+    }
+    
+    .card h1 {
+        font-size: 22px;
+    }
+    
+    .score-box h2 {
+        font-size: 24px;
     }
 }
