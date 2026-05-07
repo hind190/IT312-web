@@ -165,6 +165,16 @@
                 }
             });
         })();
+        var finishBtn = document.getElementById("finishCourseBtn");
+if (finishBtn) {
+    finishBtn.addEventListener("click", function(e) {
+        var course = sessionStorage.getItem("courseName") || "الدورة";
+        var score = sessionStorage.getItem("currentQuizScore") || "0";
+        var total = sessionStorage.getItem("quizTotalQuestions") || "1";
+        sessionStorage.setItem("completedCourse", course);
+        sessionStorage.setItem("finalScore", score + "/" + total);
+    });
+}
     </script>
 </body>
 </html>
