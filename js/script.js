@@ -2,6 +2,7 @@
 // ============================================================
 //  ملف مشترك لجميع صفحات الموقع (آمن ولا يتعارض)
 // ============================================================
+/ ========== صفحة تقييم المعلمين ==========
 if (document.getElementById('evaluationForm')) {
     const stars = document.querySelectorAll('.my-star');
     const ratingInput = document.getElementById('rating-value');
@@ -71,7 +72,30 @@ if (document.getElementById('evaluationForm')) {
         alert(message);
         window.location.href = "my-courses.html";
     });
-}
+}// ========== صفحة الدورات (courses.html) ==========
+if (document.getElementById('coursesGrid')) {
+    const moreBtn = document.getElementById('moreLessonsBtn');
+    const hiddenCards = document.querySelectorAll('.my-course-card[style*="display: none"]');
+    let allVisible = false;
+
+    if (moreBtn) {
+        moreBtn.addEventListener('click', () => {
+            const cards = document.querySelectorAll('.my-course-card');
+            if (!allVisible) {
+                cards.forEach(card => card.style.display = 'block');
+                moreBtn.textContent = 'عرض أقل';
+                allVisible = true;
+            } else {
+                // إظهار أول 3 فقط
+                cards.forEach((card, index) => {
+                    card.style.display = index < 3 ? 'block' : 'none';
+                });
+                moreBtn.textContent = 'المزيد من الدورات';
+                allVisible = false;
+            }
+        });
+    }
+   
 (function() {
     function onReady(fn) {
         if (document.readyState === "loading") {
