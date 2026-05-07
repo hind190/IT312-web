@@ -2,7 +2,6 @@
 // ============================================================
 //  ملف مشترك لجميع صفحات الموقع (آمن ولا يتعارض)
 // ============================================================
-/ ========== صفحة تقييم المعلمين ==========
 if (document.getElementById('evaluationForm')) {
     const stars = document.querySelectorAll('.my-star');
     const ratingInput = document.getElementById('rating-value');
