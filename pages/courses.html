@@ -16,6 +16,43 @@
             color: white;
             transform: translateY(-2px);
         }
+
+    /* كود التكيف مع الجوال */
+    @media (max-width: 768px) {
+        .my-courses-grid {
+            grid-template-columns: 1fr !important;
+            gap: 20px;
+        }
+        .my-filter-list {
+            gap: 8px;
+            justify-content: center;
+        }
+        .my-filter-btn {
+            padding: 8px 14px;
+            font-size: 13px;
+        }
+        .my-courses-section {
+            padding: 15px;
+        }
+        .my-page-title h2 {
+            font-size: 26px;
+        }
+        .my-page-title p {
+            font-size: 15px;
+        }
+        #moreLessonsBtn {
+            width: 80%;
+            max-width: 220px;
+            margin: 20px auto;
+            display: block;
+            font-size: 14px;
+            padding: 10px;
+        }
+        .my-course-card {
+            width: 100%;
+        }
+    }
+
     </style>
 </head>
 <body>
