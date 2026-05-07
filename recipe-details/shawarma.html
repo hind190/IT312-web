@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تفاصيل الوصفة | سالمون مشوي مع البطاطس والبروكلي | رشة</title>
+    <title>تفاصيل الوصفة | شاورما دجاج | رشة</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/recipe-details.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -16,7 +16,7 @@
             <img src="../images/logo.jpeg" alt="logo" width="60">
             <h2>رشة</h2>
         </div>
-        <div class="user">
+       <div class="user">
 <p class="welcome">مرحباً بك مجدداً</p>
 <div class="user-box">
         <img src="../images/user.png" alt="user">
@@ -25,7 +25,7 @@
         لوحة الطالب
         <i class="fas fa-chevron-down"></i>
     </button>
-    <div class="dropdown-content">
+   <div class="dropdown-content">
         <a href="/pages/personal-info.html"><i class="fas fa-user"></i> المعلومات الشخصية</a>
         <a href="/pages/favorite-recipes.html"><i class="fas fa-heart"></i> الوصفات المفضلة</a>
         <a href="/pages/my-courses.html"><i class="fas fa-book-open"></i> دوراتي</a>
@@ -36,7 +36,7 @@
 </div>
     </header>
 
-     <!-- NAVBAR -->
+    <!-- NAVBAR -->
 <nav class="my-nav">
     <input class="my-nav-input" type="text" placeholder="بحث">
     <ul class="my-nav-list">
@@ -51,26 +51,26 @@
     <div class="breadcrumbs">
         <a href="../index.html">الرئيسية</a>
         <a href="../pages/recipes.html">الوصفات</a>
-        <span>سالمون مشوي مع البطاطس والبروكلي</span>
+        <span>شاورما دجاج</span>
     </div>
 
     <main class="recipe-detail">
 
-        <h1 class="recipe-title">سالمون مشوي مع البطاطس والبروكلي</h1>
+        <h1 class="recipe-title">شاورما دجاج</h1>
 
         <div class="detail-image-container">
             <div class="detail-image">
-                <img src="../images/salmon.jpeg" alt="سالمون مشوي مع البطاطس والبروكلي">
-                <div class="action-buttons">
-    <div class="fav-icon" id="favBtn" onclick="toggleFav('salmon', this)">❤</div>
+                <img src="../images/shawarma.jpeg" alt="شاورما دجاج">
+               <div class="action-buttons">
+    <div class="fav-icon" id="favBtn" onclick="toggleFav('shawarma', this)">❤</div>
     <div class="share-icon" onclick="shareRecipe()"><i class="fas fa-share-alt"></i></div>
 </div>
-                <div class="difficulty-badge">متوسط</div>
+                <div class="difficulty-badge">سهل</div>
             </div>
         </div>
 
         <div class="recipe-description">
-            <p>طبق صحي من السالمون المشوي مع خضار طازجة وبطاطس محمصة.</p>
+            <p>لفائف خبز محشوة بدجاج متبل ومشوي مع صوص الثوم والخضار، وجبة سريعة ولذيذة.</p>
         </div>
 
         <!-- معلومات سريعة -->
@@ -81,7 +81,7 @@
             </div>
             <div class="info-item">
                 <i class="fas fa-clock"></i>
-                <span>التحضير:</span> 10 دقائق
+                <span>التحضير:</span> 15 دقيقة
             </div>
             <div class="info-item">
                 <i class="fas fa-fire"></i>
@@ -96,68 +96,76 @@
                 <h3><i class="fas fa-list-ul"></i> المقادير</h3>
                 <ul class="ingredients-list">
                     <li>
-                        <input type="checkbox" id="salmon1">
-                        <label for="salmon1">
-                            <span class="name">فيليه سالمون</span>
-                            <span class="qty">2 قطعة</span>
+                        <input type="checkbox" id="shawarma1">
+                        <label for="shawarma1">
+                            <span class="name">صدر دجاج</span>
+                            <span class="details">مقطع شرائح</span>
+                            <span class="qty">2 حبة</span>
                         </label>
                     </li>
                     <li>
-                        <input type="checkbox" id="salmon2">
-                        <label for="salmon2">
-                            <span class="name">بطاطس صغيرة</span>
-                            <span class="details">مقطعة أنصاف</span>
-                            <span class="qty">1 كوب</span>
+                        <input type="checkbox" id="shawarma2">
+                        <label for="shawarma2">
+                            <span class="name">خبز عربي</span>
+                            <span class="qty">2 رغيف</span>
                         </label>
                     </li>
                     <li>
-                        <input type="checkbox" id="salmon3">
-                        <label for="salmon3">
-                            <span class="name">بروكلي</span>
-                            <span class="qty">1 كوب</span>
+                        <input type="checkbox" id="shawarma3">
+                        <label for="shawarma3">
+                            <span class="name">زبادي</span>
+                            <span class="qty">2 ملعقة كبيرة</span>
                         </label>
                     </li>
                     <li>
-                        <input type="checkbox" id="salmon4">
-                        <label for="salmon4">
-                            <span class="name">زيت زيتون</span>
-                            <span class="qty">1 ملعقة كبيرة</span>
-                        </label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="salmon5">
-                        <label for="salmon5">
+                        <input type="checkbox" id="shawarma4">
+                        <label for="shawarma4">
                             <span class="name">ثوم</span>
                             <span class="details">مفروم</span>
                             <span class="qty">2 فص</span>
                         </label>
                     </li>
                     <li>
-                        <input type="checkbox" id="salmon6">
-                        <label for="salmon6">
+                        <input type="checkbox" id="shawarma5">
+                        <label for="shawarma5">
                             <span class="name">عصير ليمون</span>
                             <span class="qty">1 ملعقة كبيرة</span>
                         </label>
                     </li>
                     <li>
-                        <input type="checkbox" id="salmon7">
-                        <label for="salmon7">
-                            <span class="name">ملح</span>
-                            <span class="qty">½ ملعقة صغيرة</span>
-                        </label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="salmon8">
-                        <label for="salmon8">
-                            <span class="name">فلفل أسود</span>
-                            <span class="qty">½ ملعقة صغيرة</span>
-                        </label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="salmon9">
-                        <label for="salmon9">
+                        <input type="checkbox" id="shawarma6">
+                        <label for="shawarma6">
                             <span class="name">بابريكا</span>
+                            <span class="qty">1 ملعقة صغيرة</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="shawarma7">
+                        <label for="shawarma7">
+                            <span class="name">كمون</span>
                             <span class="qty">½ ملعقة صغيرة</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="shawarma8">
+                        <label for="shawarma8">
+                            <span class="name">ملح</span>
+                            <span class="qty">حسب الرغبة</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="shawarma9">
+                        <label for="shawarma9">
+                            <span class="name">خيار مخلل</span>
+                            <span class="details">شرائح</span>
+                            <span class="qty">½ كوب</span>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="shawarma10">
+                        <label for="shawarma10">
+                            <span class="name">صوص ثوم</span>
+                            <span class="qty">2 ملعقة كبيرة</span>
                         </label>
                     </li>
                 </ul>
@@ -167,12 +175,12 @@
             <div class="method-section">
                 <h3><i class="fas fa-utensils"></i> الطريقة</h3>
                 <ol class="method-steps">
-                    <li>سخني الفرن على 200 درجة مئوية.</li>
-                    <li>اخلطي البطاطس مع نصف كمية زيت الزيتون والملح والفلفل.</li>
-                    <li>ضعي البطاطس في صينية الفرن واشويها لمدة 15 دقيقة حتى تصبح ذهبية.</li>
-                    <li>تبلي السالمون بزيت الزيتون المتبقي والثوم والبابريكا والملح والفلفل.</li>
-                    <li>ضعي السالمون في صينية الفرن بجانب البطاطس واطهيه لمدة 10–12 دقيقة.</li>
-                    <li>قدمي السالمون مع البروكلي وشرائح الليمون.</li>
+                    <li>في وعاء اخلطي الزبادي والثوم وعصير الليمون والبابريكا والكمون والملح.</li>
+                    <li>أضيفي شرائح الدجاج إلى التتبيلة وقلبي جيدًا.</li>
+                    <li>اتركي الدجاج يتتبل لمدة 10 دقائق.</li>
+                    <li>في مقلاة على نار متوسطة اطهي الدجاج حتى ينضج ويصبح ذهبي اللون.</li>
+                    <li>ضعي الدجاج في الخبز العربي مع المخلل وصوص الثوم.</li>
+                    <li>لفي الشاورما جيدًا وقدميها ساخنة.</li>
                 </ol>
             </div>
         </div>
@@ -184,25 +192,25 @@
             <div class="nutrition-cards">
                 <div class="nutrient-card">
                     <i class="fas fa-fire"></i>
-                    <div class="nutrient-value">420</div>
+                    <div class="nutrient-value">350</div>
                     <div class="nutrient-label">سعرات</div>
                     <div class="nutrient-unit">kcal</div>
                 </div>
                 <div class="nutrient-card">
                     <i class="fas fa-bread-slice"></i>
-                    <div class="nutrient-value">20</div>
+                    <div class="nutrient-value">28</div>
                     <div class="nutrient-label">كربوهيدرات</div>
                     <div class="nutrient-unit">g</div>
                 </div>
                 <div class="nutrient-card">
                     <i class="fas fa-tint"></i>
-                    <div class="nutrient-value">18</div>
+                    <div class="nutrient-value">12</div>
                     <div class="nutrient-label">دهون</div>
                     <div class="nutrient-unit">g</div>
                 </div>
                 <div class="nutrient-card">
                     <i class="fas fa-dumbbell"></i>
-                    <div class="nutrient-value">34</div>
+                    <div class="nutrient-value">30</div>
                     <div class="nutrient-label">بروتين</div>
                     <div class="nutrient-unit">g</div>
                 </div>
@@ -235,7 +243,7 @@
     </footer>
 <script>
 // ---- القلب ----
-const recipeId = 'salmon'; // غيّر هذا لكل وصفة
+const recipeId = 'shawarma'; // غيّر هذا لكل وصفة
 
 window.addEventListener('DOMContentLoaded', () => {
     const favs = JSON.parse(localStorage.getItem('favRecipes') || '[]');
