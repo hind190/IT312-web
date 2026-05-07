@@ -26,12 +26,12 @@
         <i class="fas fa-chevron-down"></i>
     </button>
     <div class="dropdown-content">
-        <a href="personal-info.html"><i class="fas fa-user"></i> المعلومات الشخصية</a>
-        <a href="favorite-recipes.html"><i class="fas fa-heart"></i> الوصفات المفضلة</a>
-        <a href="my-courses.html"><i class="fas fa-book-open"></i> دوراتي</a>
-        <a href="my-notes.html"><i class="fas fa-sticky-note"></i> ملاحظاتي</a>
-        <a href="evaluations.html"><i class="fas fa-star"></i> التقييمات</a>
-        <a href="contact-teachers.html"><i class="fas fa-chalkboard-teacher"></i> التواصل مع المعلمين</a>
+        <a href="/pages/personal-info.html"><i class="fas fa-user"></i> المعلومات الشخصية</a>
+        <a href="/pages/favorite-recipes.html"><i class="fas fa-heart"></i> الوصفات المفضلة</a>
+        <a href="/pages/my-courses.html"><i class="fas fa-book-open"></i> دوراتي</a>
+        <a href="/pages/my-notes.html"><i class="fas fa-sticky-note"></i> ملاحظاتي</a>
+        <a href="/pages/evaluations.html"><i class="fas fa-star"></i> التقييمات</a>
+        <a href="/pages/contact-teachers.html"><i class="fas fa-chalkboard-teacher"></i> التواصل مع المعلمين</a>
     </div>
 </div>
     </header>
@@ -62,9 +62,9 @@
             <div class="detail-image">
                 <img src="../images/pasta.jpeg" alt="باستا">
                 <div class="action-buttons">
-                    <div class="fav-icon">❤</div>
-                    <div class="share-icon"><i class="fas fa-share-alt"></i></div>
-                </div>
+    <div class="fav-icon" id="favBtn" onclick="toggleFav('pasta', this)">❤</div>
+    <div class="share-icon" onclick="shareRecipe()"><i class="fas fa-share-alt"></i></div>
+</div>
                 <div class="difficulty-badge">سهل</div>
             </div>
         </div>
@@ -252,6 +252,65 @@
             <p>© رشة</p>
         </div>
     </footer>
+<script>
+// ---- القلب ----
+const recipeId = 'pasta'; // غيّر هذا لكل وصفة
 
+window.addEventListener('DOMContentLoaded', () => {
+    const favs = JSON.parse(localStorage.getItem('favRecipes') || '[]');
+    const btn = document.getElementById('favBtn');
+    if (favs.includes(recipeId)) {
+        btn.classList.add('active');
+    }
+});
+
+function toggleFav(id, el) {
+    let favs = JSON.parse(localStorage.getItem('favRecipes') || '[]');
+    if (favs.includes(id)) {
+        favs = favs.filter(f => f !== id);
+        el.classList.remove('active');
+        showToast('تم إزالة الوصفة من المفضلة');
+    } else {
+        favs.push(id);
+        el.classList.add('active');
+        showToast('تمت الإضافة إلى المفضلة ❤');
+    }
+    localStorage.setItem('favRecipes', JSON.stringify(favs));
+}
+
+// ---- الشير ----
+function shareRecipe() {
+    if (navigator.share) {
+        navigator.share({
+            title: document.title,
+            url: window.location.href
+        });
+    } else {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            showToast('تم نسخ رابط الوصفة 🔗');
+        });
+    }
+}
+
+// ---- التوست ----
+function showToast(msg) {
+    let toast = document.getElementById('toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'toast';
+        toast.style.cssText = `
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+            background: #4f6357; color: white; padding: 12px 24px;
+            border-radius: 30px; font-family: 'Tajawal', sans-serif;
+            font-size: 15px; z-index: 9999; opacity: 0;
+            transition: opacity 0.3s; white-space: nowrap;
+        `;
+        document.body.appendChild(toast);
+    }
+    toast.textContent = msg;
+    toast.style.opacity = '1';
+    setTimeout(() => toast.style.opacity = '0', 2500);
+}
+</script>
 </body>
 </html>
