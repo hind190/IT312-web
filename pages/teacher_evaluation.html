@@ -2,10 +2,29 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>تقييم المعلمين </title>
+    <title>تقييم المعلمين | رشة</title>
     <link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        /* إضافات بسيطة للتحقق من صحة النموذج (لن تؤثر على تصميمك الحالي) */
+        .error-border {
+            border: 2px solid #e74c3c !important;
+            background-color: #ffe5e5;
+        }
+        .rating-error {
+            border: 2px solid #e74c3c;
+            border-radius: 20px;
+            padding: 5px;
+        }
+        .my-rating-stars .my-star {
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .my-rating-stars .my-star.active {
+            color: #ffb347;
+        }
+    </style>
 </head>
 <body>
 
@@ -15,35 +34,37 @@
         <h2>رشة</h2>
     </div>
     <div class="user">
-<p class="welcome">مرحباً بك مجدداً</p>
-<div class="user-box">
-        <img src="../images/user.png" alt="user">
-<div class="dropdown">
-    <button class="dropdown-btn">
-        لوحة الطالب
-        <i class="fas fa-chevron-down"></i>
-    </button>
-    <div class="dropdown-content">
-        <a href="personal-info.html"><i class="fas fa-user"></i> المعلومات الشخصية</a>
-        <a href="favorite-recipes.html"><i class="fas fa-heart"></i> الوصفات المفضلة</a>
-        <a href="my-courses.html"><i class="fas fa-book-open"></i> دوراتي</a>
-        <a href="my-notes.html"><i class="fas fa-sticky-note"></i> ملاحظاتي</a>
-        <a href="evaluations.html"><i class="fas fa-star"></i> التقييمات</a>
-        <a href="contact-teachers.html"><i class="fas fa-chalkboard-teacher"></i> التواصل مع المعلمين</a>
+        <p class="welcome">مرحباً بك مجدداً</p>
+        <div class="user-box">
+            <img src="../images/user.png" alt="user">
+            <div class="dropdown">
+                <button class="dropdown-btn">
+                    لوحة الطالب
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="personal-info.html"><i class="fas fa-user"></i> المعلومات الشخصية</a>
+                    <a href="favorite-recipes.html"><i class="fas fa-heart"></i> الوصفات المفضلة</a>
+                    <a href="my-courses.html"><i class="fas fa-book-open"></i> دوراتي</a>
+                    <a href="my-notes.html"><i class="fas fa-sticky-note"></i> ملاحظاتي</a>
+                    <a href="evaluations.html"><i class="fas fa-star"></i> التقييمات</a>
+                    <a href="contact-teachers.html"><i class="fas fa-chalkboard-teacher"></i> التواصل مع المعلمين</a>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 </header>
 
 <nav class="my-nav">
-        <input type="text" placeholder="بحث" class="my-search-input">
-        <ul class="my-nav-list">
-            <li><a href="../index.html">الرئيسية</a></li>
-            <li><a href="courses.html">الدورات</a></li>
-            <li><a href="recipes.html">الوصفات</a></li>
-            <li><a href="about.html">عن الموقع</a></li>
-            <li><a href="contact.html">تواصل معنا</a></li>
-        </ul>
-    </nav>
+    <input type="text" placeholder="بحث" class="my-search-input">
+    <ul class="my-nav-list">
+        <li><a href="../index.html">الرئيسية</a></li>
+        <li><a href="courses.html">الدورات</a></li>
+        <li><a href="recipes.html">الوصفات</a></li>
+        <li><a href="about.html">عن الموقع</a></li>
+        <li><a href="contact.html">تواصل معنا</a></li>
+    </ul>
+</nav>
 
 <div class="my-breadcrumbs">
     <a href="../index.html">الرئيسية</a>
@@ -52,19 +73,16 @@
 </div>
 
 <main class="my-evaluation-page">
-
     <div class="my-evaluation-header">
         <h1>تقييم المعلمين</h1>
         <p>اختر المعلم وشاركنا رأيك</p>
     </div>
 
-    <!-- نموذج التقييم مع قائمة منسدلة -->
-    <div class="my-evaluation-form">
-        
-        <!-- قائمة اختيار المعلم -->
+    <!-- تم إضافة <form> -->
+    <form id="evaluationForm" class="my-evaluation-form" action="#" method="post">
         <div class="my-teacher-select">
             <label for="teacher">اختر المعلم:</label>
-            <select id="teacher" class="my-teacher-dropdown">
+            <select id="teacher" name="teacher" class="my-teacher-dropdown" required>
                 <option value="">-- اختر المعلم --</option>
                 <option value="مريم">الشيف مريم</option>
                 <option value="نوره">الشيف نوره</option>
@@ -74,28 +92,23 @@
             </select>
         </div>
 
-        <!-- نجوم التقييم -->
-        <div class="my-rating-stars">
+        <div class="my-rating-stars" id="ratingStarsContainer">
             <span class="my-star" data-value="1">★</span>
             <span class="my-star" data-value="2">★</span>
             <span class="my-star" data-value="3">★</span>
             <span class="my-star" data-value="4">★</span>
             <span class="my-star" data-value="5">★</span>
         </div>
+        <input type="hidden" name="rating" id="ratingValue" value="0">
 
-        <!-- حقل التعليق -->
-        <textarea rows="4" placeholder="اكتب تعليقك على المعلم..."></textarea>
+        <textarea id="review" name="review" rows="4" placeholder="اكتب تعليقك على المعلم..." required></textarea>
 
-        <!-- زر الإرسال -->
-        <button class="my-submit-btn">إرسال التقييم</button>
+        <button type="submit" class="my-submit-btn">إرسال التقييم</button>
+    </form>
 
-    </div>
-
-    <!-- آراء الطلاب السابقة -->
     <div class="my-reviews-section">
         <h2>آراء الطلاب</h2>
         <p class="my-reviews-count">تقييمات سابقة من طلابنا</p>
-        
         <div class="my-review-card">
             <div class="my-review-header">
                 <div class="my-reviewer-info">
@@ -103,18 +116,11 @@
                     <span class="my-reviewer-name">نورة عبدالله</span>
                 </div>
                 <div class="my-review-stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
             </div>
             <p class="my-review-text">الشيف مريم كانت رائعة! شرحها واضح ومبسط، استفدت جداً من الدورة</p>
         </div>
-
-        
-
         <div class="my-review-card">
             <div class="my-review-header">
                 <div class="my-reviewer-info">
@@ -122,17 +128,12 @@
                     <span class="my-reviewer-name">هند القحطاني</span>
                 </div>
                 <div class="my-review-stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
             </div>
             <p class="my-review-text">الشيف نوره ممتازة، شروحاتها واضحة وتجيب للطالب بطريقة سلسة. دورة متكامل</p>
         </div>
     </div>
-
 </main>
 
 <footer class="my-footer">
@@ -142,21 +143,94 @@
             <p>+966000000</p>
             <p>Rasha@gmail.com</p>
             <div class="my-social-icons">
-                <i class="fab fa-facebook-f"></i>
-                <i class="fab fa-instagram"></i>
-                <i class="fab fa-twitter"></i>
-                <i class="fab fa-whatsapp"></i>
+                <i class="fab fa-facebook-f"></i><i class="fab fa-instagram"></i><i class="fab fa-twitter"></i><i class="fab fa-whatsapp"></i>
             </div>
         </div>
         <div class="my-footer-divider"></div>
-        <div class="my-footer-right">
-            <p>الشروط والأحكام</p>
-        </div>
+        <div class="my-footer-right"><p>الشروط والأحكام</p></div>
     </div>
-    <div class="my-footer-bottom">
-        <p>©️ رشة</p>
-    </div>
+    <div class="my-footer-bottom"><p>©️ رشة</p></div>
 </footer>
+
+<script>
+    // نجوم التقييم
+    var stars = document.querySelectorAll('.my-star');
+    var ratingInput = document.getElementById('ratingValue');
+    var selectedRating = 0;
+
+    function updateStars(rating) {
+        stars.forEach(function(star) {
+            var val = parseInt(star.getAttribute('data-value'));
+            if (val <= rating) {
+                star.classList.add('active');
+                star.style.color = '#ffb347';
+            } else {
+                star.classList.remove('active');
+                star.style.color = '#ddd';
+            }
+        });
+    }
+
+    stars.forEach(function(star) {
+        star.addEventListener('click', function() {
+            selectedRating = parseInt(this.getAttribute('data-value'));
+            ratingInput.value = selectedRating;
+            updateStars(selectedRating);
+            document.getElementById('ratingStarsContainer').classList.remove('rating-error');
+        });
+    });
+
+    // التحقق من صحة النموذج
+    var form = document.getElementById('evaluationForm');
+    var teacherSelect = document.getElementById('teacher');
+    var reviewText = document.getElementById('review');
+    var starsContainer = document.getElementById('ratingStarsContainer');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var isValid = true;
+
+        // إزالة الأخطاء السابقة
+        teacherSelect.classList.remove('error-border');
+        reviewText.classList.remove('error-border');
+        starsContainer.classList.remove('rating-error');
+
+        // التحقق من اختيار المعلم
+        if (teacherSelect.value === "") {
+            teacherSelect.classList.add('error-border');
+            isValid = false;
+        }
+
+        // التحقق من التقييم
+        if (selectedRating === 0) {
+            starsContainer.classList.add('rating-error');
+            isValid = false;
+        }
+
+        // التحقق من التعليق
+        if (reviewText.value.trim() === "") {
+            reviewText.classList.add('error-border');
+            isValid = false;
+        }
+
+        if (!isValid) {
+            alert("❌ الرجاء إكمال جميع الحقول: اختر معلم، اختر تقييم، واكتب تعليقك.");
+            return;
+        }
+
+        // رسالة شكر أو اعتذار حسب التقييم
+        var message = "";
+        if (selectedRating >= 4) {
+            message = "🎉 شكراً لتقييمك! يسعدنا أن الدورة نالت إعجابك.";
+        } else {
+            message = "نأسف أن الدورة لم ترقَ لتوقعاتك. سنعمل على تحسينها.";
+        }
+        alert(message);
+
+        // التوجيه إلى لوحة التحكم (يمكنك تغيير الرابط حسب الحاجة)
+        window.location.href = "my-courses.html";
+    });
+</script>
 
 </body>
 </html>
