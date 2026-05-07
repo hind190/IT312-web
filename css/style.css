@@ -3399,6 +3399,14 @@ h3::after {
     box-shadow: 0 8px 18px rgba(231,76,60,0.3);
 }
 
+.fav-icon.active {
+    color: #ff4757;
+}
+
+.fav-icon.active:hover {
+    color: #e74c3c;
+}
+
 .share-icon:hover {
     background: #4f6357;
     color: white;
@@ -3540,7 +3548,7 @@ h3::after {
 .ingredients-list input:checked + label::before {
     background: #4f6357;
     border-color: #4f6357;
-content: "\2713" !important;
+    content: "\2713" !important;
     color: white;
     font-size: 16px;
     font-weight: bold;
