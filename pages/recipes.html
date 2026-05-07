@@ -12,7 +12,6 @@
 <body>
 
 <header>
-
 <div class="logo">
 <img src="../images/logo.jpeg" alt="logo" width="60">
 <h2>رشة</h2>
@@ -36,7 +35,8 @@
         <a href="contact-teachers.html"><i class="fas fa-chalkboard-teacher"></i> التواصل مع المعلمين</a>
     </div>
 </div>
-
+</div>
+</div>
 </header>
 
 <!-- NAVBAR -->
@@ -46,62 +46,49 @@
         <li><a class="my-nav-link" href="../index.html">الرئيسية</a></li>
         <li><a class="my-nav-link" href="courses.html">الدورات</a></li>
         <li><a class="my-nav-link" href="recipes.html">الوصفات</a></li>
-        <li><a class="my-nav-link" href="about.html">عن الموقع</a></li>
-        <li><a class="my-nav-link" href="contact.html">تواصل معنا</a></li>
+        <li><a class="my-nav-link" href="/pages/aboutweb.html">عن الموقع</a></li>
+        <li><a class="my-nav-link" href="/pages/couwithUs.html">تواصل معنا</a></li>
     </ul>
 </nav>
 
 <!-- BREADCRUMBS -->
 <div class="breadcrumbs">
-
 <a href="../index.html">الرئيسية</a>
 <span>الوصفات</span>
 </div>
 
-
 <!-- قسم إضافة وصفة -->
 <section class="add-recipe">
-
 <div class="add-recipe-box">
-
     <div class="add-text">
         <h2>أضف وصفتك الخاصة</h2>
         <p>يمكنك إضافة وصفتك بسهولة ومشاركتها مع الآخرين</p>
        <a href="/pages/add-recipe.html"> <button>+ أضف وصفتك</button></a>
     </div>
-
 </div>
-
 </section>
-
 
 <!-- الفلتر -->
 <section class="recipes-section">
-    <h3> الوصفات</h3>
+    <h3>الوصفات</h3>
 
-            <input type="radio" name="category" id="all" checked>
-        <input type="radio" name="category" id="main">
-        <input type="radio" name="category" id="dessert">
-        <input type="radio" name="category" id="breakfast">
-        <input type="radio" name="category" id="drink">
-        <input type="radio" name="category" id="healthy">
+    <input type="radio" name="category" id="all" checked>
+    <input type="radio" name="category" id="main">
+    <input type="radio" name="category" id="dessert">
+    <input type="radio" name="category" id="breakfast">
+    <input type="radio" name="category" id="drink">
+    <input type="radio" name="category" id="healthy">
 
     <!-- الفلاتر -->
     <div class="filters">
-
         <label for="all">الكل</label>
-
         <label for="main">أطباق رئيسية</label>
-
         <label for="dessert">حلويات</label>
-
         <label for="breakfast">فطور</label>
-
         <label for="drink">مشروبات</label>
-
         <label for="healthy">أكلات صحية</label>
-
     </div>
+
 <!-- RECIPES -->
 <div class="recipes">
 
@@ -113,7 +100,6 @@
 <p>وصفة باستا سهلة ولذيذة يمكن تحضيرها بسرعة</p>
 <a href="../recipe-details/pasta.html"><button>عرض الوصفة</button></a>
 </div>
-
 
 <div class="recipe-card main">
 <div class="fav" onclick="toggleFav('shawarma', this)">❤</div>
@@ -142,7 +128,7 @@
 <!-- healthy -->
 <div class="recipe-card healthy">
 <div class="fav" onclick="toggleFav('salad', this)">❤</div>
-<img src="../images/salad.jpeg" alt="سلطة خضراء طازجة ">
+<img src="../images/salad.jpeg" alt="سلطة خضراء طازجة">
 <h4>سلطة خضراء طازجة</h4>
 <p>طبق سلطة صحي ومنعش غني بالفيتامينات، يجمع الخضروات الطازجة مع جبنة الفيتا وزيت الزيتون</p>
 <a href="../recipe-details/salad.html"><button>عرض الوصفة</button></a>
@@ -171,7 +157,6 @@
 <p>شوربة دافئة وخفيفة مليئة بالخضار الطازجة</p>
 <a href="../recipe-details/soup.html"><button>عرض الوصفة</button></a>
 </div>
-
 
 <!-- breakfast -->
 <div class="recipe-card breakfast">
@@ -206,7 +191,6 @@
 <a href="../recipe-details/bean.html"><button>عرض الوصفة</button></a>
 </div>
 
-
 <!-- dessert -->
 <div class="recipe-card dessert">
 <div class="fav" onclick="toggleFav('brownie-pudding', this)">❤</div>
@@ -240,7 +224,6 @@
 <a href="/recipe-details/tramiso.html"><button>عرض الوصفة</button></a>
 </div>
 
-
 <!-- drink -->
 <div class="recipe-card drink">
 <div class="fav" onclick="toggleFav('milkshake', this)">❤</div>
@@ -273,22 +256,17 @@
 <p>مشروب شوكولاتة دافئ وكريمي</p>
 <a href="/recipe-details/hot chocolate.html"><button>عرض الوصفة</button></a>
 </div>
-    </div>
+
+</div>
 </section>
-
-
-
 
 <!-- الفوتر -->
 <footer class="footer">
-
 <div class="footer-container">
-
 <div class="footer-left">
 <p>تواصل معنا</p>
 <p>+966000000</p>
 <p>Rasha@gmail.com</p>
-
 <div class="social-icons">
 <i class="fab fa-facebook-f"></i>
 <i class="fab fa-instagram"></i>
@@ -296,22 +274,63 @@
 <i class="fab fa-whatsapp"></i>
 </div>
 </div>
-
 <div class="footer-divider"></div>
-
 <div class="footer-right">
 <p>الشروط والأحكام</p>
 </div>
-
 </div>
-
 <div class="footer-bottom">
 <p>© رشة</p>
 </div>
-
 </footer>
 
-    <script src="../js/script.js"></script>
+<script src="../js/script.js"></script>
+<script>
+function toggleFav(id, el) {
+    let favs = JSON.parse(localStorage.getItem('favRecipes') || '[]');
+    if (favs.includes(id)) {
+        favs = favs.filter(f => f !== id);
+        el.classList.remove('active');
+        showToast('تم إزالة الوصفة من المفضلة');
+    } else {
+        favs.push(id);
+        el.classList.add('active');
+        showToast('تمت الإضافة إلى المفضلة ❤');
+    }
+    localStorage.setItem('favRecipes', JSON.stringify(favs));
+}
+
+function showToast(msg) {
+    let toast = document.getElementById('toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'toast';
+        toast.style.cssText = `
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+            background: #4f6357; color: white; padding: 12px 24px;
+            border-radius: 30px; font-family: 'Tajawal', sans-serif;
+            font-size: 15px; z-index: 9999; opacity: 0;
+            transition: opacity 0.3s; white-space: nowrap;
+        `;
+        document.body.appendChild(toast);
+    }
+    toast.textContent = msg;
+    toast.style.opacity = '1';
+    setTimeout(() => toast.style.opacity = '0', 2500);
+}
+
+// تلوين القلوب عند تحميل الصفحة
+window.addEventListener('DOMContentLoaded', () => {
+    const favs = JSON.parse(localStorage.getItem('favRecipes') || '[]');
+    document.querySelectorAll('.fav').forEach(el => {
+        const onclick = el.getAttribute('onclick');
+        const match = onclick && onclick.match(/'([^']+)'/);
+        if (match && favs.includes(match[1])) {
+            el.classList.add('active');
+        }
+    });
+});
+</script>
 
 </body>
 </html>
