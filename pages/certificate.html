@@ -2,10 +2,25 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>شهادة إتمام الدورة </title>
+    <title>شهادة إتمام الدورة | رشة</title>
     <link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        /* تنسيق التذييل العمودي (التوقيع فوق التاريخ) */
+        .my-certificate-footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        .my-certificate-signature,
+        .my-certificate-date {
+            text-align: center;
+            width: 100%;
+        }
+    </style>
 </head>
 <body class="my-certificate-body">
 
@@ -15,27 +30,24 @@
     </div>
 
     <h1 class="my-certificate-academy"> أكاديمية رشه</h1>
-	<h1 class="my-certificate-academy">شهادة إتمام دورة</h1>
+    <h1 class="my-certificate-title">شهادة إتمام دورة</h1>
     
     <p class="my-certificate-text">تشهد أكاديمية رشه بأن متدريبنا</p>
 
-    <h3 class="my-student-name">[اسم الطالب]</h3>
+    <h3 class="my-student-name" id="studentNameDisplay">[اسم الطالب]</h3>
 
     <p class="my-certificate-text">
         قد أتم بنجاح الدورة <br>
         وذلك بعد اجتيازه جميع المتطلبات والاختبارات المقررة<br>
-        بمعدل <strong class="my-course-grade">5/5</strong>
+        <strong class="my-course-grade"></strong>
     </p>
 
-  
-
     <div class="my-certificate-footer">
-        <div class="my-certificate-date">
-            <p>التاريخ:أبريل- 2026</p>
-        </div>
         <div class="my-certificate-signature">
             <p>فريق رشه</p>
-
+        </div>
+        <div class="my-certificate-date">
+            <p id="certificateDate">التاريخ: -- / -- / ----</p>
         </div>
     </div>
 
@@ -46,6 +58,29 @@
     </div>
 </div>
 
+<script>
+    // قراءة الاسم من localStorage (مع دعم الاسم المكون من حرف واحد)
+    let studentName = localStorage.getItem("studentName");
+    const nameSpan = document.getElementById("studentNameDisplay");
+    if (studentName !== null && studentName !== "") {
+        nameSpan.textContent = studentName;
+    } else {
+        // إذا لم يتم العثور على اسم (لحالة الطوارئ)، نطلبه داخل الشهادة
+        let newName = prompt("لم يتم العثور على اسم. أدخل اسمك:", "");
+        if (newName !== null && newName !== "") {
+            localStorage.setItem("studentName", newName);
+            nameSpan.textContent = newName;
+        } else {
+            nameSpan.textContent = "الطالب/ة";
+        }
+    }
+
+    // التاريخ الحالي
+    const today = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = today.toLocaleDateString('ar-SA', options);
+    document.getElementById("certificateDate").innerHTML = `التاريخ: ${formattedDate}`;
+</script>
 
 </body>
 </html>
