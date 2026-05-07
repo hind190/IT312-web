@@ -17,7 +17,408 @@
  
 /* تنسيقات الصفحة الرئيسية  */
 
+/* تمييز الحقول الفارغة */
+.error-border {
+    border: 2px solid #e74c3c !important;
+    background-color: #ffe5e5;
+}
 
+/* نجوم التقييم */
+.my-rating-stars .my-star {
+    cursor: pointer;
+    font-size: 30px;
+    color: #ddd;
+    transition: 0.2s;
+}/* ========================================== */
+/* تنسيق الجوال لجميع صفحات الموقع (شاشات أقل من 768px) */
+/* ========================================== */
+@media (max-width: 768px) {
+    /* الهيدر */
+    .my-header, header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+        text-align: center;
+    }
+    .my-logo, .logo {
+        justify-content: center;
+    }
+    .my-user, .user {
+        flex-direction: column;
+        width: 100%;
+    }
+    .user-box {
+        width: 100%;
+        align-items: center;
+    }
+    
+    /* النافبار */
+    .my-nav, nav {
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px 20px;
+    }
+    .my-nav-list, nav ul {
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .my-search-input, nav input {
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+    
+    /* Breadcrumbs (إذا كان موجوداً) */
+    .my-breadcrumbs, .breadcrumbs {
+        margin: 15px 20px;
+        font-size: 12px;
+        padding: 6px 15px;
+        flex-wrap: wrap;
+    }
+    
+    /* شبكات الدورات والوصفات */
+    .my-courses-grid, .courses-grid, .my-recipes-grid, .recipes-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+    
+    /* بطاقات الدورات والوصفات */
+    .my-course-card, .course-card, .my-recipe-card, .recipe-card {
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    /* أزرار الفلاتر */
+    .my-filter-list, .filter-list {
+        gap: 10px;
+        justify-content: center;
+    }
+    .my-filter-btn, .filter-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    
+    /* محتوى صفحة الدرس */
+    .my-lesson-page, .lesson-page {
+        padding: 20px;
+    }
+    .my-lesson-hero, .lesson-hero {
+        height: 220px;
+    }
+    .my-hero-text h1, .hero-text h1 {
+        font-size: 28px;
+    }
+    .my-lesson-page h2, .lesson-page h2 {
+        font-size: 22px;
+    }
+    /* الجداول في الدروس */
+    .my-lesson-page table, .lesson-page table {
+        font-size: 13px;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    .my-lesson-page th, .my-lesson-page td,
+    .lesson-page th, .lesson-page td {
+        padding: 8px 10px;
+    }
+    
+    /* صفحة إتمام الدورة */
+    .my-completion-page, .completion-page {
+        padding: 30px 20px;
+        margin: 30px 20px;
+    }
+    .my-completion-title, .completion-title {
+        font-size: 28px;
+    }
+    .my-completion-subtitle, .completion-subtitle {
+        font-size: 20px;
+    }
+    .my-stat-score, .stat-score {
+        font-size: 22px;
+    }
+    .my-completion-actions, .completion-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .my-btn-primary, .btn-primary {
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* صفحة الشهادة */
+    .my-certificate, .certificate {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+    .my-certificate-academy, .certificate-academy {
+        font-size: 22px;
+    }
+    .my-certificate-title, .certificate-title {
+        font-size: 24px;
+    }
+    .my-student-name, .student-name {
+        font-size: 22px;
+    }
+    .my-certificate-footer, .certificate-footer {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .my-print-btn, .print-btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* صفحة تقييم المعلمين */
+    .my-evaluation-page, .evaluation-page {
+        padding: 20px;
+    }
+    .my-evaluation-header h1 {
+        font-size: 28px;
+    }
+    .my-evaluation-form, .evaluation-form {
+        padding: 20px;
+    }
+    .my-star, .star {
+        font-size: 28px;
+    }
+    .my-submit-btn, .submit-btn {
+        width: 100%;
+    }
+    .my-review-header, .review-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    /* الفوتر */
+    .my-footer-container, .footer-container {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    .my-footer-left, .my-footer-right,
+    .footer-left, .footer-right {
+        text-align: center;
+    }
+    .my-footer-divider, .footer-divider {
+        width: 80%;
+        height: 1px;
+        background: #ccc;
+        margin: 10px auto;
+    }
+    .my-social-icons, .social-icons {
+        justify-content: center;
+    }
+    
+    /* أي أزرار أو روابط عامة */
+    .btn, .my-nav-btn, .nav-btn {
+        width: 100%;
+        max-width: 250px;
+        margin: 5px auto;
+        text-align: center;
+    }
+    .my-lesson-nav, .lesson-nav {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+}
+/* ======================================== */
+/* تأثير Hover على بطاقات الدورس */
+/* ======================================== */
+
+.my-course-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.course-hover-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(79, 99, 87, 0.95);
+    color: white;
+    padding: 10px;
+    transition: 0.3s ease;
+    text-align: center;
+    z-index: 10;
+    backdrop-filter: blur(4px);
+    border-radius: 25px 25px 0 0;
+    transform: translateY(-100%);
+}
+
+.course-hover-info p {
+    margin: 5px 0;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.course-hover-info i {
+    color: #ffb347;
+    font-size: 13px;
+}
+
+.my-course-card:hover .course-hover-info {
+    transform: translateY(0);
+}
+/* زر المزيد */
+#moreLessonsBtn {
+    cursor: pointer;
+    transition: 0.3s;
+}
+#moreLessonsBtn:hover {
+    background-color: #4f6357;
+    color: white;
+    transform: translateY(-2px);
+}
+/* صفحة إتمام الدورة - تصميم عمودي */
+.completion-vertical {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 40px 20px;
+}
+.completion-card {
+    background: #ffffff;
+    border-radius: 40px;
+    max-width: 500px;
+    width: 100%;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eef3f0;
+    /* ترتيب عمودي */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.icon-success {
+    background: #eef6f2;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+.icon-success i {
+    font-size: 48px;
+    color: #4f6357;
+}
+.completion-card h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #2c3e3a;
+    margin: 0;
+}
+.subtitle {
+    font-size: 16px;
+    color: #6f8f82;
+    margin: 0;
+}
+.best-score-box {
+    background: #f8fbf9;
+    border-radius: 30px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    justify-content: center;
+    border: 1px solid #e6ede9;
+}
+.best-score-box i {
+    font-size: 40px;
+    color: #f4c542;
+}
+.best-score-box span {
+    font-size: 14px;
+    color: #5e6f69;
+    display: block;
+}
+.best-score-box strong {
+    font-size: 30px;
+    font-weight: 800;
+    color: #4f6357;
+}
+.encouragement-message {
+    background: #f0f7f3;
+    padding: 16px;
+    border-radius: 28px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #2c3e3a;
+}
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+/* اسم الدورة */
+.course-name-container {
+    background: #ffffff;
+    border-radius: 30px;
+    padding: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #4f6357;
+    border: 1px solid #e0e8e3;
+}
+.course-name-container i {
+    color: #8ea79a;
+    font-size: 20px;
+}
+.btn-certificate, .btn-evaluation {
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.2s;
+    font-family: 'Tajawal', sans-serif;
+}
+.btn-certificate {
+    background: #4f6357;
+    color: white;
+}
+.btn-certificate:hover {
+    background: #6f8f82;
+}
+.btn-evaluation {
+    background: #f0f7f3;
+    color: #4f6357;
+    border: 1px solid #dfeae3;
+}
+.btn-evaluation:hover {
+    background: #e3ede7;
+}
+@media (max-width: 550px) {
+    .completion-card { padding: 30px 20px; }
+}
+
+/* نجوم التقييم */
+.my-rating-stars .my-star {
+    cursor: pointer;
+    font-size: 30px;
+    color: #ddd;
+    transition: 0.2s;
+}
 .course-slider {
     display: flex;
     flex-wrap: wrap;
