@@ -1,6 +1,6 @@
 
 // ============================================================
-//  ملف مشترك لجميع صفحات الموقع (آمن ولا يتعارض)
+//  ملف مشترك لجميع صفحات الموقع 
 // ============================================================
 
 if (document.getElementById('evaluationForm')) {
@@ -185,9 +185,7 @@ if (document.getElementById('coursesGrid')) {
     });
 })();
 
-// ========================================
-// script.js - ملف واحد لجميع الصفحات
-// ========================================
+
 
 (function applyThemeToAllPages() {
     // تطبيق الثيم المخزن عند تحميل الصفحة
@@ -258,7 +256,7 @@ if (isHomePage) {
     });
 })();
 
-// 2. زر تبديل الثيمات (أيقونات إيموجي)
+// زر تبديل الثيمات (أيقونات إيموجي)
 (function() {
     // تطبيق الثيم المخزن فوراً
     if (localStorage.getItem('theme') === 'dark') {
@@ -267,7 +265,7 @@ if (isHomePage) {
 
     const themeBtn = document.createElement('button');
     themeBtn.id = 'themeSwitch';
-    themeBtn.innerHTML = '🌙';  // أيقونة قمر
+    themeBtn.innerHTML = '🌙';  
     themeBtn.style.cssText = `
         position: fixed;
         bottom: 20px;
@@ -292,7 +290,7 @@ if (isHomePage) {
     document.body.appendChild(themeBtn);
 
     if (localStorage.getItem('theme') === 'dark') {
-        themeBtn.innerHTML = '☀️';  // أيقونة شمس
+        themeBtn.innerHTML = '☀️';  
     }
 
     themeBtn.addEventListener('click', () => {
@@ -304,7 +302,7 @@ if (isHomePage) {
     });
 })();
 
-// 3. زر "المزيد" للدروس
+//  زر "المزيد" للدروس
 (function() {
     const courses = document.querySelectorAll('.course-item');
     if (courses.length > 2) {
@@ -344,7 +342,7 @@ if (isHomePage) {
     }
 })();
 
-// 4. زر البحث
+//  زر البحث
 (function() {
     const searchInput = document.querySelector('nav input[type="text"]');
     if (searchInput) {
@@ -384,7 +382,7 @@ if (isHomePage) {
     }
 })();
 
-// 5. تأثير عند الضغط على أزرار عرض الدرس
+//  تأثير عند الضغط على أزرار عرض الدرس
 (function() {
     const courseBtns = document.querySelectorAll('.course-btn');
     courseBtns.forEach(btn => {
@@ -395,7 +393,7 @@ if (isHomePage) {
     });
 })();
 
-// 6. تأثير عند الضغط على أزرار التنقل
+// تأثير عند الضغط على أزرار التنقل
 (function() {
     const navLinks = document.querySelectorAll('nav a');
     navLinks.forEach(link => {
@@ -406,7 +404,7 @@ if (isHomePage) {
     });
 })();
 
-// 7. تأثير عند الضغط على أيقونات التواصل الاجتماعي
+// تأثير عند الضغط على أيقونات التواصل الاجتماعي
 (function() {
     const socialIcons = document.querySelectorAll('.social-icons i');
     socialIcons.forEach(icon => {
@@ -418,7 +416,7 @@ if (isHomePage) {
     });
 })();
 
-// 8. تأثير عند الضغط على الشروط والأحكام
+// تأثير عند الضغط على الشروط والأحكام
 (function() {
     const terms = document.querySelector('.footer-right p');
     if (terms) {
@@ -430,7 +428,7 @@ if (isHomePage) {
     }
 })();
 
-// 9. الساعة الحقيقية
+// الساعة الحقيقية
 (function() {
     setTimeout(function() {
         const footer = document.querySelector('.footer');
@@ -459,9 +457,9 @@ if (isHomePage) {
     }, 500);
 })();
 
-console.log('✅ تم تحميل جميع أزرار الصفحة الرئيسية بنجاح!');
+console.log(' تم تحميل جميع أزرار الصفحة الرئيسية بنجاح!');
 
-}  // <-- إغلاق شرط isHomePage
+}  
 
 // ========================================
 // 2. صفحة عن الموقع (About Us)
@@ -726,7 +724,7 @@ if (document.querySelector('.contact-form form')) {
 
     onReady(function () {
 
-        // عرض الدرجات (كما كان)
+        // عرض الدرجات ()
         var currentScoreEl = document.getElementById("currentScore");
         var bestScoreEl    = document.getElementById("bestScore");
         if (currentScoreEl && bestScoreEl) {
@@ -743,7 +741,7 @@ if (document.querySelector('.contact-form form')) {
             }
         }
 
-        // 🔁 إعادة توجيه زر "إعادة الاختبار" إلى نفس الاختبار الذي جاء منه الطالب
+        //  إعادة توجيه زر "إعادة الاختبار" إلى نفس الاختبار الذي جاء منه الطالب
         var retakeBtn = document.getElementById("retakeQuizBtn");
         if (retakeBtn) {
             var originalQuizUrl = sessionStorage.getItem("currentQuizUrl");
@@ -1026,7 +1024,7 @@ function imageToBase64(file) {
 
 // دالة حفظ جميع المعلومات الشخصية في localStorage
 function savePersonalInfo() {
-    // جلب البيانات من الحقول
+    //  البيانات من الحقول
     const firstName = document.getElementById('firstName')?.value || '';
     const lastName = document.getElementById('lastName')?.value || '';
     const birthdate = document.getElementById('birthdate')?.value || '';
@@ -1052,7 +1050,7 @@ function savePersonalInfo() {
     // حفظ في localStorage
     localStorage.setItem('userPersonalInfo', JSON.stringify(userData));
     
-    // تحديث الصورة في الهيدر أيضاً
+    // تحديث الصورة في الهيدر 
     const headerImage = document.getElementById('headerUserImage');
     if (headerImage && profileImageSrc !== '../images/user.png') {
         headerImage.src = profileImageSrc;
@@ -1211,7 +1209,7 @@ function initFavoriteRecipesPage() {
 }
 
 // ============================================
-// صفحة دوراتي (my-courses.html) - من كودي (محدثة لديناميكية الجدول)
+// صفحة دوراتي (my-courses.html) - من كودي (محدثة الجدول)
 // ============================================
 
 function initMyCoursesPage() {
@@ -1221,7 +1219,7 @@ function initMyCoursesPage() {
         const container = document.getElementById('scoresTableContainer');
         if (!container) return;
 
-        // ✅ قراءة النتائج من localStorage بدلاً من البيانات الثابتة
+        //  قراءة النتائج من localStorage بدلاً من البيانات الثابتة
         let quizResults = [];
         const savedResults = localStorage.getItem('quizResults');
         
@@ -1233,7 +1231,7 @@ function initMyCoursesPage() {
             }
         }
 
-        // ✅ إذا لم توجد نتائج، نعرض رسالة "لا توجد نتائج"
+        //  إذا لم توجد نتائج، نعرض رسالة "لا توجد نتائج"
         if (quizResults.length === 0) {
             container.innerHTML = `
                 <div class="scores-section">
@@ -1245,12 +1243,12 @@ function initMyCoursesPage() {
             return;
         }
 
-        // ✅ ترتيب النتائج من الأحدث إلى الأقدم
+        //  ترتيب النتائج من الأحدث إلى الأقدم
         const sortedResults = [...quizResults].sort((a, b) => 
             new Date(b.date) - new Date(a.date)
         );
 
-        // ✅ بناء الجدول ديناميكياً
+        //  بناء الجدول 
         let tableHTML = `
             <div class="scores-section">
                 <h3><i class="fas fa-clipboard-list"></i> نتائج اختباراتك السابقة</h3>
