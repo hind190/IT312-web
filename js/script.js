@@ -1,7 +1,101 @@
+
 // ============================================================
 //  ملف مشترك لجميع صفحات الموقع (آمن ولا يتعارض)
 // ============================================================
+/ ========== صفحة تقييم المعلمين ==========
+if (document.getElementById('evaluationForm')) {
+    const stars = document.querySelectorAll('.my-star');
+    const ratingInput = document.getElementById('rating-value');
+    let selectedRating = 0;
 
+    function updateStars(rating) {
+        stars.forEach(star => {
+            const val = parseInt(star.getAttribute('data-value'));
+            star.style.color = val <= rating ? '#ffb347' : '#ddd';
+        });
+    }
+
+    stars.forEach(star => {
+        star.addEventListener('click', () => {
+            selectedRating = parseInt(star.getAttribute('data-value'));
+            ratingInput.value = selectedRating;
+            updateStars(selectedRating);
+            const container = document.getElementById('ratingStarsContainer');
+            if (container) {
+                container.style.border = '';
+                container.style.padding = '';
+            }
+        });
+    });
+
+    const form = document.getElementById('evaluationForm');
+    const teacherSelect = document.getElementById('teacher');
+    const reviewText = document.getElementById('review');
+    const ratingContainer = document.getElementById('ratingStarsContainer');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let isValid = true;
+
+        teacherSelect.classList.remove('error-border');
+        reviewText.classList.remove('error-border');
+        if (ratingContainer) {
+            ratingContainer.style.border = '';
+            ratingContainer.style.padding = '';
+        }
+
+        if (teacherSelect.value === "") {
+            teacherSelect.classList.add('error-border');
+            isValid = false;
+        }
+
+        if (selectedRating === 0) {
+            if (ratingContainer) {
+                ratingContainer.style.border = '2px solid #e74c3c';
+                ratingContainer.style.borderRadius = '20px';
+                ratingContainer.style.padding = '8px';
+            }
+            isValid = false;
+        }
+
+        if (reviewText.value.trim() === "") {
+            reviewText.classList.add('error-border');
+            isValid = false;
+        }
+
+        if (!isValid) {
+            alert("الرجاء إكمال جميع الحقول: اختر معلم، اختر تقييم، واكتب تعليقك.");
+            return;
+        }
+
+        const message = selectedRating >= 4 ? "شكراً لتقييمك 👍" : "نأسف أن الدورة لم ترقَ لتوقعاتك. سنعمل على تحسينها 💪";
+        alert(message);
+        window.location.href = "my-courses.html";
+    });
+}// ========== صفحة الدورات (courses.html) ==========
+if (document.getElementById('coursesGrid')) {
+    const moreBtn = document.getElementById('moreLessonsBtn');
+    const hiddenCards = document.querySelectorAll('.my-course-card[style*="display: none"]');
+    let allVisible = false;
+
+    if (moreBtn) {
+        moreBtn.addEventListener('click', () => {
+            const cards = document.querySelectorAll('.my-course-card');
+            if (!allVisible) {
+                cards.forEach(card => card.style.display = 'block');
+                moreBtn.textContent = 'عرض أقل';
+                allVisible = true;
+            } else {
+                // إظهار أول 3 فقط
+                cards.forEach((card, index) => {
+                    card.style.display = index < 3 ? 'block' : 'none';
+                });
+                moreBtn.textContent = 'المزيد من الدورات';
+                allVisible = false;
+            }
+        });
+    }
+   
 (function() {
     function onReady(fn) {
         if (document.readyState === "loading") {
