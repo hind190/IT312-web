@@ -6054,3 +6054,639 @@ content: "\2713" !important;
     margin-bottom: 40px !important;
     background: transparent !important;
 }
+/* ============================================ */
+/* RESPONSIVE DESIGN - لوحة الطالب (Student Dashboard) */
+/* تم إضافة هذا القسم لضمان عرض مثالي على جميع الأجهزة */
+/* يدعم الشاشات الصغيرة (أقل من 768px) والمتوسطة (أقل من 1024px) */
+/* ============================================ */
+
+/* تحسينات عامة للشاشات المتوسطة (أجهزة لوحية) */
+@media (max-width: 1024px) {
+    /* شبكات عامة */
+    .recipes-grid,
+    .courses-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    /* حاويات المحتوى الرئيسية */
+    .dashboard-container {
+        padding: 20px 25px;
+    }
+    
+    /* مسار الصفحة (breadcrumb) */
+    .breadcrumbs {
+        margin: 15px 25px;
+        padding: 6px 16px;
+        font-size: 13px;
+        flex-wrap: wrap;
+    }
+}
+
+/* تحسينات للشاشات الصغيرة (جوالات) */
+@media (max-width: 768px) {
+    /* ===== إعادة تخطيط الشبكات ===== */
+    .recipes-grid,
+    .courses-grid,
+    .courses-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    /* ===== حاوية المحتوى ===== */
+    .dashboard-container {
+        padding: 15px;
+    }
+    
+    /* ===== العناوين ===== */
+    .page-header h1 {
+        font-size: 28px;
+        text-align: center;
+        display: block;
+    }
+    
+    .page-header h1::after {
+        right: 50%;
+        transform: translateX(50%);
+        width: 50px;
+    }
+    
+    .sub-header {
+        font-size: 14px;
+        text-align: center;
+    }
+    
+    /* ===== أقسام الملف الشخصي ===== */
+    .profile-section {
+        padding: 18px;
+        margin-bottom: 20px;
+    }
+    
+    .profile-section h2 {
+        font-size: 20px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    /* ===== شبكة المعلومات ===== */
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .info-item.full-width {
+        grid-column: span 1;
+    }
+    
+    /* ===== الصورة الشخصية ===== */
+    .main-image {
+        width: 130px;
+        margin: 0 auto;
+    }
+    
+    .main-image img {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .edit-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+        white-space: nowrap;
+        bottom: 5px;
+    }
+    
+    /* ===== أزرار الحفظ ===== */
+    .save-btn {
+        padding: 12px 30px;
+        font-size: 16px;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .action-buttons {
+        text-align: center;
+    }
+    
+    /* ===== جداول النتائج ===== */
+    .scores-section {
+        padding: 15px;
+        overflow-x: auto;
+    }
+    
+    .scores-table {
+        font-size: 13px;
+        min-width: 400px;
+    }
+    
+    .scores-table th,
+    .scores-table td {
+        padding: 8px 6px;
+        white-space: nowrap;
+    }
+    
+    /* ===== تصفية الوصفات ===== */
+    .filters {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .filters label {
+        padding: 6px 14px;
+        font-size: 13px;
+        margin: 0;
+    }
+    
+    /* ===== بطاقات الوصفات والدورات ===== */
+    .recipe-card,
+    .course-card {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    .recipe-image,
+    .course-image {
+        height: 180px;
+    }
+    
+    .recipe-info h3,
+    .course-info h3 {
+        font-size: 18px;
+    }
+    
+    /* ===== صفحة الوصفات المفضلة (قلوب) ===== */
+    .fav-heart {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+        top: 10px;
+        left: 10px;
+    }
+    
+    /* ===== شارات التقدم ===== */
+    .course-progress-badge {
+        padding: 4px 10px;
+        font-size: 12px;
+        top: 10px;
+        left: 10px;
+    }
+    
+    /* ===== أزرار التنقل ===== */
+    .course-btn,
+    .recipe-btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    /* ===== صفحة التقييمات ===== */
+    .evaluation-card {
+        padding: 15px;
+    }
+    
+    .evaluation-header {
+        padding-left: 70px;
+        gap: 12px;
+    }
+    
+    .evaluation-image {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .evaluation-title {
+        font-size: 16px;
+    }
+    
+    .evaluation-text {
+        padding-right: 0;
+        font-size: 14px;
+    }
+    
+    .evaluation-date {
+        position: static;
+        font-size: 11px;
+        margin-top: 8px;
+        display: block;
+        text-align: left;
+    }
+    
+    .evaluation-actions {
+        top: 10px;
+        left: 10px;
+    }
+    
+    .delete-eval-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+    
+    /* ===== صفحة التواصل مع المعلمين ===== */
+    .section-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+    
+    .teacher-select-wrapper {
+        justify-content: space-between;
+    }
+    
+    .teacher-select {
+        flex: 1;
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    
+    .add-teacher-btn {
+        width: 42px;
+        height: 42px;
+    }
+    
+    .conversation-card {
+        padding: 10px 12px;
+    }
+    
+    .conversation-avatar {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .conversation-info h4 {
+        font-size: 14px;
+    }
+    
+    .last-message {
+        font-size: 12px;
+        max-width: 180px;
+    }
+    
+    /* ===== صفحة المحادثة ===== */
+    .chat-header {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+    
+    .chat-teacher-info {
+        flex-direction: column;
+    }
+    
+    .chat-avatar {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .chat-messages-area {
+        padding: 15px;
+        min-height: 350px;
+        max-height: 400px;
+    }
+    
+    .message-avatar {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .message-bubble {
+        max-width: 85%;
+        padding: 8px 12px;
+    }
+    
+    .message-bubble p {
+        font-size: 14px;
+    }
+    
+    .chat-input-area {
+        flex-wrap: wrap;
+        padding: 12px;
+        gap: 10px;
+    }
+    
+    .attach-btn, .send-btn {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .chat-input-area textarea {
+        width: 100%;
+        order: 2;
+        font-size: 14px;
+    }
+    
+    .input-actions {
+        order: 1;
+    }
+    
+    .send-btn {
+        order: 3;
+    }
+    
+    /* ===== صفحة الملاحظات ===== */
+    .notes-list {
+        gap: 10px;
+    }
+    
+    .note-item {
+        padding: 8px 12px;
+    }
+    
+    .note-item label {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 8px 0;
+    }
+    
+    .note-text {
+        font-size: 14px;
+        width: 100%;
+        margin-top: 5px;
+    }
+    
+    .note-priority {
+        font-size: 11px;
+        padding: 3px 10px;
+        min-width: 70px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .add-btn, .delete-btn, .save-notes-btn {
+        justify-content: center;
+        width: 100%;
+        padding: 10px;
+    }
+    
+    
+    /* ===== الفوتر (Footer) ===== */
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .footer-left,
+    .footer-right {
+        text-align: center;
+    }
+    
+    .footer-divider {
+        width: 80%;
+        height: 1px;
+        margin: 0 auto;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+    
+    .social-icons i {
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+    }
+}
+
+/* تحسينات إضافية للشاشات الصغيرة جداً (أقل من 480px) */
+@media (max-width: 480px) {
+    .dashboard-container {
+        padding: 12px;
+    }
+    
+    .page-header h1 {
+        font-size: 24px;
+    }
+    
+    .profile-section h2 {
+        font-size: 18px;
+    }
+    
+    .info-input,
+    .info-select,
+    input[type="date"] {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+    
+    .save-btn {
+        font-size: 15px;
+        padding: 10px 20px;
+    }
+    
+    .conversation-card {
+        gap: 10px;
+    }
+    
+    .conversation-info h4 {
+        font-size: 13px;
+    }
+    
+    .last-message {
+        font-size: 11px;
+        max-width: 140px;
+    }
+    
+    .note-text {
+        font-size: 13px;
+    }
+    
+    .card h1 {
+        font-size: 24px;
+    }
+    
+    .score-box h2 {
+        font-size: 22px;
+    }
+    
+    .btn {
+        font-size: 13px;
+        padding: 10px 16px;
+    }
+}
+
+/* تحسين عرض الجداول على الشاشات الصغيرة (تمرير أفقي) */
+@media (max-width: 768px) {
+    .scores-table-container,
+    .scores-section {
+        overflow-x: auto;
+    }
+    
+    .scores-table {
+        min-width: 500px;
+    }
+}
+
+/* تحسين عرض القوائم المنسدلة */
+@media (max-width: 768px) {
+    .dropdown-content {
+        position: fixed;
+        top: auto;
+        right: 10px;
+        left: 10px;
+        width: auto;
+        min-width: auto;
+        transform: none;
+    }
+    
+    .dropdown-content a {
+        padding: 12px 15px;
+    }
+}
+
+/* ---------------------- */
+/* (DROPDOWN MENU) - لوحة الطالب */
+/* ---------------------- */
+.dropdown {
+    position: relative;
+    width: 100%;
+    margin-top: 8px;
+}
+
+.dropdown-btn {
+    background: #dfeae3;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4f6357;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 140px;
+    transition: 0.3s;
+}
+
+.dropdown-btn i {
+    font-size: 12px;
+    color: #8ea79a;
+    transition: 0.3s;
+}
+
+.dropdown-btn:hover {
+    background: #cfe0d5;
+    color: #2c3e3a;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    min-width: 200px;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(79,99,87,0.15);
+    padding: 8px 0;
+    display: none;
+    z-index: 1000;
+    border: 1px solid #f0f0f0;
+    margin-top: 5px;
+}
+
+/* عرض القائمة عند التمرير (للشاشات الكبيرة) */
+.user-box:hover .dropdown-content,
+.dropdown-btn:hover + .dropdown-content,
+.dropdown-content:hover {
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+/* للشاشات الصغيرة - ستتحكم بها JavaScript */
+.user-box.active .dropdown-content {
+    display: block !important;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.dropdown-content a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #4f6357;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.3s;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a i {
+    width: 18px;
+    color: #8ea79a;
+    font-size: 14px;
+}
+
+.dropdown-content a:hover {
+    background: #dfeae3;
+    color: #2c3e3a;
+    padding-right: 20px;
+}
+
+.dropdown-content a:hover i {
+    color: #4f6357;
+}
+
+/* ============================================ */
+/* تحسين القائمة المنسدلة للشاشات الصغيرة فقط */
+/* ============================================ */
+@media (max-width: 768px) {
+    .dropdown-content {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 320px;
+        max-height: 80vh;
+        overflow-y: auto;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        padding: 15px 0;
+    }
+    
+    .dropdown-content a {
+        padding: 14px 20px;
+        font-size: 15px;
+        justify-content: center;
+    }
+    
+    /* شريط التمرير */
+    .dropdown-content::-webkit-scrollbar {
+        width: 4px;
+    }
+    
+    .dropdown-content::-webkit-scrollbar-track {
+        background: #f0f0f0;
+        border-radius: 10px;
+    }
+    
+    .dropdown-content::-webkit-scrollbar-thumb {
+        background: #8ea79a;
+        border-radius: 10px;
+    }
+}
