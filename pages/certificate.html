@@ -8,100 +8,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        /* إعادة تعيين خلفية الصفحة للشهادة */
-        body.my-certificate-body {
-            background: #f0f2f5;
-            font-family: 'Tajawal', sans-serif;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .my-certificate {
-            max-width: 1000px;
-            width: 100%;
-            background: white;
-            border-radius: 30px;
-            padding: 40px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            text-align: center;
-            border: 1px solid #ddd;
-            transition: all 0.3s ease;
-        }
-        .my-certificate-logo img {
-            width: 100px;
-            margin-bottom: 20px;
-        }
-        .my-certificate-academy {
-            font-size: 28px;
-            color: #4f6357;
-            margin-bottom: 10px;
-        }
-        .my-certificate-title {
-            font-size: 32px;
-            color: #8ea79a;
-            border-bottom: 2px solid #4f6357;
-            display: inline-block;
-            padding-bottom: 8px;
-            margin-bottom: 30px;
-        }
-        .my-certificate-text {
-            font-size: 20px;
-            color: #333;
-            margin: 15px 0;
-        }
-        .my-student-name {
-            font-size: 32px;
-            color: #4f6357;
-            margin: 20px 0;
-            font-weight: bold;
-            border-bottom: 1px dashed #4f6357;
-            display: inline-block;
-            padding-bottom: 8px;
-        }
-        .my-course-grade {
-            font-size: 20px;
-            color: #e67e22;
-        }
+        /* تنسيق التذييل العمودي (التوقيع فوق التاريخ) */
         .my-certificate-footer {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
-            margin-top: 40px;
-            margin-bottom: 20px;
+            gap: 10px;
+            margin-top: 30px;
         }
         .my-certificate-signature,
         .my-certificate-date {
             text-align: center;
             width: 100%;
-            font-size: 18px;
-            color: #555;
-            border-top: 1px solid #ccc;
-            padding-top: 10px;
-        }
-        .my-print-btn {
-            background: #4f6357;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 40px;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 18px;
-            transition: 0.3s;
-            margin-top: 20px;
-        }
-        .my-print-btn:hover {
-            background: #3d4f44;
-            transform: translateY(-2px);
         }
 
-        /* تحسينات الجوال */
+        /* تحسينات الجوال فقط */
         @media (max-width: 768px) {
             body.my-certificate-body {
-                padding: 10px;
+                padding: 15px;
             }
             .my-certificate {
                 padding: 20px 15px;
@@ -121,51 +45,13 @@
             .my-student-name {
                 font-size: 24px;
             }
-            .my-course-grade {
-                font-size: 16px;
-            }
-            .my-certificate-signature,
-            .my-certificate-date {
+            .my-certificate-signature p,
+            .my-certificate-date p {
                 font-size: 14px;
             }
             .my-print-btn {
-                font-size: 16px;
-                padding: 10px 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .my-certificate {
-                padding: 15px 10px;
-            }
-            .my-certificate-academy {
-                font-size: 18px;
-            }
-            .my-certificate-title {
-                font-size: 20px;
-            }
-            .my-certificate-text {
                 font-size: 14px;
-            }
-            .my-student-name {
-                font-size: 20px;
-            }
-        }
-
-        /* تحسين الطباعة */
-        @media print {
-            body.my-certificate-body {
-                background: white;
-                padding: 0;
-                margin: 0;
-            }
-            .my-certificate {
-                box-shadow: none;
-                border: none;
-                padding: 20px;
-            }
-            .my-print-btn {
-                display: none;
+                padding: 8px 20px;
             }
         }
     </style>
@@ -177,7 +63,7 @@
         <img src="../images/logo.jpeg" alt="شعار أكاديمية المطبخ">
     </div>
 
-    <h1 class="my-certificate-academy">أكاديمية رشه</h1>
+    <h1 class="my-certificate-academy"> أكاديمية رشه</h1>
     <h1 class="my-certificate-title">شهادة إتمام دورة</h1>
     
     <p class="my-certificate-text">تشهد أكاديمية رشه بأن متدريبنا</p>
@@ -187,7 +73,7 @@
     <p class="my-certificate-text">
         قد أتم بنجاح الدورة <br>
         وذلك بعد اجتيازه جميع المتطلبات والاختبارات المقررة<br>
-        <strong class="my-course-grade" id="courseGradeDisplay"></strong>
+        <strong class="my-course-grade"></strong>
     </p>
 
     <div class="my-certificate-footer">
@@ -207,28 +93,20 @@
 </div>
 
 <script>
-    // قراءة الاسم من localStorage
+    // قراءة الاسم من localStorage (مع دعم الاسم المكون من حرف واحد)
     let studentName = localStorage.getItem("studentName");
     const nameSpan = document.getElementById("studentNameDisplay");
-    if (studentName && studentName.trim() !== "") {
+    if (studentName !== null && studentName !== "") {
         nameSpan.textContent = studentName;
     } else {
+        // إذا لم يتم العثور على اسم (لحالة الطوارئ)، نطلبه داخل الشهادة
         let newName = prompt("لم يتم العثور على اسم. أدخل اسمك:", "");
-        if (newName && newName.trim() !== "") {
+        if (newName !== null && newName !== "") {
             localStorage.setItem("studentName", newName);
             nameSpan.textContent = newName;
         } else {
             nameSpan.textContent = "الطالب/ة";
         }
-    }
-
-    // عرض اسم الدورة ونتيجة الاختبار (من sessionStorage)
-    let courseName = sessionStorage.getItem("courseName") || "الدورة";
-    let currentScore = sessionStorage.getItem("currentQuizScore") || "0";
-    let totalQuestions = sessionStorage.getItem("quizTotalQuestions") || "1";
-    let gradeDisplay = document.getElementById("courseGradeDisplay");
-    if (gradeDisplay) {
-        gradeDisplay.textContent = `الدورة: ${courseName} - النتيجة: ${currentScore}/${totalQuestions}`;
     }
 
     // التاريخ الحالي
