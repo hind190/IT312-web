@@ -2,11 +2,13 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>الدورات | رشة</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
     <style>
+        /* إضافات وتحسينات للجوال */
         #moreLessonsBtn {
             cursor: pointer;
             transition: 0.3s;
@@ -17,89 +19,102 @@
             transform: translateY(-2px);
         }
 
-    /* كود التكيف مع الجوال */
-    @media (max-width: 768px) {
-        .my-courses-grid {
-            grid-template-columns: 1fr !important;
-            gap: 20px;
+        .my-course-card {
+            position: relative;
+            overflow: hidden;
         }
-        .my-filter-list {
-            gap: 8px;
+
+        .course-hover-info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(79, 99, 87, 0.95);
+            color: white;
+            padding: 10px;
+            transition: 0.3s ease;
+            text-align: center;
+            z-index: 10;
+            backdrop-filter: blur(4px);
+            border-radius: 25px 25px 0 0;
+            transform: translateY(-100%);
+        }
+
+        .course-hover-info p {
+            margin: 5px 0;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
             justify-content: center;
+            gap: 8px;
         }
-        .my-filter-btn {
-            padding: 8px 14px;
+
+        .course-hover-info i {
+            color: #ffb347;
             font-size: 13px;
         }
-        .my-courses-section {
-            padding: 15px;
-        }
-        .my-page-title h2 {
-            font-size: 26px;
-        }
-        .my-page-title p {
-            font-size: 15px;
-        }
-        #moreLessonsBtn {
-            width: 80%;
-            max-width: 220px;
-            margin: 20px auto;
-            display: block;
-            font-size: 14px;
-            padding: 10px;
-        }
-        .my-course-card {
-            width: 100%;
-        }
-    }
-.my-course-card {
-    position: relative;
-    overflow: hidden;
-}
 
-.course-hover-info {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: rgba(79, 99, 87, 0.95);
-    color: white;
-    padding: 10px;
-    transition: 0.3s ease;
-    text-align: center;
-    z-index: 10;
-    backdrop-filter: blur(4px);
-    border-radius: 25px 25px 0 0;
-    transform: translateY(-100%);
-}
+        .my-course-card:hover .course-hover-info {
+            transform: translateY(0);
+        }
 
-.course-hover-info p {
-    margin: 5px 0;
-    font-size: 13px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
+        /* ========== كود الجوال المحسن ========== */
+        @media (max-width: 768px) {
+            .my-courses-grid {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 20px !important;
+                width: 100% !important;
+            }
+            .my-course-card {
+                width: 95% !important;
+                margin: 0 auto 20px !important;
+            }
+            .my-filter-list {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+            }
+            .my-filter-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+            #moreLessonsBtn {
+                width: 80%;
+                max-width: 220px;
+                margin: 20px auto;
+                display: block;
+                font-size: 14px;
+                padding: 10px;
+            }
+            .my-page-title h2 {
+                font-size: 26px;
+            }
+            .my-page-title p {
+                font-size: 15px;
+            }
+            .my-course-title a {
+                font-size: 18px;
+            }
+            .my-course-description {
+                font-size: 13px;
+            }
+        }
 
-.course-hover-info i {
-    color: #ffb347;
-    font-size: 13px;
-}
-
-.my-course-card:hover .course-hover-info {
-    transform: translateY(0);
-}
-/* زر المزيد */
-#moreLessonsBtn {
-    cursor: pointer;
-    transition: 0.3s;
-}
-#moreLessonsBtn:hover {
-    background-color: #4f6357;
-    color: white;
-    transform: translateY(-2px);
-}
+        /* للشاشات الصغيرة جداً (أقل من 480px) */
+        @media (max-width: 480px) {
+            .my-filter-btn {
+                padding: 4px 8px;
+                font-size: 10px;
+            }
+            .my-course-card {
+                width: 98% !important;
+            }
+            .my-page-title h2 {
+                font-size: 22px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -241,7 +256,7 @@
             </div>
         </div>
 
-        <!-- زر "المزيد" (نصه ثابت) -->
+        <!-- زر "المزيد" -->
         <div style="text-align: center; margin-top: 30px;">
             <button id="moreLessonsBtn" class="my-filter-btn">المزيد من الدورات</button>
         </div>
@@ -271,25 +286,20 @@
         const allCards = Array.from(document.querySelectorAll('.my-course-card'));
         const filterBtns = Array.from(document.querySelectorAll('.my-filter-btn'));
         
-        let activeFilter = 'all';      // الفلتر الحالي
-        let expanded = false;           // هل تم توسيع القائمة (إظهار جميع الدورات) أم لا
+        let activeFilter = 'all';
+        let expanded = false;
         
-        // دالة تحديث عرض البطاقات
         function updateDisplay() {
-            // تصفية البطاقات حسب الفلتر الحالي
             let filtered = allCards.filter(card => {
                 if (activeFilter === 'all') return true;
                 return card.classList.contains(activeFilter);
             });
             
-            // تحديد عدد البطاقات الظاهرة
             let limit = filtered.length;
-            // فقط إذا كان الفلتر "الكل" ولم يتم التوسع بعد: نعرض أول 3
             if (activeFilter === 'all' && !expanded) {
                 limit = 3;
             }
             
-            // إظهار/إخفاء البطاقات
             allCards.forEach(card => {
                 const matches = (activeFilter === 'all' || card.classList.contains(activeFilter));
                 if (matches) {
@@ -300,7 +310,6 @@
                 }
             });
             
-            // إظهار أو إخفاء زر "المزيد" (يظهر فقط في فلتر 'الكل' ولم يتم التوسع بعد)
             if (activeFilter === 'all' && !expanded) {
                 moreBtn.style.display = 'inline-block';
             } else {
@@ -308,23 +317,18 @@
             }
         }
         
-        // دالة لتوسيع القائمة (إظهار جميع الدورات)
         function expandList() {
             if (activeFilter !== 'all') return;
-            if (expanded) return; // تم التوسع مسبقاً
+            if (expanded) return;
             expanded = true;
             updateDisplay();
-            // يمكن إخفاء الزر بعد التوسع، ولكن حسب طلبك سيبقى مرئياً لكن لن يفعل شيئاً إذا ضغط مرة أخرى
-            // (يمكنك إضافة moreBtn.disabled = true; إذا أردت منع النقر مرة أخرى)
         }
         
-        // تغيير الفلتر وتحديث الأزرار النشطة
         function setFilter(filterValue, activeBtn) {
             activeFilter = filterValue;
-            expanded = false;   // عند تغيير الفلتر، نعيد ضبط التوسع (يظهر أول 3 إذا رجعنا إلى 'الكل')
+            expanded = false;
             updateDisplay();
             
-            // تحديث الألوان النشطة للأزرار
             filterBtns.forEach(btn => {
                 btn.classList.remove('active', 'my-active');
                 btn.style.backgroundColor = '';
@@ -339,7 +343,6 @@
             }
         }
         
-        // ربط أزرار التصنيف
         filterBtns.forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -352,20 +355,16 @@
                 else if (forId === 'course-drinks') filterValue = 'drinks';
                 else if (forId === 'course-fastfood') filterValue = 'fastfood';
                 setFilter(filterValue, btn);
-                // تحديث الراديو المخفي
                 const radio = document.getElementById(forId);
                 if (radio) radio.checked = true;
             });
         });
         
-        // ربط زر "المزيد من الدورات"
         moreBtn.addEventListener('click', expandList);
         
-        // بدء التشغيل: تفعيل فلتر "الكل" وعرض أول 3 دورات
         const allBtn = document.querySelector('.my-filter-btn[for="course-all"]');
         if (allBtn) allBtn.click();
     })();
-	
 </script>
 
 </body>
