@@ -2,179 +2,216 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>نتيجة الاختبار | رشة</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>إتمام الدورة | رشة</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        .course-name-badge {
+            background: #eef6f2;
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #4f6357;
+            margin: 10px auto 15px;
+        }
+
+        /* تحسينات الجوال */
+        @media (max-width: 768px) {
+            .my-completion-page {
+                padding: 20px 15px !important;
+                margin: 0 !important;
+            }
+            .my-completion-icon i {
+                font-size: 70px !important;
+            }
+            .my-completion-title {
+                font-size: 28px !important;
+            }
+            .my-completion-subtitle {
+                font-size: 20px !important;
+            }
+            .course-name-badge {
+                font-size: 16px;
+                padding: 4px 15px;
+            }
+            .my-completion-text {
+                font-size: 15px !important;
+                padding: 0 5px;
+            }
+            .my-completion-stats {
+                width: 100% !important;
+                margin: 20px 0 !important;
+            }
+            .my-stat-item, .my-stat-score {
+                font-size: 16px !important;
+            }
+            .my-completion-actions {
+                width: 100%;
+                text-align: center;
+            }
+            .my-btn-primary, .my-rating-btn {
+                width: 80%;
+                display: inline-block;
+                margin: 5px auto;
+                padding: 12px 20px !important;
+                font-size: 16px;
+            }
+            .my-teacher-rating {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .my-completion-title {
+                font-size: 24px !important;
+            }
+            .my-completion-subtitle {
+                font-size: 18px !important;
+            }
+            .my-btn-primary, .my-rating-btn {
+                width: 95%;
+                padding: 10px 15px !important;
+                font-size: 14px;
+            }
+            .my-stat-item, .my-stat-score {
+                font-size: 14px !important;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">
-            <img src="../images/logo.jpeg" alt="logo" width="60">
-            <h2>رشة</h2>
-        </div>
-        <div class="user">
-            <p class="welcome">مرحباً بك مجدداً</p>
-            <div class="user-box">
-                <img src="../images/user.png" alt="user">
-                <div class="dropdown">
-                    <button class="dropdown-btn">لوحة الطالب <i class="fas fa-chevron-down"></i></button>
-                    <div class="dropdown-content">
-                        <a href="personal-info.html"><i class="fas fa-user"></i> المعلومات الشخصية</a>
-                        <a href="favorite-recipes.html"><i class="fas fa-heart"></i> الوصفات المفضلة</a>
-                        <a href="my-courses.html"><i class="fas fa-book-open"></i> دوراتي</a>
-                        <a href="my-notes.html"><i class="fas fa-sticky-note"></i> ملاحظاتي</a>
-                        <a href="evaluations.html"><i class="fas fa-star"></i> التقييمات</a>
-                        <a href="contact-teachers.html"><i class="fas fa-chalkboard-teacher"></i> التواصل مع المعلمين</a>
-                    </div>
+<header class="my-header">
+    <div class="my-logo">
+        <img src="../images/logo.jpeg" alt="logo" width="60">
+        <h2>رشة</h2>
+    </div>
+    <div class="user">
+        <p class="welcome">مرحباً بك مجدداً</p>
+        <div class="user-box">
+            <img src="../images/user.png" alt="user">
+            <div class="dropdown">
+                <button class="dropdown-btn">لوحة الطالب <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="personal-info.html"><i class="fas fa-user"></i> المعلومات الشخصية</a>
+                    <a href="favorite-recipes.html"><i class="fas fa-heart"></i> الوصفات المفضلة</a>
+                    <a href="my-courses.html"><i class="fas fa-book-open"></i> دوراتي</a>
+                    <a href="my-notes.html"><i class="fas fa-sticky-note"></i> ملاحظاتي</a>
+                    <a href="evaluations.html"><i class="fas fa-star"></i> التقييمات</a>
+                    <a href="contact-teachers.html"><i class="fas fa-chalkboard-teacher"></i> التواصل مع المعلمين</a>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>
 
-    <nav class="my-nav">
-        <input class="my-nav-input" type="text" placeholder="بحث">
-        <ul class="my-nav-list">
-            <li><a class="my-nav-link" href="../index.html">الرئيسية</a></li>
-            <li><a class="my-nav-link" href="courses.html">الدورات</a></li>
-            <li><a class="my-nav-link" href="recipes.html">الوصفات</a></li>
-            <li><a class="my-nav-link" href="about.html">عن الموقع</a></li>
-            <li><a class="my-nav-link" href="contact.html">تواصل معنا</a></li>
-        </ul>
-    </nav>
+<nav class="my-nav">
+    <input type="text" placeholder="بحث" class="my-search-input">
+    <ul class="my-nav-list">
+        <li><a href="../index.html">الرئيسية</a></li>
+        <li><a href="courses.html">الدورات</a></li>
+        <li><a href="recipes.html">الوصفات</a></li>
+        <li><a href="aboutweb.html">عن الموقع</a></li>
+        <li><a href="couwithUs.html">تواصل معنا</a></li>
+    </ul>
+</nav>
 
-    <div class="breadcrumbs">
-        <a href="../index.html">الرئيسية</a>
-        <a href="courses.html">الدورات</a>
-        <span>نتيجة الاختبار</span>
+<div class="my-breadcrumbs">
+    <a href="../index.html">الرئيسية</a>
+    <a href="courses.html">الدورات</a>
+    <a href="courses.html#desserts">أساسيات الطبخ</a>
+    <a href="quiz/quiz-cake.html">اختبار</a>
+    <a href="result.html">النتيجة</a>
+    <span>انتهاء الدورة</span>
+</div>
+
+<main class="my-completion-page" style="text-align: center; padding: 40px 20px; max-width: 800px; margin: auto;">
+    <div class="my-completion-icon">
+        <i class="fas fa-check-circle" style="font-size: 80px; color: #4f6357;"></i>
+    </div>
+    <h1 class="my-completion-title" style="color: #4f6357;">🎉 مبارك! 🎉</h1>
+    <h2 class="my-completion-subtitle">لقد أتممت الدورة بنجاح</h2>
+
+    <div class="course-name-badge" id="courseNameDisplay"></div>
+
+    <p class="my-completion-text" style="font-size: 18px; line-height: 1.6; max-width: 600px; margin: 20px auto;">
+        نشكر لك اجتهادك وتفانيك في التعلم. لقد أظهرت التزاماً رائعاً طوال رحلتك في هذه الدورة.
+        نتمنى لك دوام التوفيق والنجاح في مسيرتك التعليمية، ونتطلع إلى رؤيتك في دورات قادمة.
+    </p>
+
+    <div class="my-completion-stats" style="background: #f9f9f9; padding: 20px; border-radius: 15px; margin: 30px 0;">
+        <p class="my-stat-item"><i class="fas fa-trophy"></i> تم اكتمال الدورة بنجاح</p>
+        <p class="my-stat-item"><i class="fas fa-check"></i> تم اجتياز الاختبار</p>
+        <p class="my-stat-score" style="font-weight: bold;">نتيجتك: <span id="scoreDisplay"></span></p>
     </div>
 
-    <section class="result-page">
-        <div class="card">
-            <h1>نتيجة الاختبار</h1>
-            <p class="subtitle">أكملت الاختبار بنجاح 🎉</p>
+    <div class="my-completion-actions" style="margin: 20px 0;">
+        <a href="#" id="certificateBtn" class="my-btn-primary" style="background: #4f6357; color: white; padding: 12px 30px; border-radius: 40px; text-decoration: none; display: inline-block;">
+            <i class="fas fa-download"></i> تحميل الشهادة
+        </a>
+    </div>
+    <div class="my-teacher-rating" style="margin: 20px 0;">
+        <a href="teacher_evaluation.html" class="my-rating-btn" style="background: #8ea79a; color: white; padding: 12px 30px; border-radius: 40px; text-decoration: none; display: inline-block;">
+            قيم المعلم
+        </a>
+    </div>
+</main>
 
-            <div class="score-box current-score-box">
-                <i class="fas fa-star"></i>
-                <p>درجتك الحالية</p>
-                <h2 id="currentScore">-- / --</h2>
-            </div>
-
-            <div class="score-box best-score-box">
-                <i class="fas fa-trophy trophy"></i>
-                <p>أفضل نتيجة</p>
-                <h2 id="bestScore">-- / --</h2>
-            </div>
-
-            <div class="buttons">
-                <div class="top-buttons">
-                    <a id="retakeQuizBtn" href="#" class="btn light">
-                        <i class="fas fa-redo-alt"></i>
-                        إعادة الاختبار
-                    </a>
-                    <!-- ✅ تم إضافة id هنا -->
-                    <a id="backToLessonBtn" href="#" class="btn light">
-                        <i class="fas fa-arrow-left"></i>
-                        العودة للدرس
-                    </a>
-                </div>
-                <a href="../pages/courses-completion.html" class="btn finish">
-                    <i class="fas fa-check-circle"></i>
-                    إنهاء الدورة
-                </a>
+<footer class="my-footer">
+    <div class="my-footer-container">
+        <div class="my-footer-left">
+            <p>تواصل معنا</p>
+            <p>+966000000</p>
+            <p>Rasha@gmail.com</p>
+            <div class="my-social-icons">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-whatsapp"></i>
             </div>
         </div>
-    </section>
+        <div class="my-footer-divider"></div>
+        <div class="my-footer-right">
+            <p>الشروط والأحكام</p>
+        </div>
+    </div>
+    <div class="my-footer-bottom">
+        <p>©️ رشة</p>
+    </div>
+</footer>
 
-    <script>
-        (function() {
-            function onReady(fn) {
-                if (document.readyState === "loading") {
-                    document.addEventListener("DOMContentLoaded", fn);
-                } else {
-                    fn();
-                }
+<script>
+    // عرض اسم الدورة والنتيجة
+    var courseNameElem = document.getElementById("courseNameDisplay");
+    var scoreElem = document.getElementById("scoreDisplay");
+    if (courseNameElem) {
+        courseNameElem.innerText = sessionStorage.getItem("courseName") || "الدورة";
+    }
+    if (scoreElem) {
+        scoreElem.innerText = (sessionStorage.getItem("currentQuizScore") || "0") + " / " + (sessionStorage.getItem("quizTotalQuestions") || "1");
+    }
+
+    var certBtn = document.getElementById("certificateBtn");
+    if (certBtn) {
+        certBtn.addEventListener("click", function(e) {
+            e.preventDefault();
+            var studentName = prompt("📝 أدخل اسمك (كما تريد ظهوره في الشهادة):", "");
+            if (studentName !== null && studentName !== "") {
+                localStorage.setItem("studentName", studentName);
+                window.location.href = "certificate.html";
+            } else if (studentName === null) {
+                alert("❌ ألغيت العملية. لا يمكن تحميل الشهادة.");
+            } else {
+                alert("❌ الاسم لا يمكن أن يكون فارغاً!");
             }
+        });
+    }
+</script>
 
-            onReady(function() {
-                // عرض الدرجات
-                var currentScoreEl = document.getElementById("currentScore");
-                var bestScoreEl = document.getElementById("bestScore");
-                if (currentScoreEl && bestScoreEl) {
-                    var current = sessionStorage.getItem("currentQuizScore");
-                    var total = sessionStorage.getItem("quizTotalQuestions");
-                    var best = sessionStorage.getItem("quizBestScore");
-
-                    if (current !== null && total !== null) {
-                        currentScoreEl.textContent = current + " / " + total;
-                        bestScoreEl.textContent = (best !== null ? best : "?") + " / " + total;
-                    } else {
-                        currentScoreEl.textContent = "لا توجد بيانات";
-                        bestScoreEl.textContent = "لا توجد بيانات";
-                    }
-                }
-
-                // 🔁 إعادة الاختبار
-                var retakeBtn = document.getElementById("retakeQuizBtn");
-                if (retakeBtn) {
-                    var originalUrl = sessionStorage.getItem("currentQuizUrl");
-                    retakeBtn.href = originalUrl ? originalUrl : "../pages/quiz/quiz-basics.html";
-                }
-
-                // 🔁 العودة للدرس (تمت إضافة هذا القسم)
-                var backBtn = document.getElementById("backToLessonBtn");
-                if (backBtn) {
-                    var lessonUrl = sessionStorage.getItem("lessonPageUrl");
-                    backBtn.href = lessonUrl ? lessonUrl : "../pages/lessons/lesson1_page1.html";
-                }
-
-                // ✅ إضافة حفظ نتيجة الاختبار في localStorage (لظهورها في جدول دوراتي)
-                // هذه الإضافة تأخذ اسم الدورة من sessionStorage (المرسلة من صفحة الكويز)
-                // وتحفظ النتيجة في localStorage تحت مفتاح quizResults
-                var courseName = sessionStorage.getItem("courseName");
-                var currentScore = sessionStorage.getItem("currentQuizScore");
-                var totalQuestions = sessionStorage.getItem("quizTotalQuestions");
-                
-                if (courseName && currentScore && totalQuestions) {
-                    // جلب النتائج السابقة من localStorage
-                    var quizResults = [];
-                    var savedResults = localStorage.getItem("quizResults");
-                    if (savedResults) {
-                        try {
-                            quizResults = JSON.parse(savedResults);
-                        } catch(e) {
-                            console.error("خطأ في قراءة النتائج:", e);
-                        }
-                    }
-                    
-                    // إضافة النتيجة الجديدة
-                    var newResult = {
-                        courseName: courseName,
-                        score: parseInt(currentScore),
-                        totalQuestions: parseInt(totalQuestions),
-                        date: new Date().toISOString(),
-                        percentage: Math.round((parseInt(currentScore) / parseInt(totalQuestions)) * 100)
-                    };
-                    
-                    quizResults.push(newResult);
-                    
-                    // حفظ في localStorage
-                    localStorage.setItem("quizResults", JSON.stringify(quizResults));
-                    console.log("✅ تم حفظ نتيجة الاختبار لـ " + courseName + ": " + currentScore + "/" + totalQuestions);
-                }
-            });
-        })();
-        var finishBtn = document.getElementById("finishCourseBtn");
-if (finishBtn) {
-    finishBtn.addEventListener("click", function(e) {
-        var course = sessionStorage.getItem("courseName") || "الدورة";
-        var score = sessionStorage.getItem("currentQuizScore") || "0";
-        var total = sessionStorage.getItem("quizTotalQuestions") || "1";
-        sessionStorage.setItem("completedCourse", course);
-        sessionStorage.setItem("finalScore", score + "/" + total);
-    });
-}
-    </script>
 </body>
 </html>
