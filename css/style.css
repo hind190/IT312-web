@@ -3276,6 +3276,12 @@ h3::after {
     box-shadow: 0 8px 18px rgba(231,76,60,0.3);
 }
 
+/* ✅ أضف هذا القسم الجديد ✅ */
+.fav.active {
+    color: #e74c3c !important;  /* نفس لون hover */
+    background: white;          /* اختياري: يعطي نفس خلفية hover */
+}
+
 /* FILTER LOGIC */
 .recipe-card {
     display: none;
@@ -3397,6 +3403,14 @@ h3::after {
     transform: scale(1.15);
     background: white;
     box-shadow: 0 8px 18px rgba(231,76,60,0.3);
+}
+
+.fav-icon.active {
+    color: #ff4757;
+}
+
+.fav-icon.active:hover {
+    color: #e74c3c;
 }
 
 .share-icon:hover {
@@ -3540,7 +3554,7 @@ h3::after {
 .ingredients-list input:checked + label::before {
     background: #4f6357;
     border-color: #4f6357;
-content: "\2713" !important;
+    content: "\2713" !important;
     color: white;
     font-size: 16px;
     font-weight: bold;
@@ -6688,5 +6702,787 @@ content: "\2713" !important;
     .dropdown-content::-webkit-scrollbar-thumb {
         background: #8ea79a;
         border-radius: 10px;
+    }
+}
+
+/* ============================================ */
+/* تحسينات الجوال لصفحات الوصفات، التفاصيل، الكويزات، والنتيجة */
+/* ============================================ */
+
+/* للشاشات الصغيرة (عرض أقل من 768px) */
+@media (max-width: 768px) {
+    /* ----- صفحة الوصفات (recipes) ----- */
+    .recipes {
+        grid-template-columns: 1fr !important;  /* عمود واحد */
+        gap: 20px !important;
+        padding: 0 10px;
+    }
+    
+    .recipe-card {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 95%;
+        border-radius: 20px;
+    }
+    
+    .recipe-card img {
+        height: 180px;
+        object-fit: cover;
+    }
+    
+    .recipe-card h4 {
+        font-size: 18px;
+        margin: 12px 10px 5px;
+    }
+    
+    .recipe-card p {
+        font-size: 14px;
+        padding: 0 10px 5px;
+        max-height: 4em;
+    }
+    
+    .recipe-card button {
+        padding: 10px;
+        font-size: 14px;
+        width: calc(100% - 20px);
+        margin: 0 10px 15px;
+    }
+    
+    /* تصفية الفئات */
+    .filters {
+        gap: 8px;
+        margin: 15px 0;
+    }
+    .filters label {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    
+    /* ----- صفحة تفاصيل الوصفة (recipe-details) ----- */
+    .recipe-detail {
+        padding: 0 15px;
+        margin: 20px auto;
+    }
+    
+    .recipe-title {
+        font-size: 26px !important;
+    }
+    
+    .detail-image img {
+        height: 220px !important;
+    }
+    
+    .difficulty-badge {
+        font-size: 12px;
+        padding: 4px 12px;
+        bottom: 10px;
+        left: 10px;
+    }
+    
+    .action-buttons {
+        top: 10px;
+        left: 10px;
+        gap: 8px;
+    }
+    
+    .fav-icon, .share-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+    
+    .recipe-description {
+        font-size: 15px;
+        padding: 15px 20px;
+        margin-bottom: 25px;
+    }
+    
+    .two-columns {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+    
+    .ingredients-section,
+    .method-section,
+    .nutrition-section {
+        padding: 15px 20px;
+    }
+    
+    .ingredients-section h3,
+    .method-section h3,
+    .nutrition-section h3 {
+        font-size: 22px;
+    }
+    
+    .ingredients-list label {
+        flex-wrap: wrap;
+        padding: 10px 0;
+    }
+    
+    .ingredients-list .qty {
+        margin-right: 0;
+        margin-top: 5px;
+    }
+    
+    .method-steps li {
+        font-size: 15px;
+        padding-right: 35px;
+        margin-bottom: 15px;
+    }
+    
+    .method-steps li::before {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+        line-height: 28px;
+    }
+    
+    .nutrition-cards {
+        gap: 15px;
+    }
+    
+    .nutrient-card {
+        min-width: 100px;
+        padding: 12px;
+    }
+    
+    .nutrient-value {
+        font-size: 24px;
+    }
+    
+    .recipe-quick-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 15px;
+    }
+    
+    .info-item {
+        font-size: 14px;
+    }
+    
+    /* ----- صفحة الكويز (quiz) ----- */
+    .quiz-page {
+        padding: 15px;
+    }
+    
+    .quiz-container {
+        padding: 20px 15px;
+    }
+    
+    .quiz-title {
+        font-size: 22px;
+    }
+    
+    .question-card {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .q-num {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+    
+    .q-text {
+        font-size: 16px;
+    }
+    
+    .options-list {
+        padding-right: 0;  /* إزالة المسافة على الجوال */
+        margin-top: 10px;
+    }
+    
+    .options-list label {
+        font-size: 14px;
+        padding: 6px 10px;
+        gap: 8px;
+    }
+    
+    .options-list input[type="radio"] {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .quiz-submit-btn {
+        padding: 10px 25px;
+        font-size: 16px;
+    }
+    
+    /* ----- صفحة النتيجة (result) ----- */
+    .result-page {
+        padding: 30px 15px;
+    }
+    
+    .card {
+        width: 95%;
+        padding: 25px 20px;
+        margin: 0 auto;
+    }
+    
+    .card h1 {
+        font-size: 26px;
+    }
+    
+    .score-box {
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .score-box h2 {
+        font-size: 28px;
+    }
+    
+    .top-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .top-buttons .btn {
+        width: 100% !important;
+        justify-content: center;
+    }
+    
+    .bottom-button .btn {
+        width: 100% !important;
+        margin: 0 auto;
+    }
+    
+    .btn {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+    
+    /* ----- أزرار التنقل العامة ----- */
+    .my-nav {
+        flex-direction: column;
+        gap: 12px;
+        padding: 10px;
+    }
+    
+    .my-nav-list {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .my-search-input {
+        width: 90%;
+        margin: 5px auto;
+    }
+    
+    /* تحسين عرض الجداول */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+/* للشاشات الصغيرة جدًا (أقل من 480px) */
+@media (max-width: 480px) {
+    .recipe-title {
+        font-size: 22px !important;
+    }
+    
+    .detail-image img {
+        height: 180px !important;
+    }
+    
+    .ingredients-section h3,
+    .method-section h3,
+    .nutrition-section h3 {
+        font-size: 20px;
+    }
+    
+    .nutrient-card {
+        min-width: 80px;
+    }
+    
+    .quiz-title {
+        font-size: 20px;
+    }
+    
+    .q-text {
+        font-size: 14px;
+    }
+    
+    .options-list label {
+        font-size: 13px;
+    }
+    
+    .card h1 {
+        font-size: 22px;
+    }
+    
+    .score-box h2 {
+        font-size: 24px;
+    }
+}
+
+
+
+/* تمييز الحقول الفارغة */
+.error-border {
+    border: 2px solid #e74c3c !important;
+    background-color: #ffe5e5;
+}
+
+/* نجوم التقييم */
+.my-rating-stars .my-star {
+    cursor: pointer;
+    font-size: 30px;
+    color: #ddd;
+    transition: 0.2s;
+}
+/* ======================================== */
+/* تأثير Hover على بطاقات الدورس */
+/* ======================================== */
+
+.my-course-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.course-hover-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(79, 99, 87, 0.95);
+    color: white;
+    padding: 10px;
+    transition: 0.3s ease;
+    text-align: center;
+    z-index: 10;
+    backdrop-filter: blur(4px);
+    border-radius: 25px 25px 0 0;
+    transform: translateY(-100%);
+}
+
+.course-hover-info p {
+    margin: 5px 0;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.course-hover-info i {
+    color: #ffb347;
+    font-size: 13px;
+}
+
+.my-course-card:hover .course-hover-info {
+    transform: translateY(0);
+}/* زر المزيد */
+#moreLessonsBtn {
+    cursor: pointer;
+    transition: 0.3s;
+}
+#moreLessonsBtn:hover {
+    background-color: #4f6357;
+    color: white;
+    transform: translateY(-2px);
+}
+/* اسم الدورة */
+.course-name-container {
+    background: #ffffff;
+    border-radius: 30px;
+    padding: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #4f6357;
+    border: 1px solid #e0e8e3;
+}
+.course-name-container i {
+    color: #8ea79a;
+    font-size: 20px;
+}
+/* صفحة إتمام الدورة - تصميم عمودي */
+.completion-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 40px 20px;
+}
+.completion-card {
+    background: white;
+    border-radius: 48px;
+    max-width: 550px;
+    width: 100%;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eef3f0;
+}
+.icon-circle {
+    background: #eef6f2;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+.icon-circle i {
+    font-size: 48px;
+    color: #4f6357;
+}
+.completion-card h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #2c3e3a;
+    margin-bottom: 10px;
+}
+.completion-message {
+    font-size: 18px;
+    color: #6f8f82;
+    margin-bottom: 20px;
+}
+.course-name-box {
+    background: #f0f7f3;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 20px;
+    border-radius: 40px;
+    margin-bottom: 25px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #4f6357;
+}
+.congrats-text {
+    background: #f9fbfa;
+    border-radius: 28px;
+    padding: 18px;
+    margin-bottom: 25px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #5e6f69;
+}
+.best-score-box {
+    background: #fff8e7;
+    border-radius: 30px;
+    padding: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    border: 1px solid #ffebc2;
+}
+.best-score-box i {
+    font-size: 46px;
+    color: #f4c542;
+}
+.best-score-box span {
+    font-size: 16px;
+    color: #5e6f69;
+    display: block;
+}
+.best-score-box strong {
+    font-size: 34px;
+    font-weight: 800;
+    color: #4f6357;
+}
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+.btn {
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.2s;
+}
+.btn-primary {
+    background: #4f6357;
+    color: white;
+}
+.btn-primary:hover {
+    background: #6f8f82;
+}
+.btn-secondary {
+    background: #f0f7f3;
+    color: #4f6357;
+    border: 1px solid #dfeae3;
+}
+.btn-secondary:hover {
+    background: #e3ede7;
+}
+@media (max-width: 550px) {
+    .completion-card { padding: 25px; }
+    .action-buttons { flex-direction: column; }
+    .best-score-box { flex-direction: column; }
+}
+/* ========== صفحة تقييم المعلمين ========== */
+/* تمييز الحقول الفارغة */
+.error-border {
+    border: 2px solid #e74c3c !important;
+    background-color: #ffe5e5;
+}
+
+/* نجوم التقييم */
+.my-rating-stars {
+    direction: ltr;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+.my-star {
+    font-size: 35px;
+    cursor: pointer;
+    color: #ddd;
+    transition: 0.2s;
+}
+.my-star:hover,
+.my-star.active {
+    color: #ffb347;
+}
+.rating-error {
+    border: 2px solid #e74c3c;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+/* حقل التعليق */
+.my-evaluation-form textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 20px;
+    border: 2px solid #dfeae3;
+    font-family: 'Tajawal', sans-serif;
+    resize: vertical;
+    margin: 15px 0;
+}
+
+/* زر الإرسال */
+.my-submit-btn {
+    background: #4f6357;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+}
+.my-submit-btn:hover {
+    background: #6f8f82;
+    transform: translateY(-2px);
+}
+/* ========================================== */
+/* تنسيق الجوال لجميع صفحات الموقع (شاشات أقل من 768px) */
+/* ========================================== */
+@media (max-width: 768px) {
+    /* الهيدر */
+    .my-header, header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+        text-align: center;
+    }
+    .my-logo, .logo {
+        justify-content: center;
+    }
+    .my-user, .user {
+        flex-direction: column;
+        width: 100%;
+    }
+    .user-box {
+        width: 100%;
+        align-items: center;
+    }
+    
+    /* النافبار */
+    .my-nav, nav {
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px 20px;
+    }
+    .my-nav-list, nav ul {
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .my-search-input, nav input {
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+    
+    /* Breadcrumbs (إذا كان موجوداً) */
+    .my-breadcrumbs, .breadcrumbs {
+        margin: 15px 20px;
+        font-size: 12px;
+        padding: 6px 15px;
+        flex-wrap: wrap;
+    }
+    
+    /* شبكات الدورات والوصفات */
+    .my-courses-grid, .courses-grid, .my-recipes-grid, .recipes-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+    
+    /* بطاقات الدورات والوصفات */
+    .my-course-card, .course-card, .my-recipe-card, .recipe-card {
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    /* أزرار الفلاتر */
+    .my-filter-list, .filter-list {
+        gap: 10px;
+        justify-content: center;
+    }
+    .my-filter-btn, .filter-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    
+    /* محتوى صفحة الدرس */
+    .my-lesson-page, .lesson-page {
+        padding: 20px;
+    }
+    .my-lesson-hero, .lesson-hero {
+        height: 220px;
+    }
+    .my-hero-text h1, .hero-text h1 {
+        font-size: 28px;
+    }
+    .my-lesson-page h2, .lesson-page h2 {
+        font-size: 22px;
+    }
+    /* الجداول في الدروس */
+    .my-lesson-page table, .lesson-page table {
+        font-size: 13px;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    .my-lesson-page th, .my-lesson-page td,
+    .lesson-page th, .lesson-page td {
+        padding: 8px 10px;
+    }
+    
+    /* صفحة إتمام الدورة */
+    .my-completion-page, .completion-page {
+        padding: 30px 20px;
+        margin: 30px 20px;
+    }
+    .my-completion-title, .completion-title {
+        font-size: 28px;
+    }
+    .my-completion-subtitle, .completion-subtitle {
+        font-size: 20px;
+    }
+    .my-stat-score, .stat-score {
+        font-size: 22px;
+    }
+    .my-completion-actions, .completion-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .my-btn-primary, .btn-primary {
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* صفحة الشهادة */
+    .my-certificate, .certificate {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+    .my-certificate-academy, .certificate-academy {
+        font-size: 22px;
+    }
+    .my-certificate-title, .certificate-title {
+        font-size: 24px;
+    }
+    .my-student-name, .student-name {
+        font-size: 22px;
+    }
+    .my-certificate-footer, .certificate-footer {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .my-print-btn, .print-btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* صفحة تقييم المعلمين */
+    .my-evaluation-page, .evaluation-page {
+        padding: 20px;
+    }
+    .my-evaluation-header h1 {
+        font-size: 28px;
+    }
+    .my-evaluation-form, .evaluation-form {
+        padding: 20px;
+    }
+    .my-star, .star {
+        font-size: 28px;
+    }
+    .my-submit-btn, .submit-btn {
+        width: 100%;
+    }
+    .my-review-header, .review-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    /* الفوتر */
+    .my-footer-container, .footer-container {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    .my-footer-left, .my-footer-right,
+    .footer-left, .footer-right {
+        text-align: center;
+    }
+    .my-footer-divider, .footer-divider {
+        width: 80%;
+        height: 1px;
+        background: #ccc;
+        margin: 10px auto;
+    }
+    .my-social-icons, .social-icons {
+        justify-content: center;
+    }
+    
+    /* أي أزرار أو روابط عامة */
+    .btn, .my-nav-btn, .nav-btn {
+        width: 100%;
+        max-width: 250px;
+        margin: 5px auto;
+        text-align: center;
+    }
+    .my-lesson-nav, .lesson-nav {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
     }
 }
