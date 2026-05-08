@@ -52,7 +52,54 @@
             width: 100%;
         }
     }
+.my-course-card {
+    position: relative;
+    overflow: hidden;
+}
 
+.course-hover-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(79, 99, 87, 0.95);
+    color: white;
+    padding: 10px;
+    transition: 0.3s ease;
+    text-align: center;
+    z-index: 10;
+    backdrop-filter: blur(4px);
+    border-radius: 25px 25px 0 0;
+    transform: translateY(-100%);
+}
+
+.course-hover-info p {
+    margin: 5px 0;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.course-hover-info i {
+    color: #ffb347;
+    font-size: 13px;
+}
+
+.my-course-card:hover .course-hover-info {
+    transform: translateY(0);
+}
+/* زر المزيد */
+#moreLessonsBtn {
+    cursor: pointer;
+    transition: 0.3s;
+}
+#moreLessonsBtn:hover {
+    background-color: #4f6357;
+    color: white;
+    transform: translateY(-2px);
+}
     </style>
 </head>
 <body>
