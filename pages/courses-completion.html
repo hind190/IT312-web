@@ -18,7 +18,6 @@
             color: #4f6357;
             margin: 10px auto 15px;
         }
-
         /* تحسينات الجوال */
         @media (max-width: 768px) {
             .my-completion-page {
@@ -65,7 +64,6 @@
                 text-align: center;
             }
         }
-
         @media (max-width: 480px) {
             .my-completion-title {
                 font-size: 24px !important;
@@ -124,7 +122,7 @@
 <div class="my-breadcrumbs">
     <a href="../index.html">الرئيسية</a>
     <a href="courses.html">الدورات</a>
-    <span id="breadcrumbCourseName">الدورة</span>
+    <span id="breadcrumbCourseName"></span>
     <span>انتهاء الدورة</span>
 </div>
 
@@ -144,8 +142,8 @@
 
     <div class="my-completion-stats" style="background: #f9f9f9; padding: 20px; border-radius: 15px; margin: 30px 0;">
         <p class="my-stat-item"><i class="fas fa-trophy"></i> تم اكتمال الدورة بنجاح</p>
-        <p class="my-stat-item"><i class="fas fa-check"></i> تم اجتياز الاختبار</p>
-        <p class="my-stat-score" style="font-weight: bold;">نتيجتك: <span id="bestScoreDisplay"></span></p>
+        <p class="my-stat-item"><i class="fas fa-check-circle"></i> تم اجتياز الاختبار</p>
+        <p class="my-stat-score" style="font-weight: bold;">🏆 أفضل نتيجة حققتها في هذه الدورة: <span id="bestScoreDisplay"></span></p>
     </div>
 
     <div class="my-completion-actions" style="margin: 20px 0;">
@@ -154,8 +152,8 @@
         </a>
     </div>
     <div class="my-teacher-rating" style="margin: 20px 0;">
-        <a href="teacher_evaluation.html" class="my-rating-btn" style="background: #8ea79a; color: white; padding: 12px 30px; border-radius: 40px; text-decoration: none; display: inline-block;">
-            قيم المعلم
+        <a href="teacher_evaluation.html" class="my-rating-btn" style="background: #e67e22; color: white; padding: 12px 30px; border-radius: 40px; text-decoration: none; display: inline-block;">
+            <i class="fas fa-star"></i> قيم المعلم
         </a>
     </div>
 </main>
@@ -185,71 +183,63 @@
 
 <script>
     (function() {
-        // 1. الحصول على اسم الدورة من sessionStorage
-        var courseName = sessionStorage.getItem("courseName") || "الدورة";
-        
-        // 2. عرض اسم الدورة في المكانين المطلوبين
-        var courseNameDisplay = document.getElementById("courseNameDisplay");
-        if (courseNameDisplay) {
-            courseNameDisplay.innerText = courseName;
+        // 1. قراءة اسم الدورة من sessionStorage (يتم تعيينه في صفحة الكويز)
+        let courseName = sessionStorage.getItem("courseName");
+        if (!courseName || courseName === "null" || courseName === "undefined") {
+            // محاولة استخراج من referrer أو استخدام افتراضي
+            courseName = "الدورة";
         }
-        var breadcrumbSpan = document.getElementById("breadcrumbCourseName");
-        if (breadcrumbSpan) {
-            breadcrumbSpan.innerText = courseName;
-        }
+        // عرض الاسم في الشارة وفتات الخبز
+        const nameSpan = document.getElementById("courseNameDisplay");
+        const breadSpan = document.getElementById("breadcrumbCourseName");
+        if (nameSpan) nameSpan.innerText = courseName;
+        if (breadSpan) breadSpan.innerText = courseName;
 
-        // 3. جلب أفضل نتيجة لهذه الدورة من localStorage
-        var bestScoreText = "لا توجد نتائج محفوظة";
-        var savedResults = localStorage.getItem("quizResults");
+        // 2. جلب أفضل نتيجة من localStorage (quizResults)
+        let bestText = "لا توجد نتائج محفوظة";
+        const savedResults = localStorage.getItem("quizResults");
         if (savedResults) {
             try {
-                var quizResults = JSON.parse(savedResults);
-                // تصفية النتائج حسب اسم الدورة
-                var courseResults = quizResults.filter(function(item) {
-                    return item.courseName === courseName;
-                });
+                const allResults = JSON.parse(savedResults);
+                // تصفية النتائج التي تحمل نفس اسم الدورة
+                const courseResults = allResults.filter(item => item.courseName === courseName);
                 if (courseResults.length > 0) {
-                    // إيجاد أعلى درجة (score)
-                    var bestScoreObj = courseResults.reduce(function(prev, current) {
-                        return (prev.score > current.score) ? prev : current;
-                    });
-                    bestScoreText = bestScoreObj.score + " / " + bestScoreObj.totalQuestions;
+                    // إيجاد أعلى درجة
+                    const best = courseResults.reduce((max, cur) => cur.score > max.score ? cur : max);
+                    bestText = `${best.score} / ${best.totalQuestions}`;
                 } else {
-                    // إذا لم توجد نتائج لهذه الدورة، نعرض النتيجة الحالية كحل احتياطي
-                    var currentScore = sessionStorage.getItem("currentQuizScore");
-                    var totalQuestions = sessionStorage.getItem("quizTotalQuestions");
-                    if (currentScore && totalQuestions) {
-                        bestScoreText = currentScore + " / " + totalQuestions + " (النتيجة الحالية)";
+                    // بديل: استخدام النتيجة الحالية من sessionStorage
+                    const current = sessionStorage.getItem("currentQuizScore");
+                    const total = sessionStorage.getItem("quizTotalQuestions");
+                    if (current && total) {
+                        bestText = `${current} / ${total} (النتيجة الحالية)`;
                     }
                 }
             } catch(e) {
                 console.error("خطأ في قراءة النتائج:", e);
             }
         } else {
-            // في حالة عدم وجود أي نتائج مخزنة، نعرض النتيجة الحالية
-            var currentScore = sessionStorage.getItem("currentQuizScore");
-            var totalQuestions = sessionStorage.getItem("quizTotalQuestions");
-            if (currentScore && totalQuestions) {
-                bestScoreText = currentScore + " / " + totalQuestions + " (النتيجة الحالية)";
+            // في حالة عدم وجود أي نتائج مخزنة، نعرض النتيجة الحالية إن وجدت
+            const current = sessionStorage.getItem("currentQuizScore");
+            const total = sessionStorage.getItem("quizTotalQuestions");
+            if (current && total) {
+                bestText = `${current} / ${total} (النتيجة الحالية)`;
             }
         }
-        
-        var bestScoreSpan = document.getElementById("bestScoreDisplay");
-        if (bestScoreSpan) {
-            bestScoreSpan.innerText = bestScoreText;
-        }
+        const bestSpan = document.getElementById("bestScoreDisplay");
+        if (bestSpan) bestSpan.innerText = bestText;
 
-        // 4. زر تحميل الشهادة (نفس الكود السابق)
-        var certBtn = document.getElementById("certificateBtn");
+        // 3. زر الشهادة
+        const certBtn = document.getElementById("certificateBtn");
         if (certBtn) {
             certBtn.addEventListener("click", function(e) {
                 e.preventDefault();
-                var studentName = prompt("📝 أدخل اسمك (كما تريد ظهوره في الشهادة):", "");
-                if (studentName !== null && studentName !== "") {
-                    localStorage.setItem("studentName", studentName);
+                let studentName = prompt("📝 أدخل اسمك (كما تريد ظهوره في الشهادة):", "");
+                if (studentName && studentName.trim() !== "") {
+                    localStorage.setItem("studentName", studentName.trim());
                     window.location.href = "certificate.html";
                 } else if (studentName === null) {
-                    alert("❌ ألغيت العملية. لا يمكن تحميل الشهادة.");
+                    alert("❌ ألغيت العملية.");
                 } else {
                     alert("❌ الاسم لا يمكن أن يكون فارغاً!");
                 }
