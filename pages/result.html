@@ -2,10 +2,43 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>نتيجة الاختبار | رشة</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        /* تحسينات الجوال فقط - بدون تغيير أي تنسيقات أصلية */
+        @media (max-width: 768px) {
+            .result-page .card {
+                padding: 20px 15px !important;
+                margin: 15px !important;
+            }
+            .result-page h1 {
+                font-size: 28px !important;
+            }
+            .score-box h2 {
+                font-size: 28px !important;
+            }
+            .buttons {
+                flex-direction: column !important;
+                gap: 10px !important;
+            }
+            .top-buttons {
+                flex-direction: column !important;
+                gap: 10px !important;
+                width: 100% !important;
+            }
+            .btn {
+                width: 100% !important;
+                text-align: center !important;
+            }
+            .btn.finish {
+                width: 100% !important;
+                margin-top: 10px !important;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -73,7 +106,6 @@
                         <i class="fas fa-redo-alt"></i>
                         إعادة الاختبار
                     </a>
-                    <!-- ✅ تم إضافة id هنا -->
                     <a id="backToLessonBtn" href="#" class="btn light">
                         <i class="fas fa-arrow-left"></i>
                         العودة للدرس
@@ -98,7 +130,6 @@
             }
 
             onReady(function() {
-                // عرض الدرجات
                 var currentScoreEl = document.getElementById("currentScore");
                 var bestScoreEl = document.getElementById("bestScore");
                 if (currentScoreEl && bestScoreEl) {
@@ -115,29 +146,23 @@
                     }
                 }
 
-                // 🔁 إعادة الاختبار
                 var retakeBtn = document.getElementById("retakeQuizBtn");
                 if (retakeBtn) {
                     var originalUrl = sessionStorage.getItem("currentQuizUrl");
                     retakeBtn.href = originalUrl ? originalUrl : "../pages/quiz/quiz-basics.html";
                 }
 
-                // 🔁 العودة للدرس (تمت إضافة هذا القسم)
                 var backBtn = document.getElementById("backToLessonBtn");
                 if (backBtn) {
                     var lessonUrl = sessionStorage.getItem("lessonPageUrl");
                     backBtn.href = lessonUrl ? lessonUrl : "../pages/lessons/lesson1_page1.html";
                 }
 
-                // ✅ إضافة حفظ نتيجة الاختبار في localStorage (لظهورها في جدول دوراتي)
-                // هذه الإضافة تأخذ اسم الدورة من sessionStorage (المرسلة من صفحة الكويز)
-                // وتحفظ النتيجة في localStorage تحت مفتاح quizResults
                 var courseName = sessionStorage.getItem("courseName");
                 var currentScore = sessionStorage.getItem("currentQuizScore");
                 var totalQuestions = sessionStorage.getItem("quizTotalQuestions");
                 
                 if (courseName && currentScore && totalQuestions) {
-                    // جلب النتائج السابقة من localStorage
                     var quizResults = [];
                     var savedResults = localStorage.getItem("quizResults");
                     if (savedResults) {
@@ -148,7 +173,6 @@
                         }
                     }
                     
-                    // إضافة النتيجة الجديدة
                     var newResult = {
                         courseName: courseName,
                         score: parseInt(currentScore),
@@ -158,23 +182,21 @@
                     };
                     
                     quizResults.push(newResult);
-                    
-                    // حفظ في localStorage
                     localStorage.setItem("quizResults", JSON.stringify(quizResults));
                     console.log("✅ تم حفظ نتيجة الاختبار لـ " + courseName + ": " + currentScore + "/" + totalQuestions);
                 }
             });
         })();
         var finishBtn = document.getElementById("finishCourseBtn");
-if (finishBtn) {
-    finishBtn.addEventListener("click", function(e) {
-        var course = sessionStorage.getItem("courseName") || "الدورة";
-        var score = sessionStorage.getItem("currentQuizScore") || "0";
-        var total = sessionStorage.getItem("quizTotalQuestions") || "1";
-        sessionStorage.setItem("completedCourse", course);
-        sessionStorage.setItem("finalScore", score + "/" + total);
-    });
-}
+        if (finishBtn) {
+            finishBtn.addEventListener("click", function(e) {
+                var course = sessionStorage.getItem("courseName") || "الدورة";
+                var score = sessionStorage.getItem("currentQuizScore") || "0";
+                var total = sessionStorage.getItem("quizTotalQuestions") || "1";
+                sessionStorage.setItem("completedCourse", course);
+                sessionStorage.setItem("finalScore", score + "/" + total);
+            });
+        }
     </script>
 </body>
 </html>
