@@ -147,7 +147,7 @@
     <div class="my-completion-stats" style="background: #f9f9f9; padding: 20px; border-radius: 15px; margin: 30px 0;">
         <p class="my-stat-item"><i class="fas fa-trophy"></i> تم اكتمال الدورة بنجاح</p>
         <p class="my-stat-item"><i class="fas fa-check"></i> تم اجتياز الاختبار</p>
-        <p class="my-stat-score" style="font-weight: bold;">نتيجتك: <span id="scoreDisplay"></span></p>
+        <p class="my-stat-score" style="font-weight: bold;">نتيجتك: <span id="bestScoreDisplay"></span></p>
     </div>
 
     <div class="my-completion-actions" style="margin: 20px 0;">
@@ -156,7 +156,7 @@
         </a>
     </div>
     <div class="my-teacher-rating" style="margin: 20px 0;">
-        <a href="teacher_evaluation.html" class="my-rating-btn" style="background: #8ea79a; color: white; padding: 12px 30px; border-radius: 40px; text-decoration: none; display: inline-block;">
+        <a href="teacher_evaluation.html" class="my-rating-btn" style="background: #4f6357; color: white; padding: 12px 30px; border-radius: 40px; text-decoration: none; display: inline-block;">
             قيم المعلم
         </a>
     </div>
@@ -186,31 +186,51 @@
 </footer>
 
 <script>
-    // عرض اسم الدورة والنتيجة
-    var courseNameElem = document.getElementById("courseNameDisplay");
-    var scoreElem = document.getElementById("scoreDisplay");
-    if (courseNameElem) {
-        courseNameElem.innerText = sessionStorage.getItem("courseName") || "الدورة";
-    }
-    if (scoreElem) {
-        scoreElem.innerText = (sessionStorage.getItem("currentQuizScore") || "0") + " / " + (sessionStorage.getItem("quizTotalQuestions") || "1");
-    }
+    (function() {
+        // الحصول على اسم الدورة (يفضل من sessionStorage إذا كان موجوداً)
+        let courseName = sessionStorage.getItem("courseName");
+        if (!courseName) {
+            // محاولة استخراجه من آخر نتيجة في localStorage
+            let saved = localStorage.getItem("quizResults");
+            if (saved) {
+                try {
+                    let all = JSON.parse(saved);
+                    if (all.length > 0) {
+                        courseName = all[all.length - 1].courseName;
+                    }
+                } catch(e) {}
+            }
+        }
+        if (!courseName) courseName = "الدورة";
+        document.getElementById("courseNameDisplay").innerText = courseName;
 
-    var certBtn = document.getElementById("certificateBtn");
-    if (certBtn) {
-        certBtn.addEventListener("click", function(e) {
+        // عرض أفضل نتيجة لهذه الدورة من localStorage
+        let bestText = "لا توجد نتائج";
+        let stored = localStorage.getItem("quizResults");
+        if (stored) {
+            try {
+                let results = JSON.parse(stored);
+                let courseResults = results.filter(item => item.courseName === courseName);
+                if (courseResults.length > 0) {
+                    let bestObj = courseResults.reduce((max, cur) => cur.score > max.score ? cur : max);
+                    bestText = `${bestObj.score} / ${bestObj.totalQuestions}`;
+                }
+            } catch(e) {}
+        }
+        document.getElementById("bestScoreDisplay").innerText = bestText;
+
+        // زر الشهادة
+        document.getElementById("certificateBtn").addEventListener("click", function(e) {
             e.preventDefault();
-            var studentName = prompt("📝 أدخل اسمك (كما تريد ظهوره في الشهادة):", "");
-            if (studentName !== null && studentName !== "") {
-                localStorage.setItem("studentName", studentName);
+            let name = prompt("📝 أدخل اسمك (كما تريد ظهوره في الشهادة):", "");
+            if (name && name.trim() !== "") {
+                localStorage.setItem("studentName", name.trim());
                 window.location.href = "certificate.html";
-            } else if (studentName === null) {
-                alert("❌ ألغيت العملية. لا يمكن تحميل الشهادة.");
-            } else {
+            } else if (name !== null) {
                 alert("❌ الاسم لا يمكن أن يكون فارغاً!");
             }
         });
-    }
+    })();
 </script>
 
 </body>
