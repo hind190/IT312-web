@@ -115,46 +115,18 @@
                     }
                 }
 
-var backBtn = document.getElementById("backToLessonBtn");
-if (backBtn) {
-    // 1. خريطة تربط اسم ملف الكويز (بدون المسار) برقم الدرس
-    var quizToLesson = {
-        "quiz-basics.html": 1,
-        "quiz-cake.html": 2,
-        "quiz-coffee.html": 3,
-        "quiz-healthy.html": 4,
-        "quiz-pie.html": 5,
-        "quiz-tortilla.html": 6
-    };
+                // 🔁 إعادة الاختبار
+                var retakeBtn = document.getElementById("retakeQuizBtn");
+                if (retakeBtn) {
+                    var originalUrl = sessionStorage.getItem("currentQuizUrl");
+                    retakeBtn.href = originalUrl ? originalUrl : "../pages/quiz/quiz-basics.html";
+                }
 
-    var referrer = document.referrer;  // رابط صفحة الكويز
-    var lessonNumber = null;
-
-    if (referrer) {
-        // استخراج اسم ملف الكويز من الرابط (مثل quiz-basics.html)
-        var fileName = referrer.split('/').pop();
-        if (quizToLesson[fileName]) {
-            lessonNumber = quizToLesson[fileName];
-        }
-    }
-
-    // احتياطي: إذا لم نجد من referrer، نستخدم sessionStorage
-    if (!lessonNumber) {
-        lessonNumber = sessionStorage.getItem("currentLessonNumber");
-    }
-
-    // افتراضي: الدرس 1
-    if (!lessonNumber || lessonNumber < 1 || lessonNumber > 6) {
-        lessonNumber = 1;
-    }
-
-    // بناء مسار العودة إلى الدرس (الصفحة الأولى من ذلك الدرس)
-    var lessonPath = "../pages/lessons/lesson" + lessonNumber + "_page1.html";
-    backBtn.href = lessonPath;
-
-    // تخزين للاستخدام المستقبلي
-    sessionStorage.setItem("currentLessonNumber", lessonNumber);
-}
+                // 🔁 العودة للدرس (تمت إضافة هذا القسم)
+                var backBtn = document.getElementById("backToLessonBtn");
+                if (backBtn) {
+                    var lessonUrl = sessionStorage.getItem("lessonPageUrl");
+                    backBtn.href = lessonUrl ? lessonUrl : "../pages/lessons/lesson1_page1.html";
                 }
 
                 // ✅ إضافة حفظ نتيجة الاختبار في localStorage (لظهورها في جدول دوراتي)
