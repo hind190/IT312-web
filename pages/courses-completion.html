@@ -124,9 +124,7 @@
 <div class="my-breadcrumbs">
     <a href="../index.html">الرئيسية</a>
     <a href="courses.html">الدورات</a>
-    <a href="courses.html#desserts">أساسيات الطبخ</a>
-    <a href="quiz/quiz-cake.html">اختبار</a>
-    <a href="result.html">النتيجة</a>
+    <span id="breadcrumbCourseName">الدورة</span>
     <span>انتهاء الدورة</span>
 </div>
 
@@ -147,7 +145,7 @@
     <div class="my-completion-stats" style="background: #f9f9f9; padding: 20px; border-radius: 15px; margin: 30px 0;">
         <p class="my-stat-item"><i class="fas fa-trophy"></i> تم اكتمال الدورة بنجاح</p>
         <p class="my-stat-item"><i class="fas fa-check"></i> تم اجتياز الاختبار</p>
-        <p class="my-stat-score" style="font-weight: bold;">نتيجتك: <span id="scoreDisplay"></span></p>
+        <p class="my-stat-score" style="font-weight: bold;">🏆 أفضل نتيجة حققتها في هذه الدورة: <span id="bestScoreDisplay"></span></p>
     </div>
 
     <div class="my-completion-actions" style="margin: 20px 0;">
@@ -186,31 +184,78 @@
 </footer>
 
 <script>
-    // عرض اسم الدورة والنتيجة
-    var courseNameElem = document.getElementById("courseNameDisplay");
-    var scoreElem = document.getElementById("scoreDisplay");
-    if (courseNameElem) {
-        courseNameElem.innerText = sessionStorage.getItem("courseName") || "الدورة";
-    }
-    if (scoreElem) {
-        scoreElem.innerText = (sessionStorage.getItem("currentQuizScore") || "0") + " / " + (sessionStorage.getItem("quizTotalQuestions") || "1");
-    }
+    (function() {
+        // 1. الحصول على اسم الدورة من sessionStorage
+        var courseName = sessionStorage.getItem("courseName") || "الدورة";
+        
+        // 2. عرض اسم الدورة في المكانين المطلوبين
+        var courseNameDisplay = document.getElementById("courseNameDisplay");
+        if (courseNameDisplay) {
+            courseNameDisplay.innerText = courseName;
+        }
+        var breadcrumbSpan = document.getElementById("breadcrumbCourseName");
+        if (breadcrumbSpan) {
+            breadcrumbSpan.innerText = courseName;
+        }
 
-    var certBtn = document.getElementById("certificateBtn");
-    if (certBtn) {
-        certBtn.addEventListener("click", function(e) {
-            e.preventDefault();
-            var studentName = prompt("📝 أدخل اسمك (كما تريد ظهوره في الشهادة):", "");
-            if (studentName !== null && studentName !== "") {
-                localStorage.setItem("studentName", studentName);
-                window.location.href = "certificate.html";
-            } else if (studentName === null) {
-                alert("❌ ألغيت العملية. لا يمكن تحميل الشهادة.");
-            } else {
-                alert("❌ الاسم لا يمكن أن يكون فارغاً!");
+        // 3. جلب أفضل نتيجة لهذه الدورة من localStorage
+        var bestScoreText = "لا توجد نتائج محفوظة";
+        var savedResults = localStorage.getItem("quizResults");
+        if (savedResults) {
+            try {
+                var quizResults = JSON.parse(savedResults);
+                // تصفية النتائج حسب اسم الدورة
+                var courseResults = quizResults.filter(function(item) {
+                    return item.courseName === courseName;
+                });
+                if (courseResults.length > 0) {
+                    // إيجاد أعلى درجة (score)
+                    var bestScoreObj = courseResults.reduce(function(prev, current) {
+                        return (prev.score > current.score) ? prev : current;
+                    });
+                    bestScoreText = bestScoreObj.score + " / " + bestScoreObj.totalQuestions;
+                } else {
+                    // إذا لم توجد نتائج لهذه الدورة، نعرض النتيجة الحالية كحل احتياطي
+                    var currentScore = sessionStorage.getItem("currentQuizScore");
+                    var totalQuestions = sessionStorage.getItem("quizTotalQuestions");
+                    if (currentScore && totalQuestions) {
+                        bestScoreText = currentScore + " / " + totalQuestions + " (النتيجة الحالية)";
+                    }
+                }
+            } catch(e) {
+                console.error("خطأ في قراءة النتائج:", e);
             }
-        });
-    }
+        } else {
+            // في حالة عدم وجود أي نتائج مخزنة، نعرض النتيجة الحالية
+            var currentScore = sessionStorage.getItem("currentQuizScore");
+            var totalQuestions = sessionStorage.getItem("quizTotalQuestions");
+            if (currentScore && totalQuestions) {
+                bestScoreText = currentScore + " / " + totalQuestions + " (النتيجة الحالية)";
+            }
+        }
+        
+        var bestScoreSpan = document.getElementById("bestScoreDisplay");
+        if (bestScoreSpan) {
+            bestScoreSpan.innerText = bestScoreText;
+        }
+
+        // 4. زر تحميل الشهادة (نفس الكود السابق)
+        var certBtn = document.getElementById("certificateBtn");
+        if (certBtn) {
+            certBtn.addEventListener("click", function(e) {
+                e.preventDefault();
+                var studentName = prompt("📝 أدخل اسمك (كما تريد ظهوره في الشهادة):", "");
+                if (studentName !== null && studentName !== "") {
+                    localStorage.setItem("studentName", studentName);
+                    window.location.href = "certificate.html";
+                } else if (studentName === null) {
+                    alert("❌ ألغيت العملية. لا يمكن تحميل الشهادة.");
+                } else {
+                    alert("❌ الاسم لا يمكن أن يكون فارغاً!");
+                }
+            });
+        }
+    })();
 </script>
 
 </body>
