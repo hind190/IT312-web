@@ -518,14 +518,6 @@ body.dark-theme .student-reviews {
 }
 
 /* ===== فاصل الفوتر ===== */
-.footer-divider {
-    width: 2px;
-    min-height: 80px;
-    background: #8ea79a !important;
-    opacity: 1 !important;
-    margin: 0 30px;
-}
-
 body.dark-theme .footer-divider {
     background: #4f6357 !important;
 }
@@ -2681,10 +2673,12 @@ box-shadow: 0 0 0 3px rgba(79,99,87,0.1);
     color: #8ea79a;
 }
 
+/* تعريف واحد فقط للفاصل */
 .footer-divider {
     width: 1px;
     height: 100px;
     background: linear-gradient(to bottom, transparent, #ccc, transparent);
+    margin: 0 10px;
 }
 
 .social-icons {
@@ -2734,81 +2728,83 @@ box-shadow: 0 0 0 3px rgba(79,99,87,0.1);
         gap: 15px;
         padding: 15px 20px;
     }
-    
+
     .info-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .info-item.full-width {
         grid-column: span 1;
     }
-    
+
     .profile-images {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .dashboard-container {
         padding: 20px;
     }
-    
+
     .breadcrumbs {
         margin: 20px;
     }
-    
+
     .recipes-grid,
     .courses-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .footer-container {
         flex-direction: column;
         gap: 20px;
         text-align: center;
     }
-    
-    .footer-left, .footer-right {
+
+    .footer-left,
+    .footer-right {
         text-align: center;
     }
-    
+
+    /* الفاصل يصير خط أفقي رفيع في الجوال */
     .footer-divider {
-        width: 80%;
+        width: 60%;
         height: 1px;
         background: linear-gradient(to right, transparent, #ccc, transparent);
-        margin: 10px 0;
+        margin: 5px auto;
     }
-    
+
     .social-icons {
         justify-content: center;
     }
-    
+
     .chat-header {
         flex-direction: column;
         gap: 15px;
         text-align: center;
     }
-    
+
     .chat-teacher-info {
         flex-direction: column;
     }
-    
+
     .message-bubble {
         max-width: 85%;
     }
-    
+
     .chat-input-area {
         flex-wrap: wrap;
     }
-    
+
     .input-actions {
         order: 1;
     }
-    
+
     .chat-input-area textarea {
         order: 2;
         width: 100%;
     }
-    
+
     .send-btn {
         order: 3;
     }
