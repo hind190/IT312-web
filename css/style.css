@@ -7484,3 +7484,77 @@ h3::after {
         align-items: center;
     }
 }
+
+
+/* ============================================ */
+/*  تثبيت القائمة المنسدلة (Dropdown) في منتصف الشاشة للجوال */
+/* ============================================ */
+
+@media (max-width: 768px) {
+    /* إعادة تعيين موضع القائمة المنسدلة */
+    .dropdown {
+        position: relative;
+        width: 100%;
+    }
+    
+    .dropdown-content {
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: translate(-50%, -50%) !important;
+        width: 85% !important;
+        max-width: 300px !important;
+        max-height: 70vh !important;
+        overflow-y: auto !important;
+        background: white !important;
+        border-radius: 20px !important;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
+        z-index: 9999 !important;
+    }
+    
+    /* تنسيق الروابط داخل القائمة */
+    .dropdown-content a {
+        padding: 14px 20px !important;
+        font-size: 15px !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+    
+    /* عند تفعيل القائمة (عن طريق JavaScript) */
+    .user-box.active .dropdown-content {
+        display: block !important;
+    }
+    
+    /* خلفية داكنة خلف القائمة عند فتحها (اختياري) */
+    .dropdown-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 9998;
+        display: none;
+    }
+    
+    .user-box.active .dropdown-overlay {
+        display: block;
+    }
+    
+    /* تحسين شريط التمرير */
+    .dropdown-content::-webkit-scrollbar {
+        width: 4px;
+    }
+    
+    .dropdown-content::-webkit-scrollbar-track {
+        background: #f0f0f0;
+        border-radius: 10px;
+    }
+    
+    .dropdown-content::-webkit-scrollbar-thumb {
+        background: #8ea79a;
+        border-radius: 10px;
+    }
+}
