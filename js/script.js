@@ -1451,3 +1451,54 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 console.log('✅ تم تحميل جميع ملفات JavaScript بنجاح (كود مدمج)!');
+
+// ============================================
+// تفعيل القائمة المنسدلة في الجوال (بالنقر) - إضافة جديدة
+// ============================================
+(function() {
+    function initMobileDropdown() {
+        // نطبق فقط على الشاشات الصغيرة (أقل من 768px)
+        if (window.innerWidth > 768) return;
+        
+        const userBox = document.querySelector('.user-box');
+        const dropdownBtn = document.querySelector('.dropdown-btn');
+        
+        if (!userBox || !dropdownBtn) return;
+        
+        // إزالة أي مستمعات قديمة لتجنب التكرار
+        const newDropdownBtn = dropdownBtn.cloneNode(true);
+        dropdownBtn.parentNode.replaceChild(newDropdownBtn, dropdownBtn);
+        
+        // إضافة مستمع للنقر على زر القائمة
+        newDropdownBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            userBox.classList.toggle('active');
+        });
+        
+        // إغلاق القائمة عند النقر خارجها
+        document.addEventListener('click', function(e) {
+            if (!userBox.contains(e.target)) {
+                userBox.classList.remove('active');
+            }
+        });
+    }
+    
+    // تشغيل عند تحميل الصفحة
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMobileDropdown);
+    } else {
+        initMobileDropdown();
+    }
+    
+    // تشغيل أيضاً عند تغيير حجم الشاشة (للتأكد)
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            // إذا كانت الشاشة كبيرة، نزيل الـ active class
+            const userBox = document.querySelector('.user-box');
+            if (userBox) userBox.classList.remove('active');
+        } else {
+            initMobileDropdown();
+        }
+    });
+})();
