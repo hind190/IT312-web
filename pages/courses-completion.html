@@ -187,10 +187,9 @@
 
 <script>
     (function() {
-        // الحصول على اسم الدورة (يفضل من sessionStorage إذا كان موجوداً)
+        // ------ 1. استرجاع اسم الدورة ------
         let courseName = sessionStorage.getItem("courseName");
         if (!courseName) {
-            // محاولة استخراجه من آخر نتيجة في localStorage
             let saved = localStorage.getItem("quizResults");
             if (saved) {
                 try {
@@ -198,38 +197,93 @@
                     if (all.length > 0) {
                         courseName = all[all.length - 1].courseName;
                     }
-                } catch(e) {}
+                } catch(e) { console.error("خطأ في قراءة quizResults:", e); }
             }
         }
         if (!courseName) courseName = "الدورة";
         document.getElementById("courseNameDisplay").innerText = courseName;
 
-        // عرض أفضل نتيجة لهذه الدورة من localStorage
-        let bestText = "لا توجد نتائج";
+        // ------ 2. استرجاع أفضل نتيجة لهذه الدورة ------
+        let bestText = "لا توجد نتيجة";
+        let bestScore = null;
         let stored = localStorage.getItem("quizResults");
+
         if (stored) {
             try {
                 let results = JSON.parse(stored);
-                let courseResults = results.filter(item => item.courseName === courseName);
+                if (!Array.isArray(results)) results = [];
+                let courseResults = results.filter(item => item && item.courseName === courseName);
                 if (courseResults.length > 0) {
                     let bestObj = courseResults.reduce((max, cur) => cur.score > max.score ? cur : max);
+                    bestScore = bestObj.score;
+                    let total = bestObj.totalQuestions;
                     bestText = `${bestObj.score} / ${bestObj.totalQuestions}`;
                 }
-            } catch(e) {}
+            } catch(e) { console.error("خطأ في معالجة quizResults:", e); }
         }
-        document.getElementById("bestScoreDisplay").innerText = bestText;
 
-        // زر الشهادة
-        document.getElementById("certificateBtn").addEventListener("click", function(e) {
-            e.preventDefault();
-            let name = prompt("📝 أدخل اسمك (كما تريد ظهوره في الشهادة):", "");
-            if (name && name.trim() !== "") {
-                localStorage.setItem("studentName", name.trim());
-                window.location.href = "certificate.html";
-            } else if (name !== null) {
-                alert("❌ الاسم لا يمكن أن يكون فارغاً!");
+        // ------ 3. إذا لم يتم العثور على نتيجة، نحاول استخراجها من sessionStorage أو URL ------
+        if (bestScore === null) {
+            // محاولة جلب نتيجة من sessionStorage (إن وجدت من صفحة الاختبار)
+            let tempScore = sessionStorage.getItem("tempScore");
+            let tempTotal = sessionStorage.getItem("tempTotal");
+            if (tempScore !== null && tempTotal !== null) {
+                bestText = `${tempScore} / ${tempTotal}`;
+                bestScore = parseInt(tempScore);
+                console.log("تم استرجاع النتيجة من sessionStorage");
+            } else {
+                // محاولة جلبها من معاملات الرابط (مثل ?score=8&total=10)
+                let urlParams = new URLSearchParams(window.location.search);
+                let scoreParam = urlParams.get('score');
+                let totalParam = urlParams.get('total');
+                if (scoreParam !== null && totalParam !== null) {
+                    bestText = `${scoreParam} / ${totalParam}`;
+                    bestScore = parseInt(scoreParam);
+                    console.log("تم استرجاع النتيجة من معاملات الرابط");
+                }
             }
-        });
+        }
+
+        // عرض النتيجة في الصفحة
+        let scoreDisplay = document.getElementById("bestScoreDisplay");
+        if (scoreDisplay) {
+            scoreDisplay.innerText = bestText;
+            // إذا كانت النتيجة لا تظهر، نضيف تلميحاً للمستخدم
+            if (bestText === "لا توجد نتيجة") {
+                console.warn("لم يتم العثور على نتيجة. تأكد من حفظ النتيجة من صفحة الاختبار.");
+                // يمكن إضافة رسالة منبثقة خفيفة للمستخدم
+                let statsDiv = document.querySelector(".my-completion-stats");
+                if (statsDiv && !statsDiv.querySelector(".my-warning")) {
+                    let warn = document.createElement("p");
+                    warn.className = "my-warning";
+                    warn.style.color = "#d9534f";
+                    warn.style.fontSize = "14px";
+                    warn.style.marginTop = "10px";
+                    warn.innerHTML = "⚠️ لم يتم العثور على نتيجتك. يرجى التأكد من إتمام الاختبار بشكل صحيح.";
+                    statsDiv.appendChild(warn);
+                }
+            }
+        }
+
+        // ------ 4. زر الشهادة ------
+        let certBtn = document.getElementById("certificateBtn");
+        if (certBtn) {
+            certBtn.addEventListener("click", function(e) {
+                e.preventDefault();
+                let name = prompt("📝 أدخل اسمك (كما تريد ظهوره في الشهادة):", "");
+                if (name && name.trim() !== "") {
+                    localStorage.setItem("studentName", name.trim());
+                    window.location.href = "certificate.html";
+                } else if (name !== null) {
+                    alert("❌ الاسم لا يمكن أن يكون فارغاً!");
+                }
+            });
+        }
+
+        // ------ 5. إضافة رسالة إضافية للتأكيد على الجوال (اختياري) ------
+        if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            console.log("تم فتح الصفحة على جهاز محمول - تم معالجة البيانات");
+        }
     })();
 </script>
 
